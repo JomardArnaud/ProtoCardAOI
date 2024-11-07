@@ -1,0 +1,151 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt5ogw5ih2umq"]
+
+[ext_resource type="Texture2D" uid="uid://cjqu3mwc5u7qs" path="res://ArtCard/Frame.png" id="1_2bqa0"]
+[ext_resource type="Script" path="res://Cards/Card.gd" id="2_gexrg"]
+[ext_resource type="FontFile" uid="uid://b00anhl4ch4uq" path="res://tinypixel/tinypixel.otf" id="2_j75q1"]
+[ext_resource type="Texture2D" uid="uid://dy2h6s2simn8n" path="res://ArtCard/Ida's Wind.png" id="4_ossxc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srtxa"]
+bg_color = Color(1, 1, 1, 0.329412)
+
+[sub_resource type="Theme" id="Theme_4go6i"]
+default_font = ExtResource("2_j75q1")
+default_font_size = 12
+RichTextLabel/colors/default_color = Color(0, 0.294118, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0.00879999, 0.85096, 0.88, 1)
+RichTextLabel/constants/outline_size = 1
+
+[node name="Card" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -156.5
+offset_right = 98.0
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2bqa0")
+expand_mode = 3
+stretch_mode = 4
+script = ExtResource("2_gexrg")
+
+[node name="Name" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.099
+anchor_right = 0.594
+anchor_bottom = 0.063
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Name"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_srtxa")
+
+[node name="NameCardLabel" type="RichTextLabel" parent="Name"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 2
+theme = SubResource("Theme_4go6i")
+text = "Name's Card"
+scroll_active = false
+autowrap_mode = 0
+selection_enabled = true
+visible_characters_behavior = 1
+
+[node name="Cost" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.594
+anchor_right = 0.901
+anchor_bottom = 0.063
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Cost"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_srtxa")
+
+[node name="CostCardLabel" type="RichTextLabel" parent="Cost"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_4go6i")
+bbcode_enabled = true
+text = "[center]Cost[center]"
+scroll_active = false
+autowrap_mode = 0
+visible_characters_behavior = 1
+
+[node name="Image" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104
+anchor_top = 0.063
+anchor_right = 0.891
+anchor_bottom = 0.5
+
+[node name="ImageTextureRect" type="TextureRect" parent="Image"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_ossxc")
+
+[node name="Type" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.099
+anchor_top = 0.5
+anchor_right = 0.891
+anchor_bottom = 0.562
+
+[node name="Panel" type="Panel" parent="Type"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_srtxa")
+
+[node name="TypeCardLabel" type="RichTextLabel" parent="Type"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_4go6i")
+text = "Type's card"
+scroll_active = false
+autowrap_mode = 0
+visible_characters_behavior = 1
+
+[node name="Description" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.099
+anchor_top = 0.563
+anchor_right = 0.891
+anchor_bottom = 0.937
+
+[node name="Panel" type="Panel" parent="Description"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_srtxa")
+
+[node name="DescriptionCardLabel" type="RichTextLabel" parent="Description"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_4go6i")
+text = "Description's Card"
+autowrap_mode = 1
+visible_characters_behavior = 1
+
+[node name="KeyToUseLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.901
+anchor_top = 0.937
+anchor_right = 1.032
+anchor_bottom = 1.021
+offset_bottom = -296.573
+text = "Key"

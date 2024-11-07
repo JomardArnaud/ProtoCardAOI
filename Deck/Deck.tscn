@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck5gdvd6jip1b"]
+
+[ext_resource type="Script" path="res://Deck/Deck.gd" id="1_et8v0"]
+[ext_resource type="Texture2D" uid="uid://dky2jpf0yxba0" path="res://ArtCard/CardVerso.png" id="2_yo3bs"]
+
+[node name="Deck" type="MarginContainer"]
+anchors_preset = -1
+anchor_right = 0.05
+anchor_bottom = 0.1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_et8v0")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_yo3bs")
+expand_mode = 4
+stretch_mode = 5

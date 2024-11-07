@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://5vn826oyhgfa"]
+
+[ext_resource type="Script" path="res://Utility/HeartBox.gd" id="1_5mr8f"]
+
+[node name="HeartBox" type="Polygon2D"]
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_5mr8f")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca0b1qo2v7edf"]
+
+[ext_resource type="Script" path="res://Utility/Health.gd" id="1_qvcda"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78b6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.227451, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5lg5"]
+bg_color = Color(0.188235, 0.960784, 0.945098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="Theme" id="Theme_cl172"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_t78b6")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_u5lg5")
+
+[node name="Health" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("1_qvcda")
+
+[node name="HpBar" type="ProgressBar" parent="."]
+layout_mode = 1
+offset_left = -148.0
+offset_top = -17.0
+offset_right = 147.0
+offset_bottom = 16.0
+theme = SubResource("Theme_cl172")
+value = 100.0
+show_percentage = false

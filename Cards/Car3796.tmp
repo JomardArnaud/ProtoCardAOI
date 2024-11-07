@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpia0t0wkh2lw"]
+
+[ext_resource type="Script" path="res://Cards/SceneTmpLoading.gd" id="1_m5nck"]
+[ext_resource type="PackedScene" uid="uid://bt5ogw5ih2umq" path="res://Cards/Card.tscn" id="1_t8ktt"]
+
+[node name="CardHud" type="CanvasLayer"]
+script = ExtResource("1_m5nck")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -585.0
+offset_right = 587.0
+offset_bottom = 361.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HandType" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.71, 1, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.112, 0.6706, 0.7, 1)
+theme_override_font_sizes/font_size = 50
+text = "Spell =>
+"
+
+[node name="CardContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Card" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/CardContainer" instance=ExtResource("1_t8ktt")]
+layout_mode = 2

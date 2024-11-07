@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpia0t0wkh2lw"]
+
+[ext_resource type="PackedScene" uid="uid://dculbgkisxgmq" path="res://Hands/Hand.tscn" id="2_tm2vm"]
+[ext_resource type="PackedScene" uid="uid://ck5gdvd6jip1b" path="res://Deck/Deck.tscn" id="3_fdvf6"]
+
+[node name="CardHud" type="CanvasLayer"]
+
+[node name="Deck" parent="." instance=ExtResource("3_fdvf6")]
+anchor_left = 0.053
+anchor_top = 0.034
+anchor_right = 0.15
+anchor_bottom = 0.289
+
+[node name="SpellHand" parent="." instance=ExtResource("2_tm2vm")]
