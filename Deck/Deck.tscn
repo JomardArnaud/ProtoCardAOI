@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck5gdvd6jip1b"]
+[gd_scene load_steps=5 format=3 uid="uid://ck5gdvd6jip1b"]
 
 [ext_resource type="Script" path="res://Deck/Deck.gd" id="1_et8v0"]
 [ext_resource type="Texture2D" uid="uid://dky2jpf0yxba0" path="res://ArtCard/CardVerso.png" id="2_yo3bs"]
+[ext_resource type="FontFile" uid="uid://b00anhl4ch4uq" path="res://Fonts/tinypixel.otf" id="3_xy3hi"]
+
+[sub_resource type="Theme" id="Theme_q2cgx"]
+default_font = ExtResource("3_xy3hi")
+default_font_size = 9
+RichTextLabel/colors/default_color = Color(0, 0.294118, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0.00879999, 0.85096, 0.88, 1)
+RichTextLabel/constants/outline_size = 1
 
 [node name="Deck" type="MarginContainer"]
 anchors_preset = -1
-anchor_right = 0.05
-anchor_bottom = 0.1
+anchor_right = 0.12
+anchor_bottom = 0.255
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_et8v0")
@@ -26,3 +34,7 @@ layout_mode = 2
 texture = ExtResource("2_yo3bs")
 expand_mode = 4
 stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_q2cgx")

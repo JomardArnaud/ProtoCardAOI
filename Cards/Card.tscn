@@ -1,19 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt5ogw5ih2umq"]
+[gd_scene load_steps=8 format=3 uid="uid://bt5ogw5ih2umq"]
 
 [ext_resource type="Texture2D" uid="uid://cjqu3mwc5u7qs" path="res://ArtCard/Frame.png" id="1_2bqa0"]
 [ext_resource type="Script" path="res://Cards/Card.gd" id="2_gexrg"]
-[ext_resource type="FontFile" uid="uid://b00anhl4ch4uq" path="res://tinypixel/tinypixel.otf" id="2_j75q1"]
+[ext_resource type="Theme" uid="uid://kbsu4ruo3khm" path="res://MainTheme.tres" id="3_gqpqm"]
 [ext_resource type="Texture2D" uid="uid://dy2h6s2simn8n" path="res://ArtCard/Ida's Wind.png" id="4_ossxc"]
+
+[sub_resource type="FontFile" id="FontFile_2evgk"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="Theme" id="Theme_gn1bk"]
+default_font = SubResource("FontFile_2evgk")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srtxa"]
 bg_color = Color(1, 1, 1, 0.329412)
-
-[sub_resource type="Theme" id="Theme_4go6i"]
-default_font = ExtResource("2_j75q1")
-default_font_size = 12
-RichTextLabel/colors/default_color = Color(0, 0.294118, 1, 1)
-RichTextLabel/colors/font_outline_color = Color(0.00879999, 0.85096, 0.88, 1)
-RichTextLabel/constants/outline_size = 1
 
 [node name="Card" type="TextureRect"]
 anchors_preset = 8
@@ -27,6 +33,7 @@ offset_right = 98.0
 offset_bottom = 156.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_gn1bk")
 texture = ExtResource("1_2bqa0")
 expand_mode = 3
 stretch_mode = 4
@@ -52,7 +59,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_srtxa")
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 2
-theme = SubResource("Theme_4go6i")
+theme = ExtResource("3_gqpqm")
 text = "Name's Card"
 scroll_active = false
 autowrap_mode = 0
@@ -78,7 +85,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_srtxa")
 [node name="CostCardLabel" type="RichTextLabel" parent="Cost"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = SubResource("Theme_4go6i")
+theme = ExtResource("3_gqpqm")
 bbcode_enabled = true
 text = "[center]Cost[center]"
 scroll_active = false
@@ -113,7 +120,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_srtxa")
 [node name="TypeCardLabel" type="RichTextLabel" parent="Type"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = SubResource("Theme_4go6i")
+theme = ExtResource("3_gqpqm")
 text = "Type's card"
 scroll_active = false
 autowrap_mode = 0
@@ -134,7 +141,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_srtxa")
 [node name="DescriptionCardLabel" type="RichTextLabel" parent="Description"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = SubResource("Theme_4go6i")
+theme = ExtResource("3_gqpqm")
 text = "Description's Card"
 autowrap_mode = 1
 visible_characters_behavior = 1
