@@ -8,7 +8,7 @@ extends Resource
 
 enum CardType {
 	SPELL,
-	PERMANANT
+	PERMANENT
 }
 
 func _init(nName="", nCost="", nType=CardType.SPELL, nDescription=""):
