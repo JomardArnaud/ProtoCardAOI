@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt5ogw5ih2umq"]
+[gd_scene load_steps=7 format=3 uid="uid://bt5ogw5ih2umq"]
 
 [ext_resource type="Texture2D" uid="uid://cjqu3mwc5u7qs" path="res://ArtCard/Frame.png" id="1_2bqa0"]
 [ext_resource type="Script" path="res://Cards/Card.gd" id="2_gexrg"]
 [ext_resource type="Theme" uid="uid://kbsu4ruo3khm" path="res://MainTheme.tres" id="3_gqpqm"]
-[ext_resource type="Texture2D" uid="uid://dy2h6s2simn8n" path="res://ArtCard/Ida's Wind.png" id="4_ossxc"]
 
 [sub_resource type="FontFile" id="FontFile_2evgk"]
 subpixel_positioning = 0
@@ -33,6 +32,7 @@ offset_right = 98.0
 offset_bottom = 156.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
 theme = SubResource("Theme_gn1bk")
 texture = ExtResource("1_2bqa0")
 expand_mode = 3
@@ -103,7 +103,6 @@ anchor_bottom = 0.5
 [node name="ImageTextureRect" type="TextureRect" parent="Image"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("4_ossxc")
 
 [node name="Type" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -150,9 +149,10 @@ visible_characters_behavior = 1
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.901
-anchor_top = 0.937
-anchor_right = 1.032
-anchor_bottom = 1.021
-offset_bottom = -296.573
+anchor_left = 0.858
+anchor_top = 0.932
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Key"

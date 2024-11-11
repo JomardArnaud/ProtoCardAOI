@@ -4,7 +4,7 @@ extends Resource
 @export var name: String
 @export var cost: String
 @export var type: CardType
-@export var descption: String
+@export var description: String
 
 enum CardType {
 	SPELL,
@@ -15,4 +15,4 @@ func _init(nName="", nCost="", nType=CardType.SPELL, nDescription=""):
 	name = nName
 	cost = nCost
 	type = nType
-	descption = nDescription
+	description = nDescription

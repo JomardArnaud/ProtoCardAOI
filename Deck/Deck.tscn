@@ -1,40 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck5gdvd6jip1b"]
+[gd_scene load_steps=3 format=3 uid="uid://ck5gdvd6jip1b"]
 
 [ext_resource type="Script" path="res://Deck/Deck.gd" id="1_et8v0"]
 [ext_resource type="Texture2D" uid="uid://dky2jpf0yxba0" path="res://ArtCard/CardVerso.png" id="2_yo3bs"]
-[ext_resource type="FontFile" uid="uid://b00anhl4ch4uq" path="res://Fonts/tinypixel.otf" id="3_xy3hi"]
 
-[sub_resource type="Theme" id="Theme_q2cgx"]
-default_font = ExtResource("3_xy3hi")
-default_font_size = 9
-RichTextLabel/colors/default_color = Color(0, 0.294118, 1, 1)
-RichTextLabel/colors/font_outline_color = Color(0.00879999, 0.85096, 0.88, 1)
-RichTextLabel/constants/outline_size = 1
-
-[node name="Deck" type="MarginContainer"]
-anchors_preset = -1
-anchor_right = 0.12
-anchor_bottom = 0.255
+[node name="Deck" type="Control"]
+layout_mode = 3
+anchor_right = 0.109
+anchor_bottom = 0.231
+offset_right = 0.719986
+offset_bottom = 0.519989
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_et8v0")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 210.0
+offset_bottom = 250.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("2_yo3bs")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
-theme = SubResource("Theme_q2cgx")
+anchor_left = 0.928571
+anchor_top = 0.904
+anchor_right = 0.97619
+anchor_bottom = 1.0
+text = "7
+
+
+"
+scroll_active = false
+metadata/_edit_use_anchors_ = true

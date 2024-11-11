@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpia0t0wkh2lw"]
+[gd_scene load_steps=4 format=3 uid="uid://cpia0t0wkh2lw"]
 
-[ext_resource type="PackedScene" uid="uid://dculbgkisxgmq" path="res://Hands/Hand.tscn" id="2_tm2vm"]
+[ext_resource type="Script" path="res://Cards/CardCombatManament.gd" id="1_d5m16"]
+[ext_resource type="PackedScene" uid="uid://dculbgkisxgmq" path="res://Hands/Hand.tscn" id="3_4r8is"]
 [ext_resource type="PackedScene" uid="uid://ck5gdvd6jip1b" path="res://Deck/Deck.tscn" id="3_fdvf6"]
 
 [node name="CardHud" type="CanvasLayer"]
+script = ExtResource("1_d5m16")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
-offset_top = 823.0
+offset_top = 830.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 size_flags_horizontal = 3
@@ -20,22 +22,19 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Deck" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("3_fdvf6")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 57.0
-offset_right = 265.0
-offset_bottom = 257.0
+offset_right = 272.0
+offset_bottom = 250.0
 size_flags_vertical = 8
 
-[node name="SpellHand" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("2_tm2vm")]
+[node name="SpellHand" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("3_4r8is")]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0
-anchor_right = 0.0
-offset_left = 311.0
-offset_right = 1520.0
-offset_bottom = 256.0
-grow_horizontal = 1
-size_flags_vertical = 8
+offset_left = -439.0
+offset_right = 682.0
+offset_bottom = 250.0

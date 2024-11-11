@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://dculbgkisxgmq"]
+[gd_scene load_steps=2 format=3 uid="uid://dculbgkisxgmq"]
 
-[ext_resource type="PackedScene" uid="uid://bt5ogw5ih2umq" path="res://Cards/Card.tscn" id="1_g2ln6"]
 [ext_resource type="Script" path="res://Hands/Hand.gd" id="1_us0oc"]
 
 [node name="HandMargin" type="MarginContainer"]
@@ -38,9 +37,7 @@ text = "Spell =>
 "
 
 [node name="CardContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
-
-[node name="Card" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer" instance=ExtResource("1_g2ln6")]
-layout_mode = 2
