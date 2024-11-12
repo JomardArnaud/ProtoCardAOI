@@ -1,6 +1,8 @@
 class_name CammanderInfo
 extends Resource
 
+signal cardPlayed
+
 @export var health : HealthInfo
 # will have a letter add for each elem of the Commander
 @export var elemCommender : String
@@ -17,8 +19,7 @@ extends Resource
 @export var maxElem : int = 3
 @export var amountElem : String
 # each time this number get over 1, sub 1 and Cammander gain 1 of the last elem used
-@export var currentRegen : float
+@export var currentRegenElem : float
 # amount add to currentRegen per second
 @export var regenElem : float = 0
-# tmp code Counter object
-#@export var counter : Array[Counter]
+@export var counter : Array[CounterInfo.idCounter]
