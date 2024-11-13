@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7kj234fqvhlm"]
 
-[ext_resource type="Script" path="res://Utility/Block.gd" id="1_amoyq"]
+[ext_resource type="Script" path="res://Utility/CustomNode/Block.gd" id="1_amoyq"]
 
 [node name="Polygon2D" type="Polygon2D"]
 script = ExtResource("1_amoyq")

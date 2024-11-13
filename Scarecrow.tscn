@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://vbwrldk3i16e"]
+[gd_scene load_steps=7 format=3 uid="uid://vbwrldk3i16e"]
 
 [ext_resource type="Script" path="res://Scarecrow.gd" id="1_tl5ag"]
 [ext_resource type="Texture2D" uid="uid://d0ovc83hmo14j" path="res://ArtCard/Scarecrow.png" id="2_ydfl1"]
 [ext_resource type="Script" path="res://Utility/CustomType/CPolygon2D.gd" id="3_v4ya1"]
-[ext_resource type="PackedScene" uid="uid://5vn826oyhgfa" path="res://Utility/HeartBox.tscn" id="4_6n730"]
-[ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/Health.tscn" id="5_cpyhq"]
+[ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="5_cpyhq"]
 [ext_resource type="Script" path="res://Fonts/HealthInfo.gd" id="6_tsdmv"]
 
 [sub_resource type="Resource" id="Resource_fhnl1"]
@@ -20,13 +19,10 @@ script = ExtResource("1_tl5ag")
 scale = Vector2(10, 10)
 texture = ExtResource("2_ydfl1")
 
-[node name="Hitbox" type="Polygon2D" parent="."]
+[node name="MovementBox" type="Polygon2D" parent="."]
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-20, -20, -20, 20, 20, 20, 20, -20, -20, -20)
 script = ExtResource("3_v4ya1")
-
-[node name="HeartBox" parent="." instance=ExtResource("4_6n730")]
-polygon = PackedVector2Array(-11, -49, -45, -18, -45, 22, -17, 53, 23, 53, 43, 33, 43, -20, 19, -49)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

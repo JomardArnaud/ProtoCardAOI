@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="1_meqny"]
 [ext_resource type="Script" path="res://Commander/Player.gd" id="2_ic4mp"]
 [ext_resource type="Script" path="res://Commander/PlayerCamera.gd" id="3_1biid"]
-[ext_resource type="PackedScene" uid="uid://b7kj234fqvhlm" path="res://Utility/Block.tscn" id="3_72ud1"]
+[ext_resource type="PackedScene" uid="uid://b7kj234fqvhlm" path="res://Utility/CustomNode/Block.tscn" id="3_72ud1"]
 [ext_resource type="PackedScene" uid="uid://vbwrldk3i16e" path="res://Scarecrow.tscn" id="5_jhulu"]
-[ext_resource type="Script" path="res://Utility/Block.gd" id="6_73wrg"]
+[ext_resource type="Script" path="res://Utility/CustomNode/Block.gd" id="6_73wrg"]
 [ext_resource type="PackedScene" uid="uid://cpia0t0wkh2lw" path="res://Cards/CardHud.tscn" id="6_pcm75"]
 
 [node name="Node2D" type="Node2D"]
@@ -16,12 +16,6 @@ position = Vector2(575, 323)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("3_1biid")
 focusEntity = NodePath("../Player")
-
-[node name="Player" parent="." instance=ExtResource("1_meqny")]
-position = Vector2(200.21, 92.1572)
-script = ExtResource("2_ic4mp")
-inertia = 0.88
-speed = 88.0
 
 [node name="Arena" type="Node" parent="."]
 
@@ -71,5 +65,11 @@ script = ExtResource("6_73wrg")
 position = Vector2(330, 138)
 polygon = PackedVector2Array(2106, -1026, 2034, -936, 2256, -876, 2352, -1038, 2236.25, -1032.35)
 script = ExtResource("6_73wrg")
+
+[node name="Player" parent="." instance=ExtResource("1_meqny")]
+position = Vector2(200.21, 92.1572)
+script = ExtResource("2_ic4mp")
+inertia = 0.88
+speed = 88.0
 
 [node name="CardHud" parent="." instance=ExtResource("6_pcm75")]

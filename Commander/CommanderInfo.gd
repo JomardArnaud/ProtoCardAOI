@@ -1,4 +1,4 @@
-class_name CammanderInfo
+class_name CommanderInfo
 extends Resource
 
 signal cardPlayed
