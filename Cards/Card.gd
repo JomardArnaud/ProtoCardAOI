@@ -38,7 +38,6 @@ func updateCardNode() -> void:
 		costCardLabel.text =  "[center]%s[center]"% cardInfo.cost
 	if bufferCardInfo.type != cardInfo.type:
 		typeCardLabel.text = ClassCardInfo.CardType.keys()[cardInfo.type]
-	var test = cardInfo.description
 	if bufferCardInfo.description != cardInfo.description:
 		descriptionCardLabel.text = cardInfo.description.replace(" | ", "\n")
 
