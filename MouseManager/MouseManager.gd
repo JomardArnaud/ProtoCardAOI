@@ -6,15 +6,16 @@ enum mouseMode {
 	ON_TARGET,
 	nb_mode
 }
+@onready var currentMode := mouseMode.BASE : set = setMode
+#use to keep track with overlaping target  
+@onready var alternateModeWeight : int = 0
 @export var tModeMouse : Array[Texture2D]
-
+@onready var spriteMouse := %SpriteMouse
 
 @export var baseWindowSize := Vector2.ZERO
 @export var baseMouseSize := Vector2.ZERO
 
-@onready var spriteMouse := %SpriteMouse
 
-@onready var currentMode := mouseMode.BASE : set = setMode
 
 func _ready() -> void:
 	spriteMouse.hide()
@@ -25,10 +26,18 @@ func _process(_delta: float) -> void:
 	spriteMouse.global_position = spriteMouse.get_global_mouse_position()
 
 func setMode(nMode: mouseMode) -> void:
+	if (nMode == mouseMode.BASE):
+		alternateModeWeight -= 1
+		if (alternateModeWeight < 1):
+			currentMode = mouseMode.BASE
+			updateCursorImage()
+		return	
 	if (currentMode != nMode):
 		currentMode = nMode
-		
-	pass
+		updateCursorImage()
+	else:
+		print(alternateModeWeight)
+		alternateModeWeight += 1
 
 func updateCursorImage() -> void:
 	var imageMouse = tModeMouse[currentMode].get_image()
