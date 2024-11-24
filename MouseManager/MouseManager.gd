@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+var ClassHibox2D = preload("res://Utility/CustomNode/Hitbox2D.gd")
 #put the mode in same order the the enum
 enum mouseMode {
 	BASE,
@@ -8,36 +9,41 @@ enum mouseMode {
 }
 @onready var currentMode := mouseMode.BASE : set = setMode
 #use to keep track with overlaping target  
-@onready var alternateModeWeight : int = 0
+@onready var nodeOverlaping : Array[int]
 @export var tModeMouse : Array[Texture2D]
 @onready var spriteMouse := %SpriteMouse
 
 @export var baseWindowSize := Vector2.ZERO
 @export var baseMouseSize := Vector2.ZERO
 
+#part algo search for the closest targetable object of the cursor
 
+func _input(event: InputEvent):
+	if (event is InputEventMouseButton):
+		findCLosest()
+		print(spriteMouse.get_global_mouse_position())
+	pass
 
+func findCLosest() -> void:
+	for target in get_tree().get_nodes_in_group("targetable"):
+		if target is Hitbox2D:
+			print(target.get_global_transform_with_canvas().origin)
+	pass
 func _ready() -> void:
 	spriteMouse.hide()
 	updateCursorImage()
-	pass
 
 func _process(_delta: float) -> void:
 	spriteMouse.global_position = spriteMouse.get_global_mouse_position()
 
+#need to change this function to work with curosr ?
 func setMode(nMode: mouseMode) -> void:
 	if (nMode == mouseMode.BASE):
-		alternateModeWeight -= 1
-		if (alternateModeWeight < 1):
-			currentMode = mouseMode.BASE
-			updateCursorImage()
-		return	
-	if (currentMode != nMode):
 		currentMode = nMode
 		updateCursorImage()
-	else:
-		print(alternateModeWeight)
-		alternateModeWeight += 1
+	#elif :
+		#print(alternateModeWeight)
+		#alternateModeWeight += 1
 
 func updateCursorImage() -> void:
 	var imageMouse = tModeMouse[currentMode].get_image()

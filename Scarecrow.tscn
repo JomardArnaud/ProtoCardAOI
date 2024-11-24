@@ -14,7 +14,7 @@ health = 100.0
 maxHealth = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7l8ss"]
-radius = 120.067
+radius = 208.06
 
 [node name="Scarecrow" type="Node2D"]
 script = ExtResource("1_tl5ag")
@@ -47,7 +47,7 @@ info = SubResource("Resource_fhnl1")
 [node name="CollisionShape2D" parent="HitboxShape" index="0"]
 shape = SubResource("CircleShape2D_7l8ss")
 
+[connection signal="mouse_entered" from="HitboxShape" to="." method="_on_hitbox_shape_mouse_entered"]
 [connection signal="mouse_shape_entered" from="HitboxShape" to="." method="_on_hitbox_shape_mouse_shape_entered"]
-[connection signal="mouse_shape_exited" from="HitboxShape" to="." method="_on_hitbox_shape_mouse_shape_exited"]
 
 [editable path="HitboxShape"]
