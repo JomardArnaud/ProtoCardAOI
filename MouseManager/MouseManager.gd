@@ -17,17 +17,20 @@ enum mouseMode {
 @export var baseMouseSize := Vector2.ZERO
 
 #part algo search for the closest targetable object of the cursor
+@export var distanceSelect := 50
 
 func _input(event: InputEvent):
 	if (event is InputEventMouseButton):
 		findCLosest()
-		print(spriteMouse.get_global_mouse_position())
 	pass
 
 func findCLosest() -> void:
+	var mousePos : Vector2 = spriteMouse.get_global_mouse_position()
 	for target in get_tree().get_nodes_in_group("targetable"):
 		if target is Hitbox2D:
-			print(target.get_global_transform_with_canvas().origin)
+			var targetPos = target.get_global_transform_with_canvas().origin
+			if (mousePos.distance_to(targetPos) < distanceSelect):
+				target.visible = false
 	pass
 func _ready() -> void:
 	spriteMouse.hide()
