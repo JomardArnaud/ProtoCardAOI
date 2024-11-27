@@ -8,11 +8,5 @@ func _ready() -> void:
 	if collisionShape == null:
 		push_error("This hitbox doesn't have a CollisionShape2D")
 
-
-func _on_mouse_entered():
-	pass # Replace with function body.
-
-
-func _on_mouse_shape_entered(shape_idx):
-	print(shape_idx)  
-	pass # Replace with function body.
+func getCollisionShape() -> CollisionShape2D:
+	return collisionShape

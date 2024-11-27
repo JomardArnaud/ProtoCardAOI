@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d00sk2e54o4tg"]
+[gd_scene load_steps=8 format=3 uid="uid://d00sk2e54o4tg"]
 
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="1_meqny"]
 [ext_resource type="Script" path="res://Commander/Player.gd" id="2_ic4mp"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://vbwrldk3i16e" path="res://Scarecrow.tscn" id="5_jhulu"]
 [ext_resource type="Script" path="res://Utility/CustomNode/Block.gd" id="6_73wrg"]
 [ext_resource type="PackedScene" uid="uid://cpia0t0wkh2lw" path="res://Cards/CardHud.tscn" id="6_pcm75"]
-[ext_resource type="PackedScene" uid="uid://catuso4nta8w2" path="res://MouseManager/MouseManager.tscn" id="8_3v5t6"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(2961, -1738)
@@ -74,5 +73,3 @@ inertia = 0.88
 speed = 88.0
 
 [node name="CardHud" parent="." instance=ExtResource("6_pcm75")]
-
-[node name="MouseManager" parent="." instance=ExtResource("8_3v5t6")]

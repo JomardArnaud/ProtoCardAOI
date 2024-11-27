@@ -12,7 +12,7 @@ enum mouseMode {
 @onready var nodeOverlaping : Array[int]
 @export var tModeMouse : Array[Texture2D]
 @onready var spriteMouse := %SpriteMouse
-
+@onready var collisionShapeCursor : CollisionShape2D = $HitboxShape.getCollisionShape()
 @export var baseWindowSize := Vector2.ZERO
 @export var baseMouseSize := Vector2.ZERO
 
@@ -20,38 +20,47 @@ enum mouseMode {
 @export var distanceSelect := 50
 
 func _input(event: InputEvent):
-	if (event is InputEventMouseButton):
+	#if (event is InputEventMouseButton):
+		#findCLosest()
+	if (event is InputEventMouseMotion):
 		findCLosest()
 	pass
 
 func findCLosest() -> void:
-	var mousePos : Vector2 = spriteMouse.get_global_mouse_position()
+	var mousePos : Vector2 = spriteMouse.get_local_mouse_position()
 	for target in get_tree().get_nodes_in_group("targetable"):
 		if target is Hitbox2D:
-			var targetPos = target.get_global_transform_with_canvas().origin
+			print(spriteMouse.get_local_mouse_position())
+			var targetPos = target.get_canvas_transform().origin
+			#if (target.getCollisionShape().collide()):
+				#pass
 			if (mousePos.distance_to(targetPos) < distanceSelect):
-				target.visible = false
+				setMode(mouseMode.ON_TARGET)
+			else:
+				setMode(mouseMode.BASE)
 	pass
 func _ready() -> void:
 	spriteMouse.hide()
 	updateCursorImage()
 
 func _process(_delta: float) -> void:
-	spriteMouse.global_position = spriteMouse.get_global_mouse_position()
+	var mousePos : Vector2 = spriteMouse.get_local_mouse_position()
+	spriteMouse.position = spriteMouse.get_local_mouse_position()
+	collisionShapeCursor.position = mousePos
 
-#need to change this function to work with curosr ?
 func setMode(nMode: mouseMode) -> void:
-	if (nMode == mouseMode.BASE):
+	print(nMode)
+	if (currentMode != nMode):
 		currentMode = nMode
 		updateCursorImage()
-	#elif :
-		#print(alternateModeWeight)
-		#alternateModeWeight += 1
 
 func updateCursorImage() -> void:
 	var imageMouse = tModeMouse[currentMode].get_image()
 	
 	imageMouse.resize(baseMouseSize.x, baseMouseSize.y, Image.INTERPOLATE_NEAREST)
+	#tmp latter do a match
+	if collisionShapeCursor.shape is CircleShape2D:
+		collisionShapeCursor.shape.radius = max(baseMouseSize.x, baseMouseSize.y) / 4
 	Input.set_custom_mouse_cursor(imageMouse)
 
 ##from github

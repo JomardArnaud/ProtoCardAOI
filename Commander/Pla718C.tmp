@@ -11,9 +11,9 @@ radius = 4.60435
 
 [sub_resource type="Resource" id="Resource_rqx0r"]
 script = ExtResource("2_u8tq1")
-visibleHpBar = true
-health = 50.0
-maxHealth = 100.0
+visibleHpBar = false
+health = 0.0
+maxHealth = 0.0
 
 [sub_resource type="Resource" id="Resource_ahofe"]
 script = ExtResource("3_guql8")
@@ -60,9 +60,6 @@ unique_name_in_owner = true
 offset_top = -7.6
 offset_bottom = -7.6
 scale = Vector2(0.05, 0.05)
-info = null
 
 [node name="MainSprite" type="Sprite2D" parent="Commander"]
 texture = ExtResource("1_fjt8r")
-
-[connection signal="ready" from="Commander/Health" to="Commander" method="_on_health_ready"]
