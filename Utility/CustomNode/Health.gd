@@ -1,36 +1,37 @@
 class_name Health
 extends Control
 
-@export var info : HealthInfo : set = setNodeInfo
+@export var info : HealthInfo
 
-var hoBarReady := false
-@onready var hpBar : ProgressBar = %HpBar
-
-func _ready() -> void:
-	if info == null:
-		return
-	updateNodeInfo()
+@onready var hpBar : ProgressBar
 
 func setNodeInfo(nInfo: HealthInfo) -> void:
-	if (nInfo != null && info != nInfo):
-		info = nInfo
-		updateNodeInfo()
+	info = nInfo
+	updateHpBarNode()
+		
+func setHpBarNode() -> void:
+	var parent = get_parent()
+	if (parent is Commander && info == null):
+		info = parent.commanderInfo.health
+	else:
+		updateHpBarNode()
+	info.healthChanged.connect(onHealthChanged)
+	if (parent.has_method("onHealthChanged")):
+		info.healthChanged.connect(parent.onHealthChanged.bind())
+	if (parent.has_method("onHealthDropZero")):
+		info.healthDropZero.connect(parent.onHealthDropZero.bind())
 
-func updateNodeInfo() -> void:
-	self.visible = info.visibleHpBar
-	if (hpBar == null):
-		hpBar = %HpBar
-	if (hoBarReady == true) :
+func updateHpBarNode() -> void:
+	if (hpBar.visible != info.visibleHpBar):
+		hpBar.visible = info.visibleHpBar
+	if (hpBar.value != info.health):
 		hpBar.set_value(info.health)
-		var parent = get_parent()
-		info.healthChanged.connect(onHealthChanged)
-		if (parent.has_method("onHealthChanged")):
-			info.healthChanged.connect(parent.onHealthChanged.bind())
-		if (parent.has_method("onHealthDropZero")):
-			info.healthDropZero.connect(parent.onHealthDropZero.bind())
+	if (hpBar.max_value != info.maxHealth):
+		hpBar.max_value = info.maxHealth
 
 func onHealthChanged(nHP: float) -> void:
 	hpBar.value = nHP
 
 func _on_hp_bar_ready():
-	hoBarReady = true
+	hpBar = %HpBar
+	setHpBarNode()

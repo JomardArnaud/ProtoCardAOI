@@ -56,7 +56,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Health" parent="Commander" instance=ExtResource("3_odjl4")]
-unique_name_in_owner = true
 offset_top = -7.6
 offset_bottom = -7.6
 scale = Vector2(0.05, 0.05)
@@ -64,5 +63,3 @@ info = null
 
 [node name="MainSprite" type="Sprite2D" parent="Commander"]
 texture = ExtResource("1_fjt8r")
-
-[connection signal="ready" from="Commander/Health" to="Commander" method="_on_health_ready"]
