@@ -21,20 +21,22 @@ offset_bottom = 250.0
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="DeckCardContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/DeckCardContainer"]
 layout_mode = 2
 texture = ExtResource("2_yo3bs")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RemainingCardLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 anchor_left = 0.928571
 anchor_top = 0.904

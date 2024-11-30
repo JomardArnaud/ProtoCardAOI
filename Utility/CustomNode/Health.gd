@@ -13,8 +13,7 @@ func setHpBarNode() -> void:
 	var parent = get_parent()
 	if (parent is Commander && info == null):
 		info = parent.commanderInfo.health
-	else:
-		updateHpBarNode()
+	updateHpBarNode()
 	info.healthChanged.connect(onHealthChanged)
 	if (parent.has_method("onHealthChanged")):
 		info.healthChanged.connect(parent.onHealthChanged.bind())

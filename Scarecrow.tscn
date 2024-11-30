@@ -14,7 +14,7 @@ health = 100.0
 maxHealth = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7l8ss"]
-radius = 208.06
+radius = 48.3839
 
 [node name="Scarecrow" type="Node2D"]
 script = ExtResource("1_tl5ag")

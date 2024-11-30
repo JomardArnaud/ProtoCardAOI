@@ -145,14 +145,23 @@ text = "Description's Card"
 autowrap_mode = 1
 visible_characters_behavior = 1
 
-[node name="KeyToUseLabel" type="Label" parent="."]
-unique_name_in_owner = true
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.858
-anchor_top = 0.932
+anchor_top = 0.933
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Key"
+
+[node name="KeyToUseLabel" type="RichTextLabel" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.02902
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]KeyToCast[center]"
