@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://rbo8cq7hqtkg"]
+
+[ext_resource type="Script" path="res://Graveyard/Graveyard.gd" id="1_o2hnv"]
+
+[node name="Graveyard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1247.0
+offset_right = 1462.0
+offset_bottom = 250.0
+script = ExtResource("1_o2hnv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 250.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="GraveyardCardContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RemainingCardLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.897674
+anchor_top = 0.9
+anchor_right = 0.945293
+anchor_bottom = 0.996
+bbcode_enabled = true
+text = "[center]0[center]
+
+
+"
+scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="nameZonePanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.883
+anchor_right = 0.828
+anchor_bottom = 1.0
+
+[node name="nameZoneLabel" type="RichTextLabel" parent="nameZonePanelContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Graveyard[center]"

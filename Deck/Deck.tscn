@@ -38,9 +38,9 @@ stretch_mode = 5
 [node name="RemainingCardLabel" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-anchor_left = 0.928571
+anchor_left = 0.904762
 anchor_top = 0.904
-anchor_right = 0.97619
+anchor_right = 0.952381
 anchor_bottom = 1.0
 text = "7
 
@@ -48,3 +48,16 @@ text = "7
 "
 scroll_active = false
 metadata/_edit_use_anchors_ = true
+
+[node name="nameZonePanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.883
+anchor_right = 0.828
+anchor_bottom = 1.0
+
+[node name="nameZoneLabel" type="RichTextLabel" parent="nameZonePanelContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Deck[center]"

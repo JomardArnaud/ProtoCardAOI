@@ -16,26 +16,22 @@ var ClassCardInfo = preload("res://Cards/CardInfo.gd")
 
 func castCardFromHand(hotkeyCard : String) -> void:
 	if (!cardHand.has(hotkeyCard)):
-		push_error("hotkey of card not found in hand !")
+		cardHandNode.get_child(0)
 		return
+	
 	cardHand[hotkeyCard].queue_free()
 	#.queue_free()
 
 func drawCard(nbCardDraw : int = 1) -> void:
 	for i in range (0, nbCardDraw):
-		var lastDrawnCardInfo := deck.drawCard()
-		if lastDrawnCardInfo == null:
-			return
-		#tmp here card will emit the singal cardDrawn
-		var lastDrawnCard : Card = CardScene.instantiate()
-		lastDrawnCard.setCardInfo(lastDrawnCardInfo)
+		var lastDrawnCard := deck.drawCard()
 		if lastDrawnCard == null:
 			return
+		lastDrawnCard.setCardZone(CardInfo.CardZone.SpellHand)
 		cardHand[lastDrawnCard.determineHotkey(i)] = lastDrawnCard
 		cardHandNode.add_child(lastDrawnCard)
-		lastDrawnCard.cardCast.connect(castCardFromHand)
 		nbCardHand += 1
 		
 func setStartingHand(nDeck: Deck) -> void:
 	deck = nDeck
-	drawCard(handSizeLimit)	
+	drawCard(handSizeLimit)

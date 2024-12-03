@@ -1,8 +1,6 @@
 class_name CommanderInfo
 extends Resource
 
-signal cardPlayed
-
 @export var health : HealthInfo
 # will have a letter add for each elem of the Commander
 @export var elemCommender : String
@@ -11,8 +9,8 @@ signal cardPlayed
 @export var addDmg : int = 0
 
 # HAND PART
-@export var limitSpellHand : int = 3
-@export var limitPermanentHand : int = 3
+@export var limitSpellHand : int = 4
+@export var limitPermanentHand : int = 4
 
 # RESSOURCE PART
 #it the max size of amoutElem string
