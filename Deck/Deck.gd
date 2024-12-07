@@ -11,10 +11,8 @@ var ClassCardInfo = preload("res://Cards/CardInfo.gd")
 ## the next card which is drawn is the lastId
 var idDeckCard : Array[int] = [0, 0, 0]
 
-
 var deck: Array[Card]
 var nbCardLeft : int : set = setNbCardLeft
-
 
 func fillCardInDeck(cardHudRef : CardCombatManager, collection: Array[CardInfo]) -> void:
 	if collection == null || idDeckCard == null:
@@ -24,10 +22,8 @@ func fillCardInDeck(cardHudRef : CardCombatManager, collection: Array[CardInfo])
 		print("card is added")
 		var tmpCard : Card = ClassCard.instantiate()
 		tmpCard.setCardInfo(infoCard)
-		tmpCard.cardCast.connect(cardHudRef.reactCastCard)
+		tmpCard.changeZone.connect(cardHudRef.moveCard)
 		deck.push_back(tmpCard)
-		
-		##tmp here connect signal of the
 	nbCardLeft = deck.size()
 
 func drawCard() -> Card:

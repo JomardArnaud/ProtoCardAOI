@@ -164,5 +164,8 @@ grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
 text = "[center]KeyToCast[center]"
+scroll_active = false
+scroll_following = true
+shortcut_keys_enabled = false
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

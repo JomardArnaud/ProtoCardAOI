@@ -6,7 +6,6 @@ extends Resource
 @export var type: CardType
 @export var description: String
 
-#not in uppercase to match signal from CardCombatManager
 enum CardZone {
 	Deck,
 	SpellHand,

@@ -41,3 +41,4 @@ offset_right = 435.0
 offset_bottom = 250.0
 
 [node name="Graveyard" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("4_ivbxt")]
+unique_name_in_owner = true
