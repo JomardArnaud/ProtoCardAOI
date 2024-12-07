@@ -4,7 +4,7 @@ extends MarginContainer
 var CardScene = preload("res://Cards/Card.tscn")
 var ClassCardInfo = preload("res://Cards/CardInfo.gd")
 
-@export var handSizeLimit : int = 3
+@export var handSizeLimit : int = 4
 
 @onready var nbCardHand : int = 0
 @onready var cardHandNode := %CardContainer
@@ -18,7 +18,6 @@ func castCardFromHand(hotkeyCard : String) -> void:
 	if (!cardHand.has(hotkeyCard)):
 		return
 	cardHand[hotkeyCard].setCardZone(CardInfo.CardZone.Graveyard)
-	#cardHand[hotkeyCard].queue_free()
 
 func drawCard(nbCardDraw : int = 1) -> void:
 	for i in range (0, nbCardDraw):
@@ -43,5 +42,6 @@ func _on_card_container_child_exiting_tree(node):
 		var cardNode = cardHandNode.get_child(i)
 		if (cardNode == node):
 			minusAfterfindingNode = true
-		cardNode.hotkeyCard = str(i + 1 - int(minusAfterfindingNode))
-		cardHand[cardNode.hotkeyCard] = cardNode
+		else:
+			cardNode.hotkeyCard = str(i + 1 - int(minusAfterfindingNode))
+			cardHand[cardNode.hotkeyCard] = cardNode

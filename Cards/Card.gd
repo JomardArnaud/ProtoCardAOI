@@ -27,7 +27,6 @@ const pathCard = "res://ArtCard/"
 func _input(input : InputEvent) -> void:
 	if (cardZone == ClassCardInfo.CardZone.SpellHand || cardZone == ClassCardInfo.CardZone.PermanantHand):
 		if input.is_action_released(hotkeyCard):
-			print("emit with ", hotkeyCard)
 			cardCast.emit(hotkeyCard)
 		
 static func newCard(nInfo : CardInfo) -> Card:
@@ -72,6 +71,7 @@ func setCardZone(nZone : CardInfo.CardZone) -> void:
 	if (cardZone != nZone):
 		changeZone.emit(self, nZone)
 		cardZone = nZone
+		hotkeyCard = ""
 
 func getCardZone() -> CardInfo.CardZone:
 	return cardZone

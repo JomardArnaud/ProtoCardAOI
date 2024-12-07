@@ -60,4 +60,4 @@ anchor_bottom = 1.0
 [node name="nameZoneLabel" type="RichTextLabel" parent="nameZonePanelContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]Deck[center]"
+text = "[center]SpellDeck[center]"
