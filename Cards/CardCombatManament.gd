@@ -19,5 +19,8 @@ func _ready()-> void:
 func moveCard(card : Card, to : CardInfo.CardZone) -> void:
 	match to:
 		CardInfo.CardZone.Graveyard:
-			card.reparent(graveyard, false)
+			graveyard.sendToGraveyard(card)
+		CardInfo.CardZone.SpellHand:
+			spellHand.addCardToHand(card)
+			
 	pass

@@ -10,6 +10,6 @@ func _ready() -> void:
 
 func getCollisionShape() -> CollisionShape2D:
 	return collisionShape
-
-func _input_event(viewport, event, shape_idx):
-	pass
+#
+#func _input_event(viewport, event, shape_idx):
+	#pass

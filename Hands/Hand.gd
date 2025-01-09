@@ -25,12 +25,18 @@ func drawCard(nbCardDraw : int = 1) -> void:
 		if lastDrawnCard == null:
 			return
 		lastDrawnCard.setCardZone(CardInfo.CardZone.SpellHand)
-		lastDrawnCard.setHotkeyCard(str(cardHandNode.get_child_count() + 1))
-		cardHand[lastDrawnCard.getHotkeyCard()] = lastDrawnCard
-		lastDrawnCard.cardCast.connect(castCardFromHand)
-		cardHandNode.add_child(lastDrawnCard)
-		nbCardHand += 1
 		
+func addCardToHand(nCard: Card) -> void:
+	nCard.setHotkeyCard(str(cardHandNode.get_child_count() + 1))
+	cardHand[nCard.getHotkeyCard()] = nCard
+	nCard.visible = true
+	if nCard.is_connected("cardCast", castCardFromHand):
+		nCard.reparent(cardHandNode)
+	else:
+		nCard.cardCast.connect(castCardFromHand)
+		cardHandNode.add_child(nCard)
+	nbCardHand += 1
+
 func setStartingHand(nDeck: Deck) -> void:
 	deck = nDeck
 	drawCard(handSizeLimit)

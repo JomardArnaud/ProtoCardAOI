@@ -9,7 +9,7 @@ var ClassCardInfo = preload("res://Cards/CardInfo.gd")
 
 #tmp = [0]
 ## the next card which is drawn is the lastId
-var idDeckCard : Array[int] = [0, 0, 0, 0, 0]
+var idDeckCard : Array[int] = [0, 0]
 
 var deck: Array[Card]
 var nbCardLeft : int : set = setNbCardLeft
@@ -18,11 +18,13 @@ func fillCardInDeck(cardHudRef : CardCombatManager, collection: Array[CardInfo])
 	if collection == null || idDeckCard == null:
 		return
 	for i in range(0, idDeckCard.size()):
+		#setting up info for card
 		var infoCard : CardInfo = collection[idDeckCard[i]]
-		print("card is added")
 		var tmpCard : Card = ClassCard.instantiate()
 		tmpCard.setCardInfo(infoCard)
 		tmpCard.changeZone.connect(cardHudRef.moveCard)
+		tmpCard.costParsing()
+		tmpCard.descritpionParsing()
 		deck.push_back(tmpCard)
 	nbCardLeft = deck.size()
 

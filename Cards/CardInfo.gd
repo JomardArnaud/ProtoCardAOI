@@ -3,9 +3,9 @@ extends Resource
 
 @export var name: String
 @export var cost: String
-@export var type: CardType
+@export var type: String
 @export var description: String
-
+ 
 enum CardZone {
 	Deck,
 	SpellHand,
@@ -19,7 +19,7 @@ enum CardType {
 	PERMANENT
 }
 
-func _init(nName="", nCost="", nType=CardType.SPELL, nDescription=""):
+func _init(nName="", nCost="", nType="", nDescription=""):
 	name = nName
 	cost = nCost
 	type = nType

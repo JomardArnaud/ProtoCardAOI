@@ -42,3 +42,5 @@ offset_bottom = 250.0
 
 [node name="Graveyard" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("4_ivbxt")]
 unique_name_in_owner = true
+
+[connection signal="child_entered_tree" from="MarginContainer2/MarginContainer/PanelHud/Graveyard" to="MarginContainer2/MarginContainer/PanelHud/Graveyard" method="_on_child_entered_tree"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://by8cxlc4pd4f0" path="res://ArtCard/SpritePlayerPlaygroundCard.png" id="1_fjt8r"]
 [ext_resource type="Script" path="res://Commander/Commander.gd" id="1_tplas"]
-[ext_resource type="Script" path="res://Fonts/HealthInfo.gd" id="2_u8tq1"]
+[ext_resource type="Script" path="res://Utility/CustomType/HealthInfo.gd" id="2_u8tq1"]
 [ext_resource type="Script" path="res://Commander/CommanderInfo.gd" id="3_guql8"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="3_odjl4"]
 
@@ -14,6 +14,10 @@ script = ExtResource("2_u8tq1")
 visibleHpBar = true
 health = 50.0
 maxHealth = 100.0
+minusFlatDirectDmg = 0.0
+minusFlatIndirectDmg = 0.0
+minusCoefDirectDmg = 0.0
+minusCoefIndirectDmg = 0.0
 
 [sub_resource type="Resource" id="Resource_ahofe"]
 script = ExtResource("3_guql8")

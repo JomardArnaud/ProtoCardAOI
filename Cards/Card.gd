@@ -3,6 +3,7 @@ extends Control
 
 const cardScene : PackedScene = preload("res://Cards/Card.tscn") 
 const ClassCardInfo : Resource = preload("res://Cards/CardInfo.gd")
+var keywords = load("res://Cards/CardKeyword.gd")
 
 signal cardCast(hotkeyUsed : String)
 signal changeZone(card : Card, to : CardInfo.CardZone)
@@ -10,9 +11,13 @@ signal changeZone(card : Card, to : CardInfo.CardZone)
 const pathCard = "res://ArtCard/"
 
 @export var cardInfo: CardInfo : get = getCardInfo, set = setCardInfo
+@export var returnTimer: float
+@export var globalCdCost: float
 @onready var cardZone : CardInfo.CardZone : get = getCardZone, set = setCardZone
 @onready var hotkeyCard : String : get = getHotkeyCard, set = setHotkeyCard
 #@onready var specialHotkeyCard : String : get = getSpecialHotkeyCard, set = setSpecialHotkeyCard
+var cardAbilitiesInfo : Dictionary = {
+}
 ## for checking which info changed and updating only the node of this info
 @onready var bufferCardInfo: CardInfo
 
@@ -34,8 +39,19 @@ static func newCard(nInfo : CardInfo) -> Card:
 	nCard.setCardInfo(nInfo)
 	return nCard
 
+func costParsing() -> void:
+	var valueCD : PackedStringArray = cardInfo.cost.split("/")
+	returnTimer = float(valueCD[0])
+	globalCdCost = float(valueCD[1])
+	pass
+	
 #here parse the descriptiopn
 func descritpionParsing() -> void:
+	var cardAbilities = cardInfo.description.rsplit("|")
+	for ability : String in cardAbilities:
+		var parsedAbily : PackedStringArray = ability.split(" ", true, 1)
+		keywords.call("plug" + parsedAbily[0],parsedAbily[1])
+		pass
 	pass
 
 func updateCardNode() -> void:
@@ -47,9 +63,10 @@ func updateCardNode() -> void:
 	if bufferCardInfo.cost != cardInfo.cost:
 		costCardLabel.text =  "[center]%s[center]" % cardInfo.cost
 	if bufferCardInfo.type != cardInfo.type:
-		typeCardLabel.text = ClassCardInfo.CardType.keys()[cardInfo.type]
+		typeCardLabel.text = cardInfo.type
+		#typeCardLabel.text = ClassCardInfo.CardType.keys()[cardInfo.type]
 	if bufferCardInfo.description != cardInfo.description:
-		descriptionCardLabel.text = cardInfo.description.replace(" | ", "\n")
+		descriptionCardLabel.text = cardInfo.description.replace("|", "\n")
 	if keyToUseLabel.text != hotkeyCard:
 		keyToUseLabel.text = "[center]%s[center]" % hotkeyCard
 	bufferCardInfo = cardInfo
@@ -71,7 +88,15 @@ func setCardZone(nZone : CardInfo.CardZone) -> void:
 	if (cardZone != nZone):
 		changeZone.emit(self, nZone)
 		cardZone = nZone
-		hotkeyCard = ""
+		match cardZone:
+			CardInfo.CardZone.Graveyard:
+				hotkeyCard = ""
+				var nTimerReturn = Timer.new()
+				nTimerReturn.one_shot = true
+				nTimerReturn.wait_time = returnTimer
+				nTimerReturn.autostart = true
+				add_child(nTimerReturn)
+				nTimerReturn.timeout.connect(func(): setCardZone(CardInfo.CardZone.SpellHand))
 
 func getCardZone() -> CardInfo.CardZone:
 	return cardZone
@@ -84,7 +109,6 @@ func setCardInfo(nCardInfo: CardInfo) -> void:
 
 func _on_tree_entered():
 	if bufferCardInfo == null:
-		print("remake")
 		bufferCardInfo = CardInfo.new()
 		nameCardLabel = %NameCardLabel
 		costCardLabel = %CostCardLabel

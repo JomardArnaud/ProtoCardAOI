@@ -1,7 +1,5 @@
 class_name CardCollection
 
-var ClassCard = preload("res://Cards/Card.gd")
-var ClassCardInfo = preload("res://Cards/CardInfo.gd")
 var collection : Array[CardInfo] = [] : get = getCollection
 
 func _init() -> void:
@@ -18,6 +16,8 @@ func getCardById(idCard: int):
 	
 func fillCollection():
 	print("Waiting collection to finishing collecting ...")
-	var testCard = CardInfo.new("Ida's Wind", "0", ClassCardInfo.CardType.SPELL, "Gain 1 CWind | Deal 3+X(CWind) | ReturnCopy 5 | Exhaust")
-	collection.push_back(testCard)
+	var numberCards : int = 2
+	collection.resize(numberCards)
+	collection[0] = CardInfo.new("Ida's Wind", "2/0", "Spell - Attack", "Gain 1 CWind|Skillshot 2*X(CWind)")
+	collection[1] = CardInfo.new("Wind rises", "5/-1", "Spell - Movement", "Dash 1200/0.2 | AfterDash TmpGain 250/1 MS")
 	print("Collection has finished")
