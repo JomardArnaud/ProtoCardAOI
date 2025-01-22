@@ -16,7 +16,7 @@ const pathCard = "res://ArtCard/"
 @onready var cardZone : CardInfo.CardZone : get = getCardZone, set = setCardZone
 @onready var hotkeyCard : String : get = getHotkeyCard, set = setHotkeyCard
 #@onready var specialHotkeyCard : String : get = getSpecialHotkeyCard, set = setSpecialHotkeyCard
-var cardAbilitiesInfo : Dictionary = {
+var cardAbilities : Dictionary = {
 }
 ## for checking which info changed and updating only the node of this info
 @onready var bufferCardInfo: CardInfo
@@ -33,7 +33,18 @@ func _input(input : InputEvent) -> void:
 	if (cardZone == ClassCardInfo.CardZone.SpellHand || cardZone == ClassCardInfo.CardZone.PermanantHand):
 		if input.is_action_released(hotkeyCard):
 			cardCast.emit(hotkeyCard)
-		
+
+func addEffect(nEffect: Dictionary) -> void:
+	#check if the param has all in check
+	if (!nEffect.has_all(["resolve"])):
+		return
+	
+func resolve() -> void:
+	for ability in cardAbilities:
+		ability.resolve()
+		pass
+	pass
+
 static func newCard(nInfo : CardInfo) -> Card:
 	var nCard : Card = cardScene.instantiate()
 	nCard.setCardInfo(nInfo)
@@ -50,7 +61,8 @@ func descritpionParsing() -> void:
 	var cardAbilities = cardInfo.description.rsplit("|")
 	for ability : String in cardAbilities:
 		var parsedAbily : PackedStringArray = ability.split(" ", true, 1)
-		keywords.call("plug" + parsedAbily[0],parsedAbily[1])
+		
+		#keywords.call("plug" + parsedAbily[0],parsedAbily[1])
 		pass
 	pass
 

@@ -13,10 +13,13 @@ var ClassCardInfo = preload("res://Cards/CardInfo.gd")
 }
 ## hand will always need a deck to work
 @onready var deck : Deck
+#peut être trouver un meilleur nom
+@onready var cdGlobalCast : float
 
 func castCardFromHand(hotkeyCard : String) -> void:
-	if (!cardHand.has(hotkeyCard)):
+	if (cdGlobalCast > 0 || !cardHand.has(hotkeyCard)):
 		return
+	cdGlobalCast += cardHand[hotkeyCard].globalCdCost
 	cardHand[hotkeyCard].setCardZone(CardInfo.CardZone.Graveyard)
 
 func drawCard(nbCardDraw : int = 1) -> void:
@@ -40,6 +43,9 @@ func addCardToHand(nCard: Card) -> void:
 func setStartingHand(nDeck: Deck) -> void:
 	deck = nDeck
 	drawCard(handSizeLimit)
+
+func _process(delta: float) -> void:
+	cdGlobalCast = clampf(cdGlobalCast - delta, 0, cdGlobalCast)
 
 func _on_card_container_child_exiting_tree(node):
 	cardHand.clear()

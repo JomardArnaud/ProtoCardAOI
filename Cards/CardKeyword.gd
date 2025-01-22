@@ -1,18 +1,25 @@
 class_name CardKeyword
-
-static func deal(dmg):
-	pass
-
-static func plugSkillshot(rest : String):
 	
-	pass
+var listLinkWord = ["If ", "When ", "Before", "After"]
+var listKeyword = {
+	"Gain": {
+		
+	},
+	"SkillShot": {
+		"resolve" = func (): print("test")
+	},
+	"": {
+		
+	}
+}
 
-static func Skillshot(skillShotInfo : Dictionary, damageBonus : DamageBonusInfo, dir : Vector2, origin : Vector2):
-	
-	pass
-
-static func plugGain(rest : String):
+##all link word
+static func After(rest : String):
 	pass
 	
-static func Gain():
+func parseKeyword(keyword: String) -> void:	
+	for linkWord in listLinkWord:
+		if keyword.find(linkWord) != -1:
+			linkWord.call()
+			return
 	pass

@@ -11,7 +11,7 @@
 [node name="Node2D" type="Node2D"]
 position = Vector2(2961, -1738)
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("focusEntity")]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(575, 323)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("3_1biid")
@@ -70,7 +70,8 @@ script = ExtResource("6_73wrg")
 unique_name_in_owner = true
 position = Vector2(200.21, 92.1572)
 script = ExtResource("2_ic4mp")
-inertia = 0.88
-speed = 88.0
+speedMax = 1500.0
+acceleration = 50.0
+inertia = 0.5
 
 [node name="CardCombatHud" parent="." instance=ExtResource("6_pcm75")]

@@ -1,8 +1,14 @@
 class_name MovementBody2D
 extends CharacterBody2D
 
+@export var speedMax : float : set = setSpeedMax, get = getSpeedMax
+@export var acceleration : float :
+	get:
+		return acceleration
+	set(nAcceleration):
+		acceleration = nAcceleration
+		 
 @export var inertia : float : set = setInertia, get = getInertia
-@export var speed : float : set = setSpeed, get = getSpeed # distance per second
 
 @onready var dir : Vector2 : set = setDir, get = getDir 
 @onready var energy : Vector2 : set = setEnergy, get = getEnergy
@@ -22,9 +28,9 @@ func updateDir() -> void:
 
 func updateEnergy(delta: float):
 	if !dirLock :
-		energy = dir * speed * delta * 100 + energy * inertia
-	else :
-		energy = dir * speed * delta
+		energy = energy.lerp((dir * speedMax), acceleration * delta * (1 - inertia))
+	else:
+		energy = dir * speedMax * delta
 
 func lockDir(nLock: bool) -> MovementBody2D:
 	dirLock = nLock
@@ -42,17 +48,17 @@ func addInertia(aInertia: float) -> MovementBody2D:
 	inertia = clampf(inertia + aInertia, 0, 1)
 	return self
 
-func setSpeed(nSpeed: float) -> MovementBody2D:
-	speed = nSpeed
+func setSpeedMax(nSpeed: float) -> MovementBody2D:
+	speedMax = nSpeed
 	return self
 	
-func getSpeed() -> float:
-	return speed
+func getSpeedMax() -> float:
+	return speedMax
 
-func addSpeed(aSpeed: float) -> MovementBody2D:
-	speed += aSpeed
-	if speed < 0:
-		speed = 0
+func addSpeed(nSpeed: float) -> MovementBody2D:
+	speedMax += nSpeed
+	if speedMax < 0:
+		speedMax = 0
 	return self
 
 func setDir(nDir: Vector2) -> MovementBody2D:

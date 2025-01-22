@@ -9,7 +9,7 @@ var ClassCardInfo = preload("res://Cards/CardInfo.gd")
 
 #tmp = [0]
 ## the next card which is drawn is the lastId
-var idDeckCard : Array[int] = [0, 0]
+var idDeckCard : Array[int] = [0, 1]
 
 var deck: Array[Card]
 var nbCardLeft : int : set = setNbCardLeft
