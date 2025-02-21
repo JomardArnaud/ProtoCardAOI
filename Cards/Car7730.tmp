@@ -39,9 +39,9 @@ layout_mode = 1
 offset_left = -439.0
 offset_right = 435.0
 offset_bottom = 250.0
+handSizeLimit = null
 
 [node name="Graveyard" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("4_ivbxt")]
 unique_name_in_owner = true
 
-[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="child_entered_tree" from="MarginContainer2/MarginContainer/PanelHud/Graveyard" to="MarginContainer2/MarginContainer/PanelHud/Graveyard" method="_on_child_entered_tree"]

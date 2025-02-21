@@ -1,14 +1,14 @@
 class_name MovementBody2D
 extends CharacterBody2D
 
-@export var speedMax : float : set = setSpeedMax, get = getSpeedMax
-@export var acceleration : float :
+@export var speedMax : float = 1250 : set = setSpeedMax, get = getSpeedMax
+@export var acceleration : float = 10 : 
 	get:
 		return acceleration
 	set(nAcceleration):
 		acceleration = nAcceleration
 		 
-@export var inertia : float : set = setInertia, get = getInertia
+@export var inertia : float = 0.15	 : set = setInertia, get = getInertia
 
 @onready var dir : Vector2 : set = setDir, get = getDir 
 @onready var energy : Vector2 : set = setEnergy, get = getEnergy

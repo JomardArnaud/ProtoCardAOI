@@ -61,3 +61,5 @@ anchor_bottom = 1.0
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]SpellDeck[center]"
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

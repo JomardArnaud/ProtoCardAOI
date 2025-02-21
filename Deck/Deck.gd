@@ -1,11 +1,14 @@
 class_name Deck	
 extends Control
 
-var ClassCard = preload("res://Cards/Card.tscn")
-var ClassCardInfo = preload("res://Cards/CardInfo.gd")
+const Card = preload("res://Cards/Card.tscn")
+#const CardInfo = preload("res://Cards/CardInfo.gd")
 
-@onready var deckCardContainer : MarginContainer = %DeckCardContainer
-@onready var labelRemainingCard : RichTextLabel = %RemainingCardLabel
+@onready var player : PlayerController :
+	set(nPlayer):
+		player = nPlayer 
+@onready var deckCardContainer : MarginContainer
+@onready var labelRemainingCard : RichTextLabel
 
 #tmp = [0]
 ## the next card which is drawn is the lastId
@@ -14,19 +17,17 @@ var idDeckCard : Array[int] = [0, 1]
 var deck: Array[Card]
 var nbCardLeft : int : set = setNbCardLeft
 
-func fillCardInDeck(cardHudRef : CardCombatManager, collection: Array[CardInfo]) -> void:
+func fillCardInDeck(cardHudRef : CardCombatManager, collection: Dictionary) -> void:
 	if collection == null || idDeckCard == null:
 		return
 	for i in range(0, idDeckCard.size()):
 		#setting up info for card
 		var infoCard : CardInfo = collection[idDeckCard[i]]
-		var tmpCard : Card = ClassCard.instantiate()
-		tmpCard.setCardInfo(infoCard)
-		tmpCard.changeZone.connect(cardHudRef.moveCard)
-		tmpCard.costParsing()
-		tmpCard.descritpionParsing()
-		deck.push_back(tmpCard)
+		var nCard = Card.instantiate()
+		nCard.init(player, infoCard)
+		deck.push_back(nCard)
 	nbCardLeft = deck.size()
+	
 
 func drawCard() -> Card:
 	if nbCardLeft == 0:
@@ -42,3 +43,8 @@ func setNbCardLeft(nLeft: int) -> void:
 	elif deckCardContainer.visible == false && nbCardLeft > 0:
 		deckCardContainer.visible = true
 	labelRemainingCard.text = str(nbCardLeft)
+
+
+func _on_tree_entered():	
+	deckCardContainer = %DeckCardContainer
+	labelRemainingCard = %RemainingCardLabel

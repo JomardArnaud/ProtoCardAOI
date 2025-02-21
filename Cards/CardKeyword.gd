@@ -1,25 +1,20 @@
-class_name CardKeyword
-	
+extends Object
+
 var listLinkWord = ["If ", "When ", "Before", "After"]
-var listKeyword = {
+static var listKeyword = {
 	"Gain": {
-		
+		"resolve": Gain
 	},
 	"SkillShot": {
-		"resolve" = func (): print("test")
+		"resolve": SkillShot
 	},
 	"": {
 		
 	}
 }
 
-##all link word
-static func After(rest : String):
+static func Gain() -> void:
 	pass
-	
-func parseKeyword(keyword: String) -> void:	
-	for linkWord in listLinkWord:
-		if keyword.find(linkWord) != -1:
-			linkWord.call()
-			return
+
+static func SkillShot() -> void:
 	pass

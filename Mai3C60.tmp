@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d00sk2e54o4tg"]
+[gd_scene load_steps=8 format=3 uid="uid://d00sk2e54o4tg"]
 
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="1_meqny"]
+[ext_resource type="Script" path="res://Commander/Player.gd" id="2_ic4mp"]
 [ext_resource type="Script" path="res://Commander/PlayerCamera.gd" id="3_1biid"]
 [ext_resource type="PackedScene" uid="uid://b7kj234fqvhlm" path="res://Utility/CustomNode/Block.tscn" id="3_72ud1"]
 [ext_resource type="PackedScene" uid="uid://vbwrldk3i16e" path="res://Scarecrow.tscn" id="5_jhulu"]
 [ext_resource type="Script" path="res://Utility/CustomNode/Block.gd" id="6_73wrg"]
+[ext_resource type="PackedScene" uid="uid://cpia0t0wkh2lw" path="res://Cards/CardHud.tscn" id="6_pcm75"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(2961, -1738)
@@ -14,6 +16,7 @@ position = Vector2(575, 323)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("3_1biid")
 follow_speed = 10.0
+focusEntity = NodePath("../Player")
 
 [node name="Arena" type="Node" parent="."]
 
@@ -65,5 +68,11 @@ polygon = PackedVector2Array(2095, -1094, 2006, -974, 2256, -876, 2352, -1038, 2
 script = ExtResource("6_73wrg")
 
 [node name="Player" parent="." instance=ExtResource("1_meqny")]
+unique_name_in_owner = true
+position = Vector2(200.21, 92.1572)
+script = ExtResource("2_ic4mp")
+speedMax = 1400.0
+acceleration = 40.0
+inertia = 0.8
 
-[editable path="Player"]
+[node name="CardCombatHud" parent="." instance=ExtResource("6_pcm75")]

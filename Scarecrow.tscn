@@ -12,6 +12,10 @@ script = ExtResource("6_tsdmv")
 visibleHpBar = true
 health = 100.0
 maxHealth = 100.0
+minusFlatDirectDmg = 0.0
+minusFlatIndirectDmg = 0.0
+minusCoefDirectDmg = 0.0
+minusCoefIndirectDmg = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7l8ss"]
 radius = 48.3839
