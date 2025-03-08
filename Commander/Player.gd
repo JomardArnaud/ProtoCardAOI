@@ -1,10 +1,12 @@
 class_name PlayerController
 extends MovementBody2D
 
+@export var playerId = 0
+
 func updateDir() -> void:
-	if Input.get_connected_joypads().has(0):
-		var horizontalDirection = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
-		var verticalDirection = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+	if Input.get_connected_joypads().has(playerId):
+		var horizontalDirection = Input.get_joy_axis(playerId, JOY_AXIS_LEFT_X)
+		var verticalDirection = Input.get_joy_axis(playerId, JOY_AXIS_LEFT_Y)
 		if (Vector2(horizontalDirection, verticalDirection).length() > 0.2):
 			setDir(Vector2(horizontalDirection, verticalDirection))
 		else:

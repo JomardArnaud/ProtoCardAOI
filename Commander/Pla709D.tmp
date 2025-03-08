@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://1gqkb0fppjlj"]
 
-[ext_resource type="Script" uid="uid://baaxvqbmq3gta" path="res://Commander/Player.gd" id="1_caob2"]
+[ext_resource type="Script" path="res://Commander/Player.gd" id="1_caob2"]
 [ext_resource type="Texture2D" uid="uid://by8cxlc4pd4f0" path="res://ArtCard/SpritePlayerPlaygroundCard.png" id="1_fjt8r"]
-[ext_resource type="Script" uid="uid://cjnywahwqaso1" path="res://Commander/Commander.gd" id="1_tplas"]
-[ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="2_u8tq1"]
-[ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="3_guql8"]
+[ext_resource type="Script" path="res://Commander/Commander.gd" id="1_tplas"]
+[ext_resource type="Script" path="res://Utility/CustomType/HealthInfo.gd" id="2_u8tq1"]
+[ext_resource type="Script" path="res://Commander/CommanderInfo.gd" id="3_guql8"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="3_odjl4"]
 [ext_resource type="PackedScene" uid="uid://cpia0t0wkh2lw" path="res://Cards/CardHud.tscn" id="7_5frgr"]
 

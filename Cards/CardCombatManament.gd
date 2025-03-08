@@ -37,7 +37,7 @@ func _on_tree_entered():
 	deckNode = %Deck
 	spellHand = %SpellHand
 	graveyard = %Graveyard
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	cardCollection = CardCollection.new()
 	gamepads = GamepadManager.new()
 	player = get_parent()

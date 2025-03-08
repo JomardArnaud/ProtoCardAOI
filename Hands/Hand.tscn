@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dculbgkisxgmq"]
 
-[ext_resource type="Script" path="res://Hands/Hand.gd" id="1_us0oc"]
+[ext_resource type="Script" uid="uid://cwq1fet0mq2br" path="res://Hands/Hand.gd" id="1_us0oc"]
 
 [node name="HandMargin" type="MarginContainer"]
 anchors_preset = 5

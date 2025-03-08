@@ -5,7 +5,6 @@ const cardScene : PackedScene = preload("res://Cards/Card.tscn")
 const CardInfo : Resource = preload("res://Cards/CardInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardAbility = preload("res://Cards/Ability/CardAbility.gd")
-var keywords = load("res://Cards/CardKeyword.gd")
 
 signal cardCast(hotkeyUsed : String)
 signal changeZone(card : Card, to : CardEnum.CardZone)
@@ -14,14 +13,15 @@ const pathCard = "res://ArtCard/"
 
 
 @export var cardInfo: CardInfo : get = getCardInfo, set = setCardInfo
-@export var returnTimer: float
-@export var globalCdCost: float
 
 @onready var player : PlayerController :
 	set(nPlayer):
 		player = nPlayer 
 @onready var cardZone : CardEnum.CardZone : get = getCardZone, set = setCardZone
 @onready var hotkeyCard : String : get = getHotkeyCard, set = setHotkeyCard
+
+var returnTimer: Timer
+var globalCd: Timer
 var cardAbilities : Dictionary = {
 }
 ## for checking which info changed and updating only the node of this info
@@ -37,19 +37,14 @@ var cardAbilities : Dictionary = {
 
 func _input(input : InputEvent) -> void:
 	if (cardZone == CardEnum.CardZone.SpellHand || cardZone == CardEnum.CardZone.PermanantHand):
+		var tp =  "Cast" + cardInfo.subType
 		if input.is_action_pressed("Cast" + cardInfo.subType):
 			resolve()
 			cardCast.emit(hotkeyCard)
-
-func addAbility(nEffect : CardAbility) -> void:
-	if (!nEffect is CardAbility):
-		return
-	pass
 	
 func resolve() -> void:
-	for ability in cardAbilities:
+	for ability in cardAbilities.values():
 		ability.resolve()
-		pass
 	pass
 
 func init(nPlayer : PlayerController, nInfo : CardInfo, nZone: CardEnum.CardZone = CardEnum.CardZone.Deck) -> void:
@@ -63,21 +58,31 @@ func init(nPlayer : PlayerController, nInfo : CardInfo, nZone: CardEnum.CardZone
 
 func costParsing() -> void:
 	var valueCD : PackedStringArray = cardInfo.cost.split("/")
-	returnTimer = float(valueCD[0])
-	globalCdCost = float(valueCD[1])
+	returnTimer = Timer.new()
+	returnTimer.one_shot = true
+	add_child(returnTimer)
+	returnTimer.timeout.connect(func(): setCardZone(CardEnum.CardZone.SpellHand))
+	returnTimer.wait_time = float(valueCD[0])
+	globalCd = Timer.new()
+	#globalCd.wait_time = float(valueCD[1])
 	pass
 	
 #here parse the description
 
 func descritpionParsing() -> void:
-	var cardAbilities = cardInfo.description.rsplit(" | ")
-	for ability : String in cardAbilities:
-		var parsedAbility : PackedStringArray = ability.split(" ", true)
-		var path = String("res://Cards/Ability/" + parsedAbility[0] + ".gd")
+	var cardParsedAbilities = cardInfo.description.split(" | ")
+	for abilityKeyword : String in cardParsedAbilities:
+		var parsedAbility : PackedStringArray = abilityKeyword.split(" ", true, 1)
+		var keyword : String = parsedAbility[0]
+		var path = String("res://Cards/Ability/" + keyword + ".gd")
 		if ResourceLoader.exists(path):
-			var abilityKeyword = load(path)
+			var ability : CardAbility = load(path).new(player, parsedAbility[1])
+			ability.init()
+			cardAbilities[keyword] = ability
+			add_child(ability)
 		else:
-			push_error("Keyword's ability not find")
+			push_error(keyword, " Keyword's ability not find")
+		
 		#var abilityDict = CardKeyword.listKeyword.get(ability.get_slice(" ", 0))
 		#var parsedAbily : PackedStringArray = ability.split(" ", true, 1)
 		
@@ -121,12 +126,7 @@ func setCardZone(nZone : CardEnum.CardZone) -> void:
 		match cardZone:
 			CardEnum.CardZone.Graveyard:
 				hotkeyCard = ""
-				var nTimerReturn = Timer.new()
-				nTimerReturn.one_shot = true
-				nTimerReturn.wait_time = returnTimer
-				nTimerReturn.autostart = true
-				add_child(nTimerReturn)
-				nTimerReturn.timeout.connect(func(): setCardZone(CardEnum.CardZone.SpellHand))
+				returnTimer.start()
 
 func getCardZone() -> CardEnum.CardZone:
 	return cardZone

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bt5ogw5ih2umq"]
 
 [ext_resource type="Texture2D" uid="uid://cjqu3mwc5u7qs" path="res://ArtCard/Frame.png" id="1_2bqa0"]
-[ext_resource type="Script" path="res://Cards/Card.gd" id="2_gexrg"]
+[ext_resource type="Script" uid="uid://0naarwsblna5" path="res://Cards/Card.gd" id="2_gexrg"]
 [ext_resource type="Theme" uid="uid://kbsu4ruo3khm" path="res://MainTheme.tres" id="3_gqpqm"]
 
 [sub_resource type="FontFile" id="FontFile_2evgk"]

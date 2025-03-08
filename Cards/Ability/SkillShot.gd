@@ -6,6 +6,6 @@ signal SkillShot()
 func resolve() -> void:
 	pass
 
-func setupParsing(nCaster: Commander, description: String) -> void:
+func init() -> void:
 	
 	pass

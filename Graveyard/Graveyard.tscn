@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://rbo8cq7hqtkg"]
 
-[ext_resource type="Script" path="res://Graveyard/Graveyard.gd" id="1_o2hnv"]
+[ext_resource type="Script" uid="uid://ctw24bejfrwct" path="res://Graveyard/Graveyard.gd" id="1_o2hnv"]
 [ext_resource type="PackedScene" uid="uid://bt5ogw5ih2umq" path="res://Cards/Card.tscn" id="2_ara25"]
 
 [node name="Graveyard" type="Control"]

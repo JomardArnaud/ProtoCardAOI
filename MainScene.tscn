@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://d00sk2e54o4tg"]
 
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="1_meqny"]
-[ext_resource type="Script" path="res://Commander/PlayerCamera.gd" id="3_1biid"]
+[ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Commander/PlayerCamera.gd" id="3_1biid"]
 [ext_resource type="PackedScene" uid="uid://b7kj234fqvhlm" path="res://Utility/CustomNode/Block.tscn" id="3_72ud1"]
 [ext_resource type="PackedScene" uid="uid://vbwrldk3i16e" path="res://Scarecrow.tscn" id="5_jhulu"]
-[ext_resource type="Script" path="res://Utility/CustomNode/Block.gd" id="6_73wrg"]
+[ext_resource type="Script" uid="uid://5j4hdbin2nn7" path="res://Utility/CustomNode/Block.gd" id="6_73wrg"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(2961, -1738)

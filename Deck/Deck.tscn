@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ck5gdvd6jip1b"]
 
-[ext_resource type="Script" path="res://Deck/Deck.gd" id="1_et8v0"]
+[ext_resource type="Script" uid="uid://b6d7ujo63e5as" path="res://Deck/Deck.gd" id="1_et8v0"]
 [ext_resource type="Texture2D" uid="uid://dky2jpf0yxba0" path="res://ArtCard/CardVerso.png" id="2_yo3bs"]
 
 [node name="Deck" type="Control"]

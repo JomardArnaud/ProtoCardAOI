@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpia0t0wkh2lw"]
 
-[ext_resource type="Script" path="res://Cards/CardCombatManament.gd" id="1_d5m16"]
+[ext_resource type="Script" uid="uid://dg6858rljawj2" path="res://Cards/CardCombatManament.gd" id="1_d5m16"]
 [ext_resource type="PackedScene" uid="uid://dculbgkisxgmq" path="res://Hands/Hand.tscn" id="3_4r8is"]
 [ext_resource type="PackedScene" uid="uid://ck5gdvd6jip1b" path="res://Deck/Deck.tscn" id="3_fdvf6"]
 [ext_resource type="PackedScene" uid="uid://rbo8cq7hqtkg" path="res://Graveyard/Graveyard.tscn" id="4_ivbxt"]

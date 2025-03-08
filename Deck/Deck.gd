@@ -17,7 +17,7 @@ var idDeckCard : Array[int] = [0, 1]
 var deck: Array[Card]
 var nbCardLeft : int : set = setNbCardLeft
 
-func fillCardInDeck(cardHudRef : CardCombatManager, collection: Dictionary) -> void:
+func fillCardInDeck(cardHudRef : CardCombatManager, collection: Dictionary[int, CardInfo]) -> void:
 	if collection == null || idDeckCard == null:
 		return
 	for i in range(0, idDeckCard.size()):
