@@ -22,9 +22,9 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 @onready var cdGlobalCast : float
 
 func castCardFromHand(hotkeyCard : String) -> void:
-	if (cdGlobalCast > 0 || !cardHand.has(hotkeyCard)):
-		return
-	cdGlobalCast += cardHand[hotkeyCard].globalCd.wait_time
+	#if (cdGlobalCast > 0 || !cardHand.has(hotkeyCard)):
+		#return
+	#cdGlobalCast += cardHand[hotkeyCard].globalCd.wait_time
 	cardHand[hotkeyCard].setCardZone(CardEnum.CardZone.Graveyard)
 
 func drawCard(nbCardDraw : int = 1) -> void:
