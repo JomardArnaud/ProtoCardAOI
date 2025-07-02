@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://1gqkb0fppjlj"]
+[gd_scene load_steps=12 format=3 uid="uid://1gqkb0fppjlj"]
 
 [ext_resource type="Script" uid="uid://baaxvqbmq3gta" path="res://Commander/Player.gd" id="1_caob2"]
 [ext_resource type="Texture2D" uid="uid://by8cxlc4pd4f0" path="res://ArtCard/SpritePlayerPlaygroundCard.png" id="1_fjt8r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="3_guql8"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="3_odjl4"]
 [ext_resource type="PackedScene" uid="uid://cpia0t0wkh2lw" path="res://Cards/CardHud.tscn" id="7_5frgr"]
+[ext_resource type="Script" uid="uid://cgdc40mbyvcgy" path="res://Commander/Cursor.gd" id="8_q3f8m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qathd"]
 radius = 4.60435
@@ -72,3 +73,9 @@ info = null
 texture = ExtResource("1_fjt8r")
 
 [node name="CardHud" parent="." instance=ExtResource("7_5frgr")]
+
+[node name="Cursor" type="Node2D" parent="."]
+position = Vector2(10.2, 2.7)
+script = ExtResource("8_q3f8m")
+color = Color(0.29, 1, 1, 1)
+radius = 2.0

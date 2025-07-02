@@ -14,8 +14,8 @@ extends CharacterBody2D
 @onready var energy : Vector2 : set = setEnergy, get = getEnergy
 @onready var dirLock := false
 
-func resetEnergy() -> void:
-	energy = Vector2(0, 0)
+func resetEnergy(gradiant : Vector2 = Vector2.ZERO) -> void:
+	energy = energy * gradiant
 
 func _physics_process(delta: float) -> void:
 	updateDir()

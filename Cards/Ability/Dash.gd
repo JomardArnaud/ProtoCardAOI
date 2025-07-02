@@ -4,7 +4,6 @@ signal Dash()
 
 @onready var durationTimer : Timer
 
-var testReolvePerTimeout : int
 var power : float
 
 func resolve() -> void:
@@ -17,8 +16,6 @@ func resolve() -> void:
 	caster.lockDir(true)
 	caster.addSpeed(power)
 	durationTimer.start()
-	testReolvePerTimeout += 1
-	print(testReolvePerTimeout)
 	pass
 
 func init() -> void:
@@ -32,6 +29,5 @@ func init() -> void:
 	
 func _on_duration_timeout() -> void:
 	caster.lockDir(false)
-	testReolvePerTimeout -= 1
 	caster.addSpeed(-power)
-	caster.resetEnergy()
+	caster.resetEnergy(Vector2(0.3, 0.3))
