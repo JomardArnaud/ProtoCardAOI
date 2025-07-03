@@ -75,7 +75,6 @@ texture = ExtResource("1_fjt8r")
 [node name="CardHud" parent="." instance=ExtResource("7_5frgr")]
 
 [node name="Cursor" type="Node2D" parent="."]
-position = Vector2(10.2, 2.7)
 script = ExtResource("8_q3f8m")
 color = Color(0.29, 1, 1, 1)
 radius = 2.0
