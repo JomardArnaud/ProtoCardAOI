@@ -66,4 +66,7 @@ script = ExtResource("6_73wrg")
 
 [node name="Player" parent="." instance=ExtResource("1_meqny")]
 
+[node name="Cursor" parent="Player" index="3"]
+z_index = -1
+
 [editable path="Player"]
