@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceokhx3iv13ki"]
+[gd_scene load_steps=3 format=3 uid="uid://ceokhx3iv13ki"]
 
 [ext_resource type="Script" uid="uid://bctbmfsem25qq" path="res://Cards/Ability/SkillShot/BasicProjectile.gd" id="1_wkcw8"]
 
-[node name="BasicProjectile" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkcw8"]
+
+[node name="BasicProjectile" type="CharacterBody2D"]
 script = ExtResource("1_wkcw8")
 speed = 0.0
 acceleration = 100.0
 inertia = 1.0
+metadata/_custom_type_script = "uid://xdbpkt3g5c08"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wkcw8")

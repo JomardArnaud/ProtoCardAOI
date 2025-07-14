@@ -27,7 +27,10 @@ func updateDir() -> void:
 	pass
 
 func updateEnergy(delta: float):
-	energy = energy.lerp((dir * speed), acceleration * delta * (1 - inertia))
+	var lerpAccel = acceleration * delta * (1 - inertia)
+	if (lerpAccel > 1):
+		lerpAccel = 1
+	energy = energy.lerp((dir * speed), lerpAccel)
 
 func lockDir(nLock: bool) -> MovementBody2D:
 	dirLock = nLock
