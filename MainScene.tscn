@@ -66,6 +66,12 @@ script = ExtResource("6_73wrg")
 
 [node name="Player" parent="." instance=ExtResource("1_meqny")]
 
+[node name="Shadow" parent="Player/Commander" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Health" parent="Player/Commander" index="1"]
+metadata/_edit_use_anchors_ = true
+
 [node name="Cursor" parent="Player" index="3"]
 z_index = -1
 

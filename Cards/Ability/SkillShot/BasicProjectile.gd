@@ -2,12 +2,7 @@ class_name BacicProjectile
 extends Node2D 
 
 @export var color : Color = Color(0,0,1,1)
-@export var radius : float = 30 :
-	get:
-		return radius
-	set(nRadius):
-		collisionshape.shape.radius = nRadius
-		radius = nRadius
+@export var radius : float = 30 : set = setRadius
 @export var speed : float = 3000
 
 @onready var dir : Vector2
@@ -25,3 +20,6 @@ func _draw():
 
 func hit(collsionEntity: Area2D) -> void:
 	queue_free()
+	
+func setRadius(nRadius: float) -> void:
+	pass
