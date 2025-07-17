@@ -1,15 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceokhx3iv13ki"]
+[gd_scene load_steps=4 format=3 uid="uid://ceokhx3iv13ki"]
 
 [ext_resource type="Script" uid="uid://bctbmfsem25qq" path="res://Cards/Ability/SkillShot/BasicProjectile.gd" id="1_wkcw8"]
+[ext_resource type="PackedScene" uid="uid://b4btahiufqafh" path="res://Utility/CustomNode/Hitbox2D.tscn" id="2_1l6tr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wkcw8"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0ebm"]
 
-[node name="BasicProjectile" type="CharacterBody2D"]
+[node name="BasicProjectile" type="Node2D"]
 script = ExtResource("1_wkcw8")
 speed = 0.0
-acceleration = 100.0
-inertia = 1.0
-metadata/_custom_type_script = "uid://xdbpkt3g5c08"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_wkcw8")
+[node name="HitboxShape" parent="." instance=ExtResource("2_1l6tr")]
+
+[node name="CollisionShape2D" parent="HitboxShape" index="0"]
+shape = SubResource("CircleShape2D_w0ebm")
+
+[editable path="HitboxShape"]
