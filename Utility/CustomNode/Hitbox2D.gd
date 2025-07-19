@@ -11,7 +11,3 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if (!hit.is_null()):
 		hit.call(area)
-
-func _on_body_entered(body: Node2D) -> void:
-	if (!hit.is_null()):
-		hit.call(body)

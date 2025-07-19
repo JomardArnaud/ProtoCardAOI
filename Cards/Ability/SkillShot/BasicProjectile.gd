@@ -5,7 +5,7 @@ extends Node2D
 @export var radius : float = 30 : set = setRadius
 @export var speed : float = 3000
 
-@onready var dir : Vector2
+@onready var dirr : Vector2
 @onready var collisionshape : CollisionShape2D
 
 func _ready():
@@ -13,7 +13,7 @@ func _ready():
 	queue_redraw()
 	
 func _process(delta: float) -> void:
-	position += speed * dir * delta
+	position += speed * dirr * delta
 	
 func _draw():
 	draw_circle(Vector2.ZERO, radius, color)
@@ -22,4 +22,10 @@ func hit(collsionEntity: Area2D) -> void:
 	queue_free()
 	
 func setRadius(nRadius: float) -> void:
-	pass
+	radius = nRadius
+
+func setDir(nDir: Vector2) -> void:
+	dirr = nDir
+
+func setSpeed(nSpeed: float) -> void:
+	speed = nSpeed
