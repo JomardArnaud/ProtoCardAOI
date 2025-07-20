@@ -18,7 +18,7 @@ minusCoefDirectDmg = 0.0
 minusCoefIndirectDmg = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jxnb"]
-size = Vector2(76, 90)
+size = Vector2(105, 126)
 
 [node name="Scarecrow" type="Node2D"]
 script = ExtResource("1_tl5ag")
@@ -49,7 +49,7 @@ info = SubResource("Resource_fhnl1")
 [node name="HitboxShape" parent="." instance=ExtResource("6_yqxp7")]
 
 [node name="CollisionShape2D" parent="HitboxShape" index="0"]
-position = Vector2(-1, 0)
+position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_3jxnb")
 
 [connection signal="mouse_entered" from="HitboxShape" to="." method="_on_hitbox_shape_mouse_entered"]

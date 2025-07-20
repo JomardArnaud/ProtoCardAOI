@@ -14,4 +14,6 @@ speed = 0.0
 [node name="CollisionShape2D" parent="HitboxShape" index="0"]
 shape = SubResource("CircleShape2D_w0ebm")
 
+[connection signal="ready" from="HitboxShape/CollisionShape2D" to="." method="_on_collision_shape_2d_ready"]
+
 [editable path="HitboxShape"]
