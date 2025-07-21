@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://d3yl2mqdykp0j" path="res://Utility/CustomType/CPolygon2D.gd" id="3_v4ya1"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="5_cpyhq"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="6_tsdmv"]
-[ext_resource type="PackedScene" uid="uid://b4btahiufqafh" path="res://Utility/CustomNode/Hitbox2D.tscn" id="6_yqxp7"]
+[ext_resource type="PackedScene" uid="uid://bch12dvchox3r" path="res://Utility/CustomNode/Hurtbox2D.tscn" id="6_x6itp"]
 
 [sub_resource type="Resource" id="Resource_fhnl1"]
 script = ExtResource("6_tsdmv")
@@ -17,8 +17,9 @@ minusFlatIndirectDmg = 0.0
 minusCoefDirectDmg = 0.0
 minusCoefIndirectDmg = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jxnb"]
-size = Vector2(105, 126)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3jxnb"]
+radius = 53.0
+height = 134.0
 
 [node name="Scarecrow" type="Node2D"]
 script = ExtResource("1_tl5ag")
@@ -46,13 +47,9 @@ offset_right = 1.0
 offset_bottom = -76.0
 info = SubResource("Resource_fhnl1")
 
-[node name="HitboxShape" parent="." instance=ExtResource("6_yqxp7")]
+[node name="HurtBox" parent="." instance=ExtResource("6_x6itp")]
 
-[node name="CollisionShape2D" parent="HitboxShape" index="0"]
-position = Vector2(1.5, 0)
-shape = SubResource("RectangleShape2D_3jxnb")
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CapsuleShape2D_3jxnb")
 
-[connection signal="mouse_entered" from="HitboxShape" to="." method="_on_hitbox_shape_mouse_entered"]
-[connection signal="mouse_shape_entered" from="HitboxShape" to="." method="_on_hitbox_shape_mouse_shape_entered"]
-
-[editable path="HitboxShape"]
+[editable path="HurtBox"]
