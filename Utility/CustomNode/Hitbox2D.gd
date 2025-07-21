@@ -13,3 +13,7 @@ func _on_area_entered(area: Area2D) -> void:
 		hit.call(area)
 	else:
 		push_error("Hitobx need a hit function")
+	get_parent().queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	get_parent().queue_free()

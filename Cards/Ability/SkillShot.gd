@@ -8,7 +8,7 @@ signal SkillShot()
 func resolve() -> void:
 	var bullet := BacisProjectileScene.instantiate()
 	var cursor : Cursor = caster.get_node("Cursor")
-	bullet.dirr = cursor.dir
+	bullet.dir = cursor.dir
 	bullet.setSpeed(3000)
 	bullet.position = cursor.global_position
 	caster.add_child(bullet)

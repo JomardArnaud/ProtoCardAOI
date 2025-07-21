@@ -34,3 +34,6 @@ func onHealthChanged(nHP: float) -> void:
 func _on_hp_bar_ready():
 	hpBar = %HpBar
 	setHpBarNode()
+
+func _on_hurt_box_take_hit(damage: float) -> void:
+	info.takeDamage(damage) # Replace with function body.
