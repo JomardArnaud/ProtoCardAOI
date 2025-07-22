@@ -1,5 +1,0 @@
-class_name des block pour la méthode du signal de détection de collision
-Aim assits
-Nouvelle carte : Attack - equip laser vectoriel qui s'ajoute depuis le cursor et et suit la trajectoire du right stick du player
-Nouvelle carte : Attack/Movement -
-Done(mais bug visuel où on voit la balle être dans le block 1 frame avant de queue_free()) | faire que les BacisProjectile soit depop si elle collide avec un mur (check la 
