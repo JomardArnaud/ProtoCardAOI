@@ -9,6 +9,8 @@ enum CardZone {
 }
 
 enum CardType {
-	SPELL,
-	PERMANENT
+	DASH,
+	ATTACK,
+	BUFF,
+	CURSE
 }
