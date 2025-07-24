@@ -11,6 +11,10 @@ enum CardZone {
 enum CardType {
 	DASH,
 	ATTACK,
-	BUFF,
+	BUFF
+}
+
+enum CardFamily {
+	MODULE,
 	CURSE
 }
