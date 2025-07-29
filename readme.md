@@ -1,14 +1,18 @@
-# ✅ Short End Todo
+# ✅ Proto into Haikyuu Todo :fire:
 
 ## *Bugs*
 - [ ] *Bug visuel : la balle apparaît brièvement dans le bloc pendant 1 frame avant suppression*
 
 ## Vrac
+- [ ] Finir SkillShot (prendre en compte les arguements pour le radius et le dmg)
+- [ ] Card weapon au lieu de tiré des balles casteront les effets lié à la carte weapon, genre pour faire un SMG (FireRate: 0.25, FireEffect: SkillShot(40, 5)) 
+- [ ] Chaque card weapon à une carte shell associé, qui à chaque balle tirée à un pourcentage de spawn 
+- [ ] Card Type Bullet
 - [ ] Short range weapon (need to return the right stick to a deadzone)
 - [ ] Medium range weapon (fire attack automactly in direction of right when it aren't in deadzone)
 - [ ] Implementation weapon pour le Player (R3 pour switch entre les weapon)
 - [ ] Implementation des cartes de buff (input X et drop B probalment)
-- [ ] Implementation des drop de cartes (défausse la main card du type drop par l'input)
+- [ ] Implementation des digs de cartes (met la Main card du type à la fin de la main)
 - [ ] Implementation des types de cartes (Dash, Attack, Buff)
 - [ ] Implementation des familles de cartes qui peuvent être de n'import quel type (Module: ajout sur l'arme ou intéraction avec les ajouts, Curse: ne peut pas être drop et prend la place du mainSlot de leur type quand elle arrive en main, etc)
 - [ ] Déctection des main cartes principales, celles qui sont les premières en de chaque type en partant de la gauche
@@ -20,4 +24,8 @@
 - [ ] Implementation code de l'énergie (S'augmente quand un dégat est faite grâce à une arme, qui rempli une jauge, quand la jauge est à 100% ajoute 1 d'énergie. Peut aussi s'obtenir avec des effets de cards') comment cost pour les cartes
 - [ ] UI énergie jauge et compteur
 - [ ] UI Weapon
-- [ ] UI mainCardSlot 
+- [ ] UI mainCardSlot
+- [ ] Implementation du system de deck, commence avec 6 cartes random en main (mais la 1st carte est de type Dash,la 2nd Attack et la 3rd Buff)
+- [ ] Implementation du system de pioche, chaque carte jouée le joueur pioche 1, limit de carte 7 ou 8 ?  
+- [ ] Implementation d'un system de pause ? 
+- [ ] Card Attack, Hanabi 3 = Discard all orther Attack card, for each card discard, draw 1 & 
