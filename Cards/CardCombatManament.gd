@@ -19,9 +19,7 @@ func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 		CardEnum.CardZone.Graveyard:
 			graveyard.sendToGraveyard(card)
 		CardEnum.CardZone.SpellHand:
-			#setting hotkey's card here
-			var sub = card.cardInfo.subType
-			var strInput : String = "Cast" + card.cardInfo.subType
+			var strInput : String = "Cast" + CardEnum.CardType.keys()[card.cardInfo.type]
 			if InputMap.has_action(strInput):
 				var débug = InputMap.action_get_events(strInput)[0]
 				card.setHotkeyCard(gamepads.get_button_name(0, InputMap.action_get_events(strInput)))

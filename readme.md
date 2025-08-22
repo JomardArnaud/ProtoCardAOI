@@ -4,6 +4,8 @@
 - [ ] *Bug visuel : la balle apparaît brièvement dans le bloc pendant 1 frame avant suppression*
 
 ## Vrac
+- [ ] Ajout du gameplay clavier sourris
+- [ ] Refaire le systme de card ability et du parsing
 - [ ] Finir SkillShot (prendre en compte les arguements pour le radius et le dmg)
 - [ ] Card weapon au lieu de tiré des balles casteront les effets lié à la carte weapon, genre pour faire un SMG (FireRate: 0.25, FireEffect: SkillShot(40, 5)) 
 - [ ] Chaque card weapon à une carte shell associé, qui à chaque balle tirée à un pourcentage de spawn 
@@ -17,7 +19,7 @@
 - [ ] Implementation des familles de cartes qui peuvent être de n'import quel type (Module: ajout sur l'arme ou intéraction avec les ajouts, Curse: ne peut pas être drop et prend la place du mainSlot de leur type quand elle arrive en main, etc)
 - [ ] Déctection des main cartes principales, celles qui sont les premières en de chaque type en partant de la gauche
 - [ ] Implémenter l'assistance de visée (Aim Assist)
-- [ ] Card Buff - gear| Laser Vectoriel |= Ray cast en short range qui s'attache au cursor et suit la trajectoire du right stick
+- [ ] Card Buff - gear | Laser Vectoriel |= Ray cast en short range qui s'attache au cursor et suit la trajectoire du right stick
 - [ ] First boss arena
 - [ ] Boss behaviour (Curse Attack: lance un project rect auto guidé contre le joueur esquivable qu'avec un dash une carte Attack - Curse qui se duplique 2 fois en Dash - Curse et Buff- Curse,  )
 - [ ] Boss event/scripting
@@ -29,3 +31,7 @@
 - [ ] Implementation du system de pioche, chaque carte jouée le joueur pioche 1, limit de carte 7 ou 8 ?  
 - [ ] Implementation d'un system de pause ? 
 - [ ] Card Attack, Hanabi 3 = Discard all orther Attack card, for each card discard, draw 1 & 
+- [ ] Implémentation des Compteurs
+- [ ] Implementation archetype bumper(X, Y) , Pose un bumper de radius Y à l'endroit du cursor de shoot, ajoute X * distance milieu_bumper/milieu entity(plus l'entité est proche plus la vélocity est ajoutée)
+- [ ] Card Dash - mine | Dash's mine
+- [ ] Hud pour les stats du joueur

@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://cgdc40mbyvcgy" path="res://Commander/Cursor.gd" id="8_q3f8m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qathd"]
-radius = 4.60435
+radius = 4.41021
 
 [sub_resource type="Resource" id="Resource_rqx0r"]
 script = ExtResource("2_u8tq1")
@@ -35,6 +35,7 @@ counter = Array[int]([])
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(10, 10)
 script = ExtResource("1_caob2")
+speed = 125000.0
 
 [node name="Movementbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qathd")

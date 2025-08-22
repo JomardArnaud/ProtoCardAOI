@@ -1,9 +1,11 @@
 class_name CardCollection
 extends Node
 
+const CardEnum = preload("res://Cards/CardEnum.gd")
+
 var collection : Dictionary[int, CardInfo] = {
-	0: CardInfo.new("Ida's Wind", "0.5/1", "Spell - Attack", "SkillShot 10/300"),
-	1: CardInfo.new("Wind rises", "0.5/-1", "Spell - Movement", "Dash 3000/0.15 | Gain 1CWind")
+	0: CardInfo.new("Ida's Wind", 1, CardEnum.CardType.ATTACK, "SkillShot 10/300"),
+	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, "Dash 3000/0.15 | Gain 1CWind")
 } : get = getCollection
 
 func _init() -> void:

@@ -25,7 +25,10 @@ func _input(event: InputEvent) -> void:
 		if (Vector2(horizontalDirection, verticalDirection).length() > 0.2):
 			dir = Vector2(horizontalDirection, verticalDirection).normalized()
 			position = dir * distanceToHolder
-
+	else:
+		var holder = get_parent()
+		dir = get_global_mouse_position() - holder.position
+		position = dir * distanceToHolder
 
 func _draw():
 	draw_circle(Vector2.ZERO, radius, color)

@@ -1,21 +1,17 @@
 class_name CardInfo
 extends Resource
 
+const CardEnum = preload("res://Cards/CardEnum.gd")
+
 @export var name: String
-@export var cost: String
-@export var type: String
-@export var subType: String
+@export var cost: int
+@export var type: CardEnum.CardType
+@export var family: String
+@export var tag : Dictionary
 @export var description: String
 	
-func _init(nName="", nCost="", nType="", nDescription=""):
+func _init(nName="", nCost : int = 1, nType = CardEnum.CardType.DASH, nDescription=""):
 	name = nName
 	cost = nCost
 	type = nType
-	subType = getSubType()
 	description = nDescription
-
-func getSubType() -> String:
-	var typeSplit = type.split(" - ")
-	if (typeSplit.size() > 1):
-		return typeSplit[1]
-	return ""
