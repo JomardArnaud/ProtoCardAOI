@@ -32,7 +32,7 @@ currentRegenElem = 0.0
 regenElem = 0.0
 counter = Array[int]([])
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Players"]]
 scale = Vector2(10, 10)
 script = ExtResource("1_caob2")
 

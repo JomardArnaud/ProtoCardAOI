@@ -1,6 +1,13 @@
 class_name InputManager
 extends Node
 
+static var instance: InputManager = null
+
+static func get_instance() -> InputManager:
+	if instance == null:
+		push_error("InputManager non instanciate in the scene.")
+	return instance
+
 # Constantes pour les types de manettes
 const GAMEPAD_TYPES = {
 	"Xbox": {
@@ -64,7 +71,11 @@ var gamepads : Array[int]
 var gamepadsType : Dictionary
 var gamepadActive : bool = false
 
-func _init() -> void:
+func _ready() -> void:
+	# Si une instance existe déjà, on prévient
+	if instance != null:
+		push_warning("Another instance of InputManager already exist.")
+	instance = self
 	# Check already connected gamepad
 	gamepads = Input.get_connected_joypads()
 	if gamepads.is_empty():
@@ -76,16 +87,46 @@ func _init() -> void:
 	# Connexion des signaux
 	Input.joy_connection_changed.connect(on_joy_connection_changed)
 
+func _exit_tree() -> void:
+	# On nettoie l'instance si le node disparaît
+	if instance == self:
+		instance = null
+
 ## TODO make a connect detect input for new controller plug or from state of no input since 5sec to a new input setting gamepadActive true 
 
 func getHotkeyStr(strInput: String) -> String:
 	if InputMap.has_action(strInput):
 		var debug = InputMap.action_get_events(strInput)[1 - int(gamepadActive)]
 		if gamepadActive : 
-			return get_button_name(0, InputMap.action_get_events(strInput))
+			return getButtonName(0, InputMap.action_get_events(strInput))
 		else :
 			return debug.as_text().split(" ")[0]
 	return ""
+
+func getAimAttack(player: PlayerController) -> Vector2:
+	var destDir : Vector2
+	if gamepadActive :
+		destDir = Vector2(Input.get_joy_axis(player.playerId, JOY_AXIS_RIGHT_X), Input.get_joy_axis(player.playerId, JOY_AXIS_RIGHT_Y))
+	else :
+		destDir = getDirFromMouse(player)
+	return destDir
+ 
+func getAimDash(player: PlayerController) -> Vector2:
+	var destDir : Vector2
+	if gamepadActive :
+		destDir = Vector2(Input.get_joy_axis(player.playerId, JOY_AXIS_LEFT_X), Input.get_joy_axis(player.playerId, JOY_AXIS_LEFT_Y))
+	else :
+		destDir = getDirFromMouse(player)
+	return destDir
+
+func getDirFromMouse(player: PlayerController) -> Vector2:
+	var destDir : Vector2
+	destDir = player.get_global_mouse_position() - player.global_position
+	if destDir.length_squared() > 0.0001: 
+		destDir = destDir.normalized()
+	else :
+		destDir = Vector2.ZERO
+	return destDir
 
 # Détecte le type de manette en fonction du nom du contrôleur
 func setGamepadType(idGamepad: int) -> void:
@@ -96,7 +137,7 @@ func setGamepadType(idGamepad: int) -> void:
 		gamepadsType[idGamepad] = "Xbox"
 
 # Retourne le nom du bouton en fonction de son type et de son index
-func get_button_name(idGamepad: int, idsKeyInput: Array[InputEvent]) -> String:
+func getButtonName(idGamepad: int, idsKeyInput: Array[InputEvent]) -> String:
 	if idsKeyInput.is_empty():
 		return "Unknown"	
 	var event = idsKeyInput[0]  # Récupérer le premier événement lié à l'action

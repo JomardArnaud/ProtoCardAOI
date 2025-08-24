@@ -11,7 +11,8 @@ func resolve() -> void:
 	if durationTimer.time_left > 0:
 		var tst = durationTimer.time_left
 		_on_duration_timeout()
-	var dirDash : Vector2 = Vector2(Input.get_joy_axis(caster.playerId, JOY_AXIS_LEFT_X), Input.get_joy_axis(caster.playerId, JOY_AXIS_LEFT_Y))
+	## TODO if NPC use Dash need to remake this
+	var dirDash : Vector2 =  InputManager.get_instance().getAimAttack(caster)
 	caster.setDir(dirDash.normalized())
 	caster.lockDir(true)
 	caster.addSpeed(power)

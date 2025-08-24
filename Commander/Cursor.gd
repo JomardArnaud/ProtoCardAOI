@@ -14,6 +14,7 @@ extends Node2D
 @onready var dir : Vector2
 
 func _ready():
+	var playerId = get_parent().playerId
 	queue_redraw()
 	
 func _input(event: InputEvent) -> void:
@@ -26,8 +27,7 @@ func _input(event: InputEvent) -> void:
 			dir = Vector2(horizontalDirection, verticalDirection).normalized()
 			position = dir * distanceToHolder
 	else:
-		var holder = get_parent()
-		dir = (get_global_mouse_position() - holder.global_position).normalized()
+		dir = InputManager.get_instance().getAimAttack(get_tree().get_nodes_in_group("Players")[playerId])
 		position = dir * distanceToHolder
 
 func _draw():
