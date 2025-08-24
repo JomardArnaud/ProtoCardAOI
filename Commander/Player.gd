@@ -2,7 +2,7 @@ class_name PlayerController
 extends MovementBody2D
 
 @export var playerId = 0
-
+## TODO Not using InputMaganger here
 var horizontalDirection : float
 var verticalDirection : float
 
