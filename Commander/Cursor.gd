@@ -27,7 +27,7 @@ func _input(event: InputEvent) -> void:
 			position = dir * distanceToHolder
 	else:
 		var holder = get_parent()
-		dir = get_global_mouse_position() - holder.position
+		dir = (get_global_mouse_position() - holder.global_position).normalized()
 		position = dir * distanceToHolder
 
 func _draw():

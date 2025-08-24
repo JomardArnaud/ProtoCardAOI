@@ -4,7 +4,8 @@
 - [ ] *Bug visuel : la balle apparaît brièvement dans le bloc pendant 1 frame avant suppression*
 
 ## Vrac
-- [ ] Ajout du gameplay clavier sourris
+- [ ] Implementation du system de pioche, chaque carte jouée le joueur pioche 1, limit de carte 7 ou 8 ?  
+- [ ] Implementation d'un system de pause ? 
 - [ ] Refaire le systme de card ability et du parsing
 - [ ] Finir SkillShot (prendre en compte les arguements pour le radius et le dmg)
 - [ ] Card weapon au lieu de tiré des balles casteront les effets lié à la carte weapon, genre pour faire un SMG (FireRate: 0.25, FireEffect: SkillShot(40, 5)) 
@@ -25,13 +26,11 @@
 - [ ] Boss round qui se déplacement en ligne droite et bounce contre les murs, se stop lance une carte et refais une droite, etc 
 - [ ] Boss behaviour (Curse Attack: lance un project rect auto guidé contre le joueur esquivable qu'avec un dash une carte Attack - Curse qui se duplique 2 fois en Dash - Curse et Buff- Curse,  )
 - [ ] Boss event/scripting
-- [ ] Implementation code de l'énergie (S'augmente quand un dégat est faite grâce à une arme, qui rempli une jauge, quand la jauge est à 100% ajoute 1 d'énergie. Peut aussi s'obtenir avec des effets de cards') comment cost pour les cartes
 - [ ] UI énergie jauge et compteur
 - [ ] UI Weapon
 - [ ] UI mainCardSlot
 - [ ] Implementation du system de deck, commence avec 6 cartes random en main (mais la 1st carte est de type Dash,la 2nd Attack et la 3rd Buff)
-- [ ] Implementation du system de pioche, chaque carte jouée le joueur pioche 1, limit de carte 7 ou 8 ?  
-- [ ] Implementation d'un system de pause ? 
+- [ ] Implementation code de l'énergie (S'augmente quand un dégat est faite grâce à une arme, qui rempli une jauge, quand la jauge est à 100% ajoute 1 d'énergie. Peut aussi s'obtenir avec des effets de cards') comment cost pour les cartes
 - [ ] Card Attack, Hanabi 3 = Discard all orther Attack card, for each card discard, draw 1 & 
 ### Counters
 - [ ] Implémentation des Counters
@@ -40,3 +39,5 @@
 ### Card idea
 - [ ] Card Dash - mine | Dash's mine
 - [ ] Hud pour les stats du joueur
+## Done
+~~- [X] Ajout du gameplay clavier souris~~

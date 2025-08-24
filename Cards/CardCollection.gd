@@ -4,8 +4,11 @@ extends Node
 const CardEnum = preload("res://Cards/CardEnum.gd")
 
 var collection : Dictionary[int, CardInfo] = {
-	0: CardInfo.new("Ida's Wind", 1, CardEnum.CardType.ATTACK, "SkillShot 10/300"),
-	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, "Dash 3000/0.15 | Gain 1CWind")
+	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, "SkillShot 10/300"),
+	1: CardInfo.new("Wind rises", 0, CardEnum.CardType.DASH, "Dash 3000/0.15 | Gain 1CWind"),
+	2: CardInfo.new("Blank Attack", 0, CardEnum.CardType.ATTACK, ""),
+	3: CardInfo.new("Blank Dash", 0, CardEnum.CardType.DASH, ""),
+	4: CardInfo.new("Blank Buff", 0, CardEnum.CardType.BUFF, "")
 } : get = getCollection
 
 func _init() -> void:
@@ -22,8 +25,4 @@ func getCardById(idCard: int):
 	
 func fillCollection():
 	print("Waiting collection to finishing collecting ...")
-	#collection[0] = CardInfo.new("Ida's Wind", "2/1", "Spell - Attack", "Gain 1CWind")
-	## | SkillShot 2*X(CWind)")
-	#collection[1] = CardInfo.new("Wind rises", "5/-1", "Spell - Movement", "Dash 3000/0.2")
-	## | AfterDash TmpGain 250/1 MS")
 	print("Collection has finished")
