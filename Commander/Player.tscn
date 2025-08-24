@@ -35,7 +35,6 @@ counter = Array[int]([])
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(10, 10)
 script = ExtResource("1_caob2")
-speed = 125000.0
 
 [node name="Movementbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qathd")

@@ -1,4 +1,4 @@
-class_name GamepadManager
+class_name InputManager
 extends Node
 
 # Constantes pour les types de manettes
@@ -60,19 +60,32 @@ const GAMEPAD_TYPES = {
 }
 
 # Variable pour stocker le type de manette actuellement utilisée
+var gamepads : Array[int]
 var gamepadsType : Dictionary
+var gamepadActive : bool = false
 
 func _init() -> void:
 	# Check already connected gamepad
-	var gamepads = Input.get_connected_joypads()
+	gamepads = Input.get_connected_joypads()
 	if gamepads.is_empty():
 		print("No gamepad detected")
 	else:
+		gamepadActive = true
 		for idGamepad in gamepads:
 			setGamepadType(idGamepad)
 	# Connexion des signaux
 	Input.joy_connection_changed.connect(on_joy_connection_changed)
 
+## TODO make a connect detect input for new controller plug or from state of no input since 5sec to a new input setting gamepadActive true 
+
+func getHotkeyStr(strInput: String) -> String:
+	if InputMap.has_action(strInput):
+		var debug = InputMap.action_get_events(strInput)[1 - int(gamepadActive)]
+		if gamepadActive : 
+			return get_button_name(0, InputMap.action_get_events(strInput))
+		else :
+			return debug.as_text().split(" ")[0]
+	return ""
 
 # Détecte le type de manette en fonction du nom du contrôleur
 func setGamepadType(idGamepad: int) -> void:

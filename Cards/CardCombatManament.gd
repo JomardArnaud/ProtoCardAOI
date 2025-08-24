@@ -6,13 +6,12 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 var cardCollection : CardCollection
 
 @onready var player : PlayerController
-@onready var gamepads : GamepadManager
+@onready var inputManager : InputManager
 ##All HUD's parts
 @onready var deckNode : Deck
 @onready var spellHand : Hand
 @onready var graveyard : Graveyard
 
-#faut que je l'a modifie c'est vraiment du bullshit cette implementation
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 	#var mainType = card.cardInfo.type.get_slice(" ", 0)
 	match to:
@@ -20,9 +19,7 @@ func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 			graveyard.sendToGraveyard(card)
 		CardEnum.CardZone.SpellHand:
 			var strInput : String = "Cast" + CardEnum.CardType.keys()[card.cardInfo.type]
-			if InputMap.has_action(strInput):
-				var débug = InputMap.action_get_events(strInput)[0]
-				card.setHotkeyCard(gamepads.get_button_name(0, InputMap.action_get_events(strInput)))
+			card.setHotkeyCard(inputManager.getHotkeyStr(strInput))
 			spellHand.addCardToHand(card)
 
 func _ready():
@@ -37,6 +34,6 @@ func _on_tree_entered():
 	graveyard = %Graveyard
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	cardCollection = CardCollection.new()
-	gamepads = GamepadManager.new()
+	inputManager = InputManager.new()
 	player = get_parent()
 	

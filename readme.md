@@ -21,6 +21,8 @@
 - [ ] Implémenter l'assistance de visée (Aim Assist)
 - [ ] Card Buff - gear | Laser Vectoriel |= Ray cast en short range qui s'attache au cursor et suit la trajectoire du right stick
 - [ ] First boss arena
+### Boss
+- [ ] Boss round qui se déplacement en ligne droite et bounce contre les murs, se stop lance une carte et refais une droite, etc 
 - [ ] Boss behaviour (Curse Attack: lance un project rect auto guidé contre le joueur esquivable qu'avec un dash une carte Attack - Curse qui se duplique 2 fois en Dash - Curse et Buff- Curse,  )
 - [ ] Boss event/scripting
 - [ ] Implementation code de l'énergie (S'augmente quand un dégat est faite grâce à une arme, qui rempli une jauge, quand la jauge est à 100% ajoute 1 d'énergie. Peut aussi s'obtenir avec des effets de cards') comment cost pour les cartes
@@ -31,7 +33,10 @@
 - [ ] Implementation du system de pioche, chaque carte jouée le joueur pioche 1, limit de carte 7 ou 8 ?  
 - [ ] Implementation d'un system de pause ? 
 - [ ] Card Attack, Hanabi 3 = Discard all orther Attack card, for each card discard, draw 1 & 
-- [ ] Implémentation des Compteurs
+### Counters
+- [ ] Implémentation des Counters
+### Archetype
 - [ ] Implementation archetype bumper(X, Y) , Pose un bumper de radius Y à l'endroit du cursor de shoot, ajoute X * distance milieu_bumper/milieu entity(plus l'entité est proche plus la vélocity est ajoutée)
+### Card idea
 - [ ] Card Dash - mine | Dash's mine
 - [ ] Hud pour les stats du joueur
