@@ -1,7 +1,6 @@
 extends CardAbility
 
-signal SkillShot()
-#signal HitSkillShot(target: Hitbox2D)
+signal skillShot()
 
 @onready var BacisProjectileScene = preload("res://Cards/Ability/SkillShot/BasicProjectile.tscn")
 

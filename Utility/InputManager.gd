@@ -93,6 +93,12 @@ func _exit_tree() -> void:
 		instance = null
 
 ## TODO make a connect detect input for new controller plug or from state of no input since 5sec to a new input setting gamepadActive true 
+func _input(event: InputEvent) -> void:
+	# Detect any gamepad input
+	if event is InputEventJoypadButton || event is InputEventJoypadMotion:
+		gamepadActive = true
+	elif event is InputEventMouse or event is InputEventKey:
+		gamepadActive = false
 
 func getHotkeyStr(strInput: String) -> String:
 	if InputMap.has_action(strInput):

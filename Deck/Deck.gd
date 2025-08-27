@@ -12,7 +12,7 @@ const Card = preload("res://Cards/Card.tscn")
 
 #tmp = [0]
 ## the next card which is drawn is the lastId
-var idDeckCard : Array[int] = [0, 1]
+var idDeckCard : Array[int] = [0, 2, 3, 1, 4]
 
 var deck: Array[Card]
 var nbCardLeft : int : set = setNbCardLeft

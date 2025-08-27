@@ -65,26 +65,26 @@ func descritpionParsing() -> void:
 		var keyword : String = parsedAbility[0]
 		var path = String("res://Cards/Ability/" + keyword + ".gd")
 		if ResourceLoader.exists(path):
-			var ability : CardAbility = load(path).new(player, parsedAbility[1])
+			var ability : CardAbility
+			if parsedAbility.size() > 1:
+				ability = load(path).new(player, parsedAbility[1])
+			else : 
+				ability = load(path).new(player, "")
 			ability.init()
 			cardAbilities[keyword] = ability
 			add_child(ability)
 		else:
 			push_error(keyword, " Keyword's ability not find")
-		
-		#var abilityDict = CardKeyword.listKeyword.get(ability.get_slice(" ", 0))
-		#var parsedAbily : PackedStringArray = ability.split(" ", true, 1)
-		
-		#keywords.call("plug" + parsedAbily[0],parsedAbily[1])
-		pass
-	pass
 
 func updateCardNode() -> void:
 	if (cardInfo == null):
 		return
 	if bufferCardInfo.name != cardInfo.name:
 		nameCardLabel.text = cardInfo.name
-		imageCard.texture = load(pathCard + cardInfo.name + ".png")
+		var path : String = pathCard + cardInfo.name + ".png"
+		if !ResourceLoader.exists(path):
+			path = pathCard + "Blank" + ".png"
+		imageCard.texture = load(path)
 	if bufferCardInfo.cost != cardInfo.cost:
 		costCardLabel.text =  "[center]%s[center]" % cardInfo.cost
 	if bufferCardInfo.type != cardInfo.type:

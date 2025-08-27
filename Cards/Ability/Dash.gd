@@ -1,6 +1,6 @@
 extends CardAbility
 
-signal Dash()
+signal dash()
 
 @onready var durationTimer : Timer
 
@@ -12,7 +12,7 @@ func resolve() -> void:
 		var tst = durationTimer.time_left
 		_on_duration_timeout()
 	## TODO if NPC use Dash need to remake this
-	var dirDash : Vector2 =  InputManager.get_instance().getAimAttack(caster)
+	var dirDash : Vector2 =  InputManager.get_instance().getAimDash(caster)
 	caster.setDir(dirDash.normalized())
 	caster.lockDir(true)
 	caster.addSpeed(power)

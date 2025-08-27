@@ -2,6 +2,7 @@
 
 ## *Bugs*
 - [ ] *Bug visuel : la balle apparaît brièvement dans le bloc pendant 1 frame avant suppression*
+- [ ] *Bug visuel : Si la sourris ne bouge pas le cursor disparait (qunad un controller est connecter voir la fonction pour gamepadActive)*
 
 ## Vrac
 - [ ] Implementation du system de pioche, chaque carte jouée le joueur pioche 1, limit de carte 7 ou 8 ?  
@@ -39,5 +40,6 @@
 ### Card idea
 - [ ] Card Dash - mine | Dash's mine
 - [ ] Hud pour les stats du joueur
+- [ ] Card - Attack | Rainbow Road 3 Quand une card attack se resolve et que Raindow Road est en main, ajoute tout les keyword du resolve de la card attack jouée
 ## Done
 ~~- [X] Ajout du gameplay clavier souris~~
