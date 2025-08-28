@@ -9,7 +9,7 @@ extends Resource
 @export var addDmg : int = 0
 
 # HAND PART
-@export var limitSpellHand : int = 4
+@export var limithand : int = 4
 @export var limitPermanentHand : int = 4
 
 # RESSOURCE PART

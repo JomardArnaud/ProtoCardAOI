@@ -8,7 +8,7 @@ var collection : Dictionary[int, CardInfo] = {
 	1: CardInfo.new("Wind rises", 0, CardEnum.CardType.DASH, "Dash 3000/0.15 | Gain 1CWind"),
 	2: CardInfo.new("Blank Attack", 0, CardEnum.CardType.ATTACK, "Blank"),
 	3: CardInfo.new("Blank Dash", 0, CardEnum.CardType.DASH, "Blank"),
-	4: CardInfo.new("Blank Buff", 0, CardEnum.CardType.BUFF, "Blank")
+	4: CardInfo.new("Blank Spell", 0, CardEnum.CardType.SPELL, "Blank")
 } : get = getCollection
 
 func _init() -> void:

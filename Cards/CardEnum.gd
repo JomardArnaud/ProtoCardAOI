@@ -2,8 +2,7 @@ extends Object
 
 enum CardZone {
 	Deck,
-	SpellHand,
-	PermanantHand,
+	Hand,
 	Graveyard,
 	Exile
 }
@@ -11,7 +10,7 @@ enum CardZone {
 enum CardType {
 	DASH,
 	ATTACK,
-	BUFF
+	SPELL
 }
 
 enum CardFamily {

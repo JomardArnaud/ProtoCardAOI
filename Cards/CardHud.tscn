@@ -33,7 +33,7 @@ offset_right = 272.0
 offset_bottom = 250.0
 size_flags_vertical = 8
 
-[node name="SpellHand" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("3_4r8is")]
+[node name="Hand" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("3_4r8is")]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = -439.0

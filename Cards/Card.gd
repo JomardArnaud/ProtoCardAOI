@@ -33,8 +33,8 @@ var cardAbilities : Dictionary = {
 @onready var keyToUseLabel : RichTextLabel
 
 func _input(input : InputEvent) -> void:
-	if (cardZone == CardEnum.CardZone.SpellHand || cardZone == CardEnum.CardZone.PermanantHand):
-		if input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type] ):
+	if (cardZone == CardEnum.CardZone.Hand):
+		if input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type]):
 			resolve()
 			cardCast.emit(hotkeyCard)
 	

@@ -5,6 +5,11 @@
 - [ ] *Bug visuel : Si la sourris ne bouge pas le cursor disparait (qunad un controller est connecter voir la fonction pour gamepadActive)*
 
 ## Vrac
+### Card idea
+- [ ] Card Dash - mine | Dash's mine
+- [ ] Hud pour les stats du joueur
+- [ ] Card - Attack | Rainbow Road 3 Quand une card attack se resolve et que Raindow Road est en main, ajoute tout les keyword du resolve de la card attack jouée
+- [ ] Card - Attack | Blank Collector *undiscardable* while in hand gain X
 - [ ] Implementation du system de pioche, chaque carte jouée le joueur pioche 1, limit de carte 7 ou 8 ?  
 - [ ] Implementation d'un system de pause ? 
 - [ ] Refaire le systme de card ability et du parsing
@@ -37,9 +42,5 @@
 - [ ] Implémentation des Counters
 ### Archetype
 - [ ] Implementation archetype bumper(X, Y) , Pose un bumper de radius Y à l'endroit du cursor de shoot, ajoute X * distance milieu_bumper/milieu entity(plus l'entité est proche plus la vélocity est ajoutée)
-### Card idea
-- [ ] Card Dash - mine | Dash's mine
-- [ ] Hud pour les stats du joueur
-- [ ] Card - Attack | Rainbow Road 3 Quand une card attack se resolve et que Raindow Road est en main, ajoute tout les keyword du resolve de la card attack jouée
 ## Done
 ~~- [X] Ajout du gameplay clavier souris~~

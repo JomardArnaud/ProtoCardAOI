@@ -7,11 +7,16 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 
 @export var handSizeLimit : int = 4
 
+@onready var slotsCard : Dictionary[int, Card] = {
+	CardEnum.CardType.DASH: null,
+	CardEnum.CardType.ATTACK: null,
+	CardEnum.CardType.SPELL: null
+}
 
 @onready var nbCardHand : int = 0
 @onready var cardHandNode := %CardContainer
 #Key of dict is hotkey to cast array<string, Card>
-@onready var cardHand : Dictionary = {
+@onready var cardHand : Dictionary[int, Card] = {
 }
 @onready var player : PlayerController :
 	set(nPlayer):
@@ -25,17 +30,30 @@ func castCardFromHand(hotkeyCard : String) -> void:
 	#if (cdGlobalCast > 0 || !cardHand.has(hotkeyCard)):
 		#return
 	#cdGlobalCast += cardHand[hotkeyCard].globalCd.wait_time
-	cardHand[hotkeyCard].setCardZone(CardEnum.CardZone.Graveyard)
-
+	
+	#cardHand[hotkeyCard].setCardZone(CardEnum.CardZone.Graveyard)
+	pass
+	
 func drawCard(nbCardDraw : int = 1) -> void:
 	for i in range (0, nbCardDraw):
 		var lastDrawnCard := deck.drawCard()
 		if lastDrawnCard == null:
 			return
-		lastDrawnCard.setCardZone(CardEnum.CardZone.SpellHand)
-		
+		lastDrawnCard.setCardZone(CardEnum.CardZone.Hand)
+
+func setSlotsCard():
+	pass
+
 func addCardToHand(nCard: Card) -> void:
-	cardHand[nCard.getHotkeyCard()] = nCard
+	var indexCard : int
+	if (slotsCard[nCard.cardInfo.type] == null):
+		var strInput : String = "Cast" + CardEnum.CardType.keys()[nCard.cardInfo.type]
+		nCard.setHotkeyCard(InputManager.get_instance().getHotkeyStr(strInput))
+		slotsCard[nCard.cardInfo.type] = nCard
+		indexCard = nCard.cardInfo.type
+	else:
+		indexCard = cardHand.size()
+	cardHand[indexCard] = nCard
 	nCard.visible = true
 	if nCard.is_connected("cardCast", castCardFromHand):
 		nCard.reparent(cardHandNode)

@@ -8,7 +8,7 @@ var cardCollection : CardCollection
 @onready var player : PlayerController
 ##All HUD's parts
 @onready var deckNode : Deck
-@onready var spellHand : Hand
+@onready var hand : Hand
 @onready var graveyard : Graveyard
 
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
@@ -16,20 +16,18 @@ func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 	match to:
 		CardEnum.CardZone.Graveyard:
 			graveyard.sendToGraveyard(card)
-		CardEnum.CardZone.SpellHand:
-			var strInput : String = "Cast" + CardEnum.CardType.keys()[card.cardInfo.type]
-			card.setHotkeyCard(InputManager.get_instance().getHotkeyStr(strInput))
-			spellHand.addCardToHand(card)
+		CardEnum.CardZone.Hand:
+			hand.addCardToHand(card)
 
 func _ready():
 	deckNode.player = player
 	deckNode.fillCardInDeck(self, cardCollection.collection)
-	spellHand.player = player
-	spellHand.setStartingHand(deckNode)
+	hand.player = player
+	hand.setStartingHand(deckNode)
 
 func _on_tree_entered():
 	deckNode = %Deck
-	spellHand = %SpellHand
+	hand = %Hand
 	graveyard = %Graveyard
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	cardCollection = CardCollection.new()

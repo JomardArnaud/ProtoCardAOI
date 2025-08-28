@@ -12,7 +12,7 @@ const Card = preload("res://Cards/Card.tscn")
 
 #tmp = [0]
 ## the next card which is drawn is the lastId
-var idDeckCard : Array[int] = [0, 2, 3, 1, 4]
+var idDeckCard : Array[int] = [0, 0, 0, 0, 0, 0]
 
 var deck: Array[Card]
 var nbCardLeft : int : set = setNbCardLeft
@@ -27,7 +27,13 @@ func fillCardInDeck(cardHudRef : CardCombatManager, collection: Dictionary[int, 
 		nCard.init(player, infoCard)
 		deck.push_back(nCard)
 	nbCardLeft = deck.size()
-	
+
+func shuffle():
+	idDeckCard.shuffle()
+	pass
+
+func refilldeck():
+	pass
 
 func drawCard() -> Card:
 	if nbCardLeft == 0:
@@ -43,7 +49,6 @@ func setNbCardLeft(nLeft: int) -> void:
 	elif deckCardContainer.visible == false && nbCardLeft > 0:
 		deckCardContainer.visible = true
 	labelRemainingCard.text = str(nbCardLeft)
-
 
 func _on_tree_entered():	
 	deckCardContainer = %DeckCardContainer
