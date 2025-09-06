@@ -5,7 +5,7 @@ extends MarginContainer
 #const CardInfo = preload("res://Cards/CardInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
 
-@export var handSizeLimit : int = 0
+@export var handSizeLimit : int = 2
 
 @onready var slotsCard : Dictionary[int, Card] = {
 	CardEnum.CardType.DASH: null,
