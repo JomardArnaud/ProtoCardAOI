@@ -9,8 +9,7 @@ extends Resource
 @export var addDmg : int = 0
 
 # HAND PART
-@export var limithand : int = 4
-@export var limitPermanentHand : int = 4
+@export var limitHand : int = 4
 
 # RESSOURCE PART
 #it the max size of amoutElem string

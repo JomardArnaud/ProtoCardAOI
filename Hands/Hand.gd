@@ -5,7 +5,7 @@ extends MarginContainer
 #const CardInfo = preload("res://Cards/CardInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
 
-@export var handSizeLimit : int = 4
+@export var handSizeLimit : int = 0
 
 @onready var slotsCard : Dictionary[int, Card] = {
 	CardEnum.CardType.DASH: null,
@@ -46,13 +46,13 @@ func setSlotsCard():
 
 func addCardToHand(nCard: Card) -> void:
 	var indexCard : int
-	if (slotsCard[nCard.cardInfo.type] == null):
+	if (slotsCard[nCard.cardInfo.type] == null && nCard.cardInfo.type == CardEnum.CardType.ATTACK):
 		var strInput : String = "Cast" + CardEnum.CardType.keys()[nCard.cardInfo.type]
 		nCard.setHotkeyCard(InputManager.get_instance().getHotkeyStr(strInput))
 		slotsCard[nCard.cardInfo.type] = nCard
 		indexCard = nCard.cardInfo.type
 	else:
-		indexCard = cardHand.size()
+		indexCard = cardHand.size() + CardEnum.CardType.size() + 1
 	cardHand[indexCard] = nCard
 	nCard.visible = true
 	if nCard.is_connected("cardCast", castCardFromHand):

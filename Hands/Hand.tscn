@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dculbgkisxgmq"]
+[gd_scene load_steps=3 format=3 uid="uid://dculbgkisxgmq"]
 
 [ext_resource type="Script" uid="uid://cwq1fet0mq2br" path="res://Hands/Hand.gd" id="1_us0oc"]
+[ext_resource type="PackedScene" uid="uid://c2n7f34xdy4e2" path="res://Hands/Slot.tscn" id="2_hk34u"]
 
 [node name="HandMargin" type="MarginContainer"]
 anchors_preset = 5
@@ -31,5 +32,35 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
+[node name="SlotMargin" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SlotDash" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
+layout_mode = 2
+
+[node name="RichTextLabel" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotDash/Panel" index="0"]
+text = "[center]DASH[center]"
+
+[node name="SlotAttack" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
+layout_mode = 2
+
+[node name="RichTextLabel" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotAttack/Panel" index="0"]
+text = "[center]ATTACK[center]"
+
+[node name="SlotSpell" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
+layout_mode = 2
+
+[node name="RichTextLabel" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotSpell/Panel" index="0"]
+text = "[center]SPELL[center]"
+
 [connection signal="child_exiting_tree" from="HBoxContainer/PanelContainer/MarginContainer/CardContainer" to="." method="_on_card_container_child_exiting_tree"]
 [connection signal="child_order_changed" from="HBoxContainer/PanelContainer/MarginContainer/CardContainer" to="." method="_on_card_container_child_order_changed"]
+
+[editable path="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotDash"]
+[editable path="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotAttack"]
+[editable path="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotSpell"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2n7f34xdy4e2"]
+
+[ext_resource type="Texture2D" uid="uid://ck4115k25kn1n" path="res://ArtCard/Slot.png" id="1_2wq1k"]
+[ext_resource type="Theme" uid="uid://kbsu4ruo3khm" path="res://MainTheme.tres" id="2_qj8hf"]
+
+[node name="Slot" type="TextureRect"]
+anchors_preset = -1
+anchor_left = 0.449
+anchor_top = 0.355
+anchor_right = 0.551
+anchor_bottom = 0.645
+offset_left = -0.0800781
+offset_top = 0.0999756
+offset_right = 0.0799561
+offset_bottom = -0.100037
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("1_2wq1k")
+expand_mode = 3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_qj8hf")
+bbcode_enabled = true
+text = "[center]SlotTypeName[center]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
