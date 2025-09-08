@@ -13,35 +13,35 @@ offset_top = 830.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_right = 200
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2"]
+[node name="PanelHud" type="Panel" parent="MarginContainer2"]
 layout_mode = 2
 
-[node name="PanelHud" type="Panel" parent="MarginContainer2/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelHud"]
+layout_mode = 2
+offset_right = 1620.0
+offset_bottom = 250.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/PanelHud/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Deck" parent="MarginContainer2/PanelHud/MarginContainer/HBoxContainer" instance=ExtResource("3_fdvf6")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Hand" parent="MarginContainer2/PanelHud/MarginContainer/HBoxContainer" instance=ExtResource("3_4r8is")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Deck" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("3_fdvf6")]
+[node name="Graveyard" parent="MarginContainer2/PanelHud/MarginContainer/HBoxContainer" instance=ExtResource("4_ivbxt")]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 57.0
-offset_right = 272.0
-offset_bottom = 250.0
-size_flags_vertical = 8
-
-[node name="Hand" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("3_4r8is")]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = -439.0
-offset_right = 435.0
-offset_bottom = 250.0
-
-[node name="Graveyard" parent="MarginContainer2/MarginContainer/PanelHud" instance=ExtResource("4_ivbxt")]
-unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
-[connection signal="child_entered_tree" from="MarginContainer2/MarginContainer/PanelHud/Graveyard" to="MarginContainer2/MarginContainer/PanelHud/Graveyard" method="_on_child_entered_tree"]
+[connection signal="child_entered_tree" from="MarginContainer2/PanelHud/MarginContainer/HBoxContainer/Graveyard" to="MarginContainer2/PanelHud/MarginContainer/HBoxContainer/Graveyard" method="_on_child_entered_tree"]

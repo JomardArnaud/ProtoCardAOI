@@ -48,7 +48,7 @@ func setNbCardLeft(nLeft: int) -> void:
 		deckCardContainer.visible = false
 	elif deckCardContainer.visible == false && nbCardLeft > 0:
 		deckCardContainer.visible = true
-	labelRemainingCard.text = str(nbCardLeft)
+	labelRemainingCard.text = "[center]" + str(nbCardLeft) + "[center]"
 
 func _on_tree_entered():	
 	deckCardContainer = %DeckCardContainer

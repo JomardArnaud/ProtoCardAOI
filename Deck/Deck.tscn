@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://b6d7ujo63e5as" path="res://Deck/Deck.gd" id="1_et8v0"]
 [ext_resource type="Texture2D" uid="uid://dky2jpf0yxba0" path="res://ArtCard/CardVerso.png" id="2_yo3bs"]
 
-[node name="Deck" type="Control"]
-layout_mode = 3
+[node name="Deck" type="MarginContainer"]
+anchors_preset = -1
 anchor_right = 0.109
 anchor_bottom = 0.231
 offset_right = 0.719986
@@ -13,15 +13,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_et8v0")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-offset_right = 210.0
-offset_bottom = 250.0
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+z_index = 1
 layout_mode = 2
 
-[node name="DeckCardContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="DeckCardContainer" type="MarginContainer" parent="PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 10
@@ -29,37 +25,26 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/DeckCardContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/DeckCardContainer"]
 layout_mode = 2
 texture = ExtResource("2_yo3bs")
-expand_mode = 4
+expand_mode = 3
 stretch_mode = 5
 
-[node name="RemainingCardLabel" type="RichTextLabel" parent="."]
+[node name="CardLeftContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="RemainingCardLabel" type="RichTextLabel" parent="CardLeftContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-anchor_left = 0.904762
-anchor_top = 0.904
-anchor_right = 0.952381
-anchor_bottom = 1.0
-text = "7
-
-
-"
+size_flags_vertical = 8
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "[center]8[center]"
+fit_content = true
 scroll_active = false
 metadata/_edit_use_anchors_ = true
-
-[node name="nameZonePanelContainer" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.15
-anchor_top = 0.883
-anchor_right = 0.828
-anchor_bottom = 1.0
-
-[node name="nameZoneLabel" type="RichTextLabel" parent="nameZonePanelContainer"]
-layout_mode = 2
-bbcode_enabled = true
-text = "[center]SpellDeck[center]"
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

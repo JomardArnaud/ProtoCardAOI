@@ -31,7 +31,7 @@ content_margin_bottom = 0.0
 
 [resource]
 default_font = ExtResource("1_68g2y")
-default_font_size = 9
+default_font_size = 10
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
 RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 0)
@@ -49,5 +49,6 @@ RichTextLabel/constants/table_h_separation = 3
 RichTextLabel/constants/table_v_separation = 3
 RichTextLabel/constants/text_highlight_h_padding = 3
 RichTextLabel/constants/text_highlight_v_padding = 3
+RichTextLabel/font_sizes/bold_font_size = 16
 RichTextLabel/styles/focus = SubResource("StyleBoxFlat_o7l1j")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_o0lue")

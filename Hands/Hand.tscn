@@ -7,8 +7,8 @@
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -585.0
-offset_right = 587.0
+offset_left = -650.0
+offset_right = 650.0
 offset_bottom = 361.0
 grow_horizontal = 2
 size_flags_horizontal = 3
@@ -34,33 +34,23 @@ alignment = 1
 
 [node name="SlotMargin" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
 
 [node name="SlotDash" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
 layout_mode = 2
 
-[node name="RichTextLabel" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotDash/Panel" index="0"]
-text = "[center]DASH[center]"
-
 [node name="SlotAttack" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
 layout_mode = 2
-
-[node name="RichTextLabel" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotAttack/Panel" index="0"]
-text = "[center]ATTACK[center]"
+typeSlot = "ATTACK"
 
 [node name="SlotSpell" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
 layout_mode = 2
-
-[node name="RichTextLabel" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotSpell/Panel" index="0"]
-text = "[center]SPELL[center]"
+typeSlot = "SPELL"
 
 [connection signal="child_exiting_tree" from="HBoxContainer/PanelContainer/MarginContainer/CardContainer" to="." method="_on_card_container_child_exiting_tree"]
 [connection signal="child_order_changed" from="HBoxContainer/PanelContainer/MarginContainer/CardContainer" to="." method="_on_card_container_child_order_changed"]
-
-[editable path="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotDash"]
-[editable path="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotAttack"]
-[editable path="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotSpell"]

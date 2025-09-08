@@ -1,21 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt5ogw5ih2umq"]
+[gd_scene load_steps=5 format=3 uid="uid://bt5ogw5ih2umq"]
 
 [ext_resource type="Texture2D" uid="uid://cjqu3mwc5u7qs" path="res://ArtCard/Frame.png" id="1_2bqa0"]
 [ext_resource type="Script" uid="uid://0naarwsblna5" path="res://Cards/Card.gd" id="2_gexrg"]
 [ext_resource type="Theme" uid="uid://kbsu4ruo3khm" path="res://MainTheme.tres" id="3_gqpqm"]
-
-[sub_resource type="FontFile" id="FontFile_2evgk"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
-[sub_resource type="Theme" id="Theme_gn1bk"]
-default_font = SubResource("FontFile_2evgk")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srtxa"]
 bg_color = Color(1, 1, 1, 0.329412)
@@ -32,8 +19,7 @@ offset_right = 98.0
 offset_bottom = 156.5
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 0
-theme = SubResource("Theme_gn1bk")
+theme = ExtResource("3_gqpqm")
 texture = ExtResource("1_2bqa0")
 expand_mode = 3
 stretch_mode = 4
