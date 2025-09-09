@@ -20,9 +20,17 @@ theme_override_constants/margin_right = 50
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelHud"]
-layout_mode = 2
-offset_right = 1620.0
-offset_bottom = 250.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -810.0
+offset_top = -250.0
+offset_right = 810.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/PanelHud/MarginContainer"]
 layout_mode = 2
@@ -45,3 +53,5 @@ size_flags_horizontal = 4
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="child_entered_tree" from="MarginContainer2/PanelHud/MarginContainer/HBoxContainer/Graveyard" to="MarginContainer2/PanelHud/MarginContainer/HBoxContainer/Graveyard" method="_on_child_entered_tree"]
+
+[editable path="MarginContainer2/PanelHud/MarginContainer/HBoxContainer/Hand"]

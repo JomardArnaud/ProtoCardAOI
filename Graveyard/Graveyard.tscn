@@ -28,7 +28,6 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-stretch_mode = 5
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/GraveyardICardContainer"]
 layout_mode = 2
