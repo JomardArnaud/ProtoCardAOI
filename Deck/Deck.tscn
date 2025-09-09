@@ -31,16 +31,32 @@ texture = ExtResource("2_yo3bs")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="CardLeftContainer" type="MarginContainer" parent="."]
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+z_index = 1
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="RemainingCardLabel" type="RichTextLabel" parent="CardLeftContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2"]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 45
+
+[node name="DeckLabel" type="RichTextLabel" parent="PanelContainer2/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "[center]DECK[center]"
+fit_content = true
+scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="RemainingCardLabel" type="RichTextLabel" parent="PanelContainer2/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "[center]8[center]"
 fit_content = true
