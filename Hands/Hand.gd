@@ -5,12 +5,12 @@ extends MarginContainer
 #const CardInfo = preload("res://Cards/CardInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
 
-@export var handSizeLimit : int = 3
+@export var handSizeLimit : int = 7
 
-@onready var slotsCard : Dictionary[int, Card] = {
-	CardEnum.CardType.DASH: null,
-	CardEnum.CardType.ATTACK: null,
-	CardEnum.CardType.SPELL: null
+@onready var slotsCard : Dictionary[int, MarginContainer] = {
+	CardEnum.CardType.DASH: %SlotDashContainer,
+	CardEnum.CardType.ATTACK: %SlotAttackContainer,
+	CardEnum.CardType.SPELL: %SlotSpellContainer
 }
 
 @onready var nbCardHand : int = 0
@@ -46,20 +46,19 @@ func setSlotsCard():
 
 func addCardToHand(nCard: Card) -> void:
 	var indexCard : int
-	if (slotsCard[nCard.cardInfo.type] == null && nCard.cardInfo.type == CardEnum.CardType.ATTACK):
+	if slotsCard[nCard.cardInfo.type].get_child_count() == 0:
 		var strInput : String = "Cast" + CardEnum.CardType.keys()[nCard.cardInfo.type]
 		nCard.setHotkeyCard(InputManager.get_instance().getHotkeyStr(strInput))
-		slotsCard[nCard.cardInfo.type] = nCard
+		slotsCard[nCard.cardInfo.type].add_child(nCard)
 		indexCard = nCard.cardInfo.type
 	else:
 		indexCard = cardHand.size() + CardEnum.CardType.size() + 1
+		nCard.reparent(cardHandNode) 
+		pass
 	cardHand[indexCard] = nCard
 	nCard.visible = true
-	if nCard.is_connected("cardCast", castCardFromHand):
-		nCard.reparent(cardHandNode)
-	else:
+	if !nCard.is_connected("cardCast", castCardFromHand):
 		nCard.cardCast.connect(castCardFromHand)
-		cardHandNode.add_child(nCard)
 	nbCardHand += 1
 
 func setStartingHand(nDeck: Deck) -> void:

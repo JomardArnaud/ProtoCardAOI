@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dculbgkisxgmq"]
+[gd_scene load_steps=3 format=3 uid="uid://dculbgkisxgmq"]
 
 [ext_resource type="Script" uid="uid://cwq1fet0mq2br" path="res://Hands/Hand.gd" id="1_us0oc"]
 [ext_resource type="PackedScene" uid="uid://c2n7f34xdy4e2" path="res://Hands/Slot.tscn" id="2_hk34u"]
-[ext_resource type="PackedScene" uid="uid://bt5ogw5ih2umq" path="res://Cards/Card.tscn" id="3_m0hee"]
 
 [node name="HandMargin" type="MarginContainer"]
 anchors_preset = 5
@@ -43,10 +42,10 @@ size_flags_horizontal = 0
 theme_override_constants/separation = 20
 
 [node name="SlotDash" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
-unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotDash"]
+[node name="SlotDashContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotDash"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,15 +53,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Card" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotDash/MarginContainer" instance=ExtResource("3_m0hee")]
-layout_mode = 2
-
 [node name="SlotAttack" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
-unique_name_in_owner = true
 layout_mode = 2
 typeSlot = "ATTACK"
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotAttack"]
+[node name="SlotAttackContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotAttack"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,11 +67,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SlotSpell" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
-unique_name_in_owner = true
 layout_mode = 2
 typeSlot = "SPELL"
 
-[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotSpell"]
+[node name="SlotSpellContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotSpell"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
