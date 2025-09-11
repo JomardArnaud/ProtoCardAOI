@@ -1,31 +1,36 @@
 class_name Graveyard
 extends Control
 
-#@onready var graveyardCardContainer: MarginContainer = %GraveyardCardContainer
-#@onready var lastCardLeft :RichTextLabel = %RemainingCardLabel
-@onready var cardContainerNode : MarginContainer
+const CardEnum = preload("res://Cards/CardEnum.gd")
+
+@onready var cardPile : Control
 @onready var cardOnTop : Card
 @onready var remainingCardLabel : RichTextLabel
-# types for key, info == nameCard : String, Dictonary(card: Card, nbCard : int}
-var cardList : Dictionary
 
 func sendToGraveyard(card : Card):
-	cardContainerNode.add_child(card)
 	card.visible = false
 	cardOnTop.cardInfo = card.cardInfo
 	cardOnTop.updateCardNode()
 	cardOnTop.visible = true
-	card.reparent(cardContainerNode)
-	remainingCardLabel.text = "[center]%s[center]" % str(cardContainerNode.get_child_count() - 2)
+	card.reparent(cardPile)
+	remainingCardLabel.text = "[center]%s[center]" % str(cardPile.get_child_count())
 
+func emptyGraveyard(destZone: CardEnum.CardZone) -> int:
+	var nbCard : int = cardPile.get_child_count()
+	if nbCard == 0:
+		##TODO make somethings in this case 
+		pass
+	for card : Card in cardPile.get_children():
+		card.setCardZone(destZone)
+	return nbCard
 func _on_graveyard_i_card_container_child_exiting_tree(node):
-	var cardLeft = cardContainerNode.get_child_count() - 2
+	var cardLeft = cardPile.get_child_count()
 	remainingCardLabel.text = "[center]%s[center]" % str(cardLeft)
 	if cardLeft == 0:
 		cardOnTop.visible = false
 	
 func _on_tree_entered():
-	cardContainerNode = %GraveyardICardContainer
+	cardPile = %CardPile
 	cardOnTop = %CardOnTop
 	remainingCardLabel = %RemainingCardLabel
 

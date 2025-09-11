@@ -36,6 +36,10 @@ texture = ExtResource("3_4sgbr")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="CardPile" type="Control" parent="PanelContainer/GraveyardICardContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="nameZonePanelContainer" type="PanelContainer" parent="."]
 z_index = 4
 layout_mode = 2

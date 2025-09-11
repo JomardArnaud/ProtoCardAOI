@@ -4,6 +4,8 @@ extends Control
 const Card = preload("res://Cards/Card.tscn")
 #const CardInfo = preload("res://Cards/CardInfo.gd")
 
+signal noMoreDraw()
+
 @onready var player : PlayerController :
 	set(nPlayer):
 		player = nPlayer 
@@ -12,36 +14,40 @@ const Card = preload("res://Cards/Card.tscn")
 
 #tmp = [0]
 ## the next card which is drawn is the lastId
-var idDeckCard : Array[int] = [0, 1, 0, 1, 0, 4]
+var idDeckStartingCard : Array[int] = [0, 1, 0, 1, 0, 4]
 
 var deck: Array[Card]
+var cardPile: Control
 var nbCardLeft : int : set = setNbCardLeft
 
 func fillCardInDeck(cardHudRef : CardCombatManager, collection: Dictionary[int, CardInfo]) -> void:
-	if collection == null || idDeckCard == null:
+	if collection == null || idDeckStartingCard == null:
 		return
-	for i in range(0, idDeckCard.size()):
+	for i in range(0, idDeckStartingCard.size()):
 		#setting up info for card
-		var infoCard : CardInfo = collection[idDeckCard[i]]
+		var infoCard : CardInfo = collection[idDeckStartingCard[i]]
 		var nCard = Card.instantiate()
 		nCard.init(player, infoCard)
-		nCard.resolved.connect(cardHudRef.moveCard.bind(nCard, CardInfo.CardEnum.CardZone.Graveyard))
+		nCard.resolved.connect(cardHudRef.cardAfterResolve.bind(nCard))
 		deck.push_back(nCard)
+		cardPile.add_child(nCard)
 	nbCardLeft = deck.size()
+	
+func sendToDeck(nCard : Card) -> void:
+	nCard.reparent(cardPile)
+	deck.push_back(nCard)
+	nbCardLeft += 1
 
 func shuffle():
-	idDeckCard.shuffle()
-	pass
+	deck.shuffle()
 
-func refilldeck():
-	pass
-
-func drawCard() -> Card:
+func drawCard() -> void:
 	if nbCardLeft == 0:
-		print("No card left in deck")
-		return null
+		noMoreDraw.emit()
+		return
+	var cardDrawn : Card = deck.pop_back()
+	cardDrawn.setCardZone(CardInfo.CardEnum.CardZone.Hand)
 	nbCardLeft -= 1
-	return deck.pop_back()
 
 func setNbCardLeft(nLeft: int) -> void:
 	nbCardLeft = nLeft
@@ -51,6 +57,7 @@ func setNbCardLeft(nLeft: int) -> void:
 		deckCardContainer.visible = true
 	labelRemainingCard.text = "[center]" + str(nbCardLeft) + "[center]"
 
-func _on_tree_entered():	
+func _on_tree_entered():
+	cardPile = %CardPile
 	deckCardContainer = %DeckCardContainer
 	labelRemainingCard = %RemainingCardLabel

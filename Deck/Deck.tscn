@@ -31,6 +31,11 @@ texture = ExtResource("2_yo3bs")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="CardPile" type="Control" parent="PanelContainer/DeckCardContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 z_index = 1
 layout_mode = 2

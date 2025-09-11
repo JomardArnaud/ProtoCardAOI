@@ -79,5 +79,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="child_exiting_tree" from="HBoxContainer/PanelContainer/MarginContainer/CardContainer" to="." method="_on_card_container_child_exiting_tree"]
-[connection signal="child_order_changed" from="HBoxContainer/PanelContainer/MarginContainer/CardContainer" to="." method="_on_card_container_child_order_changed"]
+[connection signal="child_exiting_tree" from="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin" to="." method="_on_slot_margin_child_exiting_tree"]
+[connection signal="child_exiting_tree" from="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotDash/SlotDashContainer" to="." method="_on_slot_dash_container_child_exiting_tree"]
+[connection signal="child_exiting_tree" from="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotAttack/SlotAttackContainer" to="." method="_on_slot_attack_container_child_exiting_tree"]
+[connection signal="child_exiting_tree" from="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotSpell/SlotSpellContainer" to="." method="_on_slot_spell_container_child_exiting_tree"]

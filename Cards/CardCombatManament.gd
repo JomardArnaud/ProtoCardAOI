@@ -7,26 +7,44 @@ var cardCollection : CardCollection
 
 @onready var player : PlayerController
 ##All HUD's parts
-@onready var deckNode : Deck
+@onready var deck : Deck
 @onready var hand : Hand
 @onready var graveyard : Graveyard
 
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 	card.hotkeyCard = ""
 	match to:
+		CardEnum.CardZone.Deck:
+			deck.sendToDeck(card)
 		CardEnum.CardZone.Graveyard:
 			graveyard.sendToGraveyard(card)
 		CardEnum.CardZone.Hand:
 			hand.addCardToHand(card)
 
+func cardAfterResolve(card : Card):
+	moveCard(card, CardEnum.CardZone.Graveyard)
+	deck.drawCard()
+
+func refillDeck() -> void:
+	var nbCard : int = graveyard.emptyGraveyard(CardEnum.CardZone.Deck)
+	if nbCard == 0:
+		##TODO make something in this case
+		return
+	deck.setNbCardLeft(nbCard)
+	deck.shuffle()
+	deck.drawCard()
+
 func _ready():
-	deckNode.player = player
-	deckNode.fillCardInDeck(self, cardCollection.collection)
+	deck.player = player
+	deck.noMoreDraw.connect(refillDeck)
+	deck.fillCardInDeck(self, cardCollection.collection)
 	hand.player = player
-	hand.setStartingHand(deckNode)
+	for i in range(0, hand.handSizeLimit):
+		deck.drawCard()
+	
 
 func _on_tree_entered():
-	deckNode = %Deck
+	deck = %Deck
 	hand = %Hand
 	graveyard = %Graveyard
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
