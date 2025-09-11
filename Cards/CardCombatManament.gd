@@ -12,7 +12,7 @@ var cardCollection : CardCollection
 @onready var graveyard : Graveyard
 
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
-	#var mainType = card.cardInfo.type.get_slice(" ", 0)
+	card.hotkeyCard = ""
 	match to:
 		CardEnum.CardZone.Graveyard:
 			graveyard.sendToGraveyard(card)

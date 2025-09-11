@@ -6,7 +6,7 @@ const CardInfo : Resource = preload("res://Cards/CardInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardAbility = preload("res://Cards/Ability/CardAbility.gd")
 
-signal cardCast(hotkeyUsed : String)
+signal resolved()
 signal changeZone(card : Card, to : CardEnum.CardZone)
 
 const pathCard = "res://ArtCard/"
@@ -33,15 +33,14 @@ var cardAbilities : Dictionary = {
 @onready var keyToUseLabel : RichTextLabel
 
 func _input(input : InputEvent) -> void:
-	if (cardZone == CardEnum.CardZone.Hand):
+	if hotkeyCard != "":
 		if input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type]):
 			resolve()
-			cardCast.emit(hotkeyCard)
 	
 func resolve() -> void:
 	for ability in cardAbilities.values():
-		ability.resolve()
-	pass
+		ability.resolve()	
+	resolved.emit()
 
 func init(nPlayer : PlayerController, nInfo : CardInfo, nZone: CardEnum.CardZone = CardEnum.CardZone.Deck) -> void:
 	player = nPlayer

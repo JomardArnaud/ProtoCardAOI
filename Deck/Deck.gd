@@ -12,7 +12,7 @@ const Card = preload("res://Cards/Card.tscn")
 
 #tmp = [0]
 ## the next card which is drawn is the lastId
-var idDeckCard : Array[int] = [0, 1, 0, 1, 0, 0]
+var idDeckCard : Array[int] = [0, 1, 0, 1, 0, 4]
 
 var deck: Array[Card]
 var nbCardLeft : int : set = setNbCardLeft
@@ -25,6 +25,7 @@ func fillCardInDeck(cardHudRef : CardCombatManager, collection: Dictionary[int, 
 		var infoCard : CardInfo = collection[idDeckCard[i]]
 		var nCard = Card.instantiate()
 		nCard.init(player, infoCard)
+		nCard.resolved.connect(cardHudRef.moveCard.bind(nCard, CardInfo.CardEnum.CardZone.Graveyard))
 		deck.push_back(nCard)
 	nbCardLeft = deck.size()
 

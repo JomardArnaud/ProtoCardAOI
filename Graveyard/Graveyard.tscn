@@ -26,6 +26,7 @@ theme_override_constants/margin_bottom = 10
 [node name="CardOnTop" parent="PanelContainer/GraveyardICardContainer" instance=ExtResource("2_ara25")]
 unique_name_in_owner = true
 visible = false
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -36,6 +37,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="nameZonePanelContainer" type="PanelContainer" parent="."]
+z_index = 4
 layout_mode = 2
 size_flags_vertical = 8
 

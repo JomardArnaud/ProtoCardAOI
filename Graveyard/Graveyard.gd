@@ -10,12 +10,13 @@ extends Control
 var cardList : Dictionary
 
 func sendToGraveyard(card : Card):
-	card.reparent(cardContainerNode)
+	cardContainerNode.add_child(card)
 	card.visible = false
 	cardOnTop.cardInfo = card.cardInfo
 	cardOnTop.updateCardNode()
 	cardOnTop.visible = true
-	remainingCardLabel.text = "[center]%s[center]" % str(cardContainerNode.get_child_count() - 1)
+	card.reparent(cardContainerNode)
+	remainingCardLabel.text = "[center]%s[center]" % str(cardContainerNode.get_child_count() - 2)
 
 func _on_graveyard_i_card_container_child_exiting_tree(node):
 	var cardLeft = cardContainerNode.get_child_count() - 2

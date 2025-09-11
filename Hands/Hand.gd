@@ -5,7 +5,7 @@ extends MarginContainer
 #const CardInfo = preload("res://Cards/CardInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
 
-@export var handSizeLimit : int = 7
+@export var handSizeLimit : int = 4
 
 @onready var slotsCard : Dictionary[int, MarginContainer] = {
 	CardEnum.CardType.DASH: %SlotDashContainer,
@@ -53,12 +53,9 @@ func addCardToHand(nCard: Card) -> void:
 		indexCard = nCard.cardInfo.type
 	else:
 		indexCard = cardHand.size() + CardEnum.CardType.size() + 1
-		nCard.reparent(cardHandNode) 
-		pass
+		cardHandNode.add_child(nCard)
 	cardHand[indexCard] = nCard
 	nCard.visible = true
-	if !nCard.is_connected("cardCast", castCardFromHand):
-		nCard.cardCast.connect(castCardFromHand)
 	nbCardHand += 1
 
 func setStartingHand(nDeck: Deck) -> void:
