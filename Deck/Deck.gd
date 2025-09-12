@@ -31,12 +31,10 @@ func fillCardInDeck(cardHudRef : CardCombatManager, collection: Dictionary[int, 
 		nCard.resolved.connect(cardHudRef.cardAfterResolve.bind(nCard))
 		deck.push_back(nCard)
 		cardPile.add_child(nCard)
-	nbCardLeft = deck.size()
 	
 func sendToDeck(nCard : Card) -> void:
 	nCard.reparent(cardPile)
 	deck.push_back(nCard)
-	nbCardLeft += 1
 
 func shuffle():
 	deck.shuffle()
@@ -47,7 +45,6 @@ func drawCard() -> void:
 		return
 	var cardDrawn : Card = deck.pop_back()
 	cardDrawn.setCardZone(CardInfo.CardEnum.CardZone.Hand)
-	nbCardLeft -= 1
 
 func setNbCardLeft(nLeft: int) -> void:
 	nbCardLeft = nLeft
@@ -61,3 +58,10 @@ func _on_tree_entered():
 	cardPile = %CardPile
 	deckCardContainer = %DeckCardContainer
 	labelRemainingCard = %RemainingCardLabel
+
+
+func _on_card_pile_child_entered_tree(node: Node) -> void:
+	nbCardLeft += 1
+	
+func _on_card_pile_child_exiting_tree(node: Node) -> void:
+	nbCardLeft -= 1

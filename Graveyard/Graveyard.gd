@@ -23,11 +23,6 @@ func emptyGraveyard(destZone: CardEnum.CardZone) -> int:
 	for card : Card in cardPile.get_children():
 		card.setCardZone(destZone)
 	return nbCard
-func _on_graveyard_i_card_container_child_exiting_tree(node):
-	var cardLeft = cardPile.get_child_count()
-	remainingCardLabel.text = "[center]%s[center]" % str(cardLeft)
-	if cardLeft == 0:
-		cardOnTop.visible = false
 	
 func _on_tree_entered():
 	cardPile = %CardPile
@@ -35,4 +30,12 @@ func _on_tree_entered():
 	remainingCardLabel = %RemainingCardLabel
 
 func _on_card_on_top_tree_entered():
+	pass # Replace with function body.
+
+
+func _on_card_pile_child_entered_tree(node: Node) -> void:
+	pass # Replace with function body.
+
+
+func _on_card_pile_child_exiting_tree(node: Node) -> void:
 	pass # Replace with function body.

@@ -23,6 +23,7 @@ func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 
 func cardAfterResolve(card : Card):
 	moveCard(card, CardEnum.CardZone.Graveyard)
+	hand.fillSlotCard()
 	deck.drawCard()
 
 func refillDeck() -> void:

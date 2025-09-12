@@ -69,3 +69,5 @@ scroll_active = false
 metadata/_edit_use_anchors_ = true
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="child_entered_tree" from="PanelContainer/DeckCardContainer/CardPile" to="." method="_on_card_pile_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PanelContainer/DeckCardContainer/CardPile" to="." method="_on_card_pile_child_exiting_tree"]
