@@ -30,6 +30,9 @@ func setSlotsCard():
 func setSlotCard(card: Card) -> void:
 	var strInput : String = "Cast" + CardEnum.CardType.keys()[card.cardInfo.type]
 	card.setHotkeyCard(InputManager.get_instance().getHotkeyStr(strInput))
+	var keyCard = cardHand.find_key(card)
+	if keyCard != null:
+		cardHand.erase(keyCard)
 	card.reparent(slotsCard[card.cardInfo.type])
 
 func addCardToHand(nCard: Card) -> void:
@@ -46,18 +49,17 @@ func addCardToHand(nCard: Card) -> void:
 	nbCardHand += 1
 
 func fillSlotCard() -> void:
-	var nbCardGone : int = 0
+	var nbCardLeft : int = 0
 	for i in range(0, cardHand.size()):
 		var card : Card = cardHand[i]
-		if card == null:
-			nbCardGone += 1
+		if !is_instance_valid(card):
 			continue
 		if slotsCard[card.cardInfo.type].get_child_count() == 0:
 			setSlotCard(card)
-			nbCardGone += 1
 		else:
-			if nbCardGone != 0:
-				cardHand[i - nbCardGone] = card
+			cardHand.erase(i)
+			cardHand[nbCardLeft] = card
+			nbCardLeft += 1
 
 func _process(delta: float) -> void:
 	cdGlobalCast = clampf(cdGlobalCast - delta, 0, cdGlobalCast)
