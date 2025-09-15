@@ -1,12 +1,16 @@
 class_name Health
 extends Control
 
+signal healthChanged
+signal healthDropZero(infoHp : HealthInfo)
+
 @export var info : HealthInfo
 
 @onready var hpBar : ProgressBar
 
 func setNodeInfo(nInfo: HealthInfo) -> void:
 	info = nInfo
+	info.healthChanged.connect(Callable())
 	updateHpBarNode()
 		
 func setHpBarNode() -> void:
@@ -15,10 +19,11 @@ func setHpBarNode() -> void:
 		info = parent.commanderInfo.health
 	updateHpBarNode()
 	info.healthChanged.connect(onHealthChanged)
+	info.healthDropZero.connect(onHealthDropZero)
 	if (parent.has_method("onHealthChanged")):
 		info.healthChanged.connect(parent.onHealthChanged.bind())
 	if (parent.has_method("onHealthDropZero")):
-		info.healthDropZero.connect(parent.onHealthDropZero.bind())
+		info.healthDropZero.connect(parent.onHealthDropZero.bind(info))
 
 func updateHpBarNode() -> void:
 	if (hpBar.visible != info.visibleHpBar):
@@ -30,6 +35,9 @@ func updateHpBarNode() -> void:
 
 func onHealthChanged(nHP: float) -> void:
 	hpBar.value = nHP
+
+func onHealthDropZero() -> void:
+	healthDropZero.emit(info)
 
 func _on_hp_bar_ready():
 	hpBar = %HpBar

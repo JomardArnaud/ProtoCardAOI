@@ -8,4 +8,5 @@ signal reload()
 @export_category("Stat weapong")
 @export var fireRate : float
 @export var speedBullet : float
+@export var sizeBullet : float = 3000
 @export var sizeMagazine : float

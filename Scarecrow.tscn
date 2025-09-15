@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://vbwrldk3i16e"]
 
-[ext_resource type="Script" uid="uid://6cvqticiakxw" path="res://Scarecrow.gd" id="1_tl5ag"]
+[ext_resource type="Script" uid="uid://c4lylp40sxdo0" path="res://Scarecrow.gd" id="1_tl5ag"]
 [ext_resource type="Texture2D" uid="uid://d0ovc83hmo14j" path="res://ArtCard/Scarecrow.png" id="2_ydfl1"]
 [ext_resource type="Script" uid="uid://d3yl2mqdykp0j" path="res://Utility/CustomType/CPolygon2D.gd" id="3_v4ya1"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="5_cpyhq"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="6_tsdmv"]
 [ext_resource type="PackedScene" uid="uid://bch12dvchox3r" path="res://Utility/CustomNode/Hurtbox2D.tscn" id="6_x6itp"]
 
-[sub_resource type="Resource" id="Resource_fhnl1"]
+[sub_resource type="Resource" id="Resource_x6itp"]
 resource_local_to_scene = true
 script = ExtResource("6_tsdmv")
 visibleHpBar = true
@@ -38,17 +38,19 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Health" parent="." instance=ExtResource("5_cpyhq")]
+unique_name_in_owner = true
 offset_left = 1.0
 offset_top = -76.0
 offset_right = 1.0
 offset_bottom = -76.0
-info = SubResource("Resource_fhnl1")
+info = SubResource("Resource_x6itp")
 
 [node name="HurtBox" parent="." instance=ExtResource("6_x6itp")]
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource("CapsuleShape2D_3jxnb")
 
+[connection signal="healthDropZero" from="Health" to="." method="_on_health_health_drop_zero"]
 [connection signal="takeHit" from="HurtBox" to="Health" method="_on_hurt_box_take_hit"]
 
 [editable path="HurtBox"]
