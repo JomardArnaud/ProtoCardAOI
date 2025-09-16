@@ -1,6 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4ffh65mxnhar"]
+[gd_scene load_steps=4 format=3 uid="uid://d4ffh65mxnhar"]
 
 [ext_resource type="Script" uid="uid://c1s2odagh5qot" path="res://Weapon/Weapon.gd" id="1_fwiay"]
+[ext_resource type="Script" uid="uid://bykif5peqeubt" path="res://Weapon/WeaponInfo.gd" id="2_370bg"]
+
+[sub_resource type="Resource" id="Resource_l4m4n"]
+script = ExtResource("2_370bg")
+fireRate = 0.2
+speedBullet = 3000.0
+sizeBullet = 30.0
+sizeMagazine = 8.0
+leftInMagazine = null
+speedReload = 0.1
+metadata/_custom_type_script = "uid://bykif5peqeubt"
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_fwiay")
+info = SubResource("Resource_l4m4n")
+
+[node name="TimerFireRate" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="TimerRelooad" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="WeaponHud" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 207.0
+offset_bottom = 194.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WeaponHud"]
+layout_mode = 0
+offset_right = 188.0
+offset_bottom = 93.0
+text = "coucou"

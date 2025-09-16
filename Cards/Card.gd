@@ -1,7 +1,6 @@
 class_name Card
 extends Control
 
-const cardScene : PackedScene = preload("res://Cards/Card.tscn") 
 const CardInfo : Resource = preload("res://Cards/CardInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardAbility = preload("res://Cards/Ability/CardAbility.gd")
