@@ -134,6 +134,14 @@ func getDirFromMouse(player: PlayerController) -> Vector2:
 		destDir = Vector2.ZERO
 	return destDir
 
+func isShooting() -> bool:
+	var shooting : bool = false
+	if gamepadActive:
+		pass
+	else:
+		shooting = Input.is_action_pressed("Shoot")
+	return shooting
+
 # Détecte le type de manette en fonction du nom du contrôleur
 func setGamepadType(idGamepad: int) -> void:
 	var joypad_name = Input.get_joy_name(idGamepad).to_lower()

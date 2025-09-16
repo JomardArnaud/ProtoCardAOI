@@ -20,10 +20,6 @@ func setHpBarNode() -> void:
 	updateHpBarNode()
 	info.healthChanged.connect(onHealthChanged)
 	info.healthDropZero.connect(onHealthDropZero)
-	if (parent.has_method("onHealthChanged")):
-		info.healthChanged.connect(parent.onHealthChanged.bind())
-	if (parent.has_method("onHealthDropZero")):
-		info.healthDropZero.connect(parent.onHealthDropZero.bind(info))
 
 func updateHpBarNode() -> void:
 	if (hpBar.visible != info.visibleHpBar):

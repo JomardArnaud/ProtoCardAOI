@@ -11,7 +11,6 @@ func resolve() -> void:
 	bullet.setSpeed(3000)
 	bullet.position = cursor.global_position
 	caster.add_child(bullet)
-	pass
 
 func init() -> void:
 	

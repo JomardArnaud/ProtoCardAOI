@@ -14,23 +14,43 @@ speedReload = 0.1
 metadata/_custom_type_script = "uid://bykif5peqeubt"
 
 [node name="Weapon" type="Node2D"]
+top_level = true
 script = ExtResource("1_fwiay")
 info = SubResource("Resource_l4m4n")
 
 [node name="TimerFireRate" type="Timer" parent="."]
 unique_name_in_owner = true
+one_shot = true
 
 [node name="TimerRelooad" type="Timer" parent="."]
 unique_name_in_owner = true
+one_shot = true
 
-[node name="WeaponHud" type="Control" parent="."]
+[node name="WeaponHud" type="Control" parent="TimerRelooad"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 207.0
-offset_bottom = 194.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -89.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="WeaponHud"]
-layout_mode = 0
-offset_right = 188.0
-offset_bottom = 93.0
-text = "coucou"
+[node name="RichTextLabel" type="RichTextLabel" parent="TimerRelooad/WeaponHud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -46.5
+offset_right = 94.0
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "8/8
+"

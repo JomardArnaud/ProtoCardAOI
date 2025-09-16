@@ -24,7 +24,7 @@ func setHealth(nHealth: float) -> HealthInfo:
 	if health == 0:
 		healthDropZero.emit()
 	else:
-		healthChanged.emit(health)
+		healthChanged.emit()
 	return self
 	
 func getHealth() -> float:
