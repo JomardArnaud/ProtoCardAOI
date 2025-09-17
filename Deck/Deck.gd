@@ -14,23 +14,33 @@ signal noMoreDraw()
 
 #tmp = [0]
 ## the next card which is drawn is the lastId
-var idDeckStartingCard : Array[int] = [0, 1, 0, 1, 0, 4]
-
+var startingDeck : Dictionary[int, int] = {
+	0: 2,
+	1: 2,
+	2: 4,
+	3: 4,
+	4: 4
+}
 var deck: Array[Card]
 var cardPile: Control
 var nbCardLeft : int : set = setNbCardLeft
 
+func addCardById(idCard: int, cardHudRef : CardCombatManager, collection: Dictionary[int, CardInfo]) -> void:
+	var infoCard : CardInfo = collection[idCard]
+	var nCard = Card.instantiate()
+	nCard.init(player, infoCard)
+	nCard.resolved.connect(cardHudRef.cardAfterResolve.bind(nCard))
+	deck.push_back(nCard)
+	cardPile.add_child(nCard)
+
 func fillCardInDeck(cardHudRef : CardCombatManager, collection: Dictionary[int, CardInfo]) -> void:
-	if collection == null || idDeckStartingCard == null:
+	if collection == null || startingDeck.is_empty():
 		return
-	for i in range(0, idDeckStartingCard.size()):
+	for keyCard in startingDeck:
 		#setting up info for card
-		var infoCard : CardInfo = collection[idDeckStartingCard[i]]
-		var nCard = Card.instantiate()
-		nCard.init(player, infoCard)
-		nCard.resolved.connect(cardHudRef.cardAfterResolve.bind(nCard))
-		deck.push_back(nCard)
-		cardPile.add_child(nCard)
+		for i in range(0, startingDeck[keyCard]):
+			addCardById(keyCard, cardHudRef, collection)
+	shuffle()
 	
 func sendToDeck(nCard : Card) -> void:
 	nCard.reparent(cardPile)
@@ -38,6 +48,8 @@ func sendToDeck(nCard : Card) -> void:
 
 func shuffle():
 	deck.shuffle()
+
+##TODO t'as un bug quand le deck est vide le sprite ne s'affiche plus 
 
 func drawCard() -> void:
 	if nbCardLeft == 0:

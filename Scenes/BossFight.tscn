@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfxyiv3p7jta5"]
+
+[ext_resource type="PackedScene" uid="uid://b7kj234fqvhlm" path="res://Utility/CustomNode/Block.tscn" id="1_2in0h"]
+[ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="1_l5je7"]
+
+[node name="BossFight" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_l5je7")]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Polygon2D" parent="Node" instance=ExtResource("1_2in0h")]
+position = Vector2(1956, 1777)
+rotation = 3.13523
+polygon = PackedVector2Array(550, -231, -50, 190, -20, 1082, 531, 1572, 1324, 1550, 1932, 1063, 1947, 247, 1100, -201, 1097, -387, 2152, 107, 2148, 1185, 1381, 1777, 375, 1774, -328, 1109, -335, -42, 550, -471)

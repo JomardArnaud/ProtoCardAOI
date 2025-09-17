@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ck4115k25kn1n" path="res://ArtCard/Slot.png" id="1_2wq1k"]
 [ext_resource type="Theme" uid="uid://kbsu4ruo3khm" path="res://MainTheme.tres" id="2_qj8hf"]
-[ext_resource type="Script" uid="uid://cv4spd5kxp002" path="res://Hands/Slot.gd" id="2_s8rqu"]
+[ext_resource type="Script" uid="uid://cv4spd5kxp002" path="res://Hand/Slot.gd" id="2_s8rqu"]
 
 [node name="Slot" type="TextureRect"]
 anchors_preset = -1
