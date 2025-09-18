@@ -51,6 +51,16 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -177.0
+offset_bottom = 111.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="child_entered_tree" from="CardContainer/PanelHud/MarginContainer/HBoxContainer/Graveyard" to="CardContainer/PanelHud/MarginContainer/HBoxContainer/Graveyard" method="_on_child_entered_tree"]
 

@@ -13,5 +13,4 @@ func resolve() -> void:
 	caster.add_child(bullet)
 
 func init() -> void:
-	
 	pass

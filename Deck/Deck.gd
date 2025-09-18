@@ -5,6 +5,7 @@ const Card = preload("res://Cards/Card.tscn")
 #const CardInfo = preload("res://Cards/CardInfo.gd")
 
 signal noMoreDraw()
+signal cardAddedToDeck(nCard : Card)
 
 @onready var player : PlayerController :
 	set(nPlayer):
@@ -17,29 +18,31 @@ signal noMoreDraw()
 var startingDeck : Dictionary[int, int] = {
 	0: 2,
 	1: 2,
-	2: 4,
-	3: 4,
-	4: 4
+	2: 2,
+	3: 2,
+	4: 2
 }
 var deck: Array[Card]
 var cardPile: Control
 var nbCardLeft : int : set = setNbCardLeft
 
-func addCardById(idCard: int, cardHudRef : CardCombatManager, collection: Dictionary[int, CardInfo]) -> void:
+func addCardById(idCard: int) -> void:
+	var collection : Dictionary[int, CardInfo] = get_tree().get_first_node_in_group("CardCollection").collection
 	var infoCard : CardInfo = collection[idCard]
 	var nCard = Card.instantiate()
 	nCard.init(player, infoCard)
-	nCard.resolved.connect(cardHudRef.cardAfterResolve.bind(nCard))
+	cardAddedToDeck.emit(nCard)
 	deck.push_back(nCard)
 	cardPile.add_child(nCard)
 
-func fillCardInDeck(cardHudRef : CardCombatManager, collection: Dictionary[int, CardInfo]) -> void:
-	if collection == null || startingDeck.is_empty():
+func fillCardInDeck() -> void:
+	if startingDeck.is_empty():
+		push_warning("No cards in starter deck")
 		return
 	for keyCard in startingDeck:
 		#setting up info for card
 		for i in range(0, startingDeck[keyCard]):
-			addCardById(keyCard, cardHudRef, collection)
+			addCardById(keyCard)
 	shuffle()
 	
 func sendToDeck(nCard : Card) -> void:

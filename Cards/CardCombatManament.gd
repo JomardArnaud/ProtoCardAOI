@@ -1,9 +1,7 @@
 class_name CardCombatManager
 extends CanvasLayer
-
-#const CardCollection = preload("res://Cards/CardCollection.gd")
+ 
 const CardEnum = preload("res://Cards/CardEnum.gd")
-var cardCollection : CardCollection
 
 @onready var player : PlayerController
 ##All HUD's parts
@@ -37,8 +35,9 @@ func refillDeck() -> void:
 
 func _ready():
 	deck.player = player
+	deck.cardAddedToDeck.connect(onCardAddedToDeck)
 	deck.noMoreDraw.connect(refillDeck)
-	deck.fillCardInDeck(self, cardCollection.collection)
+	deck.fillCardInDeck()
 	hand.player = player
 	for i in range(0, hand.handSizeLimit):
 		deck.drawCard()
@@ -49,6 +48,7 @@ func _on_tree_entered():
 	hand = %Hand
 	graveyard = %Graveyard
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	cardCollection = CardCollection.new()
 	player = get_parent()
 	
+func onCardAddedToDeck(nCard: Card):
+	nCard.resolved.connect(cardAfterResolve.bind(nCard))
