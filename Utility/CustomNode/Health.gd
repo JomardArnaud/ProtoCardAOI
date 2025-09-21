@@ -1,36 +1,23 @@
 class_name Health
 extends Control
 
-signal healthChanged
+signal healthChanged()
 signal healthDropZero(infoHp : HealthInfo)
 
 @export var info : HealthInfo
 
-@onready var hpBar : ProgressBar
+@onready var hpBar : HpBar
 
-func setNodeInfo(nInfo: HealthInfo) -> void:
-	info = nInfo
-	info.healthChanged.connect(Callable())
-	updateHpBarNode()
-		
 func setHpBarNode() -> void:
-	var parent = get_parent()
-	if (parent is Commander && info == null):
-		info = parent.commanderInfo.health
-	updateHpBarNode()
+	if (info == null):
+		push_error("no health info found")
+		return
+	hpBar.updateHpBarNode(info)
 	info.healthChanged.connect(onHealthChanged)
 	info.healthDropZero.connect(onHealthDropZero)
 
-func updateHpBarNode() -> void:
-	if (hpBar.visible != info.visibleHpBar):
-		hpBar.visible = info.visibleHpBar
-	if (hpBar.value != info.health):
-		hpBar.set_value(info.health)
-	if (hpBar.max_value != info.maxHealth):
-		hpBar.max_value = info.maxHealth
-
 func onHealthChanged(nHP: float) -> void:
-	hpBar.value = nHP
+	hpBar.hpBar.value = nHP
 
 func onHealthDropZero() -> void:
 	healthDropZero.emit(info)

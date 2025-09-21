@@ -10,7 +10,7 @@ speedBullet = 3000.0
 sizeBullet = 30.0
 sizeMagazine = 8.0
 leftInMagazine = null
-speedReload = 0.1
+speedReload = 2.0
 metadata/_custom_type_script = "uid://bykif5peqeubt"
 
 [node name="Weapon" type="Node2D"]

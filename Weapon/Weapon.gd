@@ -16,28 +16,27 @@ signal reloaded()
 func _ready() -> void:
 	timerFireRate.wait_time = info.fireRate
 	timerReload.wait_time = info.speedReload
+	timerReload.timeout.connect(reload)
 	
-func _input(event: InputEvent) -> void:
-	if InputManager.get_instance().isShooting() && timerFireRate.time_left == 0:
+func _process(delta: float) -> void:
+	if InputManager.get_instance().isShooting() && timerFireRate.time_left == 0 && info.leftInMagazine > 0:
 		shootBullet()
 		
 func reload() -> void:
-	reloading.emit()
 	info.leftInMagazine = info.sizeMagazine
 	reloaded.emit()
 		
 func shootBullet() -> void:
-	#info.
+	info.leftInMagazine -= 1
 	if info.leftInMagazine == 0:
-		reload()
-	else:
-		info.leftInMagazine -= 1
-		var bullet := BacisProjectileScene.instantiate()
-		## TODO just to test need to rework on commander node to add cursor and set PlayerNode to type Commander and node Commander inherit of MovementBody2D  
-		var tmpPlayer = get_tree().get_nodes_in_group("Players")[0]
-		var cursor : Cursor = tmpPlayer.get_node("Cursor")
-		bullet.dir = cursor.dir
-		bullet.setSpeed(info.speedBullet)
-		bullet.position = cursor.global_position
-		tmpPlayer.add_child(bullet)
-		timerFireRate.start()
+		reloading.emit()
+		timerReload.start()
+	var bullet := BacisProjectileScene.instantiate()
+	## TODO just to test need to rework on commander node to add cursor and set PlayerNode to type Commander and node Commander inherit of MovementBody2D  
+	var tmpPlayer = get_tree().get_nodes_in_group("Players")[0]
+	var cursor : Cursor = tmpPlayer.get_node("Cursor")
+	bullet.dir = cursor.dir
+	bullet.setSpeed(info.speedBullet)
+	bullet.position = cursor.global_position
+	tmpPlayer.add_child(bullet)
+	timerFireRate.start()

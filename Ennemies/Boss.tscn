@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://bm02wou48n2vd"]
+
+[ext_resource type="PackedScene" uid="uid://dsdq572poq71l" path="res://Commander/Commander.tscn" id="1_vgkup"]
+[ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="2_1454h"]
+[ext_resource type="Texture2D" uid="uid://c5hiu5a7lapn4" path="res://ArtCard/Boss.png" id="3_esarq"]
+[ext_resource type="PackedScene" uid="uid://cs3gd7v8ubhmj" path="res://Utility/CustomNode/HpBar.tscn" id="4_1454h"]
+
+[sub_resource type="Resource" id="Resource_2st7e"]
+script = ExtResource("2_1454h")
+visibleHpBar = false
+health = 1000.0
+maxHealth = 1000.0
+metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78b6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.227451, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5lg5"]
+bg_color = Color(0.188235, 0.960784, 0.945098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="Theme" id="Theme_1454h"]
+resource_local_to_scene = true
+ProgressBar/styles/background = SubResource("StyleBoxFlat_t78b6")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_u5lg5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esarq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.227451, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2st7e"]
+bg_color = Color(0.188235, 0.960784, 0.945098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="Theme" id="Theme_yjk0x"]
+resource_local_to_scene = true
+ProgressBar/styles/background = SubResource("StyleBoxFlat_esarq")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_2st7e")
+
+[node name="Boss" type="Node2D"]
+
+[node name="Commander" parent="." instance=ExtResource("1_vgkup")]
+
+[node name="Shadow" parent="Commander" index="0"]
+offset_left = -29.0
+offset_top = -34.0
+offset_right = 55.0
+offset_bottom = 33.0
+
+[node name="Health" parent="Commander" index="1"]
+visible = false
+info = SubResource("Resource_2st7e")
+
+[node name="HpBar" parent="Commander/Health" index="0"]
+theme = SubResource("Theme_1454h")
+
+[node name="MainSprite" parent="Commander" index="2"]
+texture = ExtResource("3_esarq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 10.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HpBar" parent="CanvasLayer/MarginContainer" instance=ExtResource("4_1454h")]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_yjk0x")
+
+[connection signal="healthChanged" from="Commander/Health" to="CanvasLayer/MarginContainer/HpBar" method="_on_health_health_changed"]
+[connection signal="healthDropZero" from="Commander/Health" to="CanvasLayer/MarginContainer/HpBar" method="_on_health_health_drop_zero"]
+
+[editable path="Commander"]
+[editable path="Commander/Health"]
+[editable path="Commander/Health/HurtBox"]

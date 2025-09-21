@@ -1,15 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfxyiv3p7jta5"]
+[gd_scene load_steps=6 format=3 uid="uid://bfxyiv3p7jta5"]
 
-[ext_resource type="PackedScene" uid="uid://b7kj234fqvhlm" path="res://Utility/CustomNode/Block.tscn" id="1_2in0h"]
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="1_l5je7"]
+[ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Commander/PlayerCamera.gd" id="2_xjkry"]
+[ext_resource type="PackedScene" uid="uid://bm02wou48n2vd" path="res://Ennemies/Boss.tscn" id="5_55aqt"]
+[ext_resource type="PackedScene" uid="uid://btjil1vrqgpgx" path="res://Utility/InputManager.tscn" id="5_f70ux"]
+[ext_resource type="PackedScene" uid="uid://dbostdu533m3l" path="res://Cards/CardCollection.tscn" id="5_xjkry"]
 
 [node name="BossFight" type="Node2D"]
+position = Vector2(2392, -2047)
+
+[node name="InputManager" parent="." instance=ExtResource("5_f70ux")]
 
 [node name="Player" parent="." instance=ExtResource("1_l5je7")]
+position = Vector2(-894, 545)
 
-[node name="Node" type="Node" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("2_xjkry")
+focusEntity = NodePath("../Player")
 
-[node name="Polygon2D" parent="Node" instance=ExtResource("1_2in0h")]
-position = Vector2(1956, 1777)
-rotation = 3.13523
-polygon = PackedVector2Array(550, -231, -50, 190, -20, 1082, 531, 1572, 1324, 1550, 1932, 1063, 1947, 247, 1100, -201, 1097, -387, 2152, 107, 2148, 1185, 1381, 1777, 375, 1774, -328, 1109, -335, -42, 550, -471)
+[node name="Arena" type="Node" parent="."]
+
+[node name="CardCollection" parent="." instance=ExtResource("5_xjkry")]
+
+[node name="Boss" parent="." instance=ExtResource("5_55aqt")]
+position = Vector2(-928, -43)
+scale = Vector2(10, 10)

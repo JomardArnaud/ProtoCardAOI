@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs3gd7v8ubhmj"]
+
+[ext_resource type="Script" uid="uid://ds8p30b5amh1f" path="res://Utility/CustomNode/HpBar.gd" id="1_4d1f5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78b6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.227451, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5lg5"]
+bg_color = Color(0.188235, 0.960784, 0.945098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="Theme" id="Theme_cl172"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_t78b6")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_u5lg5")
+
+[node name="HpBarContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_cl172")
+script = ExtResource("1_4d1f5")
+
+[node name="HpBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false

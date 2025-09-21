@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://u8l3lxlg1glw" path="res://Cards/CardCollection.gd" id="1_kihij"]
 
-[node name="CardCollection" type="Node2D"]
+[node name="CardCollection" type="Node2D" groups=["CardCollection"]]
 script = ExtResource("1_kihij")
