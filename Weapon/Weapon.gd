@@ -4,6 +4,8 @@ extends Node2D
 signal reloading()
 signal reloaded()
 
+const WeaponInfo = preload("res://Weapon/WeaponInfo.gd")
+
 @onready var BacisProjectileScene = preload("res://Cards/Ability/SkillShot/BasicProjectile.tscn")
 
 @export var info : WeaponInfo

@@ -14,12 +14,13 @@ radius = 4.41021
 [sub_resource type="Resource" id="Resource_054ky"]
 script = ExtResource("7_ws75h")
 visibleHpBar = true
-health = 0.0
-maxHealth = 0.0
+health = 50
+maxHealth = 100
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 position = Vector2(0, 2)
+scale = Vector2(10, 10)
 script = ExtResource("1_caob2")
 
 [node name="Movementbox" type="CollisionShape2D" parent="."]

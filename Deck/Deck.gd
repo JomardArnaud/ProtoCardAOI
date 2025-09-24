@@ -1,8 +1,8 @@
 class_name Deck	
 extends Control
 
-const CardClass = preload("res://Cards/Card.tscn")
-#const CardInfo = preload("res://Cards/CardInfo.gd")
+const CardInfo = preload("res://Cards/CardInfo.gd")
+const CardNode = preload("res://Cards/Card.tscn")
 
 signal noMoreDraw()
 signal cardAddedToDeck(nCard : Card)
@@ -29,7 +29,7 @@ var nbCardLeft : int : set = setNbCardLeft
 func addCardById(idCard: int) -> void:
 	var collection : Dictionary[int, CardInfo] = get_tree().get_first_node_in_group("CardCollection").collection
 	var infoCard : CardInfo = collection[idCard]
-	var nCard = CardClass.instantiate()
+	var nCard = CardNode.instantiate()
 	nCard.init(player, infoCard)
 	cardAddedToDeck.emit(nCard)
 	deck.push_back(nCard)

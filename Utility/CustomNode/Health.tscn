@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca0b1qo2v7edf"]
+[gd_scene load_steps=6 format=3 uid="uid://ca0b1qo2v7edf"]
 
 [ext_resource type="Script" uid="uid://dwn8vj1wxy6cs" path="res://Utility/CustomNode/Health.gd" id="1_qvcda"]
 [ext_resource type="PackedScene" uid="uid://cs3gd7v8ubhmj" path="res://Utility/CustomNode/HpBar.tscn" id="3_jx60x"]
-[ext_resource type="PackedScene" uid="uid://bch12dvchox3r" path="res://Utility/CustomNode/Hurtbox2D.tscn" id="3_vwrp0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78b6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -43,8 +42,4 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_vwrp0")
 
-[node name="HurtBox" parent="." instance=ExtResource("3_vwrp0")]
-
 [connection signal="ready" from="HpBar" to="." method="_on_hp_bar_ready"]
-
-[editable path="HurtBox"]

@@ -1,5 +1,7 @@
-class_name CommanderInfo
 extends Resource
+
+const HealthInfo = preload("res://Utility/CustomType/HealthInfo.gd")
+const Counter = preload("res://Cards/Counters/Counter.gd") 
 
 @export var health : HealthInfo
 
@@ -12,4 +14,4 @@ var idDeckStartingCard : Array[int] = [0, 1, 0, 1, 0, 4]
 # RESSOURCE PART
 @export var currentRegenElem : float
 # amount add to currentRegen per second
-@export var counter : Array[CounterInfo.idCounter]
+@export var counter : Array[Counter.idCounter]

@@ -1,4 +1,3 @@
-class_name DamageBonusInfo
 extends Resource
 
 #when the card is casted add this value to all direct attack number

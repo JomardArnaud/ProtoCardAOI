@@ -1,11 +1,12 @@
 class_name Card
 extends Control
 
-const CardEnumClass = preload("res://Cards/CardEnum.gd")
+const CardEnum = preload("res://Cards/CardEnum.gd")
+const CardInfo = preload("res://Cards/CardInfo.gd")
 const CardAbilityClass = preload("res://Cards/Ability/CardAbility.gd")
 
 signal resolved()
-signal changeZone(card : Card, to : CardEnumClass.CardZone)
+signal changeZone(card : Card, to : CardEnum.CardZone)
 
 const pathCard = "res://ArtCard/"
 
@@ -14,7 +15,7 @@ const pathCard = "res://ArtCard/"
 @onready var player : PlayerController :
 	set(nPlayer):
 		player = nPlayer 
-@onready var cardZone : CardEnumClass.CardZone : get = getCardZone, set = setCardZone
+@onready var cardZone : CardEnum.CardZone : get = getCardZone, set = setCardZone
 @onready var hotkeyCard : String : get = getHotkeyCard, set = setHotkeyCard
 
 var cardAbilities : Dictionary = {
@@ -32,7 +33,7 @@ var cardAbilities : Dictionary = {
 
 func _input(input : InputEvent) -> void:
 	if hotkeyCard != "":
-		if input.is_action_pressed("Cast" + CardEnumClass.CardType.keys()[cardInfo.type]):
+		if input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type]):
 			resolve()
 	
 func resolve() -> void:
@@ -40,7 +41,7 @@ func resolve() -> void:
 		ability.resolve()	
 	resolved.emit()
 
-func init(nPlayer : PlayerController, nInfo : CardInfo, nZone: CardEnumClass.CardZone = CardEnumClass.CardZone.Deck) -> void:
+func init(nPlayer : PlayerController, nInfo : CardInfo, nZone: CardEnum.CardZone = CardEnum.CardZone.Deck) -> void:
 	player = nPlayer
 	setCardInfo(nInfo)
 	if nPlayer != null && nPlayer.has_node("CardHud"):
@@ -85,7 +86,7 @@ func updateCardNode() -> void:
 	if bufferCardInfo.cost != cardInfo.cost:
 		costCardLabel.text =  "[center]%s[center]" % cardInfo.cost
 	if bufferCardInfo.type != cardInfo.type:
-		typeCardLabel.text = CardEnumClass.CardType.keys()[cardInfo.type]
+		typeCardLabel.text = CardEnum.CardType.keys()[cardInfo.type]
 	if bufferCardInfo.description != cardInfo.description:
 		descriptionCardLabel.text = cardInfo.description.replace("|", "\n")
 	if keyToUseLabel.text != hotkeyCard:
@@ -105,15 +106,15 @@ func setHotkeyCard(nKey : String) -> Card:
 		keyToUseLabel.text = "[center]%s[center]" % hotkeyCard
 	return self
 
-func setCardZone(nZone : CardEnumClass.CardZone) -> void:
+func setCardZone(nZone : CardEnum.CardZone) -> void:
 	if (cardZone != nZone):
 		changeZone.emit(self, nZone)
 		cardZone = nZone
 		match cardZone:
-			CardEnumClass.CardZone.Graveyard:
+			CardEnum.CardZone.Graveyard:
 				hotkeyCard = ""
 
-func getCardZone() -> CardEnumClass.CardZone:
+func getCardZone() -> CardEnum.CardZone:
 	return cardZone
 	
 func getCardInfo() -> CardInfo:

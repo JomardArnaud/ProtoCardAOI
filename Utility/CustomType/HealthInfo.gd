@@ -1,40 +1,36 @@
-class_name HealthInfo
 extends Resource
 
-signal healthChanged
-signal healthDropZero
+signal healthChanged(nHealth : int)
+signal healthDropZero(infoHp : Resource)
 
 @export var visibleHpBar : bool
-@export var health : float
-@export var maxHealth : float
+@export var health : int : set = setHealth, get = getHealth
+@export var maxHealth : int : set = setMaxHealth, get = getMaxHealth
 
-func heal(nHeal: float) -> void:
-	health = clampf(health + nHeal, health, maxHealth)
-	healthChanged.emit(health)
+var _health : int = 0
+var _maxHealth : int = 0
 
-func takeDamage(damage: float) -> void:
-	health = clampf(health - damage, 0, health)
-	healthChanged.emit(health)
-	if health == 0:
-		healthDropZero.emit()
+func heal(nHeal: int) -> void:
+	health += nHeal
+
+func takeDamage(damage: int) -> void:
+	health = _health - damage
 		
 # not emitting healthChanged
-func setHealth(nHealth: float) -> HealthInfo:
-	health = clampf(nHealth, 0, maxHealth)
+func setHealth(nHealth: int) -> void:
+	_health = clampi(nHealth, 0, maxHealth)
 	if health == 0:
-		healthDropZero.emit()
+		healthDropZero.emit(self)
 	else:
-		healthChanged.emit()
-	return self
+		healthChanged.emit(_health)
 	
-func getHealth() -> float:
-	return health
+func getHealth() -> int:
+	return _health
 
-func setMaxHealth(nMaxHealth: float) -> HealthInfo:
-	var diffHealth : int = nMaxHealth - maxHealth
-	maxHealth = nMaxHealth
-	health += diffHealth
-	return self
+func setMaxHealth(nMaxHealth: int) -> void:
+	var diffHealth : int = nMaxHealth - _maxHealth
+	_maxHealth = nMaxHealth
+	health = _health + diffHealth
 	
-func getMaxHealth() -> float:
-	return maxHealth
+func getMaxHealth() -> int:
+	return _maxHealth

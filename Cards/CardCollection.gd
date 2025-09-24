@@ -2,6 +2,7 @@ class_name CardCollection
 extends Node
 
 const CardEnum = preload("res://Cards/CardEnum.gd")
+const CardInfo = preload("res://Cards/CardInfo.gd")
 
 var collection : Dictionary[int, CardInfo] = {
 	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, "SkillShot 10/300"),

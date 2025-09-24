@@ -8,8 +8,8 @@
 [sub_resource type="Resource" id="Resource_2st7e"]
 script = ExtResource("2_1454h")
 visibleHpBar = false
-health = 1000.0
-maxHealth = 1000.0
+health = 0
+maxHealth = 0
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78b6"]
@@ -51,7 +51,7 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.8, 0.8, 0.8, 0)
 
-[sub_resource type="Theme" id="Theme_yjk0x"]
+[sub_resource type="Theme" id="Theme_esarq"]
 resource_local_to_scene = true
 ProgressBar/styles/background = SubResource("StyleBoxFlat_esarq")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_2st7e")
@@ -89,11 +89,10 @@ size_flags_vertical = 4
 [node name="HpBar" parent="CanvasLayer/MarginContainer" instance=ExtResource("4_1454h")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = SubResource("Theme_yjk0x")
+theme = SubResource("Theme_esarq")
 
 [connection signal="healthChanged" from="Commander/Health" to="CanvasLayer/MarginContainer/HpBar" method="_on_health_health_changed"]
 [connection signal="healthDropZero" from="Commander/Health" to="CanvasLayer/MarginContainer/HpBar" method="_on_health_health_drop_zero"]
 
 [editable path="Commander"]
 [editable path="Commander/Health"]
-[editable path="Commander/Health/HurtBox"]

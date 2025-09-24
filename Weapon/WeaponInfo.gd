@@ -1,4 +1,3 @@
-class_name WeaponInfo
 extends Resource
 
 const WeaponEnum = preload("res://Weapon/WeaponEnum.gd")

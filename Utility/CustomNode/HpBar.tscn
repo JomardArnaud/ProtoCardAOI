@@ -20,6 +20,7 @@ border_width_bottom = 5
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [sub_resource type="Theme" id="Theme_cl172"]
+resource_local_to_scene = true
 ProgressBar/styles/background = SubResource("StyleBoxFlat_t78b6")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_u5lg5")
 

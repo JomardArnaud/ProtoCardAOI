@@ -17,7 +17,7 @@ func _ready():
 	var playerId = get_parent().playerId
 	queue_redraw()
 	
-func _input(event: InputEvent) -> void:
+func _process(_delta: float) -> void:
 	dir = Vector2.ZERO
 	position = Vector2.ZERO
 	dir = InputManager.get_instance().getAimAttack(get_tree().get_nodes_in_group("Players")[playerId])

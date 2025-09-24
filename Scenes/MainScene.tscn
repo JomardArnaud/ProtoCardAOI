@@ -113,4 +113,3 @@ metadata/_custom_type_script = "uid://u8l3lxlg1glw"
 
 [editable path="Player"]
 [editable path="Player/Health"]
-[editable path="Player/Health/HurtBox"]

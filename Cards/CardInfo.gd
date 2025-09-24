@@ -1,4 +1,3 @@
-class_name CardInfo
 extends Resource
 
 const CardEnum = preload("res://Cards/CardEnum.gd")

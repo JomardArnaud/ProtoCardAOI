@@ -74,7 +74,7 @@ var gamepadActive : bool = false
 func _ready() -> void:
 	# Si une instance existe déjà, on prévient
 	if instance != null:
-		push_warning("Another instance of InputManager already exist.")
+		push_error("Another instance of InputManager already exist.")
 	instance = self
 	# Check already connected gamepad
 	gamepads = Input.get_connected_joypads()
