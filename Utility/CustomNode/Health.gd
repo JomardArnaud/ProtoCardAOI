@@ -1,10 +1,8 @@
 class_name Health
 extends Control
 
-const HealthInfo = preload("res://Utility/CustomType/HealthInfo.gd")
-
 signal healthChanged(nHealth: int)
-signal healthDropZero(infoHp : HealthInfo)
+signal healthDropZero(selfInfo : HealthInfo)
 
 @export var info : HealthInfo
 
@@ -12,21 +10,15 @@ signal healthDropZero(infoHp : HealthInfo)
 
 func _ready() -> void:
 	hpBar = %HpBar
-	setHpBarNode()
-
-func setHpBarNode() -> void:
 	if (info == null):
 		push_error("no health info found")
 		return
-	hpBar.updateHpBarNode(info)
-	info.healthChanged.connect(onHealthChanged)
+	hpBar.updateHpBarNode(info)	
+	info.infoChanged.connect(hpBar.updateHpBarNode.bind(info))
 	info.healthDropZero.connect(onHealthDropZero)
 
-func onHealthChanged(nHP: int) -> void:
-	hpBar.hpBar.value = nHP
-
-func onHealthDropZero(nInfo: HealthInfo) -> void:
-	healthDropZero.emit(nInfo)
+func onHealthDropZero() -> void:
+	healthDropZero.emit(info)
 
 func _on_hurt_box_take_hit(damage: float) -> void:
 	info.takeDamage(damage) # Replace with function body.

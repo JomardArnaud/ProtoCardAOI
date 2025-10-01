@@ -7,9 +7,9 @@
 
 [sub_resource type="Resource" id="Resource_2st7e"]
 script = ExtResource("2_1454h")
-visibleHpBar = false
-health = 0
-maxHealth = 0
+visibleHpBar = true
+health = 69
+maxHealth = 100
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78b6"]

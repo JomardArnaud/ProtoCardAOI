@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d00sk2e54o4tg"]
+[gd_scene load_steps=8 format=3 uid="uid://d00sk2e54o4tg"]
 
 [ext_resource type="Script" uid="uid://buvgnb5huxrcd" path="res://Utility/InputManager.gd" id="1_y4jh7"]
 [ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Commander/PlayerCamera.gd" id="2_q68mp"]
@@ -7,28 +7,6 @@
 [ext_resource type="Script" uid="uid://5j4hdbin2nn7" path="res://Utility/CustomNode/Block.gd" id="5_4b75m"]
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="6_8ju71"]
 [ext_resource type="Script" uid="uid://u8l3lxlg1glw" path="res://Cards/CardCollection.gd" id="7_q68mp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78b6"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0.227451, 0.6, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5lg5"]
-bg_color = Color(0.188235, 0.960784, 0.945098, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.8, 0.8, 0.8, 0)
-
-[sub_resource type="Theme" id="Theme_q68mp"]
-resource_local_to_scene = true
-ProgressBar/styles/background = SubResource("StyleBoxFlat_t78b6")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_u5lg5")
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(2961, -1738)
@@ -101,15 +79,8 @@ position = Vector2(0, 10000)
 [node name="Cursor" parent="Player" index="2"]
 z_index = -1
 
-[node name="Health" parent="Player" index="4"]
-offset_left = -100.0
-
-[node name="HpBar" parent="Player/Health" index="0"]
-theme = SubResource("Theme_q68mp")
-
 [node name="CardCollection" type="Node" parent="." groups=["CardCollection"]]
 script = ExtResource("7_q68mp")
 metadata/_custom_type_script = "uid://u8l3lxlg1glw"
 
 [editable path="Player"]
-[editable path="Player/Health"]

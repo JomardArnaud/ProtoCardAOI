@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="HealthInfo" load_steps=2 format=3 uid="uid://c5pb0mv1yl6aq"]
 
-[ext_resource type="Script" path="res://Utility/CustomType/HealthInfo.gd" id="1_fjrvw"]
+[ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="1_fjrvw"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_fjrvw")
-visibleHpBar = false
-health = 0.0
-maxHealth = 0.0
+visibleHpBar = true
+health = 69
+maxHealth = 100

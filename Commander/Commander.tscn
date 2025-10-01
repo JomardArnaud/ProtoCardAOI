@@ -10,8 +10,8 @@
 [sub_resource type="Resource" id="Resource_rqx0r"]
 script = ExtResource("2_027gq")
 visibleHpBar = true
-health = 0
-maxHealth = 0
+health = 69
+maxHealth = 100
 
 [sub_resource type="Resource" id="Resource_ahofe"]
 script = ExtResource("3_14x6c")

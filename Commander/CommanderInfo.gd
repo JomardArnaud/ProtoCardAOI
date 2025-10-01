@@ -1,6 +1,5 @@
 extends Resource
 
-const HealthInfo = preload("res://Utility/CustomType/HealthInfo.gd")
 const Counter = preload("res://Cards/Counters/Counter.gd") 
 
 @export var health : HealthInfo

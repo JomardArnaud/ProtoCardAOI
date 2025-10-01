@@ -4,18 +4,58 @@
 [ext_resource type="Texture2D" uid="uid://d0ovc83hmo14j" path="res://ArtCard/Scarecrow.png" id="2_ydfl1"]
 [ext_resource type="Script" uid="uid://d3yl2mqdykp0j" path="res://Utility/CustomType/CPolygon2D.gd" id="3_v4ya1"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="5_xl5xg"]
-[ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="6_1xilp"]
 [ext_resource type="PackedScene" uid="uid://bch12dvchox3r" path="res://Utility/CustomNode/Hurtbox2D.tscn" id="6_x6itp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3jxnb"]
 radius = 53.0
 height = 134.0
 
+[sub_resource type="GDScript" id="GDScript_xl5xg"]
+resource_local_to_scene = true
+script/source = "class_name HealthInfoData
+extends Resource
+
+signal healthChanged(nHealth : int)
+signal healthDropZero()
+
+@export var visibleHpBar : bool = true
+@export var health : int = 69 : set = setHealth, get = getHealth
+@export var maxHealth : int = 100 : set = setMaxHealth, get = getMaxHealth
+
+var _health : int = 0
+var _maxHealth : int = 0
+
+func heal(nHeal: int) -> void:
+	health += nHeal
+
+func takeDamage(damage: int) -> void:
+	health = _health - damage
+		
+# not emitting healthChanged
+func setHealth(nHealth: int) -> void:
+	_health = clampi(nHealth, 0, maxHealth)
+	if health == 0:
+		healthDropZero.emit()
+	else:
+		healthChanged.emit(_health)
+	
+func getHealth() -> int:
+	return _health
+
+func setMaxHealth(nMaxHealth: int) -> void:
+	var diffHealth : int = nMaxHealth - _maxHealth
+	_maxHealth = nMaxHealth
+	health = _health + diffHealth
+	
+func getMaxHealth() -> int:
+	return _maxHealth
+"
+
 [sub_resource type="Resource" id="Resource_1xilp"]
 resource_local_to_scene = true
-script = ExtResource("6_1xilp")
+script = SubResource("GDScript_xl5xg")
 visibleHpBar = true
-health = 30
+health = 69
 maxHealth = 100
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
@@ -44,8 +84,15 @@ one_shot = true
 shape = SubResource("CapsuleShape2D_3jxnb")
 
 [node name="Health" parent="." instance=ExtResource("5_xl5xg")]
-offset_top = -97.0
-offset_bottom = -72.0
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -105.0
+offset_right = 102.0
+offset_bottom = -80.0
+grow_vertical = 2
+size_flags_horizontal = 6
 info = SubResource("Resource_1xilp")
 
 [connection signal="takeHit" from="HurtBox" to="Health" method="_on_hurt_box_take_hit"]
