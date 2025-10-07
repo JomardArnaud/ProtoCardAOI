@@ -5,18 +5,20 @@ signal healthChanged(nHealth: int)
 signal healthDropZero(selfInfo : HealthInfo)
 
 @export var info : HealthInfo
-
-@onready var hpBar : HpBar
+@export var hpBar : HpBar
 
 func _ready() -> void:
-	hpBar = %HpBar
+	if (hpBar == null):
+		hpBar = $HpBar
+	else:
+		$HpBar.queue_free()
 	if (info == null):
 		push_error("no health info found")
 		return
-	hpBar.updateHpBarNode(info)	
 	info.infoChanged.connect(hpBar.updateHpBarNode.bind(info))
 	info.healthDropZero.connect(onHealthDropZero)
-
+	hpBar.updateHpBarNode(info)	
+	
 func onHealthDropZero() -> void:
 	healthDropZero.emit(info)
 

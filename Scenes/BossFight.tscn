@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dbostdu533m3l" path="res://Cards/CardCollection.tscn" id="5_xjkry"]
 
 [node name="BossFight" type="Node2D"]
-position = Vector2(2392, -2047)
 
 [node name="InputManager" parent="." instance=ExtResource("5_f70ux")]
 

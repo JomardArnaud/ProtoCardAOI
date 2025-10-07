@@ -32,6 +32,7 @@ content_margin_bottom = 0.0
 [resource]
 default_font = ExtResource("1_68g2y")
 default_font_size = 10
+ProgressBar/styles/background = null
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
 RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 0)

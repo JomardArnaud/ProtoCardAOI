@@ -9,7 +9,6 @@ var power : float
 func resolve() -> void:
 	# Si un dash est déjà en cours, on l'annule avant de lancer un nouveau
 	if durationTimer.time_left > 0:
-		var tst = durationTimer.time_left
 		_on_duration_timeout()
 	## TODO if NPC use Dash need to remake this
 	var dirDash : Vector2 =  InputManager.get_instance().getAimDash(caster)

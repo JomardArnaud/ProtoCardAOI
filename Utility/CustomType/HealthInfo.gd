@@ -9,8 +9,8 @@ signal healthDropZero()
 	set(nVisible):
 		visibleHpBar = nVisible
 		infoChanged.emit()
-@export var health : int = 69 : set = setHealth, get = getHealth
 @export var maxHealth : int = 100 : set = setMaxHealth, get = getMaxHealth
+@export var health : int = 0 : set = setHealth, get = getHealth
 
 func heal(nHeal: int) -> void:
 	health += nHeal
@@ -35,7 +35,7 @@ func getHealth() -> int:
 func setMaxHealth(nMaxHealth: int) -> void:
 	var diffHealth : int = nMaxHealth - maxHealth
 	maxHealth = nMaxHealth
-	health = health + diffHealth
+	#health = health + diffHealth
 	infoChanged.emit()
 	
 func getMaxHealth() -> int:

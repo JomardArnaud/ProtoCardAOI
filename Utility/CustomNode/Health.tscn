@@ -38,7 +38,6 @@ size_flags_vertical = 4
 script = ExtResource("1_qvcda")
 
 [node name="HpBar" parent="." instance=ExtResource("3_jx60x")]
-unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_vwrp0")
 

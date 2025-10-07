@@ -40,8 +40,8 @@ border_color = Color(0, 0.0266666, 0.8, 1)
 resource_local_to_scene = true
 script = ExtResource("2_1454h")
 visibleHpBar = true
-maxHealth = 1000
 health = 750
+maxHealth = 1000
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78b6"]

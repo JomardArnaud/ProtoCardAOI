@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Proto Card Gameplay AOI"
-run/main_scene="uid://d00sk2e54o4tg"
+run/main_scene="uid://bfxyiv3p7jta5"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"

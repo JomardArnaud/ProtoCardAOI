@@ -15,8 +15,8 @@ height = 134.0
 resource_local_to_scene = true
 script = ExtResource("6_1xilp")
 visibleHpBar = true
-health = 30
 maxHealth = 100
+health = 30
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
 [node name="Scarecrow" type="Node2D"]
