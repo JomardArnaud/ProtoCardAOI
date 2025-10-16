@@ -12,9 +12,9 @@ const pathCard = "res://ArtCard/"
 
 @export var cardInfo: CardInfo : get = getCardInfo, set = setCardInfo
 
-@onready var player : PlayerController :
-	set(nPlayer):
-		player = nPlayer 
+@onready var commander : Commander :
+	set(nCommander):
+		commander = nCommander 
 @onready var cardZone : CardEnum.CardZone : get = getCardZone, set = setCardZone
 @onready var hotkeyCard : String : get = getHotkeyCard, set = setHotkeyCard
 
@@ -41,14 +41,16 @@ func resolve() -> void:
 		ability.resolve()	
 	resolved.emit()
 
-func init(nPlayer : PlayerController, nInfo : CardInfo, nZone: CardEnum.CardZone = CardEnum.CardZone.Deck) -> void:
-	player = nPlayer
-	setCardInfo(nInfo)
-	if nPlayer != null && nPlayer.has_node("CardHud"):
-		var cardHudRef = nPlayer.get_node("CardHud")
+func init(nCommander : Commander, nInfo : CardInfo, nZone: CardEnum.CardZone = CardEnum.CardZone.Deck) -> void:
+	if nCommander != null && nCommander.has_node("CardHud"):
+		var cardHudRef = nCommander.get_node("CardHud")
 		changeZone.connect(cardHudRef.moveCard)
 		costSetup()
 		descritpionParsing()
+	else:
+		push_error("no valid Commander was found")
+	commander = nCommander
+	setCardInfo(nInfo)
 
 func costSetup() -> void:
 	
@@ -65,9 +67,9 @@ func descritpionParsing() -> void:
 		if ResourceLoader.exists(path):
 			var ability : CardAbility
 			if parsedAbility.size() > 1:
-				ability = load(path).new(player, parsedAbility[1])
+				ability = load(path).new(commander, parsedAbility[1])
 			else : 
-				ability = load(path).new(player, "")
+				ability = load(path).new(commander, "")
 			ability.init()
 			cardAbilities[keyword] = ability
 			add_child(ability)

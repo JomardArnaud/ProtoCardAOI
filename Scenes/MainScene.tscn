@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d00sk2e54o4tg"]
+[gd_scene load_steps=10 format=3 uid="uid://d00sk2e54o4tg"]
 
 [ext_resource type="Script" uid="uid://buvgnb5huxrcd" path="res://Utility/InputManager.gd" id="1_y4jh7"]
 [ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Commander/PlayerCamera.gd" id="2_q68mp"]
@@ -6,7 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://vbwrldk3i16e" path="res://Ennemies/Scarecrow.tscn" id="4_0iob3"]
 [ext_resource type="Script" uid="uid://5j4hdbin2nn7" path="res://Utility/CustomNode/Block.gd" id="5_4b75m"]
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="6_8ju71"]
+[ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="7_f140w"]
 [ext_resource type="Script" uid="uid://u8l3lxlg1glw" path="res://Cards/CardCollection.gd" id="7_q68mp"]
+
+[sub_resource type="Resource" id="Resource_0iob3"]
+resource_local_to_scene = true
+script = ExtResource("7_f140w")
+visibleHpBar = true
+maxHealth = 100
+health = 80
+metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(2961, -1738)
@@ -76,8 +85,11 @@ script = ExtResource("5_4b75m")
 [node name="Movementbox" parent="Player" index="0"]
 position = Vector2(0, 10000)
 
-[node name="Cursor" parent="Player" index="2"]
+[node name="Cursor" parent="Player" index="1"]
 z_index = -1
+
+[node name="Health" parent="Player" index="4"]
+info = SubResource("Resource_0iob3")
 
 [node name="CardCollection" type="Node" parent="." groups=["CardCollection"]]
 script = ExtResource("7_q68mp")

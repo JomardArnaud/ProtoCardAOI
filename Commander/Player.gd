@@ -17,3 +17,5 @@ func updateDir() -> void:
 		horizontalDirection = int(Input.is_action_pressed("moveLeft")) * -1 + int(Input.is_action_pressed("moveRight"))
 		verticalDirection = int(Input.is_action_pressed("moveUp")) * -1 + int(Input.is_action_pressed("moveDown"))
 		setDir(Vector2(horizontalDirection, verticalDirection))
+
+#func getDir

@@ -25,7 +25,8 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/DeckCardContainer"]
+[node name="DeckCardTexture" type="TextureRect" parent="PanelContainer/DeckCardContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("2_yo3bs")
 expand_mode = 3

@@ -1,10 +1,10 @@
 class_name CardAbility
 extends Node
 
-var caster : PlayerController
+var caster : Commander
 var description : String
 
-func _init(nCaster: PlayerController, nDescription: String) -> void:
+func _init(nCaster: Commander, nDescription: String) -> void:
 	caster = nCaster
 	description = nDescription
 

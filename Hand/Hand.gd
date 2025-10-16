@@ -5,7 +5,7 @@ extends MarginContainer
 #const CardInfo = preload("res://Cards/CardInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
 
-@export var handSizeLimit : int = 4
+@export var handSizeLimit : int = 6
 
 @onready var slotsCard : Dictionary[int, MarginContainer] = {
 	CardEnum.CardType.DASH: %SlotDashContainer,
@@ -18,9 +18,7 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 #Key of dict is hotkey to cast array<string, Card>
 @onready var cardHand : Dictionary[int, Card] = {
 }
-@onready var player : PlayerController :
-	set(nPlayer):
-		player = nPlayer 
+
 #peut être trouver un meilleur nom
 @onready var cdGlobalCast : float
 	

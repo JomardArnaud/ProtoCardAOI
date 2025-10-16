@@ -11,7 +11,8 @@ func resolve() -> void:
 	if durationTimer.time_left > 0:
 		_on_duration_timeout()
 	## TODO if NPC use Dash need to remake this
-	var dirDash : Vector2 =  InputManager.get_instance().getAimDash(caster)
+	var dirDash : Vector2 = caster.getDirDash()
+		 #Vector2 = InputManager.get_instance().getAimDash(caster)
 	caster.setDir(dirDash.normalized())
 	caster.lockDir(true)
 	caster.addSpeed(power)

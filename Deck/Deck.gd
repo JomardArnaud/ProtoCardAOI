@@ -7,13 +7,13 @@ const CardNode = preload("res://Cards/Card.tscn")
 signal noMoreDraw()
 signal cardAddedToDeck(nCard : Card)
 
-@onready var player : PlayerController :
-	set(nPlayer):
-		player = nPlayer 
+@onready var commander : Commander :
+	set(nCommander):
+		commander = nCommander 
 @onready var deckCardContainer : MarginContainer
 @onready var labelRemainingCard : RichTextLabel
+@onready var deckCardTexture : TextureRect
 
-#tmp = [0]
 ## the next card which is drawn is the lastId
 var startingDeck : Dictionary[int, int] = {
 	0: 2,
@@ -30,7 +30,7 @@ func addCardById(idCard: int) -> void:
 	var collection : Dictionary[int, CardInfo] = get_tree().get_first_node_in_group("CardCollection").collection
 	var infoCard : CardInfo = collection[idCard]
 	var nCard = CardNode.instantiate()
-	nCard.init(player, infoCard)
+	nCard.init(commander, infoCard)
 	cardAddedToDeck.emit(nCard)
 	deck.push_back(nCard)
 	cardPile.add_child(nCard)
@@ -64,16 +64,16 @@ func drawCard() -> void:
 func setNbCardLeft(nLeft: int) -> void:
 	nbCardLeft = nLeft
 	if nbCardLeft == 0:
-		deckCardContainer.visible = false
-	elif deckCardContainer.visible == false && nbCardLeft > 0:
-		deckCardContainer.visible = true
+		deckCardTexture.visible = false
+	elif deckCardContainer.visible == false:
+		deckCardTexture.visible = true
 	labelRemainingCard.text = "[center]" + str(nbCardLeft) + "[center]"
 
 func _on_tree_entered():
 	cardPile = %CardPile
 	deckCardContainer = %DeckCardContainer
+	deckCardTexture = %DeckCardTexture
 	labelRemainingCard = %RemainingCardLabel
-
 
 func _on_card_pile_child_entered_tree(node: Node) -> void:
 	nbCardLeft += 1

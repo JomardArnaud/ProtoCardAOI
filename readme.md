@@ -28,6 +28,9 @@
 - [ ] Implémenter l'assistance de visée (Aim Assist)
 - [ ] Card Buff - gear | Laser Vectoriel |= Ray cast en short range qui s'attache au cursor et suit la trajectoire du right stick
 - [ ] First boss arena
+### Bug finder
+- [ ] Log système de toute les actions dans un fichier ?
+- [ ] Faire un bon bug repporter pour les joueur
 ### Boss
 - [ ] Boss round qui se déplacement en ligne droite et bounce contre les murs, se stop lance une carte et refais une droite, etc 
 - [ ] Boss behaviour (Curse Attack: lance un project rect auto guidé contre le joueur esquivable qu'avec un dash une carte Attack - Curse qui se duplique 2 fois en Dash - Curse et Buff- Curse,  )

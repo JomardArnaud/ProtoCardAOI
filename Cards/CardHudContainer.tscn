@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpxkfmkahlg3i"]
+
+[ext_resource type="Script" uid="uid://dx4ajbag5xutg" path="res://Cards/cardHudContainer.gd" id="1_ptny2"]
+[ext_resource type="PackedScene" uid="uid://ck5gdvd6jip1b" path="res://Deck/Deck.tscn" id="1_sq7jr"]
+[ext_resource type="PackedScene" uid="uid://dculbgkisxgmq" path="res://Hand/Hand.tscn" id="2_ptny2"]
+[ext_resource type="PackedScene" uid="uid://rbo8cq7hqtkg" path="res://Graveyard/Graveyard.tscn" id="3_w02rk"]
+
+[node name="CardHudContainer" type="MarginContainer"]
+offset_top = 830.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+script = ExtResource("1_ptny2")
+
+[node name="PanelHud" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelHud"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -810.0
+offset_top = -250.0
+offset_right = 810.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelHud/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Deck" parent="PanelHud/MarginContainer/HBoxContainer" instance=ExtResource("1_sq7jr")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Hand" parent="PanelHud/MarginContainer/HBoxContainer" instance=ExtResource("2_ptny2")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Graveyard" parent="PanelHud/MarginContainer/HBoxContainer" instance=ExtResource("3_w02rk")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[connection signal="child_entered_tree" from="PanelHud/MarginContainer/HBoxContainer/Graveyard" to="PanelHud/MarginContainer/HBoxContainer/Graveyard" method="_on_child_entered_tree"]
+
+[editable path="PanelHud/MarginContainer/HBoxContainer/Hand"]

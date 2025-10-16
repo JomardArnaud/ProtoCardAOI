@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dtvnqs4vi7akg"]
+
+[ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="1_6x180"]
+
+[resource]
+script = ExtResource("1_6x180")
+limitHand = 6
+counter = Array[int]([])
