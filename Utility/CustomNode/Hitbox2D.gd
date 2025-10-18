@@ -6,7 +6,7 @@ extends Area2D
 func _ready() -> void:
 	var parent = get_parent()
 	if (parent.has_method("hit")):
-		hit = get_parent().hit
+		hit = parent.hit
 
 func _on_area_entered(area: Area2D) -> void:
 	if (!hit.is_null()):

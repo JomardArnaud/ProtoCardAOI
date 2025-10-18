@@ -5,7 +5,7 @@ static var instance: InputManager = null
 
 static func get_instance() -> InputManager:
 	if instance == null:
-		push_error("InputManager non instanciate in the scene.")
+		push_error("None InputManager instanciate in the scene.")
 	return instance
 
 # Constantes pour les types de manettes
@@ -109,7 +109,7 @@ func getHotkeyStr(strInput: String) -> String:
 			return debug.as_text().split(" ")[0]
 	return ""
 
-func getAimAttack(player: PlayerController) -> Vector2:
+func getDirAttack(player: PlayerController) -> Vector2:
 	var destDir : Vector2
 	if gamepadActive :
 		destDir = Vector2(Input.get_joy_axis(player.playerId, JOY_AXIS_RIGHT_X), Input.get_joy_axis(player.playerId, JOY_AXIS_RIGHT_Y))
@@ -117,7 +117,7 @@ func getAimAttack(player: PlayerController) -> Vector2:
 		destDir = getDirFromMouse(player)
 	return destDir
  
-func getAimDash(player: PlayerController) -> Vector2:
+func getDirDash(player: PlayerController) -> Vector2:
 	var destDir : Vector2
 	if gamepadActive :
 		destDir = Vector2(Input.get_joy_axis(player.playerId, JOY_AXIS_LEFT_X), Input.get_joy_axis(player.playerId, JOY_AXIS_LEFT_Y))
@@ -125,9 +125,9 @@ func getAimDash(player: PlayerController) -> Vector2:
 		destDir = getDirFromMouse(player)
 	return destDir
 
-func getDirFromMouse(player: PlayerController) -> Vector2:
+func getDirFromMouse(entity: Node) -> Vector2:
 	var destDir : Vector2
-	destDir = player.get_global_mouse_position() - player.global_position
+	destDir = entity.get_global_mouse_position() - entity.global_position
 	if destDir.length_squared() > 0.0001: 
 		destDir = destDir.normalized()
 	else :

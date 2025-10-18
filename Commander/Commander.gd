@@ -8,16 +8,28 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 @export var body : MovementBody2D
 @export var cardHud : CardHudContainer
 
-#@export var cardHud : 
 ##All HUD's parts
 @onready var deck : Deck
 @onready var hand : Hand
 @onready var graveyard : Graveyard
 
+var getDirDash : Callable
+var getDirAttack : Callable
+
 func _ready():
+	var parent = get_parent()
+	if parent.has_method("getDirDash"):
+		getDirDash = parent.getDirDash
+	else:
+		getDirDash = func() -> Vector2 : return Vector2.ZERO
+	if parent.has_method("getDirAttack"):
+		getDirAttack = parent.getDirAttack
+	else:
+		getDirAttack = func() -> Vector2 : return Vector2.ZERO
 	deck = cardHud.get_node("%Deck")
 	hand = cardHud.get_node("%Hand")
 	graveyard = cardHud.get_node("%Graveyard")
+	deck.commander = self
 	deck.cardAddedToDeck.connect(onCardAddedToDeck)
 	deck.noMoreDraw.connect(refillDeck)
 	deck.fillCardInDeck()
@@ -47,12 +59,6 @@ func refillDeck() -> void:
 	deck.setNbCardLeft(nbCard)
 	deck.shuffle()
 	deck.drawCard()
-
-func getDirDash() -> Vector2:
-	return Vector2.ZERO
-
-func getDirAttack() -> Vector2:
-	return Vector2.ZERO
 
 func onCardAddedToDeck(nCard: Card):
 	nCard.resolved.connect(cardAfterResolve.bind(nCard))

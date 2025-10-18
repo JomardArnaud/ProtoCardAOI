@@ -9,18 +9,17 @@ extends Node2D
 		radius = nRadius
 @export var distanceToHolder : float = 10
 
-@onready var playerId : int = 0
 @onready var pos : Vector2
 @onready var dir : Vector2
 
 func _ready():
-	var playerId = get_parent().playerId
+	if (!get_parent().has_method("getDirAttack")):
+		push_error("Crusor's patents isn't valid (don't has method getDirAttack)")
 	queue_redraw()
 	
 func _process(_delta: float) -> void:
 	dir = Vector2.ZERO
-	position = Vector2.ZERO
-	dir = InputManager.get_instance().getAimAttack(get_tree().get_nodes_in_group("Players")[playerId])
+	dir = get_parent().getDirAttack()
 	position = dir * distanceToHolder
 
 func _draw():

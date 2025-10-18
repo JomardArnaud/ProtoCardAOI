@@ -42,22 +42,18 @@ func resolve() -> void:
 	resolved.emit()
 
 func init(nCommander : Commander, nInfo : CardInfo, nZone: CardEnum.CardZone = CardEnum.CardZone.Deck) -> void:
-	if nCommander != null && nCommander.has_node("CardHud"):
-		var cardHudRef = nCommander.get_node("CardHud")
-		changeZone.connect(cardHudRef.moveCard)
+	if nCommander != null && nCommander.cardHud != null:	
+		commander = nCommander
+		setCardInfo(nInfo)
+		changeZone.connect(nCommander.moveCard)
 		costSetup()
 		descritpionParsing()
 	else:
 		push_error("no valid Commander was found")
-	commander = nCommander
-	setCardInfo(nInfo)
-
+		
 func costSetup() -> void:
-	
 	pass
 	
-#here parse the description
-
 func descritpionParsing() -> void:
 	var cardParsedAbilities = cardInfo.description.split(" | ")
 	for abilityKeyword : String in cardParsedAbilities:
