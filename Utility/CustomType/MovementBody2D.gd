@@ -63,7 +63,7 @@ func addSpeed(nSpeed: float) -> MovementBody2D:
 
 func setDir(nDir: Vector2) -> MovementBody2D:
 	if !dirLock:
-		dir = nDir
+		dir = nDir.normalized()
 	return self
 	
 func getDir() -> Vector2:

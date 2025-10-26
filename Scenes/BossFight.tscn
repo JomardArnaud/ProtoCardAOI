@@ -1,17 +1,23 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfxyiv3p7jta5"]
 
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="1_l5je7"]
+[ext_resource type="Script" uid="uid://ci5fus18ojsoi" path="res://Utility/InputManager.gd" id="1_xjkry"]
 [ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Commander/PlayerCamera.gd" id="2_xjkry"]
 [ext_resource type="PackedScene" uid="uid://bm02wou48n2vd" path="res://Ennemies/Boss.tscn" id="5_55aqt"]
-[ext_resource type="PackedScene" uid="uid://btjil1vrqgpgx" path="res://Utility/InputManager.tscn" id="5_f70ux"]
 [ext_resource type="PackedScene" uid="uid://dbostdu533m3l" path="res://Cards/CardCollection.tscn" id="5_xjkry"]
 
 [node name="BossFight" type="Node2D"]
 
-[node name="InputManager" parent="." instance=ExtResource("5_f70ux")]
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("1_xjkry")
+metadata/_custom_type_script = "uid://ci5fus18ojsoi"
 
 [node name="Player" parent="." instance=ExtResource("1_l5je7")]
 position = Vector2(-894, 545)
+playerId = null
+speed = null
+acceleration = null
+inertia = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

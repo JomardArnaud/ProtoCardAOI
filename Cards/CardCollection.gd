@@ -5,11 +5,13 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardInfo = preload("res://Cards/CardInfo.gd")
 
 var collection : Dictionary[int, CardInfo] = {
-	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, "SkillShot 10/300"),
-	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, "Dash 3000/0.15 | Gain 1CWind"),
+	##TODO counter Shot, each ability with 'Shot' is resolve gain 1 counter Shot
+	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, "SkillShot 10/300"), ##TODO 10X(nbUSed"Ida's Wind" or nbCounter"Shot")/300 
+	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, "Dash 3000/0.15 | Gain 1CWind"), ##TODO Counter 
 	2: CardInfo.new("Blank Attack", 1, CardEnum.CardType.ATTACK, "Blank"),
 	3: CardInfo.new("Blank Dash", 1, CardEnum.CardType.DASH, "Blank"),
-	4: CardInfo.new("Blank Spell", 1, CardEnum.CardType.SPELL, "Blank")
+	4: CardInfo.new("Blank Spell", 1, CardEnum.CardType.SPELL, "Blank"),
+	5: CardInfo.new('IchiNoKata attack', 1, CardEnum.CardType.ATTACK, "FreeCost Dash | DashShot X(DashVelocity)")
 } : get = getCollection
 
 func _init() -> void:

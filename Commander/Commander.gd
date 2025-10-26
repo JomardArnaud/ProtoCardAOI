@@ -36,6 +36,10 @@ func _ready():
 	for i in range(0, hand.handSizeLimit):
 		deck.drawCard()
 
+func _process(delta: float) -> void:
+	##TODO faire qu'il ait 8 tick pars seconde
+	commanderInfo.currentEnergy += commanderInfo.EnergyRegen / (commanderInfo.currentEnergy + 1)
+	
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 	card.hotkeyCard = ""
 	match to:

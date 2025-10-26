@@ -24,6 +24,10 @@ metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 scale = Vector2(10, 10)
 script = ExtResource("1_caob2")
+playerId = null
+speed = null
+acceleration = null
+inertia = null
 
 [node name="Movementbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qathd")
