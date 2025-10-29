@@ -14,10 +14,6 @@ metadata/_custom_type_script = "uid://ci5fus18ojsoi"
 
 [node name="Player" parent="." instance=ExtResource("1_l5je7")]
 position = Vector2(-894, 545)
-playerId = null
-speed = null
-acceleration = null
-inertia = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

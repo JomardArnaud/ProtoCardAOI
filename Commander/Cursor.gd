@@ -13,13 +13,11 @@ extends Node2D
 @onready var dir : Vector2
 
 func _ready():
-	if (!get_parent().has_method("getDirAttack")):
-		push_error("Crusor's patents isn't valid (don't has method getDirAttack)")
 	queue_redraw()
 	
 func _process(_delta: float) -> void:
 	dir = Vector2.ZERO
-	dir = get_parent().getDirAttack()
+	dir = get_parent().getDirAttack.call()
 	position = dir * distanceToHolder
 
 func _draw():

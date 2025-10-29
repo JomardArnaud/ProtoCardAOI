@@ -1,19 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://1gqkb0fppjlj"]
+[gd_scene load_steps=10 format=3 uid="uid://1gqkb0fppjlj"]
 
 [ext_resource type="Script" uid="uid://baaxvqbmq3gta" path="res://Commander/Player.gd" id="1_caob2"]
 [ext_resource type="Texture2D" uid="uid://by8cxlc4pd4f0" path="res://ArtCard/SpritePlayerPlaygroundCard.png" id="4_le41p"]
 [ext_resource type="PackedScene" uid="uid://d4ffh65mxnhar" path="res://Weapon/Weapon.tscn" id="5_q3f8m"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="6_i4si5"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="7_le41p"]
+[ext_resource type="PackedScene" uid="uid://dsdq572poq71l" path="res://Commander/Commander.tscn" id="7_owyu7"]
 [ext_resource type="PackedScene" uid="uid://bpxkfmkahlg3i" path="res://Cards/CardHudContainer.tscn" id="7_q3f8m"]
-[ext_resource type="Script" uid="uid://cjnywahwqaso1" path="res://Commander/Commander.gd" id="8_owyu7"]
-[ext_resource type="Script" uid="uid://cgdc40mbyvcgy" path="res://Commander/Cursor.gd" id="8_q3f8m"]
-[ext_resource type="Resource" uid="uid://dtvnqs4vi7akg" path="res://Utility/CustomeTres/BasicStatCommander.tres" id="9_owyu7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qathd"]
 radius = 4.41021
 
-[sub_resource type="Resource" id="Resource_owyu7"]
+[sub_resource type="Resource" id="Resource_ws75h"]
 resource_local_to_scene = true
 script = ExtResource("7_le41p")
 visibleHpBar = true
@@ -24,18 +22,12 @@ metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 scale = Vector2(10, 10)
 script = ExtResource("1_caob2")
-playerId = null
 speed = null
 acceleration = null
 inertia = null
 
 [node name="Movementbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qathd")
-
-[node name="Cursor" type="Node2D" parent="."]
-script = ExtResource("8_q3f8m")
-color = Color(0.29, 1, 1, 1)
-radius = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("4_le41p")
@@ -48,7 +40,7 @@ offset_top = -7.8
 offset_right = 190.1
 offset_bottom = 17.2
 scale = Vector2(0.1, 0.1)
-info = SubResource("Resource_owyu7")
+info = SubResource("Resource_ws75h")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -65,9 +57,12 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Commander" type="Node2D" parent="." node_paths=PackedStringArray("body", "cardHud")]
-script = ExtResource("8_owyu7")
-commanderInfo = ExtResource("9_owyu7")
+[node name="Commander" parent="." node_paths=PackedStringArray("body", "cardHud") instance=ExtResource("7_owyu7")]
 body = NodePath("..")
 cardHud = NodePath("../HUD/CardContainer")
-metadata/_custom_type_script = "uid://cjnywahwqaso1"
+
+[node name="Cursor" parent="Commander" index="0"]
+color = Color(3.85046e-07, 0.763283, 0.952029, 1)
+radius = 2.0
+
+[editable path="Commander"]

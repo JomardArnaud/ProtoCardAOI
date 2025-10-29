@@ -1,3 +1,4 @@
+class_name CommanderInfo
 extends Resource
 
 const Counter = preload("res://Cards/Counters/Counter.gd") 
@@ -8,4 +9,4 @@ const Counter = preload("res://Cards/Counters/Counter.gd")
 @export var counter : Array[Counter.idCounter]
 
 @export var currentEnergy : float = 2
-@export var EnergyRegen : float = 0.125 ## 8 ticks per second
+@export var energyRegen : float = 1 ## Per second

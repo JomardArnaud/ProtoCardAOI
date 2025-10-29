@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d00sk2e54o4tg"]
+[gd_scene load_steps=12 format=3 uid="uid://d00sk2e54o4tg"]
 
 [ext_resource type="Script" uid="uid://ci5fus18ojsoi" path="res://Utility/InputManager.gd" id="1_y4jh7"]
 [ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Commander/PlayerCamera.gd" id="2_q68mp"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="6_8ju71"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="7_f140w"]
 [ext_resource type="Script" uid="uid://u8l3lxlg1glw" path="res://Cards/CardCollection.gd" id="7_q68mp"]
+[ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="8_0iob3"]
 
 [sub_resource type="Resource" id="Resource_0iob3"]
 resource_local_to_scene = true
@@ -17,8 +18,16 @@ maxHealth = 100
 health = 80
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
+[sub_resource type="Resource" id="Resource_4b75m"]
+resource_local_to_scene = true
+script = ExtResource("8_0iob3")
+limitHand = 6
+counter = Array[int]([])
+currentEnergy = 2.0
+energyRegen = 1.0
+metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
+
 [node name="Node2D" type="Node2D"]
-position = Vector2(2961, -1738)
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("1_y4jh7")
@@ -81,10 +90,6 @@ polygon = PackedVector2Array(2095, -1094, 2006, -974, 2256, -876, 2352, -1038, 2
 script = ExtResource("5_4b75m")
 
 [node name="Player" parent="." instance=ExtResource("6_8ju71")]
-playerId = null
-speed = null
-acceleration = null
-inertia = null
 
 [node name="Movementbox" parent="Player" index="0"]
 position = Vector2(0, 10000)
@@ -94,6 +99,9 @@ z_index = -1
 
 [node name="Health" parent="Player" index="4"]
 info = SubResource("Resource_0iob3")
+
+[node name="Commander" parent="Player" index="6"]
+commanderInfo = SubResource("Resource_4b75m")
 
 [node name="CardCollection" type="Node" parent="." groups=["CardCollection"]]
 script = ExtResource("7_q68mp")

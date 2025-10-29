@@ -1,7 +1,6 @@
 class_name Commander
 extends Node2D
 
-const CommanderInfo = preload("res://Commander/CommanderInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
 
 @export var commanderInfo : CommanderInfo
@@ -37,8 +36,7 @@ func _ready():
 		deck.drawCard()
 
 func _process(delta: float) -> void:
-	##TODO faire qu'il ait 8 tick pars seconde
-	commanderInfo.currentEnergy += commanderInfo.EnergyRegen / (commanderInfo.currentEnergy + 1)
+	commanderInfo.currentEnergy += commanderInfo.energyRegen * delta
 	
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 	card.hotkeyCard = ""
@@ -54,6 +52,7 @@ func cardAfterResolve(card : Card):
 	moveCard(card, CardEnum.CardZone.Graveyard)
 	hand.fillSlotCard()
 	deck.drawCard()
+	print(commanderInfo.currentEnergy)
 
 func refillDeck() -> void:
 	var nbCard : int = graveyard.emptyGraveyard(CardEnum.CardZone.Deck)
