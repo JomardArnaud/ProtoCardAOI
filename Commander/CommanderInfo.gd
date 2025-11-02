@@ -9,4 +9,4 @@ const Counter = preload("res://Cards/Counters/Counter.gd")
 @export var counter : Array[Counter.idCounter]
 
 @export var currentEnergy : float = 2
-@export var energyRegen : float = 1 ## Per second
+@export var energyRegen : float = 0.5 ## Per second

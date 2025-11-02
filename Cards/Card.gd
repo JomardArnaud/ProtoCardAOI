@@ -31,6 +31,7 @@ var cardAbilities : Dictionary = {
 @onready var descriptionCardLabel : RichTextLabel
 @onready var keyToUseLabel : RichTextLabel
 
+#TODO Make Hotkey for also 4,5,7,8 put the limit hand to 8 and apdate this function to take commander's energy"
 func _input(input : InputEvent) -> void:
 	if hotkeyCard != "":
 		if input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type]):
