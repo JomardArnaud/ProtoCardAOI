@@ -9,6 +9,7 @@ const WeaponInfo = preload("res://Weapon/WeaponInfo.gd")
 @onready var BacisProjectileScene = preload("res://Cards/Ability/SkillShot/BasicProjectile.tscn")
 
 @export var info : WeaponInfo
+@export var holder : Commander
 
 ##TODO pour que le HUD ne bouge pas en même temps que le joueur faut avoir top_level = true 
 
@@ -34,11 +35,9 @@ func shootBullet() -> void:
 		reloading.emit()
 		timerReload.start()
 	var bullet := BacisProjectileScene.instantiate()
-	## TODO just to test need to rework on commander node to add cursor and set PlayerNode to type Commander and node Commander inherit of MovementBody2D  
-	var tmpPlayer = get_tree().get_nodes_in_group("Players")[0]
-	var cursor : Cursor = tmpPlayer.get_node("Cursor")
+	var cursor : Cursor = holder.get_node("Cursor")
 	bullet.dir = cursor.dir
 	bullet.setSpeed(info.speedBullet)
 	bullet.position = cursor.global_position
-	tmpPlayer.add_child(bullet)
+	holder.add_child(bullet)
 	timerFireRate.start()

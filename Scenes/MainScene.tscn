@@ -94,13 +94,10 @@ script = ExtResource("5_4b75m")
 [node name="Movementbox" parent="Player" index="0"]
 position = Vector2(0, 10000)
 
-[node name="Cursor" parent="Player" index="1"]
-z_index = -1
-
-[node name="Health" parent="Player" index="4"]
+[node name="Health" parent="Player" index="3"]
 info = SubResource("Resource_0iob3")
 
-[node name="Commander" parent="Player" index="6"]
+[node name="Commander" parent="Player" index="5"]
 commanderInfo = SubResource("Resource_4b75m")
 
 [node name="CardCollection" type="Node" parent="." groups=["CardCollection"]]
@@ -108,3 +105,4 @@ script = ExtResource("7_q68mp")
 metadata/_custom_type_script = "uid://u8l3lxlg1glw"
 
 [editable path="Player"]
+[editable path="Player/Commander"]
