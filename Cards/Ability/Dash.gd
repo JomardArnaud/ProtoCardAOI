@@ -12,9 +12,9 @@ func resolve() -> void:
 		_on_duration_timeout()
 	## TODO if NPC use Dash need to remake this
 	var dirDash : Vector2 = caster.getDirDash.call()
-	caster.setDir(dirDash.normalized())
-	caster.lockDir(true)
-	caster.addSpeed(power)
+	caster.body.setDir(dirDash.normalized())
+	caster.body.lockDir(true)
+	caster.body.addSpeed(power)
 	durationTimer.start()
 	pass
 
@@ -28,6 +28,6 @@ func init() -> void:
 	add_child(durationTimer)
 	
 func _on_duration_timeout() -> void:
-	caster.lockDir(false)
-	caster.addSpeed(-power)
-	caster.resetEnergy(Vector2(0.3, 0.3))
+	caster.body.lockDir(false)
+	caster.body.addSpeed(-power)
+	caster.body.resetEnergy(Vector2(0.3, 0.3))

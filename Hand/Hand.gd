@@ -13,7 +13,6 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 	CardEnum.CardType.SPELL: %SlotSpellContainer
 }
 
-@onready var nbCardHand : int = 0
 @onready var cardHandNode := %CardContainer
 #Key of dict is hotkey to cast array<string, Card>
 @onready var cardHand : Dictionary[int, Card] = {
@@ -28,9 +27,6 @@ func setSlotsCard():
 func setSlotCard(card: Card) -> void:
 	var strInput : String = "Cast" + CardEnum.CardType.keys()[card.cardInfo.type]
 	card.setHotkeyCard(InputManager.get_instance().getHotkeyStr(strInput))
-	var keyCard = cardHand.find_key(card)
-	if keyCard != null:
-		cardHand.erase(keyCard)
 	card.reparent(slotsCard[card.cardInfo.type])
 
 func addCardToHand(nCard: Card) -> void:
@@ -41,23 +37,29 @@ func addCardToHand(nCard: Card) -> void:
 	else:
 		##TODO fix l'index card 
 		indexCard = cardHand.size()
+		nCard.hotkeyCard = String("Cast" + str(indexCard + 1))
 		nCard.reparent(cardHandNode)
 		cardHand[indexCard] = nCard
 	nCard.visible = true
-	nbCardHand += 1
 
 func fillSlotCard() -> void:
 	var nbCardLeft : int = 0
+	var offsetCardLeaving : int = 0
+	var keySlotRef : Array[String]
 	for i in range(0, cardHand.size()):
 		var card : Card = cardHand[i]
 		if !is_instance_valid(card):
+			offsetCardLeaving += 1
 			continue
 		if slotsCard[card.cardInfo.type].get_child_count() == 0:
+			offsetCardLeaving += 1
+			var keyCard = cardHand.find_key(card)
+			if keyCard != null:
+				keySlotRef.push_back(keyCard)
 			setSlotCard(card)
 		else:
 			cardHand.erase(i)
 			cardHand[nbCardLeft] = card
-			nbCardLeft += 1
 
 func _process(delta: float) -> void:
 	cdGlobalCast = clampf(cdGlobalCast - delta, 0, cdGlobalCast)
@@ -66,12 +68,12 @@ func cardLeaveHand(card: Card):
 	var idCard = cardHand.find_key(card)
 	if idCard!= null:
 		cardHand[idCard] = null
-	nbCardHand -= 1
 
 ##TODO opti here
 func _on_slot_margin_child_exiting_tree(node: Node) -> void:
-	if node is Card:
-		cardLeaveHand(node)
+	#if node is Card:
+		#cardLeaveHand(node)
+	pass
 
 func _on_slot_dash_container_child_exiting_tree(node: Node) -> void:
 	if node is Card:

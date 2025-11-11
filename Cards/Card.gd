@@ -33,10 +33,14 @@ var cardAbilities : Dictionary = {
 
 #TODO Make Hotkey for also 4,5,7,8 put the limit hand to 8 and apdate this function to take commander's energy"
 func _input(input : InputEvent) -> void:
-	if hotkeyCard != "":
-		if input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type]):
-			resolve()
-	
+	if (hotkeyCard != ""):
+		if (int(hotkeyCard) > 0):
+			if input.is_action_pressed(hotkeyCard):
+				resolve()
+		else:
+			if (input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type])):
+				resolve()
+				
 func resolve() -> void:
 	for ability in cardAbilities.values():
 		ability.resolve()	

@@ -9,7 +9,7 @@ script = ExtResource("3_14x6c")
 limitHand = 6
 counter = Array[int]([])
 currentEnergy = 2.0
-energyRegen = 1.0
+energyRegen = 0.5
 
 [node name="Commander" type="Node2D"]
 script = ExtResource("1_bg122")

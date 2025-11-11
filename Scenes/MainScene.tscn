@@ -24,7 +24,7 @@ script = ExtResource("8_0iob3")
 limitHand = 6
 counter = Array[int]([])
 currentEnergy = 2.0
-energyRegen = 1.0
+energyRegen = 0.5
 metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
 
 [node name="Node2D" type="Node2D"]
