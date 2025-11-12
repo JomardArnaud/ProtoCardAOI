@@ -35,7 +35,7 @@ var cardAbilities : Dictionary = {
 func _input(input : InputEvent) -> void:
 	if (hotkeyCard != ""):
 		if (int(hotkeyCard) > 0):
-			if input.is_action_pressed(hotkeyCard):
+			if input.is_action_pressed("Cast" + hotkeyCard):
 				resolve()
 		else:
 			if (input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type])):

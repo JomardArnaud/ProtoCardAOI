@@ -52,7 +52,7 @@ func sendToDeck(nCard : Card) -> void:
 func shuffle():
 	deck.shuffle()
 
-##TODO t'as un bug quand le deck est vide le sprite ne s'affiche plus 
+##TODO t'as un bug quand le deck est vide le sprite ne s'affiche plus et maintenant il ne se raffiche plus quand le deck se reill
 
 func drawCard() -> void:
 	if nbCardLeft == 0:

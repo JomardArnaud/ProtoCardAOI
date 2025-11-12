@@ -32,7 +32,7 @@ func _ready():
 	deck.cardAddedToDeck.connect(onCardAddedToDeck)
 	deck.noMoreDraw.connect(refillDeck)
 	deck.fillCardInDeck()
-	for i in range(0, hand.handSizeLimit):
+	for i in range(0, commanderInfo.handSizeLimit):
 		deck.drawCard()
 
 func _process(delta: float) -> void:
@@ -52,7 +52,6 @@ func cardAfterResolve(card : Card):
 	moveCard(card, CardEnum.CardZone.Graveyard)
 	hand.fillSlotCard()
 	deck.drawCard()
-	print(commanderInfo.currentEnergy)
 
 func refillDeck() -> void:
 	var nbCard : int = graveyard.emptyGraveyard(CardEnum.CardZone.Deck)

@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_ahofe"]
 script = ExtResource("3_14x6c")
-limitHand = 6
+handSizeLimit = 6
 counter = Array[int]([])
 currentEnergy = 2.0
 energyRegen = 0.5
