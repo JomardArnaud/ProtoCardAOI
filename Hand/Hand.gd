@@ -52,28 +52,10 @@ func fillSlotCard() -> void:
 			nbCardHand += 1
 	cardHand = tmpCardHand
 
+func getNbCardInHand() -> int:
+	var test =  cardHandNode.get_children()
+	return 5
+	 #cardHandNode.get_children().count(func(c): c is Card)
+
 func _process(delta: float) -> void:
 	cdGlobalCast = clampf(cdGlobalCast - delta, 0, cdGlobalCast)
-
-func cardLeaveHand(card: Card):
-	var idCard = cardHand.find_key(card)
-	if idCard!= null:
-		cardHand[idCard] = null
-
-##TODO opti here
-func _on_slot_margin_child_exiting_tree(node: Node) -> void:
-	#if node is Card:
-		#cardLeaveHand(node)
-	pass
-
-func _on_slot_dash_container_child_exiting_tree(node: Node) -> void:
-	if node is Card:
-		cardLeaveHand(node)
-
-func _on_slot_attack_container_child_exiting_tree(node: Node) -> void:
-	if node is Card:
-		cardLeaveHand(node)
-
-func _on_slot_spell_container_child_exiting_tree(node: Node) -> void:
-	if node is Card:
-		cardLeaveHand(node)
