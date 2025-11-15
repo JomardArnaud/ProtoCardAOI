@@ -12,7 +12,6 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 }
 
 @onready var cardHandNode := %CardContainer
-#Key of dict is hotkey to cast array<string, Card>
 @onready var cardHand : Dictionary[int, Card] = {
 }
 
@@ -38,11 +37,11 @@ func addCardToHand(nCard: Card) -> void:
 	nCard.visible = true
 	
 func fillSlotCard() -> void:
-	var tmpCardHand : Dictionary[int, Card]
+	var tmpCardHand : Dictionary[int, Card] = {}
 	var nbCardHand : int = 0
 	for i in range(0, cardHand.size()):
 		var card : Card = cardHand[i]
-		if !is_instance_valid(card):
+		if card == null or !is_instance_valid(card):
 			continue
 		if slotsCard[card.cardInfo.type].get_child_count() == 0:
 			setSlotCard(card)
@@ -53,9 +52,7 @@ func fillSlotCard() -> void:
 	cardHand = tmpCardHand
 
 func getNbCardInHand() -> int:
-	var test =  cardHandNode.get_children()
-	return 5
-	 #cardHandNode.get_children().count(func(c): c is Card)
+	return cardHand.size()
 
 func _process(delta: float) -> void:
 	cdGlobalCast = clampf(cdGlobalCast - delta, 0, cdGlobalCast)

@@ -69,7 +69,6 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Commander" parent="." node_paths=PackedStringArray("body", "cardHud") instance=ExtResource("7_owyu7")]
-scale = Vector2(1, 1)
 commanderInfo = SubResource("Resource_owyu7")
 body = NodePath("..")
 cardHud = NodePath("../HUD/CardContainer")
