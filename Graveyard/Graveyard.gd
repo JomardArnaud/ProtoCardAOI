@@ -38,4 +38,7 @@ func _on_card_pile_child_entered_tree(node: Node) -> void:
 
 
 func _on_card_pile_child_exiting_tree(node: Node) -> void:
-	pass # Replace with function body.
+	var nbCardLeft = cardPile.get_child_count() - 1
+	remainingCardLabel.text = "[center]%s[center]" % str(nbCardLeft)
+	if nbCardLeft == 0:
+		cardOnTop.visible = false

@@ -16,8 +16,8 @@ signal cardAddedToDeck(nCard : Card)
 
 ## the next card which is drawn is the lastId
 var startingDeck : Dictionary[int, int] = {
-	0: 2,
-	1: 2,
+	0: 3,
+	1: 3,
 	2: 2,
 	3: 2,
 	4: 2
@@ -52,8 +52,6 @@ func sendToDeck(nCard : Card) -> void:
 func shuffle():
 	deck.shuffle()
 
-##TODO t'as un bug quand le deck est vide le sprite ne s'affiche plus et maintenant il ne se raffiche plus quand le deck se reill
-
 func drawCard() -> void:
 	if nbCardLeft == 0:
 		noMoreDraw.emit()
@@ -63,10 +61,10 @@ func drawCard() -> void:
 
 func setNbCardLeft(nLeft: int) -> void:
 	nbCardLeft = nLeft
-	if nbCardLeft == 0:
-		deckCardTexture.visible = false
-	elif deckCardContainer.visible == false:
-		deckCardTexture.visible = true
+	#if nbCardLeft == 0:
+		#deckCardTexture.visible = false
+	#elif deckCardContainer.visible == false:
+		#deckCardTexture.visible = true
 	labelRemainingCard.text = "[center]" + str(nbCardLeft) + "[center]"
 
 func _on_tree_entered():
