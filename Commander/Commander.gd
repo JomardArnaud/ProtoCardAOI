@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 	
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 	card.hotkeyCard = ""
+	card.cardZone = to
 	match to:
 		CardEnum.CardZone.Deck:
 			deck.sendToDeck(card)
@@ -50,8 +51,8 @@ func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 
 func cardAfterResolve(card : Card):
 	moveCard(card, CardEnum.CardZone.Graveyard)
-	hand.fillSlotCard()
 	drawCard()
+	hand.fillSlotCard()
 
 func refillDeck() -> void:
 	var nbCard : int = graveyard.emptyGraveyard(CardEnum.CardZone.Deck)

@@ -41,16 +41,19 @@ func fillSlotCard() -> void:
 	var nbCardHand : int = 0
 	for i in range(0, cardHand.size()):
 		var card : Card = cardHand[i]
-		if card == null or !is_instance_valid(card):
+		if card == null or !is_instance_valid(card) or card.cardZone != CardEnum.CardZone.Hand:
 			continue
 		if slotsCard[card.cardInfo.type].get_child_count() == 0:
 			setSlotCard(card)
 		else:
+			var idCard = nbCardHand + 1
 			card.hotkeyCard = str(nbCardHand + 1)
 			tmpCardHand[nbCardHand] = card
 			nbCardHand += 1
+	pass
+	cardHand = {}
 	cardHand = tmpCardHand
-
+	pass
 func getNbCardInHand() -> int:
 	return cardHand.size()
 

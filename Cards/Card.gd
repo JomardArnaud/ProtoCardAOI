@@ -31,7 +31,6 @@ var cardAbilities : Dictionary = {
 @onready var descriptionCardLabel : RichTextLabel
 @onready var keyToUseLabel : RichTextLabel
 
-#TODO Make Hotkey for also 4,5,7,8 put the limit hand to 8 and apdate this function to take commander's energy"
 func _input(input : InputEvent) -> void:
 	if (hotkeyCard != ""):
 		if (int(hotkeyCard) > 0):
@@ -99,10 +98,6 @@ func updateCardNode() -> void:
 func getHotkeyCard() -> String:
 	return hotkeyCard
 
-func setSpecialHotkeyCard(idCardHand : int) -> String:
-	hotkeyCard = str(idCardHand + 1)
-	return hotkeyCard
-
 func setHotkeyCard(nKey : String) -> Card:
 	hotkeyCard = nKey
 	if keyToUseLabel != null:
@@ -111,11 +106,8 @@ func setHotkeyCard(nKey : String) -> Card:
 
 func setCardZone(nZone : CardEnum.CardZone) -> void:
 	if (cardZone != nZone):
-		changeZone.emit(self, nZone)
 		cardZone = nZone
-		match cardZone:
-			CardEnum.CardZone.Graveyard:
-				hotkeyCard = ""
+		changeZone.emit(self, nZone)
 
 func getCardZone() -> CardEnum.CardZone:
 	return cardZone
