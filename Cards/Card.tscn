@@ -131,7 +131,7 @@ text = "Description's Card"
 autowrap_mode = 1
 visible_characters_behavior = 1
 
-[node name="Panel" type="Panel" parent="."]
+[node name="PanelKey" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.898
@@ -140,7 +140,7 @@ anchor_bottom = 0.988
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="KeyToUseLabel" type="RichTextLabel" parent="Panel"]
+[node name="KeyToUseLabel" type="RichTextLabel" parent="PanelKey"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

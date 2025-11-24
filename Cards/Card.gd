@@ -39,7 +39,7 @@ func _input(input : InputEvent) -> void:
 		else:
 			if (input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type])):
 				resolve()
-				
+
 func resolve() -> void:
 	for ability in cardAbilities.values():
 		ability.resolve()	
@@ -54,10 +54,10 @@ func init(nCommander : Commander, nInfo : CardInfo, nZone: CardEnum.CardZone = C
 		descritpionParsing()
 	else:
 		push_error("no valid Commander was found")
-		
+
 func costSetup() -> void:
 	pass
-	
+
 func descritpionParsing() -> void:
 	var cardParsedAbilities = cardInfo.description.split(" | ")
 	for abilityKeyword : String in cardParsedAbilities:
@@ -101,6 +101,7 @@ func getHotkeyCard() -> String:
 func setHotkeyCard(nKey : String) -> Card:
 	hotkeyCard = nKey
 	if keyToUseLabel != null:
+		$PanelKey.visible = int(!hotkeyCard == "")
 		keyToUseLabel.text = "[center]%s[center]" % hotkeyCard
 	return self
 
