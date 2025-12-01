@@ -57,5 +57,16 @@ func fillSlotCard() -> void:
 func getNbCardInHand() -> int:
 	return cardHand.size()
 
+
+##TODO 
+# BUG sur le dash (la direction déconne des fois, et quand aucune touche de déplacement n'est pressé il ne bouge pas avec le dash
+# BUG sur le hotkey quand je lance une carte mais qu'il le deck est vide ça ne reset pas bien bien les hotkeys
+
+func castSlotCard(idSlot: int) -> void:
+	pass
+	
+func castHandCard(idCard: int) -> void:
+	pass
+
 func _process(delta: float) -> void:
 	cdGlobalCast = clampf(cdGlobalCast - delta, 0, cdGlobalCast)
