@@ -13,8 +13,8 @@ func resolve() -> void:
 	## TODO if NPC use Dash need to remake this
 	var dirDash : Vector2 = caster.getDirDash.call()
 	caster.body.setDir(dirDash.normalized())
-	caster.body.lockDir(true)
 	caster.body.addSpeed(power)
+	caster.body.lockDir(true)
 	durationTimer.start()
 	pass
 

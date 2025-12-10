@@ -12,7 +12,7 @@ func updateDir() -> void:
 	setDir(Vector2(horizontalDirection, verticalDirection))
 		
 func getDirDash() -> Vector2:
-	return dir
+	return InputManager.get_instance().getDirDash(self)
 	
 func getDirAttack() -> Vector2:
 	return InputManager.get_instance().getDirAttack(self)
