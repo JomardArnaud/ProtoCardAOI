@@ -50,20 +50,19 @@ func fillSlotCard() -> void:
 			card.hotkeyCard = str(nbCardHand + 1)
 			tmpCardHand[nbCardHand] = card
 			nbCardHand += 1
-	pass
 	cardHand = {}
 	cardHand = tmpCardHand
-	pass
+	
 func getNbCardInHand() -> int:
 	return cardHand.size()
 
-
 ##TODO 
-# BUG sur le dash (la direction déconne des fois, et quand aucune touche de déplacement n'est pressé il ne bouge pas avec le dash
-# BUG sur le hotkey quand je lance une carte mais qu'il le deck est vide ça ne reset pas bien bien les hotkeys
-
+# BUG sur le hotkey quand je spam les touche de cast de cartes mais qu'il le deck est vide ça ne reset pas bien bien les hotkeys mais ça reparse niquel derrière si c'est rappellé 
 func castSlotCard(idSlot: int) -> void:
-	pass
+	if idSlot < 0 || idSlot > CardEnum.CardType.size():
+		idSlot = 0
+	var cardToCast : Card = slotsCard[idSlot].get_child(0)
+	cardToCast.resolve()
 	
 func castHandCard(idCard: int) -> void:
 	pass

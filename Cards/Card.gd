@@ -31,14 +31,14 @@ var cardAbilities : Dictionary = {
 @onready var descriptionCardLabel : RichTextLabel
 @onready var keyToUseLabel : RichTextLabel
 
-func _input(input : InputEvent) -> void:
-	if (hotkeyCard != ""):
-		if (int(hotkeyCard) > 0):
-			if input.is_action_pressed("Cast" + hotkeyCard):
-				resolve()
-		else:
-			if (input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type])):
-				resolve()
+#func _input(input : InputEvent) -> void:
+	#if (hotkeyCard != ""):
+		#if (int(hotkeyCard) > 0):
+			#if input.is_action_pressed("Cast" + hotkeyCard):
+				#resolve()
+		#else:
+			#if (input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type])):
+				#resolve()
 
 func resolve() -> void:
 	for ability in cardAbilities.values():

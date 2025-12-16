@@ -90,9 +90,6 @@ polygon = PackedVector2Array(2095, -1094, 2006, -974, 2256, -876, 2352, -1038, 2
 script = ExtResource("5_4b75m")
 
 [node name="Player" parent="." instance=ExtResource("6_8ju71")]
-speed = 1250.0
-acceleration = 10.0
-inertia = 0.15
 
 [node name="Movementbox" parent="Player" index="0"]
 position = Vector2(0, 10000)

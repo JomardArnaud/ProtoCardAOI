@@ -16,3 +16,7 @@ func getDirDash() -> Vector2:
 	
 func getDirAttack() -> Vector2:
 	return InputManager.get_instance().getDirAttack(self)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed()
+	pass
