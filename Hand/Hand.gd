@@ -65,7 +65,7 @@ func castSlotCard(idSlot: int) -> void:
 	cardToCast.resolve()
 	
 func castHandCard(idSlot: int) -> void:
-	if idSlot < 0 || idSlot > cardHand.size():
+	if idSlot < 0 || idSlot >= cardHand.size():
 		idSlot = 0
 	cardHand[idSlot].resolve()
 	pass

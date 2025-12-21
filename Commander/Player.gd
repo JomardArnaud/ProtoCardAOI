@@ -1,6 +1,8 @@
 class_name PlayerController
 extends MovementBody2D
 
+const commander = preload("res://Commander/Commander.gd")
+
 @onready var commanderNode : Commander = $Commander
 
 var horizontalDirection : float

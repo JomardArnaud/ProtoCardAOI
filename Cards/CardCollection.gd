@@ -13,7 +13,9 @@ var collection : Dictionary[int, CardInfo] = {
 	4: CardInfo.new("Blank Spell", 1, CardEnum.CardType.SPELL, "Blank"),
 	##TODO implemente keyword and X() synthax, AutoCast X _ (Card with AutoCast can't be send to SlotHand,   
 	5: CardInfo.new('IchiNoKata attack', 1, CardEnum.CardType.ATTACK, "FreeCost Dash | DashShot X(DashVelocity)"),
-	6: CardInfo.new('Hanabi attack', 0, CardEnum.CardType.ATTACK, "AutoCast  |  ")
+	6: CardInfo.new('Hanabi attack', 0, CardEnum.CardType.ATTACK, "AutoCast  |  "),
+	7: CardInfo.new('Negation will', 0, CardEnum.CardType.SPELL, "Counter") # (Counter All) # Counter = Cancel X all effect from the last X type of card(can be all type)resolved within a time limit of 0.5 sec
+	
 } : get = getCollection
 
 func _init() -> void:

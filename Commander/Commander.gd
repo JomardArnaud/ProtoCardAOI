@@ -59,6 +59,7 @@ func castHandCard(idCard : int):
 
 func cardAfterResolve(card : Card):
 	moveCard(card, CardEnum.CardZone.Graveyard)
+	hand.fillSlotCard()
 	drawCard()
 	hand.fillSlotCard()
 
@@ -69,11 +70,13 @@ func refillDeck() -> void:
 		return
 	deck.setNbCardLeft(nbCard)
 	deck.shuffle()
-	drawCard()
+	deck.drawCard()
 
 func drawCard() -> void:
 	if hand.getNbCardInHand() < commanderInfo.handSizeLimit:
 		deck.drawCard()
+	else:
+		pass
 
 func onCardAddedToDeck(nCard: Card):
 	nCard.resolved.connect(cardAfterResolve.bind(nCard))
