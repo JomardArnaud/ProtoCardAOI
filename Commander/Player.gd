@@ -1,10 +1,10 @@
 class_name PlayerController
 extends MovementBody2D
 
-## TODO Not using InputMaganger here
+@onready var commanderNode : Commander = $Commander
+
 var horizontalDirection : float
 var verticalDirection : float
-
 func updateDir() -> void:
 	setDir(Vector2.ZERO)
 	horizontalDirection = int(Input.is_action_pressed("moveLeft")) * -1 + int(Input.is_action_pressed("moveRight"))
@@ -18,5 +18,8 @@ func getDirAttack() -> Vector2:
 	return InputManager.get_instance().getDirAttack(self)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed()
+	for i in range(1, 7):
+		if event.is_action_released("Cast" + str(i)):
+			commanderNode.castHandCard(i - 1)
+		pass
 	pass

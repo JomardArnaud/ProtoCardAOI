@@ -64,7 +64,10 @@ func castSlotCard(idSlot: int) -> void:
 	var cardToCast : Card = slotsCard[idSlot].get_child(0)
 	cardToCast.resolve()
 	
-func castHandCard(idCard: int) -> void:
+func castHandCard(idSlot: int) -> void:
+	if idSlot < 0 || idSlot > cardHand.size():
+		idSlot = 0
+	cardHand[idSlot].resolve()
 	pass
 
 func _process(delta: float) -> void:

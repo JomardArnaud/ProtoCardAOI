@@ -51,8 +51,11 @@ func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 		CardEnum.CardZone.Hand:
 			hand.addCardToHand(card)
 
-func castSlotCard():
-	pass
+func castSlotCard(idSlot : int):
+	hand.castSlotCard(idSlot)
+
+func castHandCard(idCard : int):
+	hand.castHandCard(idCard)
 
 func cardAfterResolve(card : Card):
 	moveCard(card, CardEnum.CardZone.Graveyard)
