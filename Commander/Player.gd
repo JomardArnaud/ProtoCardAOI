@@ -1,7 +1,8 @@
 class_name PlayerController
 extends MovementBody2D
 
-const commander = preload("res://Commander/Commander.gd")
+const Commander = preload("res://Commander/Commander.gd")
+const CardEnum = preload("res://Cards/CardEnum.gd")
 
 @onready var commanderNode : Commander = $Commander
 
@@ -20,6 +21,9 @@ func getDirAttack() -> Vector2:
 	return InputManager.get_instance().getDirAttack(self)
 
 func _input(event: InputEvent) -> void:
+	for keySlot in CardEnum.CardType.keys():
+		if event.is_action_released("Cast" + keySlot):
+			commanderNode.castSlotCard(CardEnum.CardType[keySlot])
 	for i in range(1, 7):
 		if event.is_action_released("Cast" + str(i)):
 			commanderNode.castHandCard(i - 1)
