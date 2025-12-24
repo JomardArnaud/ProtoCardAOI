@@ -37,8 +37,6 @@ metadata/_custom_type_script = "uid://ci5fus18ojsoi"
 position = Vector2(575, 323)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_q68mp")
-follow_speed = 10.0
-focusEntity = NodePath("../Player")
 
 [node name="Arena" type="Node" parent="."]
 
