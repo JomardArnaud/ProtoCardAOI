@@ -61,12 +61,18 @@ func getNbCardInHand() -> int:
 func castSlotCard(idSlot: int) -> void:
 	if idSlot < 0 || idSlot > CardEnum.CardType.size():
 		idSlot = 0
-	slotsCard[idSlot].get_child(0).resolve()
+	var cardToCast = slotsCard[idSlot].get_child(0)
+	if cardToCast.cardInfo.cost < cardToCast.commander.commanderInfo.currentEnergy:
+		cardToCast.resolve()
+		cardToCast.commander.commanderInfo.currentEnergy -= cardToCast.cardInfo.cost
 	
 func castHandCard(idSlot: int) -> void:
 	if idSlot < 0 || idSlot >= cardHand.size():
 		idSlot = 0
-	cardHand[idSlot].resolve()
+	var cardToCast = cardHand[idSlot]
+	if cardToCast.cardInfo.cost < cardToCast.commander.commanderInfo.currentEnergy:
+		cardToCast.resolve()
+		cardToCast.commander.commanderInfo.currentEnergy -= cardToCast.cardInfo.cost
 
 func _process(delta: float) -> void:
 	cdGlobalCast = clampf(cdGlobalCast - delta, 0, cdGlobalCast)
