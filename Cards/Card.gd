@@ -76,6 +76,7 @@ func descritpionParsing() -> void:
 		else:
 			push_error(keyword, " Keyword's ability not find")
 
+## TODO refacto in small piece 
 func updateCardNode() -> void:
 	if (cardInfo == null):
 		return
@@ -85,14 +86,10 @@ func updateCardNode() -> void:
 		if !ResourceLoader.exists(path):
 			path = pathCard + "Blank" + ".png"
 		imageCard.texture = load(path)
-	if bufferCardInfo.cost != cardInfo.cost:
-		costCardLabel.text =  "[center]%s[center]" % cardInfo.cost
-	if bufferCardInfo.type != cardInfo.type:
-		typeCardLabel.text = CardEnum.CardType.keys()[cardInfo.type]
-	if bufferCardInfo.description != cardInfo.description:
-		descriptionCardLabel.text = cardInfo.description.replace("|", "\n")
-	if keyToUseLabel.text != hotkeyCard:
-		keyToUseLabel.text = "[center]%s[center]" % hotkeyCard
+	costCardLabel.text =  "[center]%s[center]" % cardInfo.cost
+	typeCardLabel.text = CardEnum.CardType.keys()[cardInfo.type]
+	descriptionCardLabel.text = cardInfo.description.replace("|", "\n")
+	keyToUseLabel.text = "[center]%s[center]" % hotkeyCard
 	bufferCardInfo = cardInfo
 
 func getHotkeyCard() -> String:

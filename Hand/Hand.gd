@@ -57,7 +57,6 @@ func getNbCardInHand() -> int:
 	return cardHand.size()
 
 ##TODO 
-# BUG sur le hotkey quand je spam les touche de cast de cartes mais qu'il le deck est vide ça ne reset pas bien bien les hotkeys mais ça reparse niquel derrière si c'est rappellé 
 func castSlotCard(idSlot: int) -> void:
 	if idSlot < 0 || idSlot > CardEnum.CardType.size():
 		idSlot = 0
