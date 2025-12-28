@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfxyiv3p7jta5"]
 
-[ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Commander/Player.tscn" id="1_l5je7"]
+[ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Player/Player.tscn" id="1_l5je7"]
 [ext_resource type="Script" uid="uid://ci5fus18ojsoi" path="res://Utility/InputManager.gd" id="1_xjkry"]
-[ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Commander/PlayerCamera.gd" id="2_xjkry"]
+[ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Player/PlayerCamera.gd" id="2_xjkry"]
 [ext_resource type="PackedScene" uid="uid://bm02wou48n2vd" path="res://Ennemies/Boss.tscn" id="5_55aqt"]
 [ext_resource type="PackedScene" uid="uid://dbostdu533m3l" path="res://Cards/CardCollection.tscn" id="5_xjkry"]
 

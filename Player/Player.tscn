@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://1gqkb0fppjlj"]
 
-[ext_resource type="Script" uid="uid://baaxvqbmq3gta" path="res://Commander/Player.gd" id="1_caob2"]
+[ext_resource type="Script" uid="uid://baaxvqbmq3gta" path="res://Player/Player.gd" id="1_caob2"]
 [ext_resource type="Texture2D" uid="uid://by8cxlc4pd4f0" path="res://ArtCard/SpritePlayerPlaygroundCard.png" id="4_le41p"]
 [ext_resource type="PackedScene" uid="uid://d4ffh65mxnhar" path="res://Weapon/Weapon.tscn" id="5_q3f8m"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="6_i4si5"]
@@ -12,7 +12,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_qathd"]
 radius = 4.41021
 
-[sub_resource type="Resource" id="Resource_q3f8m"]
+[sub_resource type="Resource" id="Resource_s1rgi"]
 resource_local_to_scene = true
 script = ExtResource("7_le41p")
 visibleHpBar = true
@@ -20,7 +20,7 @@ maxHealth = 100
 health = 80
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
-[sub_resource type="Resource" id="Resource_owyu7"]
+[sub_resource type="Resource" id="Resource_j23h2"]
 resource_local_to_scene = true
 script = ExtResource("8_q3f8m")
 handSizeLimit = 6
@@ -48,7 +48,7 @@ offset_top = -7.8
 offset_right = 190.1
 offset_bottom = 17.2
 scale = Vector2(0.1, 0.1)
-info = SubResource("Resource_q3f8m")
+info = SubResource("Resource_s1rgi")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -66,7 +66,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Commander" parent="." node_paths=PackedStringArray("body", "cardHud") instance=ExtResource("7_owyu7")]
-commanderInfo = SubResource("Resource_owyu7")
+commanderInfo = SubResource("Resource_j23h2")
 body = NodePath("..")
 cardHud = NodePath("../HUD/CardContainer")
 

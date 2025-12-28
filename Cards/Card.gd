@@ -5,6 +5,7 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardInfo = preload("res://Cards/CardInfo.gd")
 const CardAbilityClass = preload("res://Cards/Ability/CardAbility.gd")
 
+signal casted()
 signal resolved()
 signal changeZone(card : Card, to : CardEnum.CardZone)
 
@@ -31,14 +32,13 @@ var cardAbilities : Dictionary = {
 @onready var descriptionCardLabel : RichTextLabel
 @onready var keyToUseLabel : RichTextLabel
 
-#func _input(input : InputEvent) -> void:
-	#if (hotkeyCard != ""):
-		#if (int(hotkeyCard) > 0):
-			#if input.is_action_pressed("Cast" + hotkeyCard):
-				#resolve()
-		#else:
-			#if (input.is_action_pressed("Cast" + CardEnum.CardType.keys()[cardInfo.type])):
-				#resolve()
+func cast() -> bool:
+	if commander.commanderInfo.currentEnergy > cardInfo.cost:
+		commander.commanderInfo.currentEnergy -= cardInfo.cost
+		casted.emit()
+		resolve()
+		return true
+	return false
 
 func resolve() -> void:
 	for ability in cardAbilities.values():
@@ -76,7 +76,6 @@ func descritpionParsing() -> void:
 		else:
 			push_error(keyword, " Keyword's ability not find")
 
-## TODO refacto in small piece 
 func updateCardNode() -> void:
 	if (cardInfo == null):
 		return

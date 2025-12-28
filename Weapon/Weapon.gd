@@ -1,4 +1,4 @@
-class_name Weapon
+class_name Weaponf
 extends Node2D
 
 signal reloading()
