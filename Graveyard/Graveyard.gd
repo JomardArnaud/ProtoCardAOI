@@ -32,10 +32,8 @@ func _on_tree_entered():
 func _on_card_on_top_tree_entered():
 	pass # Replace with function body.
 
-
 func _on_card_pile_child_entered_tree(node: Node) -> void:
 	pass # Replace with function body.
-
 
 func _on_card_pile_child_exiting_tree(node: Node) -> void:
 	var nbCardLeft = cardPile.get_child_count() - 1

@@ -35,6 +35,7 @@ alignment = 1
 [node name="SlotMargin" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin"]
 layout_mode = 2

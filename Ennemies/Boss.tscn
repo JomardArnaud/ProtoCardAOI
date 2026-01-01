@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bm02wou48n2vd"]
+[gd_scene load_steps=19 format=3 uid="uid://bm02wou48n2vd"]
 
+[ext_resource type="Script" uid="uid://bnbcia1u5sxmg" path="res://Ennemies/Boss.gd" id="1_o1tk4"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="2_1454h"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="2_esarq"]
 [ext_resource type="Texture2D" uid="uid://c5hiu5a7lapn4" path="res://ArtCard/Boss.png" id="3_esarq"]
@@ -7,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cs3gd7v8ubhmj" path="res://Utility/CustomNode/HpBar.tscn" id="5_esarq"]
 [ext_resource type="PackedScene" uid="uid://dculbgkisxgmq" path="res://Hand/Hand.tscn" id="6_2st7e"]
 [ext_resource type="PackedScene" uid="uid://ck5gdvd6jip1b" path="res://Deck/Deck.tscn" id="7_yjk0x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1tk4"]
+radius = 30.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2st7e"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -38,7 +42,7 @@ border_width_right = 15
 border_width_bottom = 15
 border_color = Color(0, 0.0266666, 0.8, 1)
 
-[sub_resource type="Resource" id="Resource_yjk0x"]
+[sub_resource type="Resource" id="Resource_o1tk4"]
 resource_local_to_scene = true
 script = ExtResource("2_1454h")
 visibleHpBar = true
@@ -69,10 +73,17 @@ ProgressBar/styles/background = SubResource("StyleBoxFlat_t78b6")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_u5lg5")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_esarq"]
-radius = 36.0
+radius = 35.0892
 
-[node name="Boss" type="Node2D"]
+[node name="Boss" type="CharacterBody2D"]
 scale = Vector2(0.4, 0.4)
+collision_layer = 128
+collision_mask = 147
+script = ExtResource("1_o1tk4")
+metadata/_custom_type_script = "uid://xdbpkt3g5c08"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o1tk4")
 
 [node name="BossHud" type="CanvasLayer" parent="."]
 
@@ -95,13 +106,23 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/fill = SubResource("StyleBoxFlat_4pavk")
 show_percentage = true
 
+[node name="HandMargin" parent="BossHud" instance=ExtResource("6_2st7e")]
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -441.0
+offset_right = 244.0
+offset_bottom = -219.0
+grow_vertical = 2
+
 [node name="Health" parent="." node_paths=PackedStringArray("hpBar") instance=ExtResource("2_esarq")]
 visible = false
 offset_left = 0.0
 offset_top = -28.0
 offset_right = 0.0
 offset_bottom = -28.0
-info = SubResource("Resource_yjk0x")
+info = SubResource("Resource_o1tk4")
 hpBar = NodePath("../BossHud/HpBarContainer")
 
 [node name="HpBar" parent="Health" index="0"]
@@ -112,30 +133,23 @@ theme = SubResource("Theme_1454h")
 texture = ExtResource("3_esarq")
 
 [node name="HurtBox" parent="." instance=ExtResource("4_1454h")]
+collision_layer = 256
+collision_mask = 8
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource("CircleShape2D_esarq")
 
-[node name="HandMargin" parent="." instance=ExtResource("6_2st7e")]
-anchors_preset = 8
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -90.0
-offset_right = 55.0
-offset_bottom = -37.0
-grow_vertical = 2
-
 [node name="Deck" parent="." instance=ExtResource("7_yjk0x")]
 visible = false
-offset_left = 5.0
-offset_top = 17.5
-offset_right = 43.75
-offset_bottom = 90.5
+offset_left = 120.0
+offset_top = 62.5
+offset_right = 173.125
+offset_bottom = 135.5
 
 [connection signal="healthChanged" from="Health" to="BossHud/HpBarContainer" method="_on_health_health_changed"]
 [connection signal="takeHit" from="HurtBox" to="Health" method="_on_hurt_box_take_hit"]
 
 [editable path="BossHud/HpBarContainer"]
+[editable path="BossHud/HandMargin"]
 [editable path="Health"]
 [editable path="HurtBox"]

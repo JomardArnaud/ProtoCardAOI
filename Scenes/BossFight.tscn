@@ -13,7 +13,7 @@ script = ExtResource("1_xjkry")
 metadata/_custom_type_script = "uid://ci5fus18ojsoi"
 
 [node name="Player" parent="." instance=ExtResource("1_l5je7")]
-position = Vector2(-894, 545)
+position = Vector2(430, 488)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("focusEntity")]
 zoom = Vector2(0.5, 0.5)
@@ -24,6 +24,7 @@ focusEntity = NodePath("../Player")
 
 [node name="CardCollection" parent="." instance=ExtResource("5_xjkry")]
 
-[node name="Boss" parent="." instance=ExtResource("5_55aqt")]
+[node name="Boss" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_55aqt")]
 position = Vector2(-928, -43)
 scale = Vector2(10, 10)
+player = NodePath("../Player")

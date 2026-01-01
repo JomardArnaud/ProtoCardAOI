@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://1gqkb0fppjlj"]
+[gd_scene load_steps=13 format=3 uid="uid://1gqkb0fppjlj"]
 
 [ext_resource type="Script" uid="uid://baaxvqbmq3gta" path="res://Player/Player.gd" id="1_caob2"]
 [ext_resource type="Texture2D" uid="uid://by8cxlc4pd4f0" path="res://ArtCard/SpritePlayerPlaygroundCard.png" id="4_le41p"]
@@ -8,11 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://dsdq572poq71l" path="res://Commander/Commander.tscn" id="7_owyu7"]
 [ext_resource type="PackedScene" uid="uid://bpxkfmkahlg3i" path="res://Cards/CardHudContainer.tscn" id="7_q3f8m"]
 [ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="8_q3f8m"]
+[ext_resource type="Script" uid="uid://7jjqca4eb0e4" path="res://Utility/CustomNode/Hurtbox2D.gd" id="9_j23h2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qathd"]
 radius = 4.41021
 
-[sub_resource type="Resource" id="Resource_s1rgi"]
+[sub_resource type="Resource" id="Resource_j23h2"]
 resource_local_to_scene = true
 script = ExtResource("7_le41p")
 visibleHpBar = true
@@ -20,7 +21,7 @@ maxHealth = 100
 health = 80
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
-[sub_resource type="Resource" id="Resource_j23h2"]
+[sub_resource type="Resource" id="Resource_0j2ni"]
 resource_local_to_scene = true
 script = ExtResource("8_q3f8m")
 handSizeLimit = 6
@@ -31,6 +32,8 @@ metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 scale = Vector2(10, 10)
+collision_layer = 2
+collision_mask = 147
 script = ExtResource("1_caob2")
 
 [node name="Movementbox" type="CollisionShape2D" parent="."]
@@ -48,7 +51,7 @@ offset_top = -7.8
 offset_right = 190.1
 offset_bottom = 17.2
 scale = Vector2(0.1, 0.1)
-info = SubResource("Resource_s1rgi")
+info = SubResource("Resource_j23h2")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -66,12 +69,20 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Commander" parent="." node_paths=PackedStringArray("body", "cardHud") instance=ExtResource("7_owyu7")]
-commanderInfo = SubResource("Resource_j23h2")
+commanderInfo = SubResource("Resource_0j2ni")
 body = NodePath("..")
 cardHud = NodePath("../HUD/CardContainer")
 
 [node name="Cursor" parent="Commander" index="0"]
 color = Color(3.85046e-07, 0.763283, 0.952029, 1)
 radius = 2.0
+
+[node name="Hurtbox2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 728
+script = ExtResource("9_j23h2")
+metadata/_custom_type_script = "uid://7jjqca4eb0e4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 
 [editable path="Commander"]

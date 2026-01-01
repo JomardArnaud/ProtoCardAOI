@@ -6,7 +6,8 @@ extends Area2D
 func _ready() -> void:
 	var parent = get_parent()
 	if (parent.has_method("hit")):
-		hit = parent.hit
+		hit = parent.hit 
+		##TODO set layer collision for playerHitbox, ennemieHitbox or boosHitbox
 
 func _on_area_entered(area: Area2D) -> void:
 	if (!hit.is_null()):
