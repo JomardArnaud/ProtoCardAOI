@@ -6,6 +6,7 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 @export var commanderInfo : CommanderInfo
 @export var body : MovementBody2D
 @export var cardHud : CardHudContainer
+#@export var health : Health
 
 ##All HUD's parts
 @onready var deck : Deck

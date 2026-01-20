@@ -7,16 +7,13 @@ signal dash()
 var power : float
 
 func resolve() -> void:
-	# Si un dash est déjà en cours, on l'annule avant de lancer un nouveau
 	if durationTimer.time_left > 0:
 		_on_duration_timeout()
-	## TODO if NPC use Dash need to remake this
 	var dirDash : Vector2 = caster.getDirDash.call()
 	caster.body.setDir(dirDash.normalized())
 	caster.body.addSpeed(power)
 	caster.body.lockDir(true)
 	durationTimer.start()
-	pass
 
 func init() -> void:
 	var descriptionParsed = description.split('/')
@@ -31,3 +28,6 @@ func _on_duration_timeout() -> void:
 	caster.body.lockDir(false)
 	caster.body.addSpeed(-power)
 	caster.body.resetEnergy(Vector2(0.3, 0.3))
+
+func setupParam(nParam: Dictionary) -> void:
+	pass

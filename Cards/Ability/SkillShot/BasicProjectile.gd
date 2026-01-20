@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 func _draw():
 	draw_circle(Vector2.ZERO, radius, color)
 
-func hit(collsionEntity: Hurtbox2D) -> void:
+func hit(collsionEntity: ) -> void:
 	collsionEntity.takeHit.emit(10)
 	
 func setRadius(nRadius: float) -> void:

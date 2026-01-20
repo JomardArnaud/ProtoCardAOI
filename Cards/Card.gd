@@ -19,8 +19,6 @@ const pathCard = "res://ArtCard/"
 @onready var cardZone : CardEnum.CardZone : get = getCardZone, set = setCardZone
 @onready var hotkeyCard : String : get = getHotkeyCard, set = setHotkeyCard
 
-var cardAbilities : Dictionary = {
-}
 ## for checking which info changed and updating only the node of this info
 @onready var bufferCardInfo: CardInfo
 
@@ -41,40 +39,25 @@ func cast() -> bool:
 	return false
 
 func resolve() -> void:
-	for ability in cardAbilities.values():
+	for ability in cardInfo.abilities.values():
 		ability.resolve()	
 	resolved.emit()
 
 func init(nCommander : Commander, nInfo : CardInfo, nZone: CardEnum.CardZone = CardEnum.CardZone.Deck) -> void:
-	if nCommander != null && nCommander.cardHud != null:	
+	if nCommander != null && nCommander.cardHud != null:
+		##TODO ne plus donner accès à tout le commandant à la carte mais plus lui passer une sorte de CommanderView(une struct avec des données genre nbCardAttackinHand et aussi tout les compossante que la carte pourrait avoir besoin pour modifier le commandeur, que le commander update à cahque frame)
 		commander = nCommander
 		setCardInfo(nInfo)
 		changeZone.connect(nCommander.moveCard)
 		costSetup()
-		descritpionParsing()
+		for abilty in cardInfo.abilities:
+			abilty.caster = commander
 	else:
 		push_error("no valid Commander was found")
 
 func costSetup() -> void:
 	pass
 
-func descritpionParsing() -> void:
-	var cardParsedAbilities = cardInfo.description.split(" | ")
-	for abilityKeyword : String in cardParsedAbilities:
-		var parsedAbility : PackedStringArray = abilityKeyword.split(" ", true, 1)
-		var keyword : String = parsedAbility[0]
-		var path = String("res://Cards/Ability/" + keyword + ".gd")
-		if ResourceLoader.exists(path):
-			var ability : CardAbility
-			if parsedAbility.size() > 1:
-				ability = load(path).new(commander, parsedAbility[1])
-			else : 
-				ability = load(path).new(commander, "")
-			ability.init()
-			cardAbilities[keyword] = ability
-			add_child(ability)
-		else:
-			push_error(keyword, " Keyword's ability not find")
 
 func updateCardNode() -> void:
 	if (cardInfo == null):

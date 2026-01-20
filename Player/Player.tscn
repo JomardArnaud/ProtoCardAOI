@@ -85,4 +85,6 @@ metadata/_custom_type_script = "uid://7jjqca4eb0e4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 
+[editable path="HUD/CardContainer"]
+[editable path="HUD/CardContainer/PanelHud/MarginContainer/HBoxContainer/Hand"]
 [editable path="Commander"]

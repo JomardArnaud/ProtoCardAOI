@@ -14,3 +14,6 @@ func resolve() -> void:
 
 func init() -> void:
 	pass
+
+func setupParam(nParam: Dictionary) -> void:
+	pass

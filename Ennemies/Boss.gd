@@ -11,5 +11,3 @@ func setPlayerInfo() -> void:
 
 func _process(delta: float) -> void:
 	setPlayerInfo()
-	
-	pass

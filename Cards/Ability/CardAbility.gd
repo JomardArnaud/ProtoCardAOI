@@ -2,14 +2,10 @@ class_name CardAbility
 extends Node
 
 var caster : Commander
-var description : String
-
-func _init(nCaster: Commander, nDescription: String) -> void:
-	caster = nCaster
-	description = nDescription
+var param : Dictionary
 
 func resolve() -> void:
 	pass
 
-func init() -> void:
+func setupParam(nParam: Dictionary) -> void:
 	pass

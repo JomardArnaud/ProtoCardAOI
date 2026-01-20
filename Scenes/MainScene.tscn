@@ -28,15 +28,17 @@ energyRegen = 0.5
 metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(2991, -784)
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("1_y4jh7")
 metadata/_custom_type_script = "uid://ci5fus18ojsoi"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("focusEntity")]
 position = Vector2(575, 323)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_q68mp")
+focusEntity = NodePath("../Player")
 
 [node name="Arena" type="Node" parent="."]
 
@@ -94,6 +96,7 @@ position = Vector2(0, 10000)
 
 [node name="Health" parent="Player" index="3"]
 info = SubResource("Resource_0iob3")
+metadata/_edit_use_anchors_ = true
 
 [node name="Commander" parent="Player" index="5"]
 commanderInfo = SubResource("Resource_4b75m")
@@ -103,4 +106,6 @@ script = ExtResource("7_q68mp")
 metadata/_custom_type_script = "uid://u8l3lxlg1glw"
 
 [editable path="Player"]
+[editable path="Player/HUD/CardContainer"]
+[editable path="Player/HUD/CardContainer/PanelHud/MarginContainer/HBoxContainer/Hand"]
 [editable path="Player/Commander"]

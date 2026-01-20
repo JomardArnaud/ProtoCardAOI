@@ -6,8 +6,9 @@ const CardInfo = preload("res://Cards/CardInfo.gd")
 
 var collection : Dictionary[int, CardInfo] = {
 	##TODO counter Shot, each ability with 'Shot' is resolve gain 1 counter Shot
+#CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, [skillShot(10, 300), posio(5)])
 	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, "SkillShot 10/300"), ##TODO 10X(nbUSed"Ida's Wind" or nbCounter"Shot")/300 
-	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, "Dash 3000/0.15 | Gain 1CWind"), ##TODO Counter 
+	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, "Dash 3000/0.15 | Wind(1)"), ##TODO Counter 
 	2: CardInfo.new("Blank Attack", 1, CardEnum.CardType.ATTACK, "Blank"),
 	3: CardInfo.new("Blank Dash", 1, CardEnum.CardType.DASH, "Blank"),
 	4: CardInfo.new("Blank Spell", 1, CardEnum.CardType.SPELL, "Blank"),
@@ -33,3 +34,21 @@ func getCardById(idCard: int):
 func fillCollection():
 	print("Waiting collection to finishing collecting ...")
 	print("Collection has finished")
+
+##func descritpionParsing() -> void:
+	#var cardParsedAbilities = cardInfo.description.split(" | ")
+	#for abilityKeyword : String in cardParsedAbilities:
+		#var parsedAbility : PackedStringArray = abilityKeyword.split(" ", true, 1)
+		#var keyword : String = parsedAbility[0]
+		#var path = String("res://Cards/Ability/" + keyword + ".gd")
+		#if ResourceLoader.exists(path):
+			#var ability : CardAbility
+			#if parsedAbility.size() > 1:
+				#ability = load(path).new(commander, parsedAbility[1])
+			#else : 
+				#ability = load(path).new(commander, "")
+			#ability.init()
+			#cardAbilities[keyword] = ability
+			#add_child(ability)
+		#else:
+			#push_error(keyword, " Keyword's ability not find")
