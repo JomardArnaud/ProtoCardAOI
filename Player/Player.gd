@@ -1,7 +1,6 @@
 class_name PlayerController
 extends MovementBody2D
 
-const Commander = preload("res://Commander/Commander.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
 
 @onready var commanderNode : Commander = $Commander

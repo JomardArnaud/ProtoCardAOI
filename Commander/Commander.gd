@@ -35,8 +35,10 @@ func _ready():
 	deck.cardAddedToDeck.connect(onCardAddedToDeck)
 	deck.noMoreDraw.connect(refillDeck)
 	deck.fillCardInDeck()
-	while (hand.getNbCardInHand() < commanderInfo.handSizeLimit):
-		drawCard()
+	var deckEmpty = drawCard()
+	while (hand.getNbCardInHand() < commanderInfo.nbCardStartingHand && deckEmpty):
+		deckEmpty = drawCard()
+	pass
 
 func _process(delta: float) -> void:
 	commanderInfo.currentEnergy += commanderInfo.energyRegen * delta
@@ -71,13 +73,13 @@ func refillDeck() -> void:
 		return
 	deck.setNbCardLeft(nbCard)
 	deck.shuffle()
-	deck.drawCard()
+	#deck.drawCard()
 
-func drawCard() -> void:
+func drawCard() -> bool:
 	if hand.getNbCardInHand() < commanderInfo.handSizeLimit:
 		deck.drawCard()
 	else:
-		pass
+		return false
 
 func onCardAddedToDeck(nCard: Card):
 	nCard.resolved.connect(cardAfterResolve.bind(nCard))

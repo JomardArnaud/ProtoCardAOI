@@ -18,9 +18,9 @@ signal cardAddedToDeck(nCard : Card)
 var startingDeck : Dictionary[int, int] = {
 	0: 3,
 	1: 3,
-	2: 2,
-	3: 2,
-	4: 2
+	#2: 2,
+	#3: 2,
+	#4: 2
 }
 var deck: Array[Card]
 var cardPile: Control

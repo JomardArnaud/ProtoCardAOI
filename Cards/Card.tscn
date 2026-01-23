@@ -156,4 +156,7 @@ scroll_active = false
 scroll_following = true
 shortcut_keys_enabled = false
 
+[node name="Abilities" type="Node" parent="."]
+unique_name_in_owner = true
+
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

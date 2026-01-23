@@ -1,4 +1,4 @@
-class_name CardAbility
+class_name CardAbilityNode
 extends Node
 
 var caster : Commander

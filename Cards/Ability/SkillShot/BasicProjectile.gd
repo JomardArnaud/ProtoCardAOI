@@ -4,7 +4,8 @@ extends Node2D
 @export var color : Color = Color(0,0,1,1)
 @export var radius : float = 30 : set = setRadius
 @export var speed : float = 3000
-
+@export var damage : float = 10 :
+	set(nDamage): damage = nDamage
 @onready var dir : Vector2
 @onready var collisionshape : CircleShape2D
 
@@ -19,7 +20,7 @@ func _draw():
 	draw_circle(Vector2.ZERO, radius, color)
 
 func hit(collsionEntity: ) -> void:
-	collsionEntity.takeHit.emit(10)
+	collsionEntity.takeHit.emit(damage)
 	
 func setRadius(nRadius: float) -> void:
 	radius = nRadius

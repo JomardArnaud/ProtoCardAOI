@@ -17,8 +17,8 @@ radius = 4.41021
 resource_local_to_scene = true
 script = ExtResource("7_le41p")
 visibleHpBar = true
-maxHealth = 100
-health = 80
+maxHealth = 100.0
+health = 0.0
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
 [sub_resource type="Resource" id="Resource_0j2ni"]

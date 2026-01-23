@@ -1,20 +1,20 @@
 class_name Hitbox2D
 extends Area2D
 
-@onready var hit : Callable
+var hit : Callable
 
 func _ready() -> void:
-	var parent = get_parent()
-	if (parent.has_method("hit")):
-		hit = parent.hit 
-		##TODO set layer collision for playerHitbox, ennemieHitbox or boosHitbox
+	if (owner.has_method("hit")):
+		hit = owner.hit
+	else:
+		push_error("Hitbox2D: Le owner " + owner.name + " doit avoir une fonction hit()")
 
 func _on_area_entered(area: Area2D) -> void:
-	if (!hit.is_null()):
+	if (hit.is_valid()):
 		hit.call(area)
 	else:
 		push_error("Hitobx need a hit function")
-	get_parent().queue_free()
+	owner.queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	get_parent().queue_free()
+	owner.queue_free()

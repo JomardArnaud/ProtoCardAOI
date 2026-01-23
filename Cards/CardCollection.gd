@@ -4,20 +4,26 @@ extends Node
 const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardInfo = preload("res://Cards/CardInfo.gd")
 
+static func createAbility(infoAbility : CardAbilityInfo) -> CardAbilityNode:
+	var nAbility : CardAbilityNode = CardAbilityNode.new()
+	nAbility.setupParam(infoAbility.param)
+	return nAbility
+
 var collection : Dictionary[int, CardInfo] = {
 	##TODO counter Shot, each ability with 'Shot' is resolve gain 1 counter Shot
 #CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, [skillShot(10, 300), posio(5)])
-	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, "SkillShot 10/300"), ##TODO 10X(nbUSed"Ida's Wind" or nbCounter"Shot")/300 
-	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, "Dash 3000/0.15 | Wind(1)"), ##TODO Counter 
-	2: CardInfo.new("Blank Attack", 1, CardEnum.CardType.ATTACK, "Blank"),
-	3: CardInfo.new("Blank Dash", 1, CardEnum.CardType.DASH, "Blank"),
-	4: CardInfo.new("Blank Spell", 1, CardEnum.CardType.SPELL, "Blank"),
-	##TODO implemente keyword and X() synthax, AutoCast X _ (Card with AutoCast can't be send to SlotHand,   
-	5: CardInfo.new('IchiNoKata attack', 1, CardEnum.CardType.ATTACK, "FreeCost Dash | DashShot X(DashVelocity)"),
-	6: CardInfo.new('Hanabi attack', 0, CardEnum.CardType.ATTACK, "AutoCast  |  "),
-	7: CardInfo.new('Negation will', 0, CardEnum.CardType.SPELL, "Counter") # (Counter All) # Counter = Cancel X all effect from the last X type of card(can be all type)resolved within a time limit of 0.5 sec
-	
+	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("SkillShot", {"damage": 10, "speed": 300, "projectileName": "BasicProjectile"})}),
+	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Dash", {"duration": 0.15, "power" : 3000})})
 } : get = getCollection
+	#1:  | Wind(1)"), ##TODO Counter 
+	#2: CardInfo.new("Blank Attack", 1, CardEnum.CardType.ATTACK, "Blank"),
+	#3: CardInfo.new("Blank Dash", 1, CardEnum.CardType.DASH, "Blank"),
+	#4: CardInfo.new("Blank Spell", 1, CardEnum.CardType.SPELL, "Blank"),
+	###TODO implemente keyword and X() synthax, AutoCast X _ (Card with AutoCast can't be send to SlotHand,   
+	#5: CardInfo.new('IchiNoKata attack', 1, CardEnum.CardType.ATTACK, "FreeCost Dash | DashShot X(DashVelocity)"),
+	#6: CardInfo.new('Hanabi attack', 0, CardEnum.CardType.ATTACK, "AutoCast  |  "),
+	#7: CardInfo.new('Negation will', 0, CardEnum.CardType.SPELL, "Counter") # (Counter All) # Counter = Cancel X all effect from the last X type of card(can be all type)resolved within a time limit of 0.5 sec
+	
 
 func _init() -> void:
 	fillCollection()

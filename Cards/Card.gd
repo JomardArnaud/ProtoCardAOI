@@ -3,7 +3,6 @@ extends Control
 
 const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardInfo = preload("res://Cards/CardInfo.gd")
-const CardAbilityClass = preload("res://Cards/Ability/CardAbility.gd")
 
 signal casted()
 signal resolved()
@@ -39,8 +38,9 @@ func cast() -> bool:
 	return false
 
 func resolve() -> void:
-	for ability in cardInfo.abilities.values():
-		ability.resolve()	
+	for ability in %Abilities.get_children():
+		if ability is CardAbilityNode:
+			ability.resolve()
 	resolved.emit()
 
 func init(nCommander : Commander, nInfo : CardInfo, nZone: CardEnum.CardZone = CardEnum.CardZone.Deck) -> void:
@@ -50,10 +50,13 @@ func init(nCommander : Commander, nInfo : CardInfo, nZone: CardEnum.CardZone = C
 		setCardInfo(nInfo)
 		changeZone.connect(nCommander.moveCard)
 		costSetup()
-		for abilty in cardInfo.abilities:
-			abilty.caster = commander
+		for i in range(0, nInfo.abilities.size()):
+			var nAbility : CardAbilityNode = CardCollection.createAbility(nInfo.abilities[i])
+			nAbility.caster = commander
+			%Abilities.add_child(nAbility)
 	else:
 		push_error("no valid Commander was found")
+	pass
 
 func costSetup() -> void:
 	pass
@@ -70,7 +73,8 @@ func updateCardNode() -> void:
 		imageCard.texture = load(path)
 	costCardLabel.text =  "[center]%s[center]" % cardInfo.cost
 	typeCardLabel.text = CardEnum.CardType.keys()[cardInfo.type]
-	descriptionCardLabel.text = cardInfo.description.replace("|", "\n")
+	##TODO faire une description dynamique à partir du cardInfo.Abilities
+	#descriptionCardLabel.text = cardInfo.description.replace("|", "\n")
 	keyToUseLabel.text = "[center]%s[center]" % hotkeyCard
 	bufferCardInfo = cardInfo
 

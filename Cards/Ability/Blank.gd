@@ -1,4 +1,4 @@
-extends CardAbility
+extends CardAbilityNode
 
 signal blank()
 
