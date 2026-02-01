@@ -14,16 +14,16 @@
 radius = 4.41021
 
 [sub_resource type="Resource" id="Resource_j23h2"]
-resource_local_to_scene = true
 script = ExtResource("7_le41p")
 visibleHpBar = true
 maxHealth = 100.0
-health = 0.0
+health = 80.0
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
 [sub_resource type="Resource" id="Resource_0j2ni"]
 resource_local_to_scene = true
 script = ExtResource("8_q3f8m")
+nbCardStartingHand = 6
 handSizeLimit = 6
 counter = Array[int]([])
 currentEnergy = 2.0
@@ -46,11 +46,11 @@ texture = ExtResource("4_le41p")
 holder = NodePath("../Commander")
 
 [node name="Health" parent="." instance=ExtResource("6_i4si5")]
-offset_left = -9.9
-offset_top = -7.8
-offset_right = 190.1
-offset_bottom = 17.2
-scale = Vector2(0.1, 0.1)
+offset_left = -9.3
+offset_top = -9.4
+offset_right = 83.7
+offset_bottom = 9.6
+scale = Vector2(0.2, 0.2)
 info = SubResource("Resource_j23h2")
 
 [node name="HUD" type="CanvasLayer" parent="."]

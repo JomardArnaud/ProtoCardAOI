@@ -35,9 +35,8 @@ func _ready():
 	deck.cardAddedToDeck.connect(onCardAddedToDeck)
 	deck.noMoreDraw.connect(refillDeck)
 	deck.fillCardInDeck()
-	var deckEmpty = drawCard()
-	while (hand.getNbCardInHand() < commanderInfo.nbCardStartingHand && deckEmpty):
-		deckEmpty = drawCard()
+	while (hand.getNbCardInHand() < commanderInfo.nbCardStartingHand && deck.cardPile.get_child_count() > 0):
+		drawCard()
 	pass
 
 func _process(delta: float) -> void:
@@ -73,13 +72,11 @@ func refillDeck() -> void:
 		return
 	deck.setNbCardLeft(nbCard)
 	deck.shuffle()
-	#deck.drawCard()
+	deck.call_deferred("drawCard")
 
-func drawCard() -> bool:
-	if hand.getNbCardInHand() < commanderInfo.handSizeLimit:
+func drawCard() -> void:
+	if hand.getNbCardInHand() < commanderInfo.handSizeLimit && deck.cardPile:
 		deck.drawCard()
-	else:
-		return false
 
 func onCardAddedToDeck(nCard: Card):
 	nCard.resolved.connect(cardAfterResolve.bind(nCard))
