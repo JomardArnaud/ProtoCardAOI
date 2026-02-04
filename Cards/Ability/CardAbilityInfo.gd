@@ -4,7 +4,7 @@ extends Resource
 const PATH_ABILITY = "res://Cards/Ability/"
 
 @export var abilityName: String 
-@export var abiltyScript : GDScript
+@export var abilityScript : GDScript
 @export var param : Dictionary
 
 func _init(nName: String = "", nParam: Dictionary = {}) -> void:
@@ -14,7 +14,7 @@ func _init(nName: String = "", nParam: Dictionary = {}) -> void:
 	abilityName = nName
 	var pathAbility = PATH_ABILITY + abilityName + ".gd"
 	if ResourceLoader.exists(pathAbility):
-		abiltyScript = load(pathAbility)
+		abilityScript = load(pathAbility)
 	else:
 		push_error("Ability not found, path :" + pathAbility + "don't exist")
 	param = nParam

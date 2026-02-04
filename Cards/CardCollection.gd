@@ -5,14 +5,14 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardInfo = preload("res://Cards/CardInfo.gd")
 
 static func createAbility(infoAbility : CardAbilityInfo) -> CardAbilityNode:
-	var nAbility : CardAbilityNode = CardAbilityNode.new()
+	var nAbility : CardAbilityNode = infoAbility.abilityScript.new()
 	nAbility.setupParam(infoAbility.param)
 	return nAbility
 
 var collection : Dictionary[int, CardInfo] = {
 	##TODO counter Shot, each ability with 'Shot' is resolve gain 1 counter Shot
 #CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, [skillShot(10, 300), posio(5)])
-	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("SkillShot", {"damage": 10, "speed": 300, "projectileName": "BasicProjectile"})}),
+	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("SkillShot", {"damage": 10, "speed": 3000, "projectileName": "BasicProjectile"})}),
 	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Dash", {"duration": 0.15, "power" : 3000})})
 } : get = getCollection
 	#1:  | Wind(1)"), ##TODO Counter 

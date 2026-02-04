@@ -51,7 +51,8 @@ func init(nCommander : Commander, nInfo : CardInfo, nZone: CardEnum.CardZone = C
 		changeZone.connect(nCommander.moveCard)
 		costSetup()
 		for i in range(0, nInfo.abilities.size()):
-			var nAbility : CardAbilityNode = CardCollection.createAbility(nInfo.abilities[i])
+			var abilityInfo = nInfo.abilities[i]
+			var nAbility : CardAbilityNode = CardCollection.createAbility(abilityInfo)
 			nAbility.caster = commander
 			%Abilities.add_child(nAbility)
 	else:
