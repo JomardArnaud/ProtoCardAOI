@@ -18,3 +18,11 @@ func _init(nName: String = "", nParam: Dictionary = {}) -> void:
 	else:
 		push_error("Ability not found, path :" + pathAbility + "don't exist")
 	param = nParam
+
+func createNode() -> CardAbilityNode:
+	if abiltyScript == null:
+		push_error("No script loaded for ability: " + abilityName)
+		return CardAbilityNode.new()
+	var nAbility : CardAbilityNode = abiltyScript.new()
+	nAbility.setupParam(param)
+	return nAbility

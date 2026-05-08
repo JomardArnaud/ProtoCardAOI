@@ -5,9 +5,7 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardInfo = preload("res://Cards/CardInfo.gd")
 
 static func createAbility(infoAbility : CardAbilityInfo) -> CardAbilityNode:
-	var nAbility : CardAbilityNode = CardAbilityNode.new()
-	nAbility.setupParam(infoAbility.param)
-	return nAbility
+	return infoAbility.createNode()
 
 var collection : Dictionary[int, CardInfo] = {
 	##TODO counter Shot, each ability with 'Shot' is resolve gain 1 counter Shot

@@ -7,7 +7,7 @@ var defaultParam = {
 	"power" : 3000
 }
 
-@onready var durationTimer : Timer
+var durationTimer : Timer
 
 func resolve() -> void:
 	if durationTimer.time_left > 0:
