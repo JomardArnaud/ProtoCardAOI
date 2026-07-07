@@ -35,6 +35,9 @@ scale = Vector2(10, 10)
 collision_layer = 2
 collision_mask = 147
 script = ExtResource("1_caob2")
+speed = 1350.0
+acceleration = 20.0
+inertia = 0.18
 
 [node name="Movementbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qathd")

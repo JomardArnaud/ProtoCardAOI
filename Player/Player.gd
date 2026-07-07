@@ -7,6 +7,7 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 
 var horizontalDirection : float
 var verticalDirection : float
+
 func updateDir() -> void:
 	setDir(Vector2.ZERO)
 	horizontalDirection = int(Input.is_action_pressed("moveLeft")) * -1 + int(Input.is_action_pressed("moveRight"))

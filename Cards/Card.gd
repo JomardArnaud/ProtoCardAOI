@@ -61,7 +61,6 @@ func init(nCommander : Commander, nInfo : CardInfo, nZone: CardEnum.CardZone = C
 func costSetup() -> void:
 	pass
 
-
 func updateCardNode() -> void:
 	if (cardInfo == null):
 		return

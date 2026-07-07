@@ -11,15 +11,15 @@ var defaultParam = {
 	"projectileName": "BasicProjectile"
 }
 
-@onready var projectileNode : Node2D
+@onready var projectileScene : PackedScene
 
-func resolve() -> void:
+func resolve() -> void: 
 	##TODO add a protection type by creating a projectile type
-	var bullet = projectileNode.instantiate()
+	var bullet = projectileScene.instantiate()
 	var cursor : Cursor = caster.get_node("Cursor")
 	bullet.dir = cursor.dir
 	bullet.setSpeed(defaultParam.get("speed"))
-	bullet.setDamage(defaultParam.get("damage"))
+	bullet.damage = defaultParam.get("damage")
 	bullet.setRadius(defaultParam.get("radius"))
 	bullet.position = cursor.global_position
 	caster.add_child(bullet)
@@ -28,5 +28,4 @@ func setupParam(nParam: Dictionary) -> void:
 	defaultParam.merge(nParam, true)
 	var pathProjectile = PATH_PROJECTILE + defaultParam.get("projectileName") + ".tscn"
 	if ResourceLoader.exists(pathProjectile):
-		var projectileScene = load(pathProjectile) as PackedScene
-		projectileNode =  projectileScene.instantiate()
+		projectileScene = load(pathProjectile) as PackedScene

@@ -17,7 +17,7 @@ var getDirDash : Callable
 var getDirAttack : Callable
 
 ## TODO mettre le son "NEVER GIVE UP ! " en son de mort 
-
+ 
 func _ready():
 	var parent = get_parent()
 	if parent.has_method("getDirDash"):

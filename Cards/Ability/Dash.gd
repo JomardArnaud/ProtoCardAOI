@@ -3,15 +3,13 @@ extends CardAbilityNode
 signal dash()
 
 var defaultParam = {
-	"duration" : 0.2,
+	"duration" : 0.6,
 	"power" : 3000
 }
 
 var durationTimer : Timer
 
 func resolve() -> void:
-	if durationTimer.time_left > 0:
-		_on_duration_timeout()
 	var dirDash : Vector2 = caster.getDirDash.call()
 	caster.body.setDir(dirDash.normalized())
 	caster.body.addSpeed(defaultParam.get("power"))
@@ -21,7 +19,7 @@ func resolve() -> void:
 func _on_duration_timeout() -> void:
 	caster.body.lockDir(false)
 	caster.body.addSpeed(-defaultParam.get("power"))
-	caster.body.resetEnergy(Vector2(0.3, 0.3))
+	#caster.body.resetEnergy(Vector2(0.3, 0.3))
 
 func setupParam(nParam: Dictionary) -> void:
 	defaultParam.merge(nParam, true)
