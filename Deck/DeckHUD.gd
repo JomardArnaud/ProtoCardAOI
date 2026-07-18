@@ -1,4 +1,4 @@
-class_name Deck	
+class_name Deck
 extends Control
 
 const CardInfo = preload("res://Cards/CardInfo.gd")
@@ -6,6 +6,8 @@ const CardNode = preload("res://Cards/Card.tscn")
 
 signal noMoreDraw()
 signal cardAddedToDeck(nCard : Card)
+
+@export var cardCollection : CardCollection
 
 @onready var commander : Commander :
 	set(nCommander):

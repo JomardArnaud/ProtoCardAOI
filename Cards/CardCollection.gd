@@ -10,7 +10,7 @@ static func createAbility(infoAbility : CardAbilityInfo) -> CardAbilityNode:
 var collection : Dictionary[int, CardInfo] = {
 	##TODO counter Shot, each ability with 'Shot' is resolve gain 1 counter Shot
 #CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, [skillShot(10, 300), posio(5)])
-	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("SkillShot", {"damage": 10, "speed": 200, "projectileName": "BasicProjectile"})}),
+	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("SkillShot", {"damage": 10, "speed": 2000, "projectileName": "BasicProjectile"})}),
 	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Dash", {"duration": 0.12, "power" : 3500})})
 } : get = getCollection
 	#1:  | Wind(1)"), ##TODO Counter 
