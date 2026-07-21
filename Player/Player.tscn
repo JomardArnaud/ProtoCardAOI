@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://1gqkb0fppjlj"]
+[gd_scene load_steps=14 format=3 uid="uid://1gqkb0fppjlj"]
 
 [ext_resource type="Script" uid="uid://baaxvqbmq3gta" path="res://Player/Player.gd" id="1_caob2"]
 [ext_resource type="Texture2D" uid="uid://by8cxlc4pd4f0" path="res://ArtCard/SpritePlayerPlaygroundCard.png" id="4_le41p"]
 [ext_resource type="PackedScene" uid="uid://d4ffh65mxnhar" path="res://Weapon/Weapon.tscn" id="5_q3f8m"]
+[ext_resource type="Script" uid="uid://mmn6807ldqex" path="res://Player/TuningValue.gd" id="6_0j2ni"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="6_i4si5"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="7_le41p"]
 [ext_resource type="PackedScene" uid="uid://dsdq572poq71l" path="res://Commander/Commander.tscn" id="7_owyu7"]
@@ -54,6 +55,29 @@ scale = Vector2(0.2, 0.2)
 info = SubResource("Resource_j23h2")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="TurnerPanel" type="PanelContainer" parent="HUD"]
+process_mode = 3
+offset_left = 688.0
+offset_top = 295.0
+offset_right = 1107.0
+offset_bottom = 545.0
+script = ExtResource("6_0j2ni")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/TurnerPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/TurnerPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit2" type="LineEdit" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit3" type="LineEdit" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="CardContainer" parent="HUD" instance=ExtResource("7_q3f8m")]
 anchors_preset = 7

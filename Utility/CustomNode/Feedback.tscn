@@ -12,13 +12,11 @@ script = ExtResource("1_oddg0")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -131.5
-offset_right = 131.5
-offset_bottom = 60.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -30,4 +28,9 @@ theme_override_constants/margin_bottom = 10
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "geeggee"
+text = "geeggeesvvsadvdsvsdvssdvsdvsdsvsvsv"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
