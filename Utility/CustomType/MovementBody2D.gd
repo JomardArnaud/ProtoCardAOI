@@ -4,8 +4,8 @@ extends CharacterBody2D
 @export var speed : float = 1500 : set = setSpeed, get = getSpeed
 @export var acceleration : float = 7500 : set = setAcceleration, get = getAcceleration
 @export var deceleration : float = 10000
-@export var turnMult : float = 4
-@export var turnLateral : float = 3
+@export var uTurnAccel : float = 4
+@export var steeringAccel : float = 3
 @export_range(0, 1) var inertia : float = 0.1 : set = setInertia, get = getInertia
 
 @onready var dir : Vector2 : set = setDir, get = getDir 
@@ -31,9 +31,9 @@ func updateEnergy(delta: float):
 		var turningAngle : float  = energy.dot(dir)
 		var tmpAccel : float = acceleration
 		if turningAngle < 0 :
-			tmpAccel *= turnMult
+			tmpAccel *= uTurnAccel
 		elif turningAngle < 0.85 :
-			tmpAccel *= turnLateral
+			tmpAccel *= steeringAccel
 		var finaLAccel = tmpAccel * (1 - inertia)
 		energy = energy.move_toward(dir * speed, finaLAccel * delta)
 

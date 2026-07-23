@@ -1,3 +1,4 @@
+class_name Feedback
 extends Control
 
 @export var timeBeforeFading : float = 0.5
@@ -11,8 +12,9 @@ func _ready() -> void:
 	popUp()
 
 func setText(nText: String) -> void:
+	text = nText
 	if is_node_ready():
-		textNode.text = text 
+		updateUI() 
 
 func popUp() -> void:
 	modulate.a = 1
@@ -24,4 +26,4 @@ func popUp() -> void:
 	tween.tween_callback(queue_free)
 
 func updateUI() -> void:
-	textNode.text = "[center]%s[center]" % text
+	textNode.text = "[center]%s[/center]" % text

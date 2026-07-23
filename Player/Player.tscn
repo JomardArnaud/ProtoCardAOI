@@ -56,13 +56,14 @@ info = SubResource("Resource_j23h2")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="TurnerPanel" type="PanelContainer" parent="HUD"]
+[node name="TurnerPanel" type="PanelContainer" parent="HUD" node_paths=PackedStringArray("player")]
 process_mode = 3
 offset_left = 688.0
 offset_top = 295.0
 offset_right = 1107.0
 offset_bottom = 545.0
 script = ExtResource("6_0j2ni")
+player = NodePath("../..")
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD/TurnerPanel"]
 layout_mode = 2
@@ -70,11 +71,53 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/TurnerPanel/MarginContainer"]
 layout_mode = 2
 
+[node name="Speed" type="RichTextLabel" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Speed :
+"
+fit_content = true
+
 [node name="LineEdit" type="LineEdit" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="Accel" type="RichTextLabel" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Accel :"
+fit_content = true
+
 [node name="LineEdit2" type="LineEdit" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Decel" type="RichTextLabel" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Decel :"
+fit_content = true
+
+[node name="LineEdit6" type="LineEdit" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Inertia" type="RichTextLabel" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Inertia (between (0,1) :"
+fit_content = true
+
+[node name="LineEdit5" type="LineEdit" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AccelUturn" type="RichTextLabel" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Accel Uturn (pour les demi-tour / Dot < 0) :
+"
+fit_content = true
+
+[node name="LineEdit4" type="LineEdit" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SteeringAccel" type="RichTextLabel" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Steering Accel = (pour les virages / Dot < 0.85) :"
+fit_content = true
 
 [node name="LineEdit3" type="LineEdit" parent="HUD/TurnerPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
