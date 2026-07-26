@@ -5,12 +5,12 @@ extends PanelContainer
 @export var toggleKey : Key = KEY_TAB
 @export var player : PlayerController
 
-@onready var SpeedLine = $MarginContainer/VBoxContainer/LineEdit
-@onready var AccelerationLine = $MarginContainer/VBoxContainer/LineEdit2
-@onready var DecelerationLine = $MarginContainer/VBoxContainer/LineEdit6
-@onready var InertiaLine = $MarginContainer/VBoxContainer/LineEdit5
-@onready var UTurnAccelLine = $MarginContainer/VBoxContainer/LineEdit4
-@onready var SteeringAccelLine = $MarginContainer/VBoxContainer/LineEdit3
+@onready var SpeedLine = $MarginContainer/VBoxContainer/Speed
+@onready var AccelerationLine = $MarginContainer/VBoxContainer/Acceleration
+@onready var DecelerationLine = $MarginContainer/VBoxContainer/Deceleration
+@onready var InertiaLine = $MarginContainer/VBoxContainer/Inertia
+@onready var UTurnAccelLine = $MarginContainer/VBoxContainer/UTurnAccel
+@onready var SteeringAccelLine = $MarginContainer/VBoxContainer/SteeringAccel
 @onready var playerMoveBox : MovementBody2D
 
 func _ready() -> void:
@@ -46,10 +46,16 @@ func setupTuner() -> void:
 
 func bindInput(inputLine: LineEdit, variableToSet : float, updateCallback:Callable) -> void:
 	inputLine.text = str(variableToSet)
-	inputLine.text_submitted.connect(func(nText: String) :
-		if nText.is_valid_float():
-			updateCallback.call(nText.to_float())
-			Feedback.spawmFeedback(self, inputLine.name))
-	inputLine.focus_exited.connect(func() :
+	var bufferValue : Array = [variableToSet]
+	var applyValue = func():
 		if inputLine.text.is_valid_float():
-			updateCallback.call(inputLine.text))
+			var tmpValue = inputLine.text.to_float()
+			if tmpValue != bufferValue[0]:
+				bufferValue[0] = tmpValue
+				updateCallback.call(tmpValue)
+				Feedback.spawmFeedback(player, String(inputLine.name + "has been update to " + inputLine.text))
+				print("Valeur mise a jour avec succes :", tmpValue)
+			else:
+				inputLine.text = str(bufferValue[0])
+	inputLine.text_submitted.connect(func(_nText: String) : applyValue.call())
+	inputLine.focus_exited.connect(func() : applyValue.call())

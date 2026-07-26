@@ -43,14 +43,14 @@ func lockDir(nLock: bool) -> MovementBody2D:
 
 ### all getter | setter ###
 func setAcceleration(nAcceleration: float) -> MovementBody2D:
-	acceleration = clampf(nAcceleration, 0, 1)
+	acceleration = nAcceleration
 	return self
 
 func getAcceleration() -> float:
 	return acceleration
 	
 func addAcceleration(aAcceleration: float) -> MovementBody2D:
-	acceleration = clampf(acceleration + aAcceleration, 0, 1)
+	acceleration = acceleration + aAcceleration
 	return self
 
 func setInertia(nInertia: float) -> MovementBody2D:

@@ -88,9 +88,6 @@ script = ExtResource("5_4b75m")
 [node name="Player" parent="." instance=ExtResource("6_8ju71")]
 inertia = 0.15
 
-[node name="TurnerPanel" parent="Player/HUD" index="0"]
-toggleKey = 4194306
-
 [node name="Commander" parent="Player" index="5"]
 commanderInfo = SubResource("Resource_0iob3")
 
