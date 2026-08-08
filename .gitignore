@@ -1,3 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+.zip
+*.tmp
+*.tscn
+*.tmp
+export/
+PROJECT_CONTEXT.md
+geminiExport.py

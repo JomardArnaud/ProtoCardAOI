@@ -1,6 +1,8 @@
 class_name CommanderInfo
 extends Resource
 
+signal energyChanged
+
 const Counter = preload("res://Cards/Counters/Counter.gd") 
 
 # CARD PART
@@ -11,3 +13,10 @@ const Counter = preload("res://Cards/Counters/Counter.gd")
 
 @export var currentEnergy : float = 2
 @export var energyRegen : float = 0.5 ## Per second
+
+func setEnergy(nEnergy: float) -> void:
+	currentEnergy = nEnergy
+	emit_signal("energyChanged")
+
+func useEnergy(costEnergy: float) -> void:
+	setEnergy(currentEnergy - costEnergy) 

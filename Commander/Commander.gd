@@ -12,6 +12,7 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 @onready var deck : Deck
 @onready var hand : Hand
 @onready var graveyard : Graveyard
+@onready var weapon : Weapon : set = setWeapon
 
 var getDirDash : Callable
 var getDirAttack : Callable
@@ -19,32 +20,22 @@ var getDirAttack : Callable
 ## TODO mettre le son "NEVER GIVE UP ! " en son de mort 
  
 func _ready():
-	var parent = get_parent()
-	if parent.has_method("getDirDash"):
-		getDirDash = parent.getDirDash
-	else:
-		getDirDash = func() -> Vector2 : return Vector2.ZERO
-	if parent.has_method("getDirAttack"):
-		getDirAttack = parent.getDirAttack
-	else:
-		getDirAttack = func() -> Vector2 : return Vector2.ZERO
-	deck = cardHud.get_node("%Deck")
-	hand = cardHud.get_node("%Hand")
-	graveyard = cardHud.get_node("%Graveyard")
+	deck = cardHud.deck
+	hand = cardHud.hand
+	graveyard = cardHud.graveyard
 	deck.commander = self
 	deck.cardAddedToDeck.connect(onCardAddedToDeck)
 	deck.noMoreDraw.connect(refillDeck)
 	deck.fillCardInDeck()
 	while (hand.getNbCardInHand() < commanderInfo.nbCardStartingHand && deck.cardPile.get_child_count() > 0):
 		drawCard()
-	pass
 
 func _process(delta: float) -> void:
 	commanderInfo.currentEnergy += commanderInfo.energyRegen * delta
 	
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 	card.hotkeyCard = ""
-	card.cardZone = to
+	card.setCardZone(to)
 	match to:
 		CardEnum.CardZone.Deck:
 			deck.sendToDeck(card)
@@ -77,6 +68,9 @@ func refillDeck() -> void:
 func drawCard() -> void:
 	if hand.getNbCardInHand() < commanderInfo.handSizeLimit && deck.cardPile:
 		deck.drawCard()
+
+func setWeapon(nWeapon: Weapon) -> void:
+	weapon = nWeapon
 
 func onCardAddedToDeck(nCard: Card):
 	nCard.resolved.connect(cardAfterResolve.bind(nCard))

@@ -15,8 +15,8 @@ var defaultParam = {
 
 func resolve() -> void: 
 	##TODO add a protection type by creating a projectile type
-	var bullet : BacicProjectile = projectileScene.instantiate()
-	var cursor : Cursor = caster.get_node("Cursor")
+	var bullet : BasicProjectile = projectileScene.instantiate()
+	var cursor : Cursor = caster.weapon.cursor
 	bullet.dir = cursor.dir
 	bullet.speed = defaultParam.speed
 	bullet.damage = defaultParam.damage

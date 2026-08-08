@@ -1,6 +1,5 @@
 class_name Hand
 extends MarginContainer
-#
 #const CardScene = preload("res://Cards/Card.tscn")
 #const CardInfo = preload("res://Cards/CardInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
@@ -20,7 +19,7 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 
 func setSlotCard(card: Card) -> void:
 	var strInput : String = "Cast" + CardEnum.CardType.keys()[card.cardInfo.type]
-	card.setHotkeyCard(InputManager.get_instance().getHotkeyStr(strInput))
+	card.setHotkeyCard(InputManager.getHotkeyStr(strInput))
 	card.reparent(slotsCard[card.cardInfo.type])
 
 func addCardToHand(nCard: Card) -> void:

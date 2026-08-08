@@ -13,12 +13,11 @@ signal healthDropZero()
 @export var health : float = 0 : set = setHealth, get = getHealth
 
 func heal(nHeal: float) -> void:
-	health += nHeal
+	setHealth(health + nHeal)
 
 func takeDamage(damage: float) -> void:
-	health = health - damage
-		
-# not emitting healthChanged
+	setHealth(health - damage)
+
 func setHealth(nHealth: float) -> void:
 	var bufferHealth = health
 	health = clampf(nHealth, 0, maxHealth)
@@ -35,7 +34,6 @@ func getHealth() -> float:
 func setMaxHealth(nMaxHealth: float) -> void:
 	var diffHealth : float = nMaxHealth - maxHealth
 	maxHealth = nMaxHealth
-	#health = health + diffHealth
 	infoChanged.emit()
 	
 func getMaxHealth() -> float:

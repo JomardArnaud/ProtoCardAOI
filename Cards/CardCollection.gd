@@ -1,10 +1,9 @@
-class_name CardCollection
 extends Node
 
 const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardInfo = preload("res://Cards/CardInfo.gd")
 
-static func createAbility(infoAbility : CardAbilityInfo) -> CardAbilityNode:
+func createAbility(infoAbility : CardAbilityInfo) -> CardAbilityNode:
 	return infoAbility.createNode()
 
 var collection : Dictionary[int, CardInfo] = {
@@ -30,29 +29,11 @@ func getCollection():
 	return collection
 
 func getCardById(idCard: int):
-	if idCard > collection.size():
-		idCard = 0
-		printerr("idCard isn't in the scope")	
+	if !collection.has(idCard):
+		printerr("%s isn't in the scope", idCard)
+		return collection[0]
 	return collection[idCard]
 	
 func fillCollection():
 	print("Waiting collection to finishing collecting ...")
 	print("Collection has finished")
-
-##func descritpionParsing() -> void:
-	#var cardParsedAbilities = cardInfo.description.split(" | ")
-	#for abilityKeyword : String in cardParsedAbilities:
-		#var parsedAbility : PackedStringArray = abilityKeyword.split(" ", true, 1)
-		#var keyword : String = parsedAbility[0]
-		#var path = String("res://Cards/Ability/" + keyword + ".gd")
-		#if ResourceLoader.exists(path):
-			#var ability : CardAbility
-			#if parsedAbility.size() > 1:
-				#ability = load(path).new(commander, parsedAbility[1])
-			#else : 
-				#ability = load(path).new(commander, "")
-			#ability.init()
-			#cardAbilities[keyword] = ability
-			#add_child(ability)
-		#else:
-			#push_error(keyword, " Keyword's ability not find")

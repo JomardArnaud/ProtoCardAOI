@@ -1,4 +1,4 @@
-class_name Weaponf
+class_name Weapon
 extends Node2D
 
 signal reloading()
@@ -9,22 +9,29 @@ const WeaponInfo = preload("res://Weapon/WeaponInfo.gd")
 @onready var BacisProjectileScene = preload("res://Cards/Ability/SkillShot/BasicProjectile.tscn")
 
 @export var info : WeaponInfo
-@export var holder : Commander
-
-##TODO pour que le HUD ne bouge pas en même temps que le joueur faut avoir top_level = true 
 
 @onready var timerFireRate = %TimerFireRate
 @onready var timerReload = %TimerRelooad
+@onready var holder : Commander
+@onready var cursor = %Cursor
 
 func _ready() -> void:
-	timerFireRate.wait_time = info.fireRate
-	timerReload.wait_time = info.speedReload
-	timerReload.timeout.connect(reload)
-	
-func _process(delta: float) -> void:
-	if InputManager.get_instance().isShooting() && timerFireRate.time_left == 0 && info.leftInMagazine > 0:
+	if info != null:
+		info.leftInMagazine = info.sizeMagazine
+		timerFireRate.wait_time = info.fireRate
+		timerReload.wait_time = info.speedReload
+		if !timerReload.timeout.is_connected(reload):
+			timerReload.timeout.connect(reload)
+
+func setDirCursor(nDir: Vector2) -> void:
+	cursor.setDir(nDir)
+
+func tryShoot() -> bool:
+	if (timerFireRate.time_left == 0 && info.leftInMagazine > 0):
 		shootBullet()
-		
+		return true
+	return false
+
 func reload() -> void:
 	info.leftInMagazine = info.sizeMagazine
 	reloaded.emit()
@@ -35,9 +42,8 @@ func shootBullet() -> void:
 		reloading.emit()
 		timerReload.start()
 	var bullet := BacisProjectileScene.instantiate()
-	var cursor : Cursor = holder.get_node("Cursor")
 	bullet.dir = cursor.dir
 	bullet.setSpeed(info.speedBullet)
-	bullet.position = cursor.global_position
+	bullet.global_position = cursor.global_position
 	holder.add_child(bullet)
 	timerFireRate.start()

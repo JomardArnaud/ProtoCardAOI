@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var dirLock := false
 
 func resetEnergy(gradiant : Vector2 = Vector2.ZERO) -> void:
-	energy = energy * gradiant
+	setEnergy(energy * gradiant)
 
 func _physics_process(delta: float) -> void:
 	updateDir()
@@ -26,7 +26,7 @@ func updateDir() -> void:
 
 func updateEnergy(delta: float):
 	if dir == Vector2.ZERO:
-		energy = energy.move_toward(Vector2.ZERO, deceleration * (1 - inertia) * delta)
+		setEnergy(energy.move_toward(Vector2.ZERO, deceleration * (1 - inertia) * delta))
 	else:
 		var turningAngle : float  = energy.dot(dir)
 		var tmpAccel : float = acceleration
@@ -35,7 +35,7 @@ func updateEnergy(delta: float):
 		elif turningAngle < 0.85 :
 			tmpAccel *= steeringAccel
 		var finaLAccel = tmpAccel * (1 - inertia)
-		energy = energy.move_toward(dir * speed, finaLAccel * delta)
+		setEnergy(energy.move_toward(dir * speed, finaLAccel * delta))
 
 func lockDir(nLock: bool) -> MovementBody2D:
 	dirLock = nLock
@@ -50,7 +50,7 @@ func getAcceleration() -> float:
 	return acceleration
 	
 func addAcceleration(aAcceleration: float) -> MovementBody2D:
-	acceleration = acceleration + aAcceleration
+	setAcceleration(acceleration + aAcceleration)
 	return self
 
 func setInertia(nInertia: float) -> MovementBody2D:
@@ -61,20 +61,20 @@ func getInertia() -> float:
 	return inertia
 	
 func addInertia(aInertia: float) -> MovementBody2D:
-	inertia = clampf(inertia + aInertia, 0, 1)
+	setInertia(clampf(inertia + aInertia, 0, 1))
 	return self
 
 func setSpeed(nSpeed: float) -> MovementBody2D:
 	speed = nSpeed
+	if speed < 0:
+		speed = 0
 	return self
 	
 func getSpeed() -> float:
 	return speed
 
 func addSpeed(nSpeed: float) -> MovementBody2D:
-	speed += nSpeed
-	if speed < 0:
-		speed = 0
+	setSpeed(speed + nSpeed)
 	return self
 
 func setDir(nDir: Vector2) -> MovementBody2D:
