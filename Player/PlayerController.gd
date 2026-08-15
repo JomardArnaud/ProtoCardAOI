@@ -41,3 +41,6 @@ func _input(event: InputEvent) -> void:
 			commander.castHandCard(i - 1)
 	if Input.is_action_pressed("Shoot") && weapon != null:
 		weapon.tryShoot()
+	## TODO remove it for release
+	if Input.is_action_just_pressed("ExitGame"):
+		get_tree().quit()

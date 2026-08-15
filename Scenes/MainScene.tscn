@@ -89,10 +89,17 @@ script = ExtResource("5_4b75m")
 [node name="Player" parent="." instance=ExtResource("6_8ju71")]
 inertia = 0.15
 
+[node name="WeaponHud" parent="Player/Weapon" index="0"]
+visible = false
+
+[node name="CardContainer" parent="Player/HUD" index="1"]
+visible = false
+
 [node name="Commander" parent="Player" index="5"]
 commanderInfo = SubResource("Resource_0iob3")
 
 [editable path="Player"]
+[editable path="Player/Weapon"]
 [editable path="Player/HUD/CardContainer"]
 [editable path="Player/HUD/CardContainer/PanelHud/MarginContainer/HBoxContainer/Hand"]
 [editable path="Player/Commander"]

@@ -1,16 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfxyiv3p7jta5"]
+[gd_scene load_steps=4 format=3 uid="uid://bfxyiv3p7jta5"]
 
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Player/Player.tscn" id="1_l5je7"]
-[ext_resource type="Script" uid="uid://ci5fus18ojsoi" path="res://Utility/InputManager.gd" id="1_xjkry"]
 [ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Player/PlayerCamera.gd" id="2_xjkry"]
 [ext_resource type="PackedScene" uid="uid://bm02wou48n2vd" path="res://Enemies/Boss.tscn" id="5_55aqt"]
-[ext_resource type="PackedScene" uid="uid://dbostdu533m3l" path="res://Cards/CardCollection.tscn" id="5_xjkry"]
 
 [node name="BossFight" type="Node2D"]
-
-[node name="InputManager" type="Node" parent="."]
-script = ExtResource("1_xjkry")
-metadata/_custom_type_script = "uid://ci5fus18ojsoi"
 
 [node name="Player" parent="." instance=ExtResource("1_l5je7")]
 position = Vector2(430, 488)
@@ -21,8 +15,6 @@ script = ExtResource("2_xjkry")
 focusEntity = NodePath("../Player")
 
 [node name="Arena" type="Node" parent="."]
-
-[node name="CardCollection" parent="." instance=ExtResource("5_xjkry")]
 
 [node name="Boss" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_55aqt")]
 position = Vector2(-928, -43)
