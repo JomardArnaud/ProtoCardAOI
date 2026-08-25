@@ -7,3 +7,4 @@
 *.tmp
 export/
 geminiExport.py
+PROJECT_CONTEXT.md

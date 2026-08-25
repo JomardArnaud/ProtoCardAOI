@@ -20,7 +20,7 @@ func emptyGraveyard(destZone: CardEnum.CardZone) -> int:
 	if nbCard == 0:
 		##TODO make somethings in this case 
 		pass
-	for card : Card in cardPile.get_children():
+	for card : Card in cardPile.get_children().duplicate():
 		card.setCardZone(destZone)
 	return nbCard
 	

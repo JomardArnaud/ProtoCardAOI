@@ -92,9 +92,6 @@ inertia = 0.15
 [node name="WeaponHud" parent="Player/Weapon" index="0"]
 visible = false
 
-[node name="CardContainer" parent="Player/HUD" index="1"]
-visible = false
-
 [node name="Commander" parent="Player" index="5"]
 commanderInfo = SubResource("Resource_0iob3")
 
