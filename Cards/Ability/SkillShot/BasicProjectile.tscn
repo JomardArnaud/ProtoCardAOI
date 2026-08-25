@@ -11,8 +11,11 @@ speed = 0.0
 
 [node name="Hitbox" parent="." instance=ExtResource("2_1l6tr")]
 collision_layer = 8
+collision_mask = 293
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_w0ebm")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
 
 [editable path="Hitbox"]

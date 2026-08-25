@@ -6,5 +6,5 @@
 *.tscn
 *.tmp
 export/
-./geminiExport.py
-./PROJECT_CONTEXT.md
+geminiExport.py
+PROJECT_CONTEXT.md
