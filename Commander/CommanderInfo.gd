@@ -7,8 +7,8 @@ const Counter = preload("res://Cards/Counters/Counter.gd")
 
 # CARD PART
 ## the next card which is drawn is the lastId
-@export var nbCardStartingHand : int = 6
-@export var handSizeLimit : int = 6
+@export var nbCardStartingHand : int = 8
+@export var handSizeLimit : int = 8
 @export var counter : Array[Counter.idCounter]
 
 @export var currentEnergy : float = 2

@@ -10,12 +10,12 @@ var collection : Dictionary[int, CardInfo] = {
 	##TODO counter Shot, each ability with 'Shot' is resolve gain 1 counter Shot
 #CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, [skillShot(10, 300), posio(5)])
 	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("SkillShot", {"damage": 10, "speed": 2000, "projectileName": "BasicProjectile"})}),
-	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Dash", {"duration": 0.12, "power" : 3500})})
+	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Dash", {"duration": 0.12, "power" : 3500})}),
+	2: CardInfo.new("Blank Attack", 1, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("Blank")}),
+	3: CardInfo.new("Blank Dash", 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Blank")}),
+	4: CardInfo.new("Blank Spell", 1, CardEnum.CardType.SPELL, {0: CardAbilityInfo.new("Blank")}),
 } : get = getCollection
 	#1:  | Wind(1)"), ##TODO Counter 
-	#2: CardInfo.new("Blank Attack", 1, CardEnum.CardType.ATTACK, "Blank"),
-	#3: CardInfo.new("Blank Dash", 1, CardEnum.CardType.DASH, "Blank"),
-	#4: CardInfo.new("Blank Spell", 1, CardEnum.CardType.SPELL, "Blank"),
 	###TODO implemente keyword and X() synthax, AutoCast X _ (Card with AutoCast can't be send to SlotHand,   
 	#5: CardInfo.new('IchiNoKata attack', 1, CardEnum.CardType.ATTACK, "FreeCost Dash | DashShot X(DashVelocity)"),
 	#6: CardInfo.new('Hanabi attack', 0, CardEnum.CardType.ATTACK, "AutoCast  |  "),

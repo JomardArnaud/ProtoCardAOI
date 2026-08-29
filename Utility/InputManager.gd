@@ -1,5 +1,15 @@
 extends Node
 
+func createKeyEvent(keycode: Key) -> InputEventKey:
+	var event := InputEventKey.new()
+	event.keycode = keycode
+	return event
+
+func createMouseEvent(buttonIndex: MouseButton) -> InputEventMouseButton:
+	var event := InputEventMouseButton.new()
+	event.button_index = buttonIndex
+	return event
+
 func getHotkeyStr(strInput: String) -> String:
 	if InputMap.has_action(strInput):
 		var events = InputMap.action_get_events(strInput)

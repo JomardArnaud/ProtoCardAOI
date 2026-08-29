@@ -1,7 +1,6 @@
 class_name Hand
 extends MarginContainer
-#const CardScene = preload("res://Cards/Card.tscn")
-#const CardInfo = preload("res://Cards/CardInfo.gd")
+
 const CardEnum = preload("res://Cards/CardEnum.gd")
 
 @onready var slotsCard : Dictionary[int, MarginContainer] = {
@@ -11,62 +10,72 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 }
 
 @onready var cardHandNode := %CardContainer
-@onready var cardHand : Dictionary[int, Card] = {
-}
-
-#peut être trouver un meilleur nom
-@onready var cdGlobalCast : float
+@onready var visibleHotkey : bool = false
+var cardHand: Array[Card] = []
 
 func setSlotCard(card: Card) -> void:
-	var strInput : String = "Cast" + CardEnum.CardType.keys()[card.cardInfo.type]
-	card.setHotkeyCard(InputManager.getHotkeyStr(strInput))
 	card.reparent(slotsCard[card.cardInfo.type])
 
 func addCardToHand(nCard: Card) -> void:
+	if not is_instance_valid(nCard):
+		return
 	var indexCard : int
 	if slotsCard[nCard.cardInfo.type].get_child_count() == 0:
-		setSlotCard(nCard)
-		indexCard = nCard.cardInfo.type
+			setSlotCard(nCard)
 	else:
-		##TODO fix l'index card 
-		indexCard = cardHand.size()
-		nCard.hotkeyCard = str(indexCard + 1)
+		cardHand.append(nCard)
 		nCard.reparent(cardHandNode)
-		cardHand[indexCard] = nCard
+	updateHandHotkeys()
 	nCard.visible = true
 	
 func fillSlotCard() -> void:
-	var tmpCardHand : Dictionary[int, Card] = {}
-	var nbCardHand : int = 0
-	for i in range(0, cardHand.size()):
-		var card : Card = cardHand[i]
-		if card == null or !is_instance_valid(card) or card.cardZone != CardEnum.CardZone.Hand:
+	var remainingCards: Array[Card] = []
+	for card in cardHand:
+		if not is_instance_valid(card) or card.cardZone != CardEnum.CardZone.Hand:
 			continue
 		if slotsCard[card.cardInfo.type].get_child_count() == 0:
 			setSlotCard(card)
 		else:
-			var idCard = nbCardHand + 1
-			card.hotkeyCard = str(nbCardHand + 1)
-			tmpCardHand[nbCardHand] = card
-			nbCardHand += 1
-	cardHand = {}
-	cardHand = tmpCardHand
+			remainingCards.append(card)
+	cardHand = remainingCards
+	updateHandHotkeys()
 	
 func getNbCardInHand() -> int:
-	return cardHand.size()
+	return cardHand.size() + getNbCardInSlot()
 
 func castSlotCard(idSlot: int) -> void:
-	if idSlot < 0 || idSlot > CardEnum.CardType.size():
-		idSlot = 0
-	if slotsCard[idSlot].get_child_count() > 0:
-		slotsCard[idSlot].get_child(0).cast()
+	if not slotsCard.has(idSlot):
+		return
+	var slotNode := slotsCard[idSlot]
+	if slotNode.get_child_count() > 0:
+		var cardToCast := slotNode.get_child(0) as Card
+		if is_instance_valid(cardToCast):
+			cardToCast.cast()
 		
-func castHandCard(idSlot: int) -> void:
-	if idSlot < 0 || idSlot >= cardHand.size():
-		idSlot = 0
-	var cardToCast : Card = cardHand[idSlot]
-	if cardToCast != null:
+func castHandCard(index: int) -> void:
+	if index < 0 or index >= cardHand.size():
+		return
+	var cardToCast := cardHand[index]
+	if is_instance_valid(cardToCast):
 		cardToCast.cast()
-	
-func _process(delta: float) -> void:
-	cdGlobalCast = clampf(cdGlobalCast - delta, 0, cdGlobalCast)
+
+func updateHandHotkeys() -> void:
+	if !visibleHotkey:
+		return 
+	for idSlot : int in slotsCard:
+		if slotsCard[idSlot].get_child_count() > 0:
+			var card = slotsCard[idSlot].get_child(0) as Card
+			card.setHotkeyCard(InputManager.getHotkeyStr("Cast" + CardEnum.CardType.keys()[idSlot]))
+	for i in range(cardHand.size()):
+		if is_instance_valid(cardHand[i]):
+			cardHand[i].setHotkeyCard(InputManager.getHotkeyStr("CastSlot" + str(i)))
+
+func getNbCardInSlot() -> int:
+	var nbCardInSlot : int = 0
+	for slot : MarginContainer in slotsCard.values():
+		if slot.get_child_count() > 0:
+			nbCardInSlot += 1
+	return nbCardInSlot
+
+func setVisibleHotkey(nVisible: bool) -> void:
+	visibleHotkey = nVisible
