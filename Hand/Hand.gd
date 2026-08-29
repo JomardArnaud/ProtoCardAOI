@@ -16,12 +16,12 @@ var cardHand: Array[Card] = []
 func setSlotCard(card: Card) -> void:
 	card.reparent(slotsCard[card.cardInfo.type])
 
-func addCardToHand(nCard: Card) -> void:
+func sendCardToHand(nCard: Card) -> void:
 	if not is_instance_valid(nCard):
 		return
 	var indexCard : int
 	if slotsCard[nCard.cardInfo.type].get_child_count() == 0:
-			setSlotCard(nCard)
+		setSlotCard(nCard)
 	else:
 		cardHand.append(nCard)
 		nCard.reparent(cardHandNode)

@@ -3,17 +3,28 @@ extends Node
 const CardEnum = preload("res://Cards/CardEnum.gd")
 const CardInfo = preload("res://Cards/CardInfo.gd")
 
+const listNameCard : Array[String] = [
+	"Ida's Wind",
+	"Wind rises",
+	"Blank Attack",
+	"Blank Dash",
+	"Blank Spell"
+]
+
+func getCardIdByName(nameCard : String) -> int:
+	return listNameCard.find(nameCard)
+
 func createAbility(infoAbility : CardAbilityInfo) -> CardAbilityNode:
 	return infoAbility.createNode()
 
 var collection : Dictionary[int, CardInfo] = {
 	##TODO counter Shot, each ability with 'Shot' is resolve gain 1 counter Shot
 #CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, [skillShot(10, 300), posio(5)])
-	0: CardInfo.new("Ida's Wind", 0, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("SkillShot", {"damage": 10, "speed": 2000, "projectileName": "BasicProjectile"})}),
-	1: CardInfo.new("Wind rises", 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Dash", {"duration": 0.12, "power" : 3500})}),
-	2: CardInfo.new("Blank Attack", 1, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("Blank")}),
-	3: CardInfo.new("Blank Dash", 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Blank")}),
-	4: CardInfo.new("Blank Spell", 1, CardEnum.CardType.SPELL, {0: CardAbilityInfo.new("Blank")}),
+	0: CardInfo.new(listNameCard[0], 0, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("SkillShot", {"damage": 10, "speed": 2000, "projectileName": "BasicProjectile"})}),
+	1: CardInfo.new(listNameCard[1], 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Dash", {"duration": 0.12, "power" : 3500})}),
+	2: CardInfo.new(listNameCard[2], 1, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("Blank")}),
+	3: CardInfo.new(listNameCard[3], 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Blank")}),
+	4: CardInfo.new(listNameCard[4], 1, CardEnum.CardType.SPELL, {0: CardAbilityInfo.new("Blank")}),
 } : get = getCollection
 	#1:  | Wind(1)"), ##TODO Counter 
 	###TODO implemente keyword and X() synthax, AutoCast X _ (Card with AutoCast can't be send to SlotHand,   

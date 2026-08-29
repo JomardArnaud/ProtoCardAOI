@@ -1,12 +1,13 @@
 class_name Commander
 extends Node2D
 
+const CardInfo = preload("res://Cards/CardInfo.gd")
 const CardEnum = preload("res://Cards/CardEnum.gd")
+const CardNode = preload("res://Cards/Card.tscn")
 
 @export var commanderInfo : CommanderInfo
 @export var body : MovementBody2D
 @export var cardHud : CardHudContainer
-#@export var health : Health
 
 ##All HUD's parts
 @onready var deck : Deck
@@ -18,21 +19,20 @@ var getDirDash : Callable
 var getDirAttack : Callable
 
 ## TODO mettre le son "NEVER GIVE UP ! " en son de mort 
- 
+
 func _ready():
 	deck = cardHud.deck
 	hand = cardHud.hand
 	graveyard = cardHud.graveyard
-	deck.commander = self
-	deck.cardAddedToDeck.connect(onCardAddedToDeck)
 	deck.noMoreDraw.connect(refillDeck)
-	deck.fillCardInDeck()
-	while (hand.getNbCardInHand() < commanderInfo.nbCardStartingHand && deck.cardPile.get_child_count() > 0):
-		drawCard()
 
 func _process(delta: float) -> void:
 	commanderInfo.currentEnergy += commanderInfo.energyRegen * delta
-	
+
+func setupCardEnvironment() -> void:
+	while (hand.getNbCardInHand() < commanderInfo.nbCardStartingHand && deck.cardPile.get_child_count() > 0):
+		drawCard()
+
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 	card.hotkeyCard = ""
 	card.setCardZone(to)
@@ -42,7 +42,23 @@ func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 		CardEnum.CardZone.Graveyard:
 			graveyard.sendToGraveyard(card)
 		CardEnum.CardZone.Hand:
-			hand.addCardToHand(card)
+			hand.sendCardToHand(card)
+
+func createCard(idCard : int, to : CardEnum.CardZone) -> void:
+	var infoCard : CardInfo = CardCollection.getCardById(idCard)
+	var nCard = CardNode.instantiate()
+	nCard.init(self, infoCard)
+	nCard.resolved.connect(cardAfterResolve.bind(nCard))
+	moveCard(nCard, to)
+
+func fillDeck(startingDeck : Dictionary[int,int]) -> void:
+	if startingDeck.is_empty():
+		push_warning("No cards in starter deck")
+		return
+	for keyCard in startingDeck:
+		for i in range(0, startingDeck[keyCard]):
+			createCard(keyCard, CardEnum.CardZone.Deck)
+	deck.shuffle()
 
 func castSlotCard(idSlot : int):
 	hand.castSlotCard(idSlot)
@@ -71,6 +87,3 @@ func drawCard() -> void:
 
 func setWeapon(nWeapon: Weapon) -> void:
 	weapon = nWeapon
-
-func onCardAddedToDeck(nCard: Card):
-	nCard.resolved.connect(cardAfterResolve.bind(nCard))

@@ -31,17 +31,28 @@ var verticalDirection : float
 	"CastSlot5": InputManager.createKeyEvent(KEY_4),
 	"CastSlot6": InputManager.createKeyEvent(KEY_5)
 }
+@onready var StartingDeck : Dictionary[int, int] = {
+	CardCollection.getCardIdByName("Ida's Wind") : 3,
+	CardCollection.getCardIdByName("Wind rises") : 3,
+	CardCollection.getCardIdByName("Blank Attack") : 3,
+	CardCollection.getCardIdByName("Blank Dash") : 3,
+	CardCollection.getCardIdByName("Blank Spell") : 3
+}
 
 func _ready() -> void:
 	bindindHotkeyFromPlayer()
-	if commander != null && weapon != null:
-		commander.getDirAttack = getDirAttack
-		commander.getDirDash = getDirDash
-		commander.setWeapon(weapon)
-		weapon.holder = commander
-	if commander != null && commander.hand != null:
-		commander.hand.setVisibleHotkey(true)
-		commander.hand.updateHandHotkeys()
+	if commander != null:
+		if weapon != null:
+			commander.getDirAttack = getDirAttack
+			commander.getDirDash = getDirDash
+			commander.setWeapon(weapon)
+			weapon.holder = commander
+		if commander.deck != null:
+			commander.fillDeck(StartingDeck)
+		if commander.hand != null:
+			commander.hand.setVisibleHotkey(true)
+			commander.hand.updateHandHotkeys()
+		commander.setupCardEnvironment()
 
 func updateDir() -> void:
 	setDir(Vector2.ZERO)
