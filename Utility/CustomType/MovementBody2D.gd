@@ -1,9 +1,10 @@
 class_name MovementBody2D
 extends CharacterBody2D
 
-@export var speed : float = 1500 : set = setSpeed, get = getSpeed
-@export var acceleration : float = 7500 : set = setAcceleration, get = getAcceleration
-@export var deceleration : float = 10000
+## ratio stand 1point in speed X5 accel X6
+@export var speed : float = 1000 : set = setSpeed, get = getSpeed
+@export var acceleration : float = 5000 : set = setAcceleration, get = getAcceleration
+@export var deceleration : float = 6000
 @export var uTurnAccel : float = 4
 @export var steeringAccel : float = 3
 @export_range(0, 1) var inertia : float = 0.1 : set = setInertia, get = getInertia
@@ -28,7 +29,7 @@ func updateEnergy(delta: float):
 	if dir == Vector2.ZERO:
 		setEnergy(energy.move_toward(Vector2.ZERO, deceleration * (1 - inertia) * delta))
 	else:
-		var turningAngle : float  = energy.dot(dir)
+		var turningAngle : float = energy.normalized().dot(dir)
 		var tmpAccel : float = acceleration
 		if turningAngle < 0 :
 			tmpAccel *= uTurnAccel

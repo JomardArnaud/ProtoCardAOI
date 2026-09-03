@@ -40,5 +40,3 @@ script = ExtResource("1_qvcda")
 [node name="HpBar" parent="." instance=ExtResource("3_jx60x")]
 layout_mode = 2
 theme = SubResource("Theme_vwrp0")
-
-[connection signal="ready" from="HpBar" to="." method="_on_hp_bar_ready"]

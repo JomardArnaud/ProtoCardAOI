@@ -2,38 +2,39 @@ class_name Deck
 extends Control
 
 const CardInfo = preload("res://Cards/CardInfo.gd")
+const CardEnum = preload("res://Cards/CardEnum.gd")
 
 signal noMoreDraw()
-signal cardAddedToDeck(nCard : Card)
 
 @onready var deckCardContainer : MarginContainer  = %DeckCardContainer
 @onready var labelRemainingCard : RichTextLabel = %RemainingCardLabel
 @onready var deckCardTexture : TextureRect = %DeckCardTexture
 
 @onready var startingDeck : Dictionary[int, int] = {}
-@onready var deck: Array[Card]
 @onready var cardPile: Control = %CardPile
-@onready var nbCardLeft : int : set = setNbCardLeft
 	
 func sendToDeck(nCard : Card) -> void:
 	if nCard.get_parent() != null:
 		nCard.reparent(cardPile)
 	else:
 		cardPile.add_child(nCard)
-	deck.push_back(nCard)
-	setNbCardLeft(nbCardLeft + 1)
+	updateUI()
 
 func shuffle():
-	deck.shuffle()
+	var cards := cardPile.get_children()
+	cards.shuffle()
+	for i in range(cards.size()):
+		cardPile.move_child(cards[i], i)
 
-func drawCard() -> void:
-	if nbCardLeft == 0:
+func drawCard() -> Card:
+	if cardPile.get_child_count() == 0:
 		noMoreDraw.emit()
-		return
-	var cardDrawn : Card = deck.pop_back()
-	cardDrawn.setCardZone(CardInfo.CardEnum.CardZone.Hand)
-	setNbCardLeft(nbCardLeft - 1)
+		return null
+	var cardDrawn := cardPile.get_child(cardPile.get_child_count() - 1) as Card
+	cardDrawn.setCardZone(CardEnum.CardZone.Hand)
+	updateUI()
+	return cardDrawn
 
-func setNbCardLeft(nLeft: int) -> void:
-	nbCardLeft = nLeft
-	labelRemainingCard.text = "[center]" + str(nbCardLeft) + "[center]"
+func updateUI() -> void:
+	if labelRemainingCard:
+		labelRemainingCard.text = "[center]%s[center]" % str(cardPile.get_child_count())

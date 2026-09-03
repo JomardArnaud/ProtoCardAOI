@@ -27,7 +27,8 @@ const pathCard = "res://ArtCard/"
 
 func cast() -> bool:
 	if commander && commander.commanderInfo.currentEnergy >= cardInfo.cost:
-		commander.commanderInfo.currentEnergy -= cardInfo.cost
+		## juste pour le debug decommenter cette ligne
+		#commander.commanderInfo.currentEnergy -= cardInfo.cost
 		casted.emit()
 		resolve()
 		return true

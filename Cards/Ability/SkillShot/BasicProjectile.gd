@@ -17,6 +17,7 @@ func _ready():
 	queue_redraw()
 	hitbox.triggerArea.connect(hit)
 	hitbox.triggerBody.connect(vanish)
+	setRadius(radius)
 	
 func _physics_process(delta: float) -> void:
 	raycast.target_position = dir * (speed * delta + 5.0)

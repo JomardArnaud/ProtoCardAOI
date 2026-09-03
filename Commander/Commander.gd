@@ -35,7 +35,6 @@ func setupCardEnvironment() -> void:
 
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
 	card.hotkeyCard = ""
-	card.setCardZone(to)
 	match to:
 		CardEnum.CardZone.Deck:
 			deck.sendToDeck(card)
@@ -67,19 +66,17 @@ func castHandCard(idCard : int):
 	hand.castHandCard(idCard)
 
 func cardAfterResolve(card : Card):
-	moveCard(card, CardEnum.CardZone.Graveyard)
+	card.setCardZone(CardEnum.CardZone.Graveyard)
 	hand.fillSlotCard()
 	drawCard()
-	hand.fillSlotCard()
 
 func refillDeck() -> void:
 	var nbCard : int = graveyard.emptyGraveyard(CardEnum.CardZone.Deck)
 	if nbCard == 0:
 		##TODO make something in this case
 		return
-	deck.setNbCardLeft(nbCard)
 	deck.shuffle()
-	deck.call_deferred("drawCard")
+	drawCard()
 
 func drawCard() -> void:
 	if hand.getNbCardInHand() < commanderInfo.handSizeLimit && deck.cardPile:

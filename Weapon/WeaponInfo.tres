@@ -1,3 +1,4 @@
 [gd_resource type="Resource" format=3 uid="uid://c0w3hp7mhagkx"]
 
 [resource]
+resource_local_to_scene = true

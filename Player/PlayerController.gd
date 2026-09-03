@@ -69,6 +69,8 @@ func getDirAttack() -> Vector2:
 func _process(delta: float) -> void:
 	if weapon != null:
 		weapon.setDirCursor(getDirAttack())
+		if Input.is_action_pressed("Shoot"):
+			weapon.tryShoot()
 
 func _input(event: InputEvent) -> void:
 	for nameEvent : String in CardSlotHotkey:
@@ -77,8 +79,6 @@ func _input(event: InputEvent) -> void:
 	for hotkey : String in NormalSlotHotkey:
 		if event.is_action_released(hotkey):
 			commander.castHandCard(hotkey.get_slice("CastSlot", 1).to_int())
-	if Input.is_action_pressed("Shoot") && weapon != null:
-		weapon.tryShoot()
 	## TODO remove it for release
 	if Input.is_action_just_pressed("ExitGame"):
 		get_tree().quit()

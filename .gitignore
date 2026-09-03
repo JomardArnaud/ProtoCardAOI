@@ -3,8 +3,6 @@
 /android/
 .zip
 *.tmp
-*.tscn
-*.tmp
 export/
 geminiExport.py
 PROJECT_CONTEXT.md
