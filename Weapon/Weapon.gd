@@ -6,14 +6,16 @@ signal reloaded()
 
 const WeaponInfo = preload("res://Weapon/WeaponInfo.gd")
 
-@onready var BacisProjectileScene = preload("res://Cards/Ability/SkillShot/BasicProjectile.tscn")
+const BacisProjectileScene = preload("res://Cards/Ability/SkillShot/BasicProjectile.tscn")
 
 @export var info : WeaponInfo
 
 @onready var timerFireRate = %TimerFireRate
 @onready var timerReload = %TimerRelooad
-@onready var holder : Commander
 @onready var cursor = %Cursor
+
+var hpBar : ProgressBar
+
 
 func _ready() -> void:
 	if info != null:

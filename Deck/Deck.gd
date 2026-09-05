@@ -9,9 +9,9 @@ signal noMoreDraw()
 @onready var deckCardContainer : MarginContainer  = %DeckCardContainer
 @onready var labelRemainingCard : RichTextLabel = %RemainingCardLabel
 @onready var deckCardTexture : TextureRect = %DeckCardTexture
-
-@onready var startingDeck : Dictionary[int, int] = {}
 @onready var cardPile: Control = %CardPile
+
+var startingDeck : Dictionary[int, int] = {}
 	
 func sendToDeck(nCard : Card) -> void:
 	if nCard.get_parent() != null:

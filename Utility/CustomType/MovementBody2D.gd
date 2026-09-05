@@ -9,9 +9,9 @@ extends CharacterBody2D
 @export var steeringAccel : float = 3
 @export_range(0, 1) var inertia : float = 0.1 : set = setInertia, get = getInertia
 
-@onready var dir : Vector2 : set = setDir, get = getDir 
-@onready var energy : Vector2 : set = setEnergy, get = getEnergy
-@onready var dirLock := false
+var dir : Vector2 : set = setDir, get = getDir 
+var energy : Vector2 : set = setEnergy, get = getEnergy
+var dirLock := false
 
 func resetEnergy(gradiant : Vector2 = Vector2.ZERO) -> void:
 	setEnergy(energy * gradiant)

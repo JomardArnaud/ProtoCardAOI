@@ -1,7 +1,7 @@
 class_name HpBar
 extends MarginContainer
 
-@onready var hpBar : ProgressBar
+var hpBar : ProgressBar
 
 func _ready() -> void:
 	hpBar = $HpBar

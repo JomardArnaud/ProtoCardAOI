@@ -9,7 +9,7 @@ extends Node2D
 		radius = nRadius
 @export var distanceToHolder : float = 10
 
-@onready var dir : Vector2 : set = setDir
+var dir : Vector2 : set = setDir
 
 func _ready():
 	queue_redraw()

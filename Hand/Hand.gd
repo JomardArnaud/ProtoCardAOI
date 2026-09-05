@@ -10,7 +10,7 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 }
 
 @onready var cardHandNode := %CardContainer
-@onready var visibleHotkey : bool = false
+var visibleHotkey : bool = false
 var cardHand: Array[Card] = []
 
 func setSlotCard(card: Card) -> void:

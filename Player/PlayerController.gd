@@ -9,7 +9,7 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 var horizontalDirection : float
 var verticalDirection : float
 
-@onready var HotkeyPlayer = {
+var HotkeyPlayer = {
 	"MoveUp": InputManager.createKeyEvent(KEY_W),
 	"MoveDown": InputManager.createKeyEvent(KEY_S),
 	"MoveLeft": InputManager.createKeyEvent(KEY_A),
@@ -17,12 +17,12 @@ var verticalDirection : float
 	"Shoot": InputManager.createMouseEvent(MOUSE_BUTTON_LEFT),
 	"Reload": InputManager.createKeyEvent(KEY_R)
 }
-@onready var CardSlotHotkey = {
+var CardSlotHotkey = {
 	"CastDASH" : InputManager.createKeyEvent(KEY_SHIFT),
 	"CastATTACK" : InputManager.createKeyEvent(KEY_SPACE),
 	"CastSPELL" : InputManager.createKeyEvent(KEY_F)
 }
-@onready var NormalSlotHotkey = {
+var NormalSlotHotkey = {
 	"CastSlot0": InputManager.createKeyEvent(KEY_1),
 	"CastSlot1": InputManager.createKeyEvent(KEY_2),
 	"CastSlot2": InputManager.createKeyEvent(KEY_3),
@@ -31,7 +31,7 @@ var verticalDirection : float
 	"CastSlot5": InputManager.createKeyEvent(KEY_4),
 	"CastSlot6": InputManager.createKeyEvent(KEY_5)
 }
-@onready var StartingDeck : Dictionary[int, int] = {
+var StartingDeck : Dictionary[int, int] = {
 	CardCollection.getCardIdByName("Ida's Wind") : 3,
 	CardCollection.getCardIdByName("Wind Rises") : 3,
 	CardCollection.getCardIdByName("Blank Attack") : 3,

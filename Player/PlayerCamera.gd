@@ -3,7 +3,7 @@ extends Camera2D
 @export var speedCamera := 1.0 
 @export var focusEntity: Node2D
 
-@onready var focusOnEntityDoubleTap = 0
+var focusOnEntityDoubleTap = 0
 
 const smooth_lean := 10.0
 const scale_lean  := 0.35

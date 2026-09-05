@@ -10,10 +10,10 @@ const CardNode = preload("res://Cards/Card.tscn")
 @export var cardHud : CardHudContainer
 
 ##All HUD's parts
-@onready var deck : Deck
-@onready var hand : Hand
-@onready var graveyard : Graveyard
-@onready var weapon : Weapon : set = setWeapon
+var deck : Deck
+var hand : Hand
+var graveyard : Graveyard
+var weapon : Weapon : set = setWeapon
 
 var getDirDash : Callable
 var getDirAttack : Callable
