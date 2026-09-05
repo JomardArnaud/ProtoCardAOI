@@ -33,7 +33,7 @@ var verticalDirection : float
 }
 @onready var StartingDeck : Dictionary[int, int] = {
 	CardCollection.getCardIdByName("Ida's Wind") : 3,
-	CardCollection.getCardIdByName("Wind rises") : 3,
+	CardCollection.getCardIdByName("Wind Rises") : 3,
 	CardCollection.getCardIdByName("Blank Attack") : 3,
 	CardCollection.getCardIdByName("Blank Dash") : 3,
 	CardCollection.getCardIdByName("Blank Spell") : 3

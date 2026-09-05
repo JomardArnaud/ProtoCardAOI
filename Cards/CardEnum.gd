@@ -1,6 +1,7 @@
 extends Object
 
 enum CardZone {
+	None,
 	Deck,
 	Hand,
 	Graveyard,

@@ -42,16 +42,13 @@ func resolve() -> void:
 	resolved.emit()
 
 func init(nCommander : Commander, nInfo : CardInfo, nZone: CardEnum.CardZone = CardEnum.CardZone.Deck) -> void:
-	if nCommander != null && nCommander.cardHud != null:
-		setCommander(nCommander)
-		setCardInfo(nInfo)
-		setCardZone(nZone)
-		
+	if nCommander != null && nCommander.cardHud != null:	
 		if !changeZone.is_connected(nCommander.moveCard):
 			changeZone.connect(nCommander.moveCard)
-			
+		setCommander(nCommander)
+		setCardInfo(nInfo)
+		setCardZone(nZone)		
 		costSetup()
-		
 		for i in range(0, nInfo.abilities.size()):
 			var nAbility : CardAbilityNode = CardCollection.createAbility(nInfo.abilities[i])
 			nAbility.caster = commander
@@ -69,6 +66,7 @@ func updateCardNode() -> void:
 		nameCardLabel.text = cardInfo.name
 		var path : String = pathCard + cardInfo.name + ".png"
 		if !ResourceLoader.exists(path):
+			push_warning("Art missing for the card '%s' -> %s" % [cardInfo.name, path])
 			path = pathCard + "Blank.png"
 		imageCard.texture = load(path)
 		

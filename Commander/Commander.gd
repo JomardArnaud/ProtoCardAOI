@@ -48,7 +48,7 @@ func createCard(idCard : int, to : CardEnum.CardZone) -> void:
 	var nCard = CardNode.instantiate()
 	nCard.init(self, infoCard)
 	nCard.resolved.connect(cardAfterResolve.bind(nCard))
-	moveCard(nCard, to)
+	nCard.setCardZone(to)
 
 func fillDeck(startingDeck : Dictionary[int,int]) -> void:
 	if startingDeck.is_empty():
