@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1cpi70tlxkss"
-path="res://.godot/imported/Sprite-0001.png-39f6c59b9f496ccca47b35bbd98a0284.ctex"
+uid="uid://bswkexo0nxa6f"
+path="res://.godot/imported/IchiNoKata attack.png-511d6f36677a786476258cd4a96f8a08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtCard/Sprite-0001.png"
-dest_files=["res://.godot/imported/Sprite-0001.png-39f6c59b9f496ccca47b35bbd98a0284.ctex"]
+source_file="res://Assets/ArtCard/IchiNoKata attack.png"
+dest_files=["res://.godot/imported/IchiNoKata attack.png-511d6f36677a786476258cd4a96f8a08.ctex"]
 
 [params]
 

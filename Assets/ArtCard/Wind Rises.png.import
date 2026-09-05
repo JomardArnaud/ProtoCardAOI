@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy2h6s2simn8n"
-path="res://.godot/imported/Ida's Wind.png-f00f2df9c324515212b3bf5f6072d9ff.ctex"
+uid="uid://dhd0uw5skhtg7"
+path="res://.godot/imported/Wind Rises.png-12575601a820a4fba003ae02043738e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtCard/Ida's Wind.png"
-dest_files=["res://.godot/imported/Ida's Wind.png-f00f2df9c324515212b3bf5f6072d9ff.ctex"]
+source_file="res://Assets/ArtCard/Wind Rises.png"
+dest_files=["res://.godot/imported/Wind Rises.png-12575601a820a4fba003ae02043738e8.ctex"]
 
 [params]
 

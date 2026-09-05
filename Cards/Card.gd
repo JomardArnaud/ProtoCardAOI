@@ -8,7 +8,7 @@ signal casted()
 signal resolved()
 signal changeZone(card : Card, to : CardEnum.CardZone)
 
-const pathCard = "res://ArtCard/"
+const pathCard = "res://Assets/ArtCard/"
 
 @export var cardInfo: CardInfo : get = getCardInfo, set = setCardInfo
 @export var freeCast : bool = false

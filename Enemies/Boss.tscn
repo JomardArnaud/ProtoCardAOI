@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bnbcia1u5sxmg" path="res://Enemies/Boss.gd" id="1_o1tk4"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="2_1454h"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="2_esarq"]
-[ext_resource type="Texture2D" uid="uid://c5hiu5a7lapn4" path="res://ArtCard/Boss.png" id="3_esarq"]
+[ext_resource type="Texture2D" uid="uid://c5hiu5a7lapn4" path="res://Assets/ArtCard/Boss.png" id="3_esarq"]
 [ext_resource type="PackedScene" uid="uid://bch12dvchox3r" path="res://Utility/CustomNode/Hurtbox2D.tscn" id="4_1454h"]
 [ext_resource type="PackedScene" uid="uid://cs3gd7v8ubhmj" path="res://Utility/CustomNode/HpBar.tscn" id="5_esarq"]
 [ext_resource type="PackedScene" uid="uid://dculbgkisxgmq" path="res://Hand/Hand.tscn" id="6_2st7e"]

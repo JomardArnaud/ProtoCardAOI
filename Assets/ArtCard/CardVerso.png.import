@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhd0uw5skhtg7"
-path="res://.godot/imported/Wind Rises.png-2e623e935bb546dbecd367948b38b89d.ctex"
+uid="uid://dky2jpf0yxba0"
+path="res://.godot/imported/CardVerso.png-6dc4a6031ed00911e0154e7f778e0d3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtCard/Wind Rises.png"
-dest_files=["res://.godot/imported/Wind Rises.png-2e623e935bb546dbecd367948b38b89d.ctex"]
+source_file="res://Assets/ArtCard/CardVerso.png"
+dest_files=["res://.godot/imported/CardVerso.png-6dc4a6031ed00911e0154e7f778e0d3c.ctex"]
 
 [params]
 

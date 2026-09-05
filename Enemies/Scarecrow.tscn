@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://vbwrldk3i16e"]
 
 [ext_resource type="Script" uid="uid://c4lylp40sxdo0" path="res://Enemies/Scarecrow.gd" id="1_tl5ag"]
-[ext_resource type="Texture2D" uid="uid://d0ovc83hmo14j" path="res://ArtCard/Scarecrow.png" id="2_ydfl1"]
+[ext_resource type="Texture2D" uid="uid://d0ovc83hmo14j" path="res://Assets/ArtCard/Scarecrow.png" id="2_ydfl1"]
 [ext_resource type="Script" uid="uid://d3yl2mqdykp0j" path="res://Utility/CustomType/CPolygon2D.gd" id="3_v4ya1"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="5_xl5xg"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="6_1xilp"]

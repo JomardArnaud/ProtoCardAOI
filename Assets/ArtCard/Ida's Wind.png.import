@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5hiu5a7lapn4"
-path="res://.godot/imported/Boss.png-8cdd61857ce99282055d7aaf49cbf15e.ctex"
+uid="uid://dy2h6s2simn8n"
+path="res://.godot/imported/Ida's Wind.png-022ceea8b5f45d64477b38f90eddbf56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtCard/Boss.png"
-dest_files=["res://.godot/imported/Boss.png-8cdd61857ce99282055d7aaf49cbf15e.ctex"]
+source_file="res://Assets/ArtCard/Ida's Wind.png"
+dest_files=["res://.godot/imported/Ida's Wind.png-022ceea8b5f45d64477b38f90eddbf56.ctex"]
 
 [params]
 

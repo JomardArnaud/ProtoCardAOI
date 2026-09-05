@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dky2jpf0yxba0"
-path="res://.godot/imported/CardVerso.png-caa499fd97152a1dd03e55c4d03ea862.ctex"
+uid="uid://c5hiu5a7lapn4"
+path="res://.godot/imported/Boss.png-4060549da6e3070557e34e4ac700fa6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtCard/CardVerso.png"
-dest_files=["res://.godot/imported/CardVerso.png-caa499fd97152a1dd03e55c4d03ea862.ctex"]
+source_file="res://Assets/ArtCard/Boss.png"
+dest_files=["res://.godot/imported/Boss.png-4060549da6e3070557e34e4ac700fa6a.ctex"]
 
 [params]
 

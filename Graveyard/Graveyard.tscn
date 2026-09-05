@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ctw24bejfrwct" path="res://Graveyard/Graveyard.gd" id="1_o2hnv"]
 [ext_resource type="PackedScene" uid="uid://bt5ogw5ih2umq" path="res://Cards/Card.tscn" id="2_ara25"]
-[ext_resource type="Texture2D" uid="uid://ck4115k25kn1n" path="res://ArtCard/Slot.png" id="3_4sgbr"]
+[ext_resource type="Texture2D" uid="uid://ck4115k25kn1n" path="res://Assets/ArtCard/Slot.png" id="3_4sgbr"]
 
 [node name="Graveyard" type="MarginContainer"]
 offset_left = 1247.0

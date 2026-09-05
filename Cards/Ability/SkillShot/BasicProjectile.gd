@@ -3,14 +3,17 @@ extends Node2D
 
 @export var color : Color = Color(0,0,1,1)
 @export var radius : float = 30 : set = setRadius
-@export var speed : float = 3000
-@export var damage : float = 10 :
+@export var speed : float = 3000.0
+@export var maxRange : float = 3000.0
+@export var damage : float = 10.0 :
 	set(nDamage): damage = nDamage
 	
-@onready var dir : Vector2
 @onready var collisionshape : CircleShape2D = $Hitbox/CollisionShape2D.shape
 @onready var hitbox : Hitbox2D = $Hitbox
 @onready var raycast : RayCast2D = $RayCast2D
+
+var dir : Vector2
+var travelledDistance : float = 0.0
 
 func _ready():
 	set_as_top_level(true)
@@ -22,14 +25,16 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	raycast.target_position = dir * (speed * delta + 5.0)
 	raycast.force_raycast_update()
-	
 	if raycast.is_colliding():
 		var impact_point := raycast.get_collision_point()
 		global_position = impact_point
 		vanish(raycast.get_collider())
 		return
-		
-	global_position += speed * dir * delta
+	var step = speed * delta	
+	global_position += dir * step
+	travelledDistance += step
+	if travelledDistance >= maxRange:
+		queue_free()
 	
 func _draw():
 	draw_circle(Vector2.ZERO, radius, color)

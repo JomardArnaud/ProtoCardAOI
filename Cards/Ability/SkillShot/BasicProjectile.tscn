@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b4btahiufqafh" path="res://Utility/CustomNode/Hitbox2D.tscn" id="2_1l6tr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w0ebm"]
+resource_local_to_scene = true
 
 [node name="BasicProjectile" type="Node2D"]
 script = ExtResource("1_wkcw8")

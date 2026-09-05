@@ -1,22 +1,120 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfxyiv3p7jta5"]
+[gd_scene load_steps=15 format=3 uid="uid://bfxyiv3p7jta5"]
 
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Player/Player.tscn" id="1_l5je7"]
+[ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="2_55aqt"]
 [ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Player/PlayerCamera.gd" id="2_xjkry"]
+[ext_resource type="Texture2D" uid="uid://cdyyy32q3ypix" path="res://Assets/ArenaSprite.png" id="4_55aqt"]
+[ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="4_exr8x"]
 [ext_resource type="PackedScene" uid="uid://bm02wou48n2vd" path="res://Enemies/Boss.tscn" id="5_55aqt"]
+
+[sub_resource type="Resource" id="Resource_f70ux"]
+resource_local_to_scene = true
+script = ExtResource("2_55aqt")
+nbCardStartingHand = 8
+handSizeLimit = 8
+counter = Array[int]([])
+currentEnergy = 2.0
+energyRegen = 0.5
+metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2st7e"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.227451, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjk0x"]
+bg_color = Color(0.188235, 0.960784, 0.945098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="Theme" id="Theme_o1tk4"]
+resource_local_to_scene = true
+ProgressBar/styles/background = SubResource("StyleBoxFlat_2st7e")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_yjk0x")
+
+[sub_resource type="Resource" id="Resource_xjkry"]
+resource_local_to_scene = true
+script = ExtResource("4_exr8x")
+visibleHpBar = true
+maxHealth = 100.0
+health = 100.0
+metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78b6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.227451, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5lg5"]
+bg_color = Color(0.188235, 0.960784, 0.945098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="Theme" id="Theme_55aqt"]
+resource_local_to_scene = true
+ProgressBar/styles/background = SubResource("StyleBoxFlat_t78b6")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_u5lg5")
 
 [node name="BossFight" type="Node2D"]
 
+[node name="Arena" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Arena"]
+z_index = -1
+scale = Vector2(8, 8)
+texture = ExtResource("4_55aqt")
+
 [node name="Player" parent="." instance=ExtResource("1_l5je7")]
 position = Vector2(430, 488)
+
+[node name="Commander" parent="Player" index="5"]
+commanderInfo = SubResource("Resource_f70ux")
+
+[node name="CollisionShape2D" parent="Player/Hurtbox2D" index="0"]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("focusEntity")]
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_xjkry")
 focusEntity = NodePath("../Player")
 
-[node name="Arena" type="Node" parent="."]
-
 [node name="Boss" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_55aqt")]
 position = Vector2(-928, -43)
 scale = Vector2(10, 10)
 player = NodePath("../Player")
+
+[node name="HpBarContainer" parent="Boss/BossHud" index="0"]
+theme = SubResource("Theme_o1tk4")
+
+[node name="Health" parent="Boss" index="2"]
+info = SubResource("Resource_xjkry")
+
+[node name="HpBar" parent="Boss/Health" index="0"]
+theme = SubResource("Theme_55aqt")
+
+[node name="CollisionShape2D" parent="Boss/HurtBox" index="0"]
+visible = false
+
+[editable path="Player"]
+[editable path="Player/HUD/CardContainer"]
+[editable path="Player/HUD/CardContainer/PanelHud/MarginContainer/HBoxContainer/Hand"]
+[editable path="Player/Commander"]
+[editable path="Boss"]
+[editable path="Boss/BossHud/HpBarContainer"]
+[editable path="Boss/BossHud/HandMargin"]
+[editable path="Boss/Health"]
+[editable path="Boss/HurtBox"]

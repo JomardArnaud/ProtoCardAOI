@@ -10,12 +10,15 @@ signal healthDropZero()
 		visibleHpBar = nVisible
 		infoChanged.emit()
 @export var maxHealth : float = 100 : set = setMaxHealth, get = getMaxHealth
-@export var health : float = 0 : set = setHealth, get = getHealth
+@export var health : float = 100 : set = setHealth, get = getHealth
 
 func heal(nHeal: float) -> void:
 	setHealth(health + nHeal)
 
 func takeDamage(damage: float) -> void:
+	if health <= 0:
+		healthDropZero.emit()
+		return
 	setHealth(health - damage)
 
 func setHealth(nHealth: float) -> void:

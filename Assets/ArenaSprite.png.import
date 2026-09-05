@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0ovc83hmo14j"
-path="res://.godot/imported/Scarecrow.png-64b5d2f6cccc4c7b6136432bc29a30cb.ctex"
+uid="uid://cdyyy32q3ypix"
+path="res://.godot/imported/ArenaSprite.png-fd06d147d54e26354dc70ae1f95ce768.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtCard/Scarecrow.png"
-dest_files=["res://.godot/imported/Scarecrow.png-64b5d2f6cccc4c7b6136432bc29a30cb.ctex"]
+source_file="res://Assets/ArenaSprite.png"
+dest_files=["res://.godot/imported/ArenaSprite.png-fd06d147d54e26354dc70ae1f95ce768.ctex"]
 
 [params]
 
