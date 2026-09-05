@@ -72,9 +72,9 @@ func updateCardNode() -> void:
 			path = pathCard + "Blank.png"
 		imageCard.texture = load(path)
 		
-	costCardLabel.text = "[center]%s[center]" % cardInfo.cost
+	costCardLabel.text = "[center]%s[/center]" % cardInfo.cost
 	typeCardLabel.text = CardEnum.CardType.keys()[cardInfo.type]
-	keyToUseLabel.text = "[center]%s[center]" % hotkeyCard
+	keyToUseLabel.text = "[center]%s[/center]" % hotkeyCard
 	bufferCardInfo = cardInfo
 
 func setCommander(nCommander: Commander) -> void:
@@ -87,7 +87,7 @@ func setHotkeyCard(nKey : String) -> Card:
 	hotkeyCard = nKey
 	if keyToUseLabel != null:
 		$PanelKey.visible = !hotkeyCard.is_empty()
-		keyToUseLabel.text = "[center]%s[center]" % hotkeyCard
+		keyToUseLabel.text = "[center]%s[/center]" % hotkeyCard
 	return self
 
 func setCardZone(nZone : CardEnum.CardZone) -> void:

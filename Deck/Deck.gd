@@ -37,4 +37,4 @@ func drawCard() -> Card:
 
 func updateUI() -> void:
 	if labelRemainingCard:
-		labelRemainingCard.text = "[center]%s[center]" % str(cardPile.get_child_count())
+		labelRemainingCard.text = "[center]%s[/center]" % str(cardPile.get_child_count())

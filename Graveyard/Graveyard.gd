@@ -3,9 +3,9 @@ extends Control
 
 const CardEnum = preload("res://Cards/CardEnum.gd")
 
-@onready var cardPile : Control
-@onready var cardOnTop : Card
-@onready var remainingCardLabel : RichTextLabel
+@onready var cardPile : Control = %CardPile
+@onready var cardOnTop : Card = %CardOnTop
+@onready var remainingCardLabel : RichTextLabel = %RemainingCardLabel
 
 func sendToGraveyard(card : Card):
 	card.visible = false
@@ -13,7 +13,7 @@ func sendToGraveyard(card : Card):
 	cardOnTop.updateCardNode()
 	cardOnTop.visible = true
 	card.reparent(cardPile)
-	remainingCardLabel.text = "[center]%s[center]" % str(cardPile.get_child_count())
+	remainingCardLabel.text = "[center]%s[/center]" % str(cardPile.get_child_count())
 
 func emptyGraveyard(destZone: CardEnum.CardZone) -> int:
 	var nbCard : int = cardPile.get_child_count()
@@ -24,13 +24,15 @@ func emptyGraveyard(destZone: CardEnum.CardZone) -> int:
 		card.setCardZone(destZone)
 	return nbCard
 	
-func _on_tree_entered():
-	cardPile = %CardPile
-	cardOnTop = %CardOnTop
-	remainingCardLabel = %RemainingCardLabel
-
-func _on_card_pile_child_exiting_tree() -> void:
-	var nbCardLeft = cardPile.get_child_count() - 1
-	remainingCardLabel.text = "[center]%s[center]" % str(nbCardLeft)
+func updateUI() -> void:
+	var nbCardLeft = cardPile.get_child_count()
+	remainingCardLabel.text = "[center]%s[/center]" % str(nbCardLeft)
 	if nbCardLeft == 0:
 		cardOnTop.visible = false
+
+func _ready() -> void:
+	cardPile.child_entered_tree.connect(onCardPileChanged)
+	cardPile.child_exiting_tree.connect(onCardPileChanged)
+
+func onCardPileChanged(_node: Node) -> void:
+	updateUI.call_deferred()
