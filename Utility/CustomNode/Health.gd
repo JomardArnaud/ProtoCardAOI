@@ -1,7 +1,6 @@
 class_name Health
 extends Control
 
-signal healthChanged(nHealth: float)
 signal healthDropZero(selfInfo : HealthInfo)
 
 @export var info : HealthInfo

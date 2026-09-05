@@ -146,7 +146,6 @@ offset_top = 62.5
 offset_right = 173.125
 offset_bottom = 135.5
 
-[connection signal="healthChanged" from="Health" to="BossHud/HpBarContainer" method="_on_health_health_changed"]
 [connection signal="takeHit" from="HurtBox" to="Health" method="_on_hurt_box_take_hit"]
 
 [editable path="BossHud/HpBarContainer"]

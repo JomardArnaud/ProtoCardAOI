@@ -15,6 +15,7 @@ func resolve() -> void:
 	caster.body.addSpeed(defaultParam.get("power"))
 	caster.body.lockDir(true)
 	durationTimer.start()
+	dash.emit()
 	
 func _on_duration_timeout() -> void:
 	caster.body.lockDir(false)

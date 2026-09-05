@@ -29,7 +29,7 @@ func _on_tree_entered():
 	cardOnTop = %CardOnTop
 	remainingCardLabel = %RemainingCardLabel
 
-func _on_card_pile_child_exiting_tree(node: Node) -> void:
+func _on_card_pile_child_exiting_tree() -> void:
 	var nbCardLeft = cardPile.get_child_count() - 1
 	remainingCardLabel.text = "[center]%s[center]" % str(nbCardLeft)
 	if nbCardLeft == 0:

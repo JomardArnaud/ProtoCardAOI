@@ -7,5 +7,5 @@ var param : Dictionary
 func resolve() -> void:
 	pass
 
-func setupParam(nParam: Dictionary) -> void:
+func setupParam(_nParam: Dictionary) -> void:
 	pass

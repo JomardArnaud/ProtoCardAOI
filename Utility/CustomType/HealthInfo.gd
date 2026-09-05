@@ -32,7 +32,6 @@ func getHealth() -> float:
 	return health
 
 func setMaxHealth(nMaxHealth: float) -> void:
-	var diffHealth : float = nMaxHealth - maxHealth
 	maxHealth = nMaxHealth
 	infoChanged.emit()
 	

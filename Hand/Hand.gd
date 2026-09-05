@@ -19,7 +19,6 @@ func setSlotCard(card: Card) -> void:
 func sendCardToHand(nCard: Card) -> void:
 	if not is_instance_valid(nCard):
 		return
-	var indexCard : int
 	if slotsCard[nCard.cardInfo.type].get_child_count() == 0:
 		setSlotCard(nCard)
 	else:

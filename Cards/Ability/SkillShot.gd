@@ -23,6 +23,7 @@ func resolve() -> void:
 	bullet.radius = defaultParam.radius
 	bullet.position = cursor.global_position
 	caster.add_child(bullet)
+	skillShot.emit()
 	
 func setupParam(nParam: Dictionary) -> void:
 	defaultParam.merge(nParam, true)

@@ -10,10 +10,10 @@ const sceneFeedback = preload("res://Utility/CustomNode/Feedback.tscn")
 @onready var textNode : RichTextLabel = $PanelContainer/MarginContainer/RichTextLabel
 @onready var panelContainer : PanelContainer = $PanelContainer
 
-static func spawnFeedback(owner: Node, nText : String) -> Feedback:
+static func spawnFeedback(nOwner: Node, nText : String) -> Feedback:
 	var nFeedback = sceneFeedback.instantiate() as Feedback
 	nFeedback.text = nText
-	owner.add_child(nFeedback)
+	nOwner.add_child(nFeedback)
 	return nFeedback
 
 func _ready() -> void:

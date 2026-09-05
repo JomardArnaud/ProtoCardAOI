@@ -66,7 +66,7 @@ func getDirDash() -> Vector2:
 func getDirAttack() -> Vector2:
 	return InputManager.getDirAttack(self)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if weapon != null:
 		weapon.setDirCursor(getDirAttack())
 		if Input.is_action_pressed("Shoot"):
