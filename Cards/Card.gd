@@ -11,24 +11,25 @@ signal changeZone(card : Card, to : CardEnum.CardZone)
 const pathCard = "res://ArtCard/"
 
 @export var cardInfo: CardInfo : get = getCardInfo, set = setCardInfo
+@export var freeCast : bool = false
 
 @onready var commander : Commander : set = setCommander
 @onready var cardZone : CardEnum.CardZone : get = getCardZone, set = setCardZone
 @onready var hotkeyCard : String : get = getHotkeyCard, set = setHotkeyCard
 
-@onready var bufferCardInfo: CardInfo
+@onready var nameCardLabel : RichTextLabel = %NameCardLabel
+@onready var costCardLabel : RichTextLabel = %CostCardLabel
+@onready var imageCard : TextureRect = %ImageTextureRect
+@onready var typeCardLabel : RichTextLabel = %TypeCardLabel
+@onready var descriptionCardLabel : RichTextLabel = %DescriptionCardLabel
+@onready var keyToUseLabel : RichTextLabel = %KeyToUseLabel
 
-@onready var nameCardLabel : RichTextLabel
-@onready var costCardLabel : RichTextLabel
-@onready var imageCard : TextureRect
-@onready var typeCardLabel : RichTextLabel
-@onready var descriptionCardLabel : RichTextLabel
-@onready var keyToUseLabel : RichTextLabel
+var bufferCardInfo: CardInfo
 
 func cast() -> bool:
-	if commander && commander.commanderInfo.currentEnergy >= cardInfo.cost:
-		## juste pour le debug decommenter cette ligne
-		#commander.commanderInfo.currentEnergy -= cardInfo.cost
+	if commander && (commander.commanderInfo.currentEnergy >= cardInfo.cost || freeCast):
+		if !freeCast:	
+			commander.commanderInfo.currentEnergy -= cardInfo.cost
 		casted.emit()
 		resolve()
 		return true
@@ -103,13 +104,7 @@ func getCardInfo() -> CardInfo:
 func setCardInfo(nCardInfo: CardInfo) -> void:
 	cardInfo = nCardInfo
 
-func _on_tree_entered():
+func _ready() -> void:
 	if bufferCardInfo == null:
 		bufferCardInfo = CardInfo.new()
-		nameCardLabel = %NameCardLabel
-		costCardLabel = %CostCardLabel
-		imageCard = %ImageTextureRect
-		typeCardLabel = %TypeCardLabel
-		descriptionCardLabel = %DescriptionCardLabel
-		keyToUseLabel = %KeyToUseLabel
 		updateCardNode()
