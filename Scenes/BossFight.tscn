@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfxyiv3p7jta5"]
+[gd_scene load_steps=16 format=3 uid="uid://bfxyiv3p7jta5"]
 
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Player/Player.tscn" id="1_l5je7"]
 [ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="2_55aqt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cdyyy32q3ypix" path="res://Assets/ArenaSprite.png" id="4_55aqt"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="4_exr8x"]
 [ext_resource type="PackedScene" uid="uid://bm02wou48n2vd" path="res://Enemies/Boss.tscn" id="5_55aqt"]
+[ext_resource type="PackedScene" uid="uid://d4ffh65mxnhar" path="res://Weapon/Weapon.tscn" id="6_f70ux"]
 
 [sub_resource type="Resource" id="Resource_f70ux"]
 resource_local_to_scene = true
@@ -97,10 +98,23 @@ position = Vector2(-928, -43)
 scale = Vector2(10, 10)
 player = NodePath("../Player")
 
+[node name="Weapon" parent="Boss" instance=ExtResource("6_f70ux")]
+scale = Vector2(1, 1)
+
 [node name="HpBarContainer" parent="Boss/BossHud" index="0"]
+offset_left = -892.5
+offset_top = 0.0
+offset_right = 892.5
+offset_bottom = 57.0
 theme = SubResource("Theme_o1tk4")
 
-[node name="Health" parent="Boss" index="2"]
+[node name="HandMargin" parent="Boss/BossHud" index="1"]
+offset_left = -241.0
+offset_top = -457.0
+offset_right = 231.0
+offset_bottom = -235.0
+
+[node name="Health" parent="Boss" index="3"]
 info = SubResource("Resource_xjkry")
 
 [node name="HpBar" parent="Boss/Health" index="0"]

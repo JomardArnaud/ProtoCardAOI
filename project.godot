@@ -139,9 +139,13 @@ ExitGame={
 2d_physics/layer_5="EnnemyMovementBox"
 2d_physics/layer_6="EnnemyHurtBox"
 2d_physics/layer_7="EnnemyHitBox"
-2d_physics/layer_8=" BossMovementBox"
+2d_physics/layer_8="BossHurtBox"
 2d_physics/layer_9="BossHurtBox"
 2d_physics/layer_10="BossHitBox"
+
+[physics]
+
+common/physics_ticks_per_second=120
 
 [rendering]
 

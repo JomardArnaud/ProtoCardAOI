@@ -5,7 +5,6 @@ signal reloading()
 signal reloaded()
 
 const WeaponInfo = preload("res://Weapon/WeaponInfo.gd")
-
 const BacisProjectileScene = preload("res://Cards/Ability/SkillShot/BasicProjectile.tscn")
 
 @export var info : WeaponInfo
@@ -13,6 +12,8 @@ const BacisProjectileScene = preload("res://Cards/Ability/SkillShot/BasicProject
 @onready var timerFireRate = %TimerFireRate
 @onready var timerReload = %TimerRelooad
 @onready var cursor = %Cursor
+
+var holder : Commander
 
 var hpBar : ProgressBar
 

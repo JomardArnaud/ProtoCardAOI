@@ -19,22 +19,6 @@ z_index = -1
 script = ExtResource("1_fwiay")
 info = SubResource("Resource_l4m4n")
 
-[node name="WeaponHud" type="CanvasLayer" parent="."]
-
-[node name="RichTextLabel" type="RichTextLabel" parent="WeaponHud"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -188.0
-offset_top = -93.0
-grow_horizontal = 0
-grow_vertical = 0
-bbcode_enabled = true
-text = "8/8
-"
-
 [node name="TimerFireRate" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
