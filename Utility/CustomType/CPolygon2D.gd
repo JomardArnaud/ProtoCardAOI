@@ -1,6 +1,8 @@
 # It is custome class build for automatic build collission block base on a Polygon2D
+@tool
 class_name CPolygon2D
 extends Polygon2D
+
 
 func setBodyFromPolygon(poly: PackedVector2Array = []) -> void:
 	var body = StaticBody2D.new()

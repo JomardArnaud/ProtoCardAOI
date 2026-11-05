@@ -40,7 +40,8 @@ func _draw():
 	draw_circle(Vector2.ZERO, radius, color)
 
 func hit(collsionEntity: Node2D) -> void:
-	collsionEntity.takeHit.emit(damage)
+	if collsionEntity is Hurtbox2D:
+		(collsionEntity as Hurtbox2D).receiveHit(damage, self)
 	vanish(collsionEntity)
 	
 func vanish(_collsionEntity: Node2D) -> void:
