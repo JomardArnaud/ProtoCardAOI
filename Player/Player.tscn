@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://1gqkb0fppjlj"]
+[gd_scene load_steps=15 format=3 uid="uid://1gqkb0fppjlj"]
 
 [ext_resource type="Script" uid="uid://baaxvqbmq3gta" path="res://Player/PlayerController.gd" id="1_caob2"]
 [ext_resource type="Texture2D" uid="uid://by8cxlc4pd4f0" path="res://Assets/ArtCard/SpritePlayerPlaygroundCard.png" id="4_le41p"]
@@ -30,6 +30,9 @@ counter = Array[int]([])
 currentEnergy = 2.0
 energyRegen = 0.5
 metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v0k0e"]
+radius = 3.42053
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 scale = Vector2(10, 10)
@@ -139,13 +142,15 @@ commanderInfo = SubResource("Resource_0j2ni")
 body = NodePath("..")
 cardHud = NodePath("../HUD/CardContainer")
 
-[node name="Hurtbox2D" type="Area2D" parent="."]
+[node name="Hurtbox2D" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 collision_layer = 4
 collision_mask = 728
 script = ExtResource("9_j23h2")
+health = NodePath("../Health")
 metadata/_custom_type_script = "uid://7jjqca4eb0e4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
+shape = SubResource("CircleShape2D_v0k0e")
 
 [editable path="HUD/CardContainer"]
 [editable path="HUD/CardContainer/PanelHud/MarginContainer/HBoxContainer/Hand"]

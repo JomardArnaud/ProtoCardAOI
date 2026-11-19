@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	commanderInfo.currentEnergy += commanderInfo.energyRegen * delta
 
 func setupCardEnvironment() -> void:
-	while (hand.getNbCardInHand() < commanderInfo.nbCardStartingHand && deck.cardPile.get_child_count() > 0):
+	while (hand.getNbCardInHand() < commanderInfo.nbCardStartingHand && hand.getNbCardInHand() < commanderInfo.handSizeLimit && deck.cardPile.get_child_count() > 0):
 		drawCard()
 
 func moveCard(card : Card, to : CardEnum.CardZone) -> void:
