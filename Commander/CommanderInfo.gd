@@ -7,12 +7,13 @@ const Counter = preload("res://Cards/Counters/Counter.gd")
 
 # CARD PART
 ## the next card which is drawn is the lastId
-@export var nbCardStartingHand : int = 8
-@export var handSizeLimit : int = 8
+@export var nbCardStartingHand : int = 6
+@export var handSizeLimit : int = 6
 @export var counter : Array[Counter.idCounter]
 
+@export var limitEnergy : float = 3
 @export var currentEnergy : float = 2
-@export var energyRegen : float = 0.5 ## Per second
+@export var energyRegen : float = 0.2 ## Per second
 
 func setEnergy(nEnergy: float) -> void:
 	currentEnergy = nEnergy

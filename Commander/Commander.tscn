@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsdq572poq71l"]
+[gd_scene load_steps=7 format=3 uid="uid://dsdq572poq71l"]
 
 [ext_resource type="Script" uid="uid://cjnywahwqaso1" path="res://Commander/Commander.gd" id="1_bg122"]
 [ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="3_14x6c"]
@@ -8,9 +8,48 @@ script = ExtResource("3_14x6c")
 nbCardStartingHand = 8
 handSizeLimit = 8
 counter = Array[int]([])
+limitEnergy = 3.0
 currentEnergy = 2.0
 energyRegen = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8cy4c"]
+bg_color = Color(0.8, 0.8, 0.8, 0.152941)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.631373, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hiwjk"]
+resource_local_to_scene = true
+bg_color = Color(0.953108, 0.902389, 0.145205, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.152941)
+
+[sub_resource type="Theme" id="Theme_lfelp"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_8cy4c")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_hiwjk")
 
 [node name="Commander" type="Node2D"]
 script = ExtResource("1_bg122")
 commanderInfo = SubResource("Resource_ahofe")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_right = 125.0
+offset_bottom = 25.0
+grow_horizontal = 2
+
+[node name="EnergyBar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_lfelp")
+value = 100.0
+show_percentage = false

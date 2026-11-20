@@ -5,13 +5,15 @@
 [ext_resource type="Script" uid="uid://cgdc40mbyvcgy" path="res://Weapon/Cursor.gd" id="3_l4m4n"]
 
 [sub_resource type="Resource" id="Resource_l4m4n"]
+resource_local_to_scene = true
 script = ExtResource("2_370bg")
 fireRate = 0.2
 speedBullet = 3000.0
 sizeBullet = 30.0
 sizeMagazine = 8.0
 leftInMagazine = null
-speedReload = 2.0
+speedReload = 0.1
+energyPerHit = 0.5
 metadata/_custom_type_script = "uid://bykif5peqeubt"
 
 [node name="Weapon" type="Node2D"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfxyiv3p7jta5"]
+[gd_scene load_steps=20 format=3 uid="uid://bfxyiv3p7jta5"]
 
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Player/Player.tscn" id="1_l5je7"]
 [ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="2_55aqt"]
@@ -6,17 +6,51 @@
 [ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Player/PlayerCamera.gd" id="2_xjkry"]
 [ext_resource type="Texture2D" uid="uid://cdyyy32q3ypix" path="res://Assets/ArenaSprite.png" id="4_55aqt"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="4_exr8x"]
+[ext_resource type="Script" uid="uid://bykif5peqeubt" path="res://Weapon/WeaponInfo.gd" id="4_nvr14"]
 [ext_resource type="PackedScene" uid="uid://bm02wou48n2vd" path="res://Enemies/Boss.tscn" id="5_55aqt"]
+
+[sub_resource type="Resource" id="Resource_qh7hi"]
+resource_local_to_scene = true
+script = ExtResource("4_nvr14")
+fireRate = 0.2
+speedBullet = 3000.0
+sizeBullet = 30.0
+sizeMagazine = 8.0
+leftInMagazine = null
+speedReload = 3.0
+energyPerHit = 0.5
+metadata/_custom_type_script = "uid://bykif5peqeubt"
+
+[sub_resource type="Resource" id="Resource_af80e"]
+resource_local_to_scene = true
+script = ExtResource("4_exr8x")
+visibleHpBar = true
+maxHealth = 100.0
+health = 100.0
+metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
 [sub_resource type="Resource" id="Resource_f70ux"]
 resource_local_to_scene = true
 script = ExtResource("2_55aqt")
-nbCardStartingHand = 7
+nbCardStartingHand = 6
 handSizeLimit = 6
 counter = Array[int]([])
+limitEnergy = 3.0
 currentEnergy = 2.0
-energyRegen = 0.5
+energyRegen = 0.2
 metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
+
+[sub_resource type="Resource" id="Resource_5oi8w"]
+resource_local_to_scene = true
+script = ExtResource("4_nvr14")
+fireRate = 0.2
+speedBullet = 3000.0
+sizeBullet = 30.0
+sizeMagazine = 8.0
+leftInMagazine = null
+speedReload = 0.1
+energyPerHit = 0.5
+metadata/_custom_type_script = "uid://bykif5peqeubt"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2st7e"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -146,6 +180,12 @@ metadata/_custom_type_script = "uid://5j4hdbin2nn7"
 [node name="Player" parent="." instance=ExtResource("1_l5je7")]
 position = Vector2(430, 488)
 
+[node name="Weapon" parent="Player" index="2"]
+info = SubResource("Resource_qh7hi")
+
+[node name="Health" parent="Player" index="3"]
+info = SubResource("Resource_af80e")
+
 [node name="Commander" parent="Player" index="5"]
 commanderInfo = SubResource("Resource_f70ux")
 
@@ -161,6 +201,9 @@ focusEntity = NodePath("../Player")
 position = Vector2(-928, -43)
 scale = Vector2(10, 10)
 player = NodePath("../Player")
+
+[node name="Weapon" parent="Boss" index="0"]
+info = SubResource("Resource_5oi8w")
 
 [node name="HpBarContainer" parent="Boss/BossHud" index="0"]
 offset_left = -892.5

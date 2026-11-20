@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://1gqkb0fppjlj"]
+[gd_scene load_steps=17 format=3 uid="uid://1gqkb0fppjlj"]
 
 [ext_resource type="Script" uid="uid://baaxvqbmq3gta" path="res://Player/PlayerController.gd" id="1_caob2"]
 [ext_resource type="Texture2D" uid="uid://by8cxlc4pd4f0" path="res://Assets/ArtCard/SpritePlayerPlaygroundCard.png" id="4_le41p"]
+[ext_resource type="Script" uid="uid://bykif5peqeubt" path="res://Weapon/WeaponInfo.gd" id="4_v0k0e"]
 [ext_resource type="PackedScene" uid="uid://d4ffh65mxnhar" path="res://Weapon/Weapon.tscn" id="5_q3f8m"]
 [ext_resource type="Script" uid="uid://mmn6807ldqex" path="res://Player/TunePanel.gd" id="6_0j2ni"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="6_i4si5"]
@@ -14,19 +15,33 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_qathd"]
 radius = 4.41021
 
-[sub_resource type="Resource" id="Resource_j23h2"]
+[sub_resource type="Resource" id="Resource_5wa8t"]
+resource_local_to_scene = true
+script = ExtResource("4_v0k0e")
+fireRate = 0.2
+speedBullet = 3000.0
+sizeBullet = 30.0
+sizeMagazine = 8.0
+leftInMagazine = null
+speedReload = 0.1
+energyPerHit = 0.5
+metadata/_custom_type_script = "uid://bykif5peqeubt"
+
+[sub_resource type="Resource" id="Resource_v0k0e"]
+resource_local_to_scene = true
 script = ExtResource("7_le41p")
 visibleHpBar = true
 maxHealth = 100.0
 health = 80.0
 metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
-[sub_resource type="Resource" id="Resource_0j2ni"]
+[sub_resource type="Resource" id="Resource_p7tob"]
 resource_local_to_scene = true
 script = ExtResource("8_q3f8m")
 nbCardStartingHand = 6
 handSizeLimit = 6
 counter = Array[int]([])
+limitEnergy = 3.0
 currentEnergy = 2.0
 energyRegen = 0.5
 metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
@@ -47,6 +62,7 @@ shape = SubResource("CircleShape2D_qathd")
 texture = ExtResource("4_le41p")
 
 [node name="Weapon" parent="." instance=ExtResource("5_q3f8m")]
+info = SubResource("Resource_5wa8t")
 
 [node name="Health" parent="." instance=ExtResource("6_i4si5")]
 offset_left = -9.3
@@ -54,7 +70,7 @@ offset_top = -9.4
 offset_right = 83.7
 offset_bottom = 9.6
 scale = Vector2(0.2, 0.2)
-info = SubResource("Resource_j23h2")
+info = SubResource("Resource_v0k0e")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -138,9 +154,12 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Commander" parent="." node_paths=PackedStringArray("body", "cardHud") instance=ExtResource("7_owyu7")]
-commanderInfo = SubResource("Resource_0j2ni")
+commanderInfo = SubResource("Resource_p7tob")
 body = NodePath("..")
 cardHud = NodePath("../HUD/CardContainer")
+
+[node name="MarginContainer" parent="Commander" index="0"]
+scale = Vector2(0.2, 0.2)
 
 [node name="Hurtbox2D" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 collision_layer = 4

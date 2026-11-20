@@ -1,20 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://d00sk2e54o4tg"]
+[gd_scene load_steps=12 format=3 uid="uid://d00sk2e54o4tg"]
 
 [ext_resource type="Script" uid="uid://cuakmtonwohuw" path="res://Player/PlayerCamera.gd" id="2_q68mp"]
 [ext_resource type="PackedScene" uid="uid://b7kj234fqvhlm" path="res://Utility/CustomNode/Block2D.tscn" id="3_f140w"]
 [ext_resource type="PackedScene" uid="uid://vbwrldk3i16e" path="res://Enemies/Scarecrow.tscn" id="4_0iob3"]
 [ext_resource type="Script" uid="uid://5j4hdbin2nn7" path="res://Utility/CustomNode/Block2D.gd" id="5_4b75m"]
 [ext_resource type="PackedScene" uid="uid://1gqkb0fppjlj" path="res://Player/Player.tscn" id="6_8ju71"]
+[ext_resource type="Script" uid="uid://bykif5peqeubt" path="res://Weapon/WeaponInfo.gd" id="6_f140w"]
+[ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="7_0iob3"]
 [ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="8_f140w"]
+
+[sub_resource type="Resource" id="Resource_4b75m"]
+resource_local_to_scene = true
+script = ExtResource("6_f140w")
+fireRate = 0.2
+speedBullet = 3000.0
+sizeBullet = 30.0
+sizeMagazine = 8.0
+leftInMagazine = null
+speedReload = 0.1
+energyPerHit = 0.5
+metadata/_custom_type_script = "uid://bykif5peqeubt"
+
+[sub_resource type="Resource" id="Resource_8ju71"]
+resource_local_to_scene = true
+script = ExtResource("7_0iob3")
+visibleHpBar = true
+maxHealth = 100.0
+health = 80.0
+metadata/_custom_type_script = "uid://c8yac8xqlpbwr"
 
 [sub_resource type="Resource" id="Resource_0iob3"]
 resource_local_to_scene = true
 script = ExtResource("8_f140w")
-nbCardStartingHand = 8
-handSizeLimit = 8
+nbCardStartingHand = 6
+handSizeLimit = 6
 counter = Array[int]([])
+limitEnergy = 3.0
 currentEnergy = 2.0
-energyRegen = 0.5
+energyRegen = 0.2
 metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
 
 [node name="MainScene" type="Node2D"]
@@ -78,6 +101,12 @@ script = ExtResource("5_4b75m")
 
 [node name="Player" parent="." instance=ExtResource("6_8ju71")]
 inertia = 0.15
+
+[node name="Weapon" parent="Player" index="2"]
+info = SubResource("Resource_4b75m")
+
+[node name="Health" parent="Player" index="3"]
+info = SubResource("Resource_8ju71")
 
 [node name="Commander" parent="Player" index="5"]
 commanderInfo = SubResource("Resource_0iob3")

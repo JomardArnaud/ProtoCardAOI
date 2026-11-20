@@ -45,8 +45,12 @@ func shootBullet() -> void:
 		reloading.emit()
 		timerReload.start()
 	var bullet := BacisProjectileScene.instantiate()
+	bullet.hasHitHurtBox.connect(onHitHurtBox)
 	bullet.dir = cursor.dir
 	bullet.setSpeed(info.speedBullet)
 	bullet.global_position = cursor.global_position
 	holder.add_child(bullet)
 	timerFireRate.start()
+
+func onHitHurtBox() -> void:
+	holder.commanderInfo.currentEnergy += info.energyPerHit
