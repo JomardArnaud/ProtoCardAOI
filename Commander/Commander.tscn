@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsdq572poq71l"]
+[gd_scene load_steps=8 format=3 uid="uid://dsdq572poq71l"]
 
 [ext_resource type="Script" uid="uid://cjnywahwqaso1" path="res://Commander/Commander.gd" id="1_bg122"]
 [ext_resource type="Script" uid="uid://cqbsyfsqhulfn" path="res://Commander/CommanderInfo.gd" id="3_14x6c"]
+[ext_resource type="Theme" uid="uid://kbsu4ruo3khm" path="res://MainTheme.tres" id="3_hiwjk"]
 
 [sub_resource type="Resource" id="Resource_ahofe"]
 script = ExtResource("3_14x6c")
 nbCardStartingHand = 8
 handSizeLimit = 8
 counter = Array[int]([])
-limitEnergy = 3.0
+maxEnergy = 3.0
 currentEnergy = 2.0
 energyRegen = 0.5
 
@@ -19,7 +20,7 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.631373, 0, 0, 1)
+border_color = Color(0.199979, 0.460983, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hiwjk"]
 resource_local_to_scene = true
@@ -38,18 +39,20 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_hiwjk")
 script = ExtResource("1_bg122")
 commanderInfo = SubResource("Resource_ahofe")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -125.0
-offset_right = 125.0
+[node name="HUD" type="MarginContainer" parent="."]
+offset_right = 200.0
 offset_bottom = 25.0
-grow_horizontal = 2
 
-[node name="EnergyBar" type="ProgressBar" parent="MarginContainer"]
+[node name="EnergyBar" type="ProgressBar" parent="HUD"]
 layout_mode = 2
 size_flags_vertical = 1
 theme = SubResource("Theme_lfelp")
-value = 100.0
 show_percentage = false
+
+[node name="LabelEnergy" type="RichTextLabel" parent="HUD"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("3_hiwjk")
+bbcode_enabled = true
+text = "[center]1/2[center]"
+fit_content = true

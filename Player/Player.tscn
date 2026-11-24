@@ -41,7 +41,7 @@ script = ExtResource("8_q3f8m")
 nbCardStartingHand = 6
 handSizeLimit = 6
 counter = Array[int]([])
-limitEnergy = 3.0
+maxEnergy = 3.0
 currentEnergy = 2.0
 energyRegen = 0.5
 metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
@@ -65,10 +65,10 @@ texture = ExtResource("4_le41p")
 info = SubResource("Resource_5wa8t")
 
 [node name="Health" parent="." instance=ExtResource("6_i4si5")]
-offset_left = -9.3
-offset_top = -9.4
-offset_right = 83.7
-offset_bottom = 9.6
+offset_left = -9.0
+offset_top = -12.6
+offset_right = 84.0
+offset_bottom = 6.4
 scale = Vector2(0.2, 0.2)
 info = SubResource("Resource_v0k0e")
 
@@ -154,12 +154,11 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Commander" parent="." node_paths=PackedStringArray("body", "cardHud") instance=ExtResource("7_owyu7")]
+position = Vector2(-13.8, -9)
+scale = Vector2(0.14, 0.14)
 commanderInfo = SubResource("Resource_p7tob")
 body = NodePath("..")
 cardHud = NodePath("../HUD/CardContainer")
-
-[node name="MarginContainer" parent="Commander" index="0"]
-scale = Vector2(0.2, 0.2)
 
 [node name="Hurtbox2D" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 collision_layer = 4
@@ -173,4 +172,3 @@ shape = SubResource("CircleShape2D_v0k0e")
 
 [editable path="HUD/CardContainer"]
 [editable path="HUD/CardContainer/PanelHud/MarginContainer/HBoxContainer/Hand"]
-[editable path="Commander"]

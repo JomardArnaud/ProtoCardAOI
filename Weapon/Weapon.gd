@@ -53,4 +53,4 @@ func shootBullet() -> void:
 	timerFireRate.start()
 
 func onHitHurtBox() -> void:
-	holder.commanderInfo.currentEnergy += info.energyPerHit
+	holder.commanderInfo.setEnergy(holder.commanderInfo.currentEnergy + info.energyPerHit)

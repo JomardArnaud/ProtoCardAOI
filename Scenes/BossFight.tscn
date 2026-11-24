@@ -35,7 +35,7 @@ script = ExtResource("2_55aqt")
 nbCardStartingHand = 6
 handSizeLimit = 6
 counter = Array[int]([])
-limitEnergy = 3.0
+maxEnergy = 3.0
 currentEnergy = 2.0
 energyRegen = 0.2
 metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
@@ -110,12 +110,13 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_u5lg5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Arena"]
 z_index = -1
-position = Vector2(792, 420)
+position = Vector2(-218, 89)
 scale = Vector2(8, 8)
 texture = ExtResource("4_55aqt")
 
 [node name="Block2D" type="Polygon2D" parent="Arena"]
 visible = false
+position = Vector2(-561, 66)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-249, -1177, 1021, -1169, 1365, -1620, -835, -1622)
 script = ExtResource("2_f70ux")
@@ -123,6 +124,7 @@ metadata/_custom_type_script = "uid://5j4hdbin2nn7"
 
 [node name="Block2D2" type="Polygon2D" parent="Arena"]
 visible = false
+position = Vector2(-561, 66)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(1966, -594, 1021, -1169, 1365, -1620, 2611, -861)
 script = ExtResource("2_f70ux")
@@ -130,6 +132,7 @@ metadata/_custom_type_script = "uid://5j4hdbin2nn7"
 
 [node name="Block2D3" type="Polygon2D" parent="Arena"]
 visible = false
+position = Vector2(-561, 66)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(1966, -594, 2138, 455, 2887, 845, 2611, -861)
 script = ExtResource("2_f70ux")
@@ -137,6 +140,7 @@ metadata/_custom_type_script = "uid://5j4hdbin2nn7"
 
 [node name="Block2D4" type="Polygon2D" parent="Arena"]
 visible = false
+position = Vector2(-561, 66)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(1408, 1042, 2138, 455, 2887, 845, 1885, 1584)
 script = ExtResource("2_f70ux")
@@ -144,6 +148,7 @@ metadata/_custom_type_script = "uid://5j4hdbin2nn7"
 
 [node name="Block2D5" type="Polygon2D" parent="Arena"]
 visible = false
+position = Vector2(-561, 66)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(1408, 1042, 378, 1446, 221, 1944, 1885, 1584)
 script = ExtResource("2_f70ux")
@@ -151,6 +156,7 @@ metadata/_custom_type_script = "uid://5j4hdbin2nn7"
 
 [node name="Block2D6" type="Polygon2D" parent="Arena"]
 visible = false
+position = Vector2(-561, 66)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-698, 1048, 378, 1446, 221, 1944, -1154, 1300)
 script = ExtResource("2_f70ux")
@@ -158,6 +164,7 @@ metadata/_custom_type_script = "uid://5j4hdbin2nn7"
 
 [node name="Block2D7" type="Polygon2D" parent="Arena"]
 visible = false
+position = Vector2(-561, 66)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-698, 1048, -1411, 480, -1927, 489, -1154, 1300)
 script = ExtResource("2_f70ux")
@@ -165,6 +172,7 @@ metadata/_custom_type_script = "uid://5j4hdbin2nn7"
 
 [node name="Block2D8" type="Polygon2D" parent="Arena"]
 visible = false
+position = Vector2(-561, 66)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-1260, -598, -1411, 480, -1927, 489, -1766, -903)
 script = ExtResource("2_f70ux")
@@ -172,6 +180,7 @@ metadata/_custom_type_script = "uid://5j4hdbin2nn7"
 
 [node name="Block2D9" type="Polygon2D" parent="Arena"]
 visible = false
+position = Vector2(-561, 66)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-1260, -598, -240, -1196, -344, -1578, -1766, -903)
 script = ExtResource("2_f70ux")

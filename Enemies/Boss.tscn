@@ -1,14 +1,27 @@
-[gd_scene load_steps=20 format=3 uid="uid://bm02wou48n2vd"]
+[gd_scene load_steps=22 format=3 uid="uid://bm02wou48n2vd"]
 
 [ext_resource type="Script" uid="uid://bnbcia1u5sxmg" path="res://Enemies/Boss.gd" id="1_o1tk4"]
 [ext_resource type="Script" uid="uid://c8yac8xqlpbwr" path="res://Utility/CustomType/HealthInfo.gd" id="2_1454h"]
 [ext_resource type="PackedScene" uid="uid://d4ffh65mxnhar" path="res://Weapon/Weapon.tscn" id="2_c384x"]
 [ext_resource type="PackedScene" uid="uid://ca0b1qo2v7edf" path="res://Utility/CustomNode/Health.tscn" id="2_esarq"]
+[ext_resource type="Script" uid="uid://bykif5peqeubt" path="res://Weapon/WeaponInfo.gd" id="3_ap5pj"]
 [ext_resource type="Texture2D" uid="uid://c5hiu5a7lapn4" path="res://Assets/ArtCard/Boss.png" id="3_esarq"]
 [ext_resource type="PackedScene" uid="uid://bch12dvchox3r" path="res://Utility/CustomNode/Hurtbox2D.tscn" id="4_1454h"]
 [ext_resource type="PackedScene" uid="uid://cs3gd7v8ubhmj" path="res://Utility/CustomNode/HpBar.tscn" id="5_esarq"]
 [ext_resource type="PackedScene" uid="uid://dculbgkisxgmq" path="res://Hand/Hand.tscn" id="6_2st7e"]
 [ext_resource type="PackedScene" uid="uid://ck5gdvd6jip1b" path="res://Deck/Deck.tscn" id="7_yjk0x"]
+
+[sub_resource type="Resource" id="Resource_sq17m"]
+resource_local_to_scene = true
+script = ExtResource("3_ap5pj")
+fireRate = 0.2
+speedBullet = 3000.0
+sizeBullet = 30.0
+sizeMagazine = 8.0
+leftInMagazine = null
+speedReload = 0.1
+energyPerHit = 0.5
+metadata/_custom_type_script = "uid://bykif5peqeubt"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o1tk4"]
 radius = 30.0
@@ -43,7 +56,7 @@ border_width_right = 15
 border_width_bottom = 15
 border_color = Color(0, 0.0266666, 0.8, 1)
 
-[sub_resource type="Resource" id="Resource_c384x"]
+[sub_resource type="Resource" id="Resource_ap5pj"]
 resource_local_to_scene = true
 script = ExtResource("2_1454h")
 visibleHpBar = true
@@ -84,6 +97,7 @@ script = ExtResource("1_o1tk4")
 metadata/_custom_type_script = "uid://xdbpkt3g5c08"
 
 [node name="Weapon" parent="." instance=ExtResource("2_c384x")]
+info = SubResource("Resource_sq17m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_o1tk4")
@@ -125,7 +139,7 @@ offset_left = 0.0
 offset_top = -28.0
 offset_right = 0.0
 offset_bottom = -28.0
-info = SubResource("Resource_c384x")
+info = SubResource("Resource_ap5pj")
 hpBar = NodePath("../BossHud/HpBarContainer")
 
 [node name="HpBar" parent="Health" index="0"]

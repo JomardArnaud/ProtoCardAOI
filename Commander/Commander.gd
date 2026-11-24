@@ -8,6 +8,12 @@ const CardNode = preload("res://Cards/Card.tscn")
 @export var commanderInfo : CommanderInfo
 @export var body : MovementBody2D
 @export var cardHud : CardHudContainer
+@export var showHUD : bool = true
+
+##HUD part
+@onready var HUD : MarginContainer = $HUD
+@onready var energyBar : ProgressBar = $HUD/EnergyBar
+@onready var labelEnergy : RichTextLabel = $HUD/LabelEnergy
 
 ##All HUD's parts
 var deck : Deck
@@ -25,9 +31,15 @@ func _ready():
 	hand = cardHud.hand
 	graveyard = cardHud.graveyard
 	deck.noMoreDraw.connect(refillDeck)
+	##HUD part
+	HUD.visible = showHUD
+	energyBar.max_value = commanderInfo.maxEnergy
+	labelEnergy.text = "[center]%.2f/%.0f[/center]" % [commanderInfo.currentEnergy, commanderInfo.maxEnergy]
+	commanderInfo.energyChanged.connect(onEnergyChanged)
+	commanderInfo.maxEnergyChanged.connect(onMaxEnergyChanged)
 
 func _process(delta: float) -> void:
-	commanderInfo.currentEnergy += commanderInfo.energyRegen * delta
+	commanderInfo.setEnergy(commanderInfo.currentEnergy + commanderInfo.energyRegen * delta)
 
 func setupCardEnvironment() -> void:
 	while (hand.getNbCardInHand() < commanderInfo.nbCardStartingHand && hand.getNbCardInHand() < commanderInfo.handSizeLimit && deck.cardPile.get_child_count() > 0):
@@ -84,3 +96,12 @@ func drawCard() -> void:
 
 func setWeapon(nWeapon: Weapon) -> void:
 	weapon = nWeapon
+
+func onEnergyChanged() -> void:
+	energyBar.value = commanderInfo.currentEnergy
+	labelEnergy.text = "[center]%.2f/%.0f[/center]" % [commanderInfo.currentEnergy, commanderInfo.maxEnergy]
+
+func onMaxEnergyChanged() -> void:
+	energyBar.max_value = commanderInfo.maxEnergy
+	labelEnergy.text = "[center]%.2f/%.0f[/center]" % [commanderInfo.currentEnergy, commanderInfo.maxEnergy]
+	

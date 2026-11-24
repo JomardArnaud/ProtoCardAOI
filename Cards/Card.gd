@@ -29,7 +29,7 @@ var bufferCardInfo: CardInfo
 func cast() -> bool:
 	if commander && (commander.commanderInfo.currentEnergy >= cardInfo.cost || freeCast):
 		if !freeCast:	
-			commander.commanderInfo.currentEnergy -= cardInfo.cost
+			commander.commanderInfo.setEnergy(commander.commanderInfo.currentEnergy - cardInfo.cost)
 		casted.emit()
 		resolve()
 		return true
