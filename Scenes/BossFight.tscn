@@ -110,7 +110,7 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_u5lg5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Arena"]
 z_index = -1
-position = Vector2(-218, 89)
+position = Vector2(-221, 107)
 scale = Vector2(8, 8)
 texture = ExtResource("4_55aqt")
 
@@ -208,11 +208,13 @@ focusEntity = NodePath("../Player")
 
 [node name="Boss" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_55aqt")]
 position = Vector2(-928, -43)
-scale = Vector2(10, 10)
 player = NodePath("../Player")
 
 [node name="Weapon" parent="Boss" index="0"]
 info = SubResource("Resource_5oi8w")
+
+[node name="CollisionShape2D" parent="Boss" index="1"]
+visible = false
 
 [node name="HpBarContainer" parent="Boss/BossHud" index="0"]
 offset_left = -892.5
@@ -232,9 +234,6 @@ info = SubResource("Resource_xjkry")
 
 [node name="HpBar" parent="Boss/Health" index="0"]
 theme = SubResource("Theme_55aqt")
-
-[node name="CollisionShape2D" parent="Boss/HurtBox" index="0"]
-visible = false
 
 [editable path="Player"]
 [editable path="Player/HUD/CardContainer"]

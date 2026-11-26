@@ -50,7 +50,6 @@ metadata/_custom_type_script = "uid://cqbsyfsqhulfn"
 radius = 3.42053
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
-scale = Vector2(10, 10)
 collision_layer = 2
 collision_mask = 147
 script = ExtResource("1_caob2")
@@ -162,7 +161,7 @@ cardHud = NodePath("../HUD/CardContainer")
 
 [node name="Hurtbox2D" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 collision_layer = 4
-collision_mask = 728
+collision_mask = 720
 script = ExtResource("9_j23h2")
 health = NodePath("../Health")
 metadata/_custom_type_script = "uid://7jjqca4eb0e4"

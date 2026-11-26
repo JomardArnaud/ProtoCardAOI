@@ -67,11 +67,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SlotSpell" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
+[node name="SlotGear" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer" instance=ExtResource("2_hk34u")]
 layout_mode = 2
-typeSlot = "SPELL"
+typeSlot = "GEAR"
 
-[node name="SlotSpellContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotSpell"]
+[node name="SlotGearContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer/CardContainer/SlotMargin/HBoxContainer/SlotGear"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

@@ -6,7 +6,7 @@ const CardEnum = preload("res://Cards/CardEnum.gd")
 @onready var slotsCard : Dictionary[int, MarginContainer] = {
 	CardEnum.CardType.DASH: %SlotDashContainer,
 	CardEnum.CardType.ATTACK: %SlotAttackContainer,
-	CardEnum.CardType.SPELL: %SlotSpellContainer
+	CardEnum.CardType.GEAR: %SlotGearContainer
 }
 
 @onready var cardHandNode := %CardContainer

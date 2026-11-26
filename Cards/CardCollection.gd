@@ -8,7 +8,7 @@ const listNameCard : Array[String] = [
 	"Wind Rises",
 	"Blank Attack",
 	"Blank Dash",
-	"Blank Spell"
+	"Blank Gear"
 ]
 
 func getCardIdByName(nameCard : String) -> int:
@@ -24,14 +24,15 @@ var collection : Dictionary[int, CardInfo] = {
 	1: CardInfo.new(listNameCard[1], 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Dash", {"duration": 0.12, "power" : 3500})}),
 	2: CardInfo.new(listNameCard[2], 1, CardEnum.CardType.ATTACK, {0: CardAbilityInfo.new("Blank")}),
 	3: CardInfo.new(listNameCard[3], 1, CardEnum.CardType.DASH, {0: CardAbilityInfo.new("Blank")}),
-	4: CardInfo.new(listNameCard[4], 1, CardEnum.CardType.SPELL, {0: CardAbilityInfo.new("Blank")}),
+	4: CardInfo.new(listNameCard[4], 1, CardEnum.CardType.GEAR, {0: CardAbilityInfo.new("Blank")}),
 } : get = getCollection
 	#1:  | Wind(1)"), ##TODO Counter 
 	###TODO implemente keyword and X() synthax, AutoCast X _ (Card with AutoCast can't be send to SlotHand,   
 	#5: CardInfo.new('IchiNoKata attack', 1, CardEnum.CardType.ATTACK, "FreeCost Dash | DashShot X(DashVelocity)"),
 	#6: CardInfo.new('Hanabi attack', 0, CardEnum.CardType.ATTACK, "AutoCast  |  "),
-	#7: CardInfo.new('Negation will', 0, CardEnum.CardType.SPELL, "Counter") # (Counter All) # Counter = Cancel X all effect from the last X type of card(can be all type)resolved within a time limit of 0.5 sec
-	
+	#7: CardInfo.new('Negation will', 0, CardEnum.CardType.GEAR, "Counter") # (Counter All) # Counter = Cancel X all effect from the last X type of card(can be all type)resolved within a time limit of 0.5 sec
+	#8: CardInfo.new("Ezmo's tribute", 3, CardEnum.CardType.GEAR, "Instanciate a CopyProjectilTurret for 12 sec"
+	#9: CardInfo.new("Gnawing Wind", 3, CardEnmum.CardType.GEAR, "CasterWepond Gain WindDot for 8sec"
 
 func _init() -> void:
 	fillCollection()

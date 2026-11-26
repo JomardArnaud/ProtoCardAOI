@@ -20,7 +20,7 @@ var HotkeyPlayer = {
 var CardSlotHotkey = {
 	"CastDASH" : InputManager.createKeyEvent(KEY_SHIFT),
 	"CastATTACK" : InputManager.createKeyEvent(KEY_SPACE),
-	"CastSPELL" : InputManager.createKeyEvent(KEY_F)
+	"CastGEAR" : InputManager.createKeyEvent(KEY_F)
 }
 var NormalSlotHotkey = {
 	"CastSlot0": InputManager.createKeyEvent(KEY_1),
@@ -36,7 +36,7 @@ var StartingDeck : Dictionary[int, int] = {
 	CardCollection.getCardIdByName("Wind Rises") : 3,
 	CardCollection.getCardIdByName("Blank Attack") : 3,
 	CardCollection.getCardIdByName("Blank Dash") : 3,
-	CardCollection.getCardIdByName("Blank Spell") : 3
+	CardCollection.getCardIdByName("Blank Gear") : 3
 }
 
 func _ready() -> void:
